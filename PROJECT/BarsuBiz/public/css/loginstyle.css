@@ -1,0 +1,25 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap');
+body {
+    font-family: 'Inter', 'sans-serif';
+    background: #ececec;
+}
+.box-area{
+     width: 930px;
+}
+
+::placeholder{
+    font-size: 16px;
+}
+@media only screen and (max-width:768px){
+    .box-area{
+        margin:0 10px;
+
+    }
+    .left-box{
+        height: 100px;
+        overflow: hidden;
+    }
+    .right-box{
+        padding: 20px;
+    }
+}

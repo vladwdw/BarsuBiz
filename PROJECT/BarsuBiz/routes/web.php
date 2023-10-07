@@ -15,6 +15,10 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('forms/index');
 });
 Route::get('/form1',[MainController::class, 'form1']);
+Route::get('/form2',[MainController::class, 'form2']);
+Route::get('/form3',[MainController::class, 'form3']);
+Route::get('/form4',[MainController::class, 'form4']);
+Route::get('/form5',[MainController::class, 'form5']);
