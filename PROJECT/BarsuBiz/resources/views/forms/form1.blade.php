@@ -1,22 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
+<link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
+<link href="{{ asset('css/mainstyle.css') }}" rel="stylesheet">
 <head>
+
+    <meta charset="UTF-8">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="assets/vendor/aos/aos.css" rel="stylesheet">
-    <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-    <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
-    <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
-    <link href="assets/vendor/remixicon/remixicon.css" rel="stylesheet">
-    <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
-    <link href="assets/css/mainstyle.css" rel="stylesheet">
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="{{ asset('js/bootstrap.min.js') }}"></script>
     <title>Составление шаблона</title>
 </head>
 <body>
     <!--Main container-->
+
     <div class="container d-flex justify-content-center align-items-center min-vh-100 p-4">
         
         <form class="col-md-6 right-box p-3 rounded-4 shadow box-area">
