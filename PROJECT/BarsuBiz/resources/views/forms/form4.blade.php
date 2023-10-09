@@ -10,6 +10,7 @@
     <title>Составление шаблона</title>
 </head>
 <body>
+    kk
     <!--Main container-->
     <div class="container d-flex justify-content-center align-items-center min-vh-100 p-4">
         
