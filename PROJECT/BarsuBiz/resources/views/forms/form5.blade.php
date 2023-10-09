@@ -12,7 +12,6 @@
   
     body {
   font-family: 'Inter', 'sans-serif';
-  background-color: aqua;
 /* Замените 'путь_к_вашему_изображению.jpg' на путь к вашему фоновому изображению */
   background-size: cover; /* Растягивать фон до заполнения всего экрана */
   background-repeat: no-repeat; /* Не повторять фон */
