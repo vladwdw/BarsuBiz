@@ -17,8 +17,8 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('forms/index');
 });
-Route::get('/form1',[MainController::class, 'form1']);
-Route::get('/form2',[MainController::class, 'form2']);
-Route::get('/form3',[MainController::class, 'form3']);
-Route::get('/form4',[MainController::class, 'form4']);
-Route::get('/form5',[MainController::class, 'form5']);
+Route::get('/form1',[MainController::class, 'form1'])->name('form1');
+Route::get('/form2',[MainController::class, 'form2'])->name('form2');
+Route::get('/form3',[MainController::class, 'form3'])->name('form3');
+Route::get('/form4',[MainController::class, 'form4'])->name('form4');
+Route::get('/form5',[MainController::class, 'form5'])->name('form5');
