@@ -4,10 +4,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
-<link href="{{ asset('css/mainstyle.css') }}" rel="stylesheet">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Составление шаблона</title>
+    <style>
+
+  
+    body {
+  font-family: 'Inter', 'sans-serif';
+  background-color: aqua;
+/* Замените 'путь_к_вашему_изображению.jpg' на путь к вашему фоновому изображению */
+  background-size: cover; /* Растягивать фон до заполнения всего экрана */
+  background-repeat: no-repeat; /* Не повторять фон */
+  background-attachment: fixed; /* Фиксировать фон, чтобы он не двигался при прокрутке */
+};
+    </style>
 </head>
 <body>
     <!--Main container-->

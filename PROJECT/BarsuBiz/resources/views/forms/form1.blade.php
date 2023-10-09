@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
-<link href="{{ asset('css/mainstyle.css') }}" rel="stylesheet">
+<link href="{{ asset('css/mainstyle1.css') }}" rel="stylesheet">
 <head>
 
     <meta charset="UTF-8">
@@ -10,7 +10,18 @@
     <script src="{{ asset('js/bootstrap.min.js') }}"></script>
     <title>Составление шаблона</title>
 </head>
+<style>
+  
+    body {
+  font-family: 'Inter', 'sans-serif';
+/* Замените 'путь_к_вашему_изображению.jpg' на путь к вашему фоновому изображению */
+  background-size: cover; /* Растягивать фон до заполнения всего экрана */
+  background-repeat: no-repeat; /* Не повторять фон */
+  background-attachment: fixed; /* Фиксировать фон, чтобы он не двигался при прокрутке */
+};
+    </style>
 <body>
+    
     <!--Main container-->
 
     <div class="container d-flex justify-content-center align-items-center min-vh-100 p-4">

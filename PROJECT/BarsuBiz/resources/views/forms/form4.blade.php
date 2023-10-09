@@ -4,17 +4,28 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
-<link href="{{ asset('css/mainstyle.css') }}" rel="stylesheet">
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Составление шаблона</title>
+    <style>
+
+    body {
+  font-family: 'Inter', 'sans-serif';
+/* Замените 'путь_к_вашему_изображению.jpg' на путь к вашему фоновому изображению */
+  background-size: cover; /* Растягивать фон до заполнения всего экрана */
+  background-repeat: no-repeat; /* Не повторять фон */
+  background-attachment: fixed; /* Фиксировать фон, чтобы он не двигался при прокрутке */
+};
+
+    </style>
 </head>
 <body>
     <!--Main container-->
     <div class="container d-flex justify-content-center align-items-center min-vh-100 p-4">
         
         <form class="col-md-6 right-box p-3 rounded-4 shadow box-area">
-            <div class="row align-items-center ">
+            <div class="row align-items-center maa ">
                 <div class="header-text mb-4">
                     <h2 style="text-align: center;">Заполните данные на участие 
                         в конкурсе проектов заданий ГПНИ "
