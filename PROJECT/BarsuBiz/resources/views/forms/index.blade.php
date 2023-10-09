@@ -41,7 +41,7 @@
   <header id="header" class="fixed-top ">
     <div class="container d-flex align-items-center justify-content-between">
 
-      <h1 class="logo"><a href="index.html">BarsuBiz</a></h1>
+      <h1 class="logo"><a href="#hero">BarsuBiz</a></h1>
       <!-- Uncomment below if you prefer to use an image logo -->
       <!-- <a href="index.html" class="logo"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
 
@@ -63,10 +63,10 @@
   <!-- ======= Hero Section ======= -->
   <section id="hero">
     <div class="hero-container" data-aos="fade-up" data-aos-delay="150">
-      <h1>Plan. Launch. Grow.</h1>
-      <h2>We are team of talented designers making websites with Bootstrap</h2>
+      <h1>Приветствуем вас!</h1>
+      <h2>Воспользуйтесь нашими сервисами для решения своих задач</h2>
       <div class="d-flex">
-        <a href="#about" class="btn-get-started scrollto">Get Started</a>
+        <a href="#services" class="btn-get-started scrollto">Перейти к сервисам</a>
         <a href="https://www.youtube.com/watch?v=jDDaplaOz7Q" class="glightbox btn-watch-video"><i class="bi bi-play-circle"></i><span>Watch Video</span></a>
       </div>
     </div>
@@ -370,14 +370,14 @@
 
         <div class="section-title">
           <h2>Сервисы</h2>
-          <p>Наши шаблоны</p>
+          
         </div>
 
         <div class="row" data-aos="fade-up" data-aos-delay="200">
           <div class="col-md-6">
             <div class="icon-box">
-              <i class="bi bi-laptop"></i>
-              <h4><a href="{{route('form1')}}">Проекта молодежных инициатив</a></h4>
+              <i class="bi bi-award"></i>
+              <h4><a href="{{route('form1')}}">Проект молодежных инициатив</a></h4>
               <p>Типо текст</p>
             </div>
           </div>
@@ -390,14 +390,14 @@
           </div>
           <div class="col-md-6 mt-4 mt-md-0">
             <div class="icon-box">
-              <i class="bi bi-brightness-high"></i>
+              <i class="bi bi-balloon"></i>
               <h4><a href="{{route('form3')}}">100 идей для Беларуси</a></h4>
               <p>Типо текст</p>
             </div>
           </div>
           <div class="col-md-6 mt-4 mt-md-0">
             <div class="icon-box">
-              <i class="bi bi-briefcase"></i>
+              <i class="bi bi-boxes"></i>
               <h4><a href="{{route('form4')}}">Конкурс проектов заданий "ГПНИ"</a></h4>
               <p>Типо текст</p>
             </div>
