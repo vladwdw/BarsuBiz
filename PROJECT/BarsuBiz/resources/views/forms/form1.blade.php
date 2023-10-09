@@ -27,28 +27,29 @@
 
     <div class="container d-flex justify-content-center align-items-center min-vh-100 p-4">
         
-        <form class="col-md-6 right-box p-3 rounded-4 shadow box-area">
+        <form method="post" class="col-md-6 right-box p-3 rounded-4 shadow box-area" action="/submit-form1" enctype="multipart/form-data">
+        @csrf
             <div class="row align-items-center ">
                 <div class="header-text mb-4">
                     <h2 style="text-align: center;">Заполните данные для проекта молодежных инициатив</h2>
                 </div>
                 <div class="input-group mb-3">
-                    <input type="text" class="form-control form-control-lg bg-light fs-6" placeholder="Наименование проекта">
+                    <input type="text" class="form-control form-control-lg bg-light fs-6" placeholder="Наименование проекта" name="projectName">
                 </div>
                 <p>Место реализации проекта</p>
                 <div class="input-group mb-3">
-                    <input type="text" class="form-control form-control-lg bg-light fs-6" placeholder="Наименование района">
-                    <input type="text" class="form-control form-control-lg bg-light fs-6" placeholder="Населенный пункт">
+                    <input type="text" class="form-control form-control-lg bg-light fs-6" placeholder="Наименование района" name="regionName">
+                    <input type="text" class="form-control form-control-lg bg-light fs-6" placeholder="Населенный пункт" name="locality">
                 </div>
                 <p>Описание проекта</p>
                 <div class="form-group mb-3">
-                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Описание проблемы, на решение которой направлен проект:"></textarea>
+                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Описание проблемы, на решение которой направлен проект:" name="description"></textarea>
                 </div>
                 <p>Результаты проекта (что будет достигнуто) в измеримых величинах:</p>
                 <div class="Pokaz">
                 <div class="input-group mb-3 d-flex" id="solutions1">
-                    <input type="text" class="form-control form-control-lg bg-light fs-6 mb-2" placeholder="Показатель">
-                    <input type="text" class="form-control form-control-lg bg-light fs-6 mb-2" placeholder="Значение показателя">
+                    <input type="text" class="form-control form-control-lg bg-light fs-6 mb-2" placeholder="Показатель" name="indicator[]">
+                    <input type="text" class="form-control form-control-lg bg-light fs-6 mb-2" placeholder="Значение показателя" name="valueIndicator[]">
                 </div>
                 </div>
                 <div class="container-fluid  mb-3 ">
@@ -57,25 +58,25 @@
                 </div>
                 <p>Срок реализации проекта</p>
                 <div class="input-group mb-3" id="solutions1">
-                    <input type="text" class="form-control form-control-lg bg-light fs-6 mb-2" placeholder="Срок реализации проекта">
+                    <input type="text" class="form-control form-control-lg bg-light fs-6 mb-2" placeholder="Срок реализации проекта" name="realizationTemp">
                 </div>
                 <p>Сведения об инициаторах:</p>
                 <div class="input-group mb-3" id="solutions1">
-                    <input type="text" class="form-control form-control-lg bg-light fs-6 mb-2" placeholder="ФИО Руководителя(полностью): ">
+                    <input type="text" class="form-control form-control-lg bg-light fs-6 mb-2" placeholder="ФИО Руководителя(полностью): " name="fioRuk">
                 </div>
                 <div class="input-group mb-3" id="solutions1">
-                    <input type="text" class="form-control form-control-lg bg-light fs-6 mb-2" placeholder="Контактный телефон: ">
-                    <input type="text" class="form-control form-control-lg bg-light fs-6 mb-2" placeholder="Email: ">
+                    <input type="text" class="form-control form-control-lg bg-light fs-6 mb-2" placeholder="Контактный телефон: " name="phone">
+                    <input type="text" class="form-control form-control-lg bg-light fs-6 mb-2" placeholder="Email: " name="email">
                 </div>
                 <div class="form-group mb-3">
-                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Состав инициативной группы"></textarea>
+                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Состав инициативной группы" name="sostav"></textarea>
                 </div>
                 <p>Дополнительная информация и комментарии:</p>
                 <div class="form-group mb-3">
-                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Доп инфа"></textarea>
+                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Доп инфа" name="dopInformation"></textarea>
                 </div>
                 <div class="input-group mb-3">
-                    <button class="btn btn-lg btn-danger w-100 fs-6">Отправить</button>
+                    <button class="btn btn-lg btn-danger w-100 fs-6" type="submit">Отправить</button>
                 </div>
                 <div class="input-group mb-3">
                     <button class="btn btn-lg btn-light w-100 fs-6" style="width:20px;">Что-то делается</button>
@@ -92,11 +93,13 @@
   // Создаем два внутренних элемента input
   var input1 = document.createElement("input");
   input1.type = "text";
+  input1.name="indicator[]";
   input1.className = "form-control form-control-lg bg-light fs-6 mb-2";
   input1.placeholder = "Показатель";
 
   var input2 = document.createElement("input");
   input2.type = "text";
+  input2.name="valueIndicator[]";
   input2.className = "form-control form-control-lg bg-light fs-6 mb-2";
   input2.placeholder = "Значение показателя";
   
