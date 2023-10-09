@@ -17,7 +17,7 @@
   background-repeat: no-repeat; /* Не повторять фон */
   background-attachment: fixed; /* Фиксировать фон, чтобы он не двигался при прокрутке */
 };
-
+/* */
     </style>
 </head>
 <body>
