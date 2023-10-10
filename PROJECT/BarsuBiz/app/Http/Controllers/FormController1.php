@@ -31,6 +31,8 @@ class FormController1 extends Controller
     $email=$request->input('email');
     $sostav=$request->input('sostav');
     $dopInformation=$request->input('dopInformation');
+    $phpWord->setDefaultFontName('Times New Roman');
+    $phpWord->setDefaultFontSize(14);
 
  
   
@@ -55,19 +57,6 @@ class FormController1 extends Controller
     $section = $phpWord->addSection();
     $header = array('size' => 16, 'bold' => true);
 
-    // 1. Basic table
-
-    $rows = 10;
-    $cols = 5;
-    $section->addText('Basic table', $header);
-
-    $table = $section->addTable();
-    for ($r = 1; $r <= 8; $r++) {
-        $table->addRow();
-        for ($c = 1; $c <= 5; $c++) {
-            $table->addCell(1750)->addText("Row {$r}, Cell {$c}");
-        }
-    }
 
     // 2. Advanced table
 
@@ -75,24 +64,25 @@ class FormController1 extends Controller
     $styleCell =
     array(
     'borderColor' =>'000000',
-    'borderSize' => 6,
+    'borderSize' => 10,
+    'valign' => 'center',
+    );
+    $styleText = array(
+        'name' => 'Times New Roman',
+        'size' => 14, // Размер шрифта в точках
     );
 
     $table = $section->addTable($styleCell);
     $table->addRow(900);
-    $table->addCell(2000, $styleCell)->addText('Row 1');
-    $table->addCell(2000, $styleCell)->addText('Row 2');
-    $table->addCell(2000, $styleCell)->addText('Row 3');
-    $table->addCell(2000, $styleCell)->addText('Row 4');
-    $table->addCell(500, $styleCell)->addText('Row 5');
-    for ($i = 1; $i <= 8; $i++) {
+    $table->addCell(800, $styleCell)->addText('№ п/п',$styleText);
+    $table->addCell(4800, $styleCell)->addText('Показатель, единиц измерения',$styleText);
+    $table->addCell(4000, $styleCell)->addText('Значение показателя',$styleText);
+    for ($i = 0; $i < count($indicator); $i++) {
         $table->addRow();
-        $table->addCell(2000)->addText("Cell {$i}");
-        $table->addCell(2000)->addText("Cell {$i}");
-        $table->addCell(2000)->addText("Cell {$i}");
-        $table->addCell(2000)->addText("Cell {$i}");
-        $text = (0 == $i % 2) ? 'X' : '';
-        $table->addCell(500)->addText($text);}
+        $table->addCell(800)->addText($i+1,$styleText);
+        $table->addCell(4800)->addText($indicator[$i],$styleText);
+        $table->addCell(4000)->addText($valueIndicator[$i],$styleText);
+    };
 
    
 

@@ -27,17 +27,16 @@
         <form class="col-md-6 right-box p-3 rounded-4 shadow box-area">
             <div class="row align-items-center ">
                 <div class="header-text mb-4">
-                    <h2 style="text-align: center;"> <p class="text-primary">BarsuBiz</p></h2>
                     <h2 style="text-align: center;">Заполните заявку на получение гранта
                         </h2>
                 </div>
                 <p>Научное направление</p>
                 <div class="input-group mb-3">
-                    <input type="text" class="form-control form-control-lg bg-light fs-6" placeholder="Введите данные">
+                    <input type="text" class="form-control form-control-lg bg-light fs-6" placeholder="Введите данные" name="sienceDirection">
                 </div>
                 <p>Фамилия, собственное имя, отчество соискателя гранта</p>
                 <div class="input-group mb-3">
-                    <input type="text" class="form-control form-control-lg bg-light fs-6" placeholder="Введите данные">
+                    <input type="text" class="form-control form-control-lg bg-light fs-6" placeholder="Введите данные" name="fioGrad">
                 </div>
                 <!--
                 <div class="form-group mb-3">
@@ -46,11 +45,11 @@
                 -->
                 <p>Категория гранта </p>
                 <div class="input-group mb-3">
-                    <input type="text" class="form-control form-control-lg bg-light fs-6" placeholder="Введите данные">
+                    <input type="text" class="form-control form-control-lg bg-light fs-6" placeholder="Введите данные" name="grandCategory">
                 </div>
                 <p>Наименование научно-исследовательской работы, представляемой на конкурс  </p>
                 <div class="input-group mb-3">
-                    <input type="text" class="form-control form-control-lg bg-light fs-6" placeholder="Введите данные">
+                    <input type="text" class="form-control form-control-lg bg-light fs-6" placeholder="Введите данные" name="workName">
                 </div>
                 <p>Тема диссертации соискателя гранта с указанием даты утверждения и сроков представления диссертации к предварительной экспертизе   </p>
                 <div class="form-group mb-3">
