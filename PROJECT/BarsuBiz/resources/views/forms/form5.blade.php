@@ -26,6 +26,7 @@
         <form class="col-md-6 right-box p-3 rounded-4 shadow box-area">
             <div class="row align-items-center ">
                 <div class="header-text mb-4">
+                    <h2 style="text-align: center;"> <p class="text-primary">BarsuBiz</p></h2>
                     <h2 style="text-align: center;">Заполните заявку на получение гранта
                         </h2>
                 </div>
