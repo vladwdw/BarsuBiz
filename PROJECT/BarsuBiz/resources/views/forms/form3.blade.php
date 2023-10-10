@@ -24,8 +24,9 @@
     <!--Main container-->
     <div class="container d-flex justify-content-center align-items-center min-vh-100 p-4">
         
-        <form class="col-md-6 right-box p-3 rounded-4 shadow box-area">
-            <div class="row align-items-center ">
+        <form method="post" class="col-md-6 right-box p-3 rounded-4 shadow box-area" action="/submit-form3" enctype="multipart/form-data">
+        @csrf
+        <div class="row align-items-center ">
                 <div class="header-text mb-4">
                     <h2 style="text-align: center;">Заполните данные на участие 
                         в республиканском проекте "100 ИДЕЙ ДЛЯ БЕЛАРУСИ"
@@ -33,30 +34,35 @@
                 </div>
                 <p>Наименование проекта</p>
                 <div class="input-group mb-3">
-                    <input type="text" class="form-control form-control-lg bg-light fs-6" placeholder="Научное направление ">
+                    <input type="text" class="form-control form-control-lg bg-light fs-6" placeholder="Научное направление " name="name_project">
                 </div>
                 <p>Авторы проекта (место работы (учебы), должность (курс, класс, группа и др.), телефоны, электронная почта, адрес почты для обмена данными, прочие сведения)</p>
                 <div class="form-group mb-3">
-                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Введите данные:"></textarea>
+                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Введите данные:" name="name_autors"></textarea>
                 </div>
-                <p>Цель и задачи, которые будут решены при реализации проекта </p>
+                
+                <p>Актуальность, новизна и оригинальность проекта</p>
                 <div class="form-group mb-3">
-                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Введите данные:"></textarea>
+                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Введите данные:" name="relevance"></textarea>
+                </div>
+                <p>Цели и задачи, которые будут решены при реализации проекта </p>
+                <div class="form-group mb-3">
+                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Введите данные:" name="goals_objectives"></textarea>
                 </div>
                 <p>Технические (экономические, социальные) преимущества проекта  </p>
                 <div class="form-group mb-3">
-                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Введите данные:"></textarea>
+                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Введите данные:" name="advantages_project"></textarea>
                 </div>
                 <p>Сведения об охране интеллектуальной собственности (наличие патента и др.)  </p>
                 <div class="form-group mb-3">
-                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Введите данные:"></textarea>
+                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Введите данные:" name="property_protection"></textarea>
                 </div>
                 <p>Предложения по дальнейшей реализации проекта (с обоснованием)  </p>
                 <div class="form-group mb-3">
-                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Введите данные:"></textarea>
+                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Введите данные:" name="offers"></textarea>
                 </div>
                 <div class="input-group mb-3">
-                    <button class="btn btn-lg btn-danger w-100 fs-6">Отправить</button>
+                    <button class="btn btn-lg btn-danger w-100 fs-6" type="submit">Отправить</button>
                 </div>
                 <div class="input-group mb-3">
                     <button class="btn btn-lg btn-light w-100 fs-6" style="width:20px;">Что-то делается</button>
