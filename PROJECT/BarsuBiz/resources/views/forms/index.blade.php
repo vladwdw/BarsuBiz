@@ -49,10 +49,10 @@
         <ul>
           <li><a class="nav-link scrollto active" href="#hero">Дом</a></li>
           <li><a class="nav-link scrollto" href="#about">О нас</a></li>
-          <li><a class="nav-link scrollto" href="#services">Что умеет сервис</a></li>
+          <li><a class="nav-link scrollto" href="#services">Наши сервиси</a></li>
           <li><a class="nav-link scrollto" href="#team">Разработчики</a></li>
-          <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
-          <li><a class="getstarted scrollto" href="#about">Get Started</a></li>
+          <li><a class="nav-link scrollto" href="#footer">Контакты</a></li>
+          <!-- <li><a class="getstarted scrollto" href="#about">Get Started</a></li> -->
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav><!-- .navbar -->
@@ -74,23 +74,23 @@
 
   <main id="main">
 
-    <!-- ======= About Section ======= -->
-    <section id="about" class="about">
+    <!--======= About Section ======= -->
+     <section id="about" class="about">
       <div class="container" data-aos="fade-up">
 
         <div class="row justify-content-end">
           <div class="col-lg-11">
             <div class="row justify-content-end">
 
-              <div class="col-lg-3 col-md-5 col-6 d-md-flex align-items-md-stretch">
+               <!-- <div class="col-lg-3 col-md-5 col-6 d-md-flex align-items-md-stretch">
                 <div class="count-box">
                   <i class="bi bi-emoji-smile"></i>
                   <span data-purecounter-start="0" data-purecounter-end="125" data-purecounter-duration="1" class="purecounter"></span>
                   <p>Happy Clients</p>
                 </div>
-              </div>
+              </div> 
 
-              <div class="col-lg-3 col-md-5 col-6 d-md-flex align-items-md-stretch">
+               <div class="col-lg-3 col-md-5 col-6 d-md-flex align-items-md-stretch">
                 <div class="count-box">
                   <i class="bi bi-journal-richtext"></i>
                   <span data-purecounter-start="0" data-purecounter-end="85" data-purecounter-duration="1" class="purecounter"></span>
@@ -112,7 +112,7 @@
                   <span data-purecounter-start="0" data-purecounter-end="48" data-purecounter-duration="1" class="purecounter"></span>
                   <p>Awards</p>
                 </div>
-              </div>
+              </div>  -->
 
             </div>
           </div>
@@ -121,33 +121,34 @@
         <div class="row">
 
           <div class="col-lg-6 video-box align-self-baseline" data-aos="zoom-in" data-aos-delay="100">
-            <img src="assets/img/about.jpg" class="img-fluid" alt="">
-            <a href="https://www.youtube.com/watch?v=jDDaplaOz7Q" class="glightbox play-btn mb-4"></a>
+            <img src="assets/img/bizn.png" class="img-fluid" alt="">
+            <!-- <a href="https://www.youtube.com/watch?v=jDDaplaOz7Q" class="glightbox play-btn mb-4"></a> -->
           </div>
 
           <div class="col-lg-6 pt-3 pt-lg-0 content">
-            <h3>Voluptatem dignissimos provident quasi corporis voluptates sit assumenda.</h3>
+            <h3>
+            <!-- Voluptatem dignissimos provident quasi corporis voluptates sit assumenda. -->
+              Мы занимаемся разработкой современных сервисов 
+            </h3>
             <p class="fst-italic">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-              magna aliqua.
+              Пока хз
             </p>
             <ul>
-              <li><i class="bx bx-check-double"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat.</li>
-              <li><i class="bx bx-check-double"></i> Duis aute irure dolor in reprehenderit in voluptate velit.</li>
-              <li><i class="bx bx-check-double"></i> Voluptate repellendus pariatur reprehenderit corporis sint.</li>
-              <li><i class="bx bx-check-double"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate trideta storacalaperda mastiro dolore eu fugiat nulla pariatur.</li>
+              <li><i class="bx bx-check-double"></i> пока хз</li>
+              <li><i class="bx bx-check-double"></i> пока хз</li>
+              <li><i class="bx bx-check-double"></i> пока хз</li>
+              <li><i class="bx bx-check-double"></i> пока хз</li>
             </ul>
             <p>
-              Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-              velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-              culpa qui officia deserunt mollit anim id est laborum
+              Пока хз
             </p>
           </div>
 
         </div>
 
       </div>
-    </section><!-- End About Section -->
+    </section> 
+    <!--End About Section-->
 
     <!-- ======= About Boxes Section ======= -->
     <section id="about-boxes" class="about-boxes">
@@ -193,10 +194,10 @@
         </div>
 
       </div>
-    </section><!-- End About Boxes Section -->
+    </section>
 
     <!-- ======= Clients Section ======= -->
-    <section id="clients" class="clients">
+    <!-- <section id="clients" class="clients">
       <div class="container" data-aos="zoom-in">
 
         <div class="row">
@@ -228,7 +229,8 @@
         </div>
 
       </div>
-    </section><!-- End Clients Section -->
+    </section> -->
+    <!-- End Clients Section -->
 
     <!-- ======= Features Section ======= -->
     <section id="features" class="features">
@@ -501,7 +503,7 @@
     </section><!-- End Testimonials Section -->
 
     <!-- ======= Portfolio Section ======= -->
-    <section id="portfolio" class="portfolio">
+    <!-- <section id="portfolio" class="portfolio">
       <div class="container" data-aos="fade-up">
 
         <div class="section-title">
@@ -615,7 +617,7 @@
         </div>
 
       </div>
-    </section><!-- End Portfolio Section -->
+    </section>End Portfolio Section -->
 
     <!-- ======= Team Section ======= -->
     <section id="team" class="team section-bg">
@@ -623,7 +625,7 @@
 
         <div class="section-title">
           <h2>Ответственные преподаватели</h2>
-          <p>Посмотреть преподавателей</p>
+          <!-- <p>Посмотреть преподавателей</p> -->
         </div>
 
         <div class="row">
@@ -682,7 +684,7 @@
     </section><!-- End Team Section -->
 
     <!-- ======= Contact Section ======= -->
-    <section id="contact" class="contact">
+    <!-- <section id="contact" class="contact">
       <div class="container" data-aos="fade-up"">
 
     <div class=" section-title">
@@ -748,7 +750,8 @@
       </div>
 
       </div>
-    </section><!-- End Contact Section -->
+    </section> -->
+    <!-- End Contact Section -->
 
   </main><!-- End #main -->
 
@@ -760,42 +763,44 @@
 
           <div class="col-lg-3 col-md-6">
             <div class="footer-info">
-              <h3>Dewi</h3>
+              <h3>BarsuBiz</h3>
               <p>
-                A108 Adam Street <br>
-                NY 535022, USA<br><br>
-                <strong>Phone:</strong> +1 5589 55488 55<br>
-                <strong>Email:</strong> info@example.com<br>
+                <!-- A108 Adam Street -->
+                 ИСТ-TEAM
+                <br>
+                БарГУ, Барановичи<br><br>
+                <strong>Телефон:</strong> +375<br>
+                <strong>Почта:</strong> barsubiz.support@gmail.com<br>
               </p>
               <div class="social-links mt-3">
-                <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
-                <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
-                <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
+                <a href="#" class="telegram"><i class="bx bxl-telegram"></i></a>
+                <a href="#" class="vk"><i class="bx bxl-vk"></i></a>
+                <!-- <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
                 <a href="#" class="google-plus"><i class="bx bxl-skype"></i></a>
-                <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>
+                <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a> -->
               </div>
             </div>
           </div>
 
           <div class="col-lg-2 col-md-6 footer-links">
-            <h4>Useful Links</h4>
+            <h4>По сайту</h4>
             <ul>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Home</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">About us</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Services</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Terms of service</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Privacy policy</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Дом</a></li>
+              <!-- <li><i class="bx bx-chevron-right"></i> <a href="#">About us</a></li> -->
+              <li><i class="bx bx-chevron-right"></i> <a href="#services">Сервисы</a></li>
+              <!-- <li><i class="bx bx-chevron-right"></i> <a href="#">Terms of service</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Privacy policy</a></li> -->
             </ul>
           </div>
 
           <div class="col-lg-3 col-md-6 footer-links">
-            <h4>Our Services</h4>
+            <h4>Сервисы</h4>
             <ul>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Web Design</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Web Development</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Product Management</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Marketing</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Graphic Design</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Проект молодежных инициатив</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Конкурсный отбор НИР в рамках системы внутренних грантов БарГУ</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">100 идей для Беларуси</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Конкурс проектов заданий "ГПНИ"</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Заявка на получение гранта</a></li>
             </ul>
           </div>
 
@@ -814,14 +819,14 @@
 
     <div class="container">
       <div class="copyright">
-        &copy; Copyright <strong><span>Dewi</span></strong>. All Rights Reserved
+        &copy; Copyright <strong><span>BarsuBiz</span></strong>. Все права защищены
       </div>
       <div class="credits">
         <!-- All the links in the footer should remain intact. -->
         <!-- You can delete the links only if you purchased the pro version. -->
         <!-- Licensing information: https://bootstrapmade.com/license/ -->
         <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/dewi-free-multi-purpose-html-template/ -->
-        Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+        <!-- Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a> -->
       </div>
     </div>
   </footer><!-- End Footer -->
