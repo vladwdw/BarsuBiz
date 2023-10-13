@@ -80,7 +80,7 @@ class FormController1 extends Controller
     for ($i = 0; $i < count($indicator); $i++) {
         $table->addRow();
         $table->addCell(800)->addText($i+1,$styleText);
-        $table->addCell(4800)->addText($indicator[$i],$styleText);
+        $table->addCell(4800)->addText($indicator[$i],$styleText);      
         $table->addCell(4000)->addText($valueIndicator[$i],$styleText);
     };
 
