@@ -26,7 +26,7 @@ class FormController3 extends Controller
     $advantages_project = $request->input('advantages_project');
     $property_protection = $request->input('property_protection');
     $offers = $request->input('offers');
-    dd($request->all());
+    
     // $regionName = $request->input('regionName');
     // $locality=$request->input('locality');
     // $description=$request->input('description');
