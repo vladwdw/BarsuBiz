@@ -53,7 +53,7 @@
                     <button class="btn btn-lg btn-danger w-100 fs-6" type="submit">Зарегестрироваться</button>
                 </div>
                 <div class="input-group mb-3">
-                    <button class="btn btn-lg btn-light w-100 fs-6" style="width:20px;">Войти</button>
+                    <a class="btn btn-lg btn-light w-100 fs-6" href="/login" style="width:20px;">Войти</a>
                 </div>
          
                 

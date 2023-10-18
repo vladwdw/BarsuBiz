@@ -21,11 +21,14 @@ class MainController extends Controller
     public function form5(){
         return view('forms/form5');
     }
-    public function loginPage(){
+    public function login(){
         return view('forms/login');
     }
     public function registerPage(){
         return view('register');
+    }
+    public function cabinet(){
+        return view('cabinet');
     }
     
 }

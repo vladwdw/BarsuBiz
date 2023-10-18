@@ -33,16 +33,18 @@
         </div>
         <!--Right Box Box-->
         <div class="col-md-6 right-box">
-            <div class="row align-items-center ">
+            <form class="row align-items-center " method="post" action="{{ route('login') }}">
+                @csrf
                 <div class="header-text mb-4">
                     <h2>Добро пожалоавать на сайт</h2>
                     <p>Войдите пожалуйста</p>
                 </div>
+                
                 <div class="input-group mb-3">
-                    <input type="text" class="form-control form-control-lg bg-light fs-6" placeholder="Email address">
+                    <input type="text" class="form-control form-control-lg bg-light fs-6" placeholder="Email address" name="email">
                 </div>
                 <div class="input-group mb-1">
-                    <input type="password" class="form-control form-control-lg bg-light fs-6" placeholder="Password">
+                    <input type="password" class="form-control form-control-lg bg-light fs-6" placeholder="Password" name="password">
                 </div>
                 <div class="input-group mb-5 d-flex justify-content-between">
                     <div class="form-check">
@@ -55,12 +57,21 @@
 
                 </div>
                 <div class="input-group mb-3">
-                    <button class="btn btn-lg btn-danger w-100 fs-6">Войти</button>
+                    <button class="btn btn-lg btn-danger w-100 fs-6" type="submit">Войти</button>
                 </div>
                 <div class="input-group mb-3">
-                    <button class="btn btn-lg btn-light w-100 fs-6" style="width:20px;">Зарегестрироваться</button>
+                    <a href="/register" class="btn btn-lg btn-light w-100 fs-6" style="width:20px;">Зарегестрироваться</a>
                 </div>
-            </div>
+        </form>
+        @if ($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
         </div>
     </div>
  </div>

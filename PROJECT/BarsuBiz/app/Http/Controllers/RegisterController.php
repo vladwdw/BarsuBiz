@@ -41,6 +41,7 @@ class RegisterController extends Controller
             $user->email = $request->input("email");
             $user->password = bcrypt($request->input("password"));
             $user->save();
+            return redirect("/login");
         } catch (\Exception $e) {
             return redirect()->back()->with("error", $e->getMessage());
         }
