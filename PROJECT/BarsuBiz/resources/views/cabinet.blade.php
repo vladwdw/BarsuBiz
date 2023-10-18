@@ -52,7 +52,17 @@
         
 
         <div class="row">
-            <div class="col-md-8">
+            <div class="col-md-5">
+              <h1>Личный кабинет</h1>
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Информация о пользователе</h5>
+                        <p><strong>Username:</strong> {{ Auth::user()->name }}</p>
+                        <p><strong>Email:</strong> {{ Auth::user()->email }}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-7">
                 <ul class="nav nav-tabs" id="myTab" role="tablist">
                     <li class="nav-item">
                         <a class="nav-link active" id="files-tab" data-toggle="tab" href="#files" role="tab" aria-controls="files" aria-selected="true">Файлы</a>
@@ -82,16 +92,6 @@
                                 <!-- Здесь можно добавить другие файлы -->
                             </tbody>
                         </table>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-              <h1>Личный кабинет</h1>
-                <div class="card">
-                    <div class="card-body">
-                        <h5 class="card-title">Информация о пользователе</h5>
-                        <p><strong>Username:</strong> {{ Auth::user()->name }}</p>
-                        <p><strong>Email:</strong> {{ Auth::user()->email }}</p>
                     </div>
                 </div>
             </div>
