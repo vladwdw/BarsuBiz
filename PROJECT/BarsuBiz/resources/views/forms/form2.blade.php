@@ -24,7 +24,8 @@
     <!--Main container-->
     <div class="container d-flex justify-content-center align-items-center min-vh-100 p-4">
         
-        <form class="col-md-6 right-box p-3 rounded-4 shadow box-area">
+        <form class="col-md-6 right-box p-3 rounded-4 shadow box-area" method="post" action="/submit-form2">
+            @csrf
             <div class="row align-items-center ">
                 <div class="header-text mb-4">
                     <h2 style="text-align: center;">Заполните данные на участие в конкурсном отборе НИР
@@ -33,49 +34,49 @@
                 </div>
                 <p>Научное направление</p>
                 <div class="input-group mb-3">
-                    <input type="text" class="form-control form-control-lg bg-light fs-6" placeholder="Научное направление ">
+                    <input type="text" class="form-control form-control-lg bg-light fs-6" placeholder="Научное направление " name="sinceDir">
                 </div>
                 <p>Наименование темы научно-исследовательской работы</p>
                 <div class="input-group mb-3">
-                    <input type="text" class="form-control form-control-lg bg-light fs-6" placeholder="Тема работы">
+                    <input type="text" class="form-control form-control-lg bg-light fs-6" placeholder="Тема работы" name="workTheme">
                 </div>
                 <p>Ф.И.О. руководителя и исполнителей НИР, должность (для студентов – курс, специальность, группа; научный руководитель)</p>
                 <div class="form-group mb-3">
-                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Введите данные:"></textarea>
+                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Введите данные:" name="nirRuks"></textarea>
                 </div>
                 <p>Срок реализации проекта</p>
                 <div class="input-group mb-3" id="solutions1">
-                    <input type="text" class="form-control form-control-lg bg-light fs-6 mb-2" placeholder="Срок реализации проекта">
+                    <input type="text" class="form-control form-control-lg bg-light fs-6 mb-2" placeholder="Срок реализации проекта" name="realizationTemp">
                 </div>
                 <p>Контактные данные руководителя НИР (№ моб. тел., e-mail)</p>
                 <div class="input-group mb-3" id="solutions1">
-                    <input type="text" class="form-control form-control-lg bg-light fs-6 mb-2" placeholder="Контактные данные">
+                    <input type="text" class="form-control form-control-lg bg-light fs-6 mb-2" placeholder="Контактные данные" name="phone">
                 </div>
                 <p>Обоснование целесообразности и актуальности проведения научного исследования. Анализ состояния проблемного (исследуемого) вопроса в республике и за рубежом</p>
                 <div class="form-group mb-3">
-                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Введите информацию"></textarea>
+                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Введите информацию" name="obosnovanie"></textarea>
                 </div>
                 <p>Цель и задачи НИР</p>
                 <div class="form-group mb-3">
-                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Введите информацию"></textarea>
+                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Введите информацию" name="goalsNir"></textarea>
                 </div>
                 <p>Элементы научной новизны планируемого исследования.</p>
                 <div class="form-group mb-3">
-                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Введите информацию"></textarea>
+                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Введите информацию" name="sinceElem"></textarea>
                 </div>
                 <p>Календарный план исследования.</p>
                 <div class="Pokaz">
                     <div class="input-group mb-3 d-flex" id="solutions1">
-                        <input type="text" class="form-control form-control-lg bg-light fs-6 mb-2" name="inputValue" value="1">
-                        <input type="text" class="form-control form-control-lg bg-light fs-6 mb-2" placeholder="Наименование этапа работы">
+                        <input type="text" class="form-control form-control-lg bg-light fs-6 mb-2" name="inputValue[]" value="1">
+                        <input type="text" class="form-control form-control-lg bg-light fs-6 mb-2" placeholder="Наименование этапа работы" name="workEtap[]">
                     </div>
                     
                     <div class="input-group mb-3 d-flex" id="solutions1">
-                        <input type="text" class="form-control form-control-lg bg-light fs-6 mb-2" placeholder="Начало срока выполнения">
-                        <input type="text" class="form-control form-control-lg bg-light fs-6 mb-2" placeholder="Окончание окончание срока выполнения">
+                        <input type="text" class="form-control form-control-lg bg-light fs-6 mb-2" placeholder="Начало срока выполнения" name="nachSrok[]">
+                        <input type="text" class="form-control form-control-lg bg-light fs-6 mb-2" placeholder="Окончание окончание срока выполнения" name="endSrok[]">
                     </div>
                     <div class="input-group mb-3 d-flex" id="solutions1">
-                        <input type="text" class="form-control form-control-lg bg-light fs-6 mb-2" placeholder="Конкретные планируемые результаты">
+                        <input type="text" class="form-control form-control-lg bg-light fs-6 mb-2" placeholder="Конкретные планируемые результаты" name="kontrResult[]">
                     </div>
                 </div>
                 <div class="container-fluid  mb-3 ">
@@ -84,11 +85,11 @@
                 </div>
                 <p>Ожидаемые результаты по итогам проведения НИР (социальные, экономические, другие выгоды; научная значимость полученных результатов).</p>
                 <div class="form-group mb-3">
-                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Введите информацию"></textarea>
+                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Введите информацию" name="ozhidResult"></textarea>
                 </div>
                 <p>Практическая значимость результатов НИР, область (области) их применения, форма (формы) внедрения. </p>
                 <div class="form-group mb-3">
-                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Введите информацию"></textarea>
+                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Введите информацию" name="praktZnach"></textarea>
                 </div>
                 <div class="input-group mb-3">
                     <button class="btn btn-lg btn-danger w-100 fs-6">Отправить</button>
@@ -112,8 +113,8 @@
   var input1 = document.createElement("input");
   input1.type = "text";
   input1.className = "form-control form-control-lg bg-light fs-6 mb-2";
-  input1.name="inputValue"
-  var inputs=document.getElementsByName("inputValue");
+  input1.name="inputValue[]"
+  var inputs=document.getElementsByName("inputValue[]");
   input1.value = Number(inputs[inputs.length - 1].value)+1;
   
   
@@ -122,6 +123,7 @@
   input2.type = "text";
   input2.className = "form-control form-control-lg bg-light fs-6 mb-2";
   input2.placeholder = "Наименование этапа работы";
+  input2.name="workEtap[]";
   
   // Добавление input1 и input2 в новый div
   newDiv.appendChild(input1);
@@ -143,13 +145,15 @@
   var input3 = document.createElement("input");
   input3.type = "text";
   input3.className = "form-control form-control-lg bg-light fs-6 mb-2";
-  input3.placeholder = "Начало";
+  input3.placeholder = "Начало срока выполнения";
+  input3.name="nachSrok[]"
   
   // Создание нового input с классом "form-control form-control-lg bg-light fs-6 mb-2" и плейсхолдером "Окончание"
   var input4 = document.createElement("input");
   input4.type = "text";
   input4.className = "form-control form-control-lg bg-light fs-6 mb-2";
-  input4.placeholder = "Окончание";
+  input4.placeholder = "Окончание срока выполнения";
+  input4.name="endSrok[]"
   
   // Добавление input3 и input4 во внутренний div
   innerDiv1.appendChild(input3);
@@ -167,6 +171,7 @@
   input5.type = "text";
   input5.className = "form-control form-control-lg bg-light fs-6 mb-2";
   input5.placeholder = "Конкретные планируемые результаты";
+  input5.name="kontrResult[]";
   
   // Добавление input5 во внутренний div
   innerDiv2.appendChild(input5);

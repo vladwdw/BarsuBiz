@@ -3,6 +3,7 @@
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\MainController;
 use App\Http\Controllers\FormController1;
+use App\Http\Controllers\FormController2;
 use App\Http\Controllers\FormController3;
 use App\Http\Controllers\RegisterController;
 use Illuminate\Support\Facades\Route;
@@ -29,6 +30,7 @@ Route::get('/form5',[MainController::class, 'form5'])->name('form5');
 Route::get('/login',[MainController::class, 'login'])->name('login');
 Route::get('/register',[MainController::class, 'registerPage'])->name('registerPage');
 Route::post('/submit-form1', [FormController1::class, 'store']);
+Route::post('/submit-form2', [FormController2::class, 'store']);
 Route::post('/submit-form3', [FormController3::class, 'store']);
 Route::post('/submit-form5', [FormController3::class, 'store']);
 Route::post('/submit-register', [RegisterController::class,'register']);
