@@ -32,7 +32,7 @@ Route::get('/register',[MainController::class, 'registerPage'])->name('registerP
 Route::post('/submit-form1', [FormController1::class, 'store']);
 Route::post('/submit-form2', [FormController2::class, 'store']);
 Route::post('/submit-form3', [FormController3::class, 'store']);
-Route::post('/submit-form5', [FormController3::class, 'store']);
+Route::post('/submit-form5', [FormController5::class, 'store']);
 Route::post('/submit-register', [RegisterController::class,'register']);
 Route::post('/login',[AuthController::class,'login'])->name('login');
 Route::post('/logout',[AuthController::class,'logout'])->name('logout');
