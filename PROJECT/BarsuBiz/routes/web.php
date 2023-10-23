@@ -5,6 +5,7 @@ use App\Http\Controllers\MainController;
 use App\Http\Controllers\FormController1;
 use App\Http\Controllers\FormController2;
 use App\Http\Controllers\FormController3;
+use App\Http\Controllers\FormController5;
 use App\Http\Controllers\RegisterController;
 use Illuminate\Support\Facades\Route;
 
