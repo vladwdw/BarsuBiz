@@ -33,7 +33,7 @@
                 </div>
                 <p>Приоритетное направление научных исследований Республики Беларусь, которому соответствует заявляемый проект НИР</p>
                 <div class="input-group mb-3">
-                    <input type="text" class="form-control form-control-lg bg-light fs-6" placeholder="Научное направление ">
+                    <input type="text" class="form-control form-control-lg bg-light fs-6" placeholder="Научное направление " name="napr">
                 </div>
                 <p>Название проекта задания, краткое наименование программы (в соответствии с Перечнем государственных программ научных исследований на 2021-2025 гг.)</p>
                 <div class="form-group mb-3">

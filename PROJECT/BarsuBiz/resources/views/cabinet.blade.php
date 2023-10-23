@@ -22,24 +22,13 @@
 </head>
 <body>
     <script src="assets/js/main.js"></script>
-    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <nav class="navbar navbar-expand-lg bg-body-tertiary shadow">
         <div class="container d-flex">
           <a class="navbar-brand" href="#">BarsuBiz</a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Переключатель навигации">
             <span class="navbar-toggler-icon"></span>
           </button>
           <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav">
-              <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="#">Главная</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">Личный кабинет</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">Мои документы</a>
-              </li>
-            </ul>
             <form method="post" action="{{ route('logout') }}" class="ms-auto">
               @csrf
             <button type="submit" class="btn btn-outline-danger">Выйти</button>
