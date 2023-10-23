@@ -11,7 +11,6 @@ class AuthController extends Controller
         $data = $request->only('email', 'password');
 
         if (Auth::attempt($data)) {
-            // Аутентификация успешна, перенаправьте пользователя
             return redirect("/cabinet");
         }
         return back()->withErrors(['email' => 'Неправильный email или пароль']);

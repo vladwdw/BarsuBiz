@@ -27,6 +27,7 @@ class FormController2 extends Controller
     $goalsNir= $request->input('goalsNir');
     $sinceElem= $request->input('sinceElem');
     $number= $request->input('inputValue');
+    $workEtap=$request->input('workEtap');
     $nachSrok= $request->input('nachSrok');
     $endSrok= $request->input('endSrok');
     $kontrResult= $request->input('kontrResult');
@@ -48,30 +49,34 @@ class FormController2 extends Controller
     $templateProcessor->setValue('ozhidResult',$ozhidResult);
     $templateProcessor->setValue('praktZnach',$praktZnach);
     $section=$phpWord->addSection();
-    $section->addPageBreak();
-$section->addText('Table with colspan and rowspan', "chlen");
-
-$styleTable = ['borderSize' => 6, 'borderColor' => '999999'];
-$phpWord->addTableStyle('Colspan Rowspan', $styleTable);
-$table = $section->addTable('Colspan Rowspan');
-
-$row = $table->addRow();
-$row->addCell(1000, ['vMerge' => 'restart'])->addText('A');
-$row->addCell(1000, ['gridSpan' => 2, 'vMerge' => 'restart'])->addText('B');
-$row->addCell(1000)->addText('1');
-
-$row = $table->addRow();
-$row->addCell(1000, ['vMerge' => 'continue']);
-$row->addCell(1000, ['vMerge' => 'continue', 'gridSpan' => 2]);
-$row->addCell(1000)->addText('2');
-
-$row = $table->addRow();
-$row->addCell(1000, ['vMerge' => 'continue']);
-$row->addCell(1000)->addText('C');
-$row->addCell(1000)->addText('D');
-$row->addCell(1000)->addText('3');
+    
 
     $newFileName = time();
+    $section->addTextBreak(1);
+    $styleCell =
+    array(
+    'borderColor' =>'000000',
+    'borderSize' => 3,
+    'valign' => 'center',
+    );
+    $styleText = array(
+        'name' => 'Times New Roman',
+        'valign'=>'center',
+        'size' => 14,
+    );
+
+    $table = $section->addTable($styleCell);
+    for ($i = 0; $i < count($number); $i++) {
+
+    $table->addRow(200);
+    $table->addCell(1090, $styleCell)->addText($number[$i],$styleText);
+    $table->addCell(3588, $styleCell)->addText($workEtap[$i],$styleText);
+    $table->addCell(1385, $styleCell)->addText($nachSrok[$i],$styleText);
+    $table->addCell(1470, $styleCell)->addText($endSrok[$i],$styleText);
+    $table->addCell(1900, $styleCell)->addText($kontrResult[$i],$styleText);
+
+    }
+   
     $templateProcessor->setComplexBlock('table',$table);
     $templateProcessor->saveAs($newFileName.'.docx');
 
