@@ -57,6 +57,7 @@
                         <a class="nav-link active" id="files-tab" data-toggle="tab" href="#files" role="tab" aria-controls="files" aria-selected="true">Файлы</a>
                     </li>
                 </ul>
+                
                 <div class="tab-content" id="myTabContent">
                     <div class="tab-pane fade show active" id="files" role="tabpanel" aria-labelledby="files-tab">
                         <table class="table">
@@ -84,6 +85,7 @@
                     </div>
                 </div>
             </div>
+            
         </div>
     </div>
     @else

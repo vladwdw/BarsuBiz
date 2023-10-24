@@ -18,16 +18,16 @@
   <link href="{{asset('assets/css/loginstyle.css')}}" rel="stylesheet">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Register</title>
+  <title>Регистрация</title>
 </head>
 <body>
  <!--Main container-->
  <div class="container d-flex justify-content-center align-items-center min-vh-100">
     <div class="row border rounded-5 p-3 bg-white shadow box-area">
         <!--Left Box-->
-        <div class="col-md-6 rounded-4 d-flex justify-content-center align-items-center flex-column left-box" style="background: #df3535;">
+        <div class="col-md-6 rounded-4 d-flex justify-content-center align-items-center flex-column left-box" >
             <div class="featured-image mb-3">
-                <img src="assets/img/features-1.png" class="img-fluid"alt="" style="width:250px;">
+                <img src="assets/img/features-3.png" class="img-fluid"alt="" style="width:500px;">
             </div>
         
         </div>
@@ -36,8 +36,8 @@
             <form class="row align-items-center " method="post" action="/submit-register">
                 @csrf
                 <div class="header-text mb-4">
-                    <h2>Добро пожаловать на сайт</h2>
-                    <p>Зарегестрируйтесь пожалуйста</p>
+                    <h2>Добро пожаловать</h2>
+                    <p>Зарегистрируйтесь пожалуйста</p>
                 </div>
                 <div class="input-group mb-3">
                     <input type="text" class="form-control form-control-lg bg-light fs-6" placeholder="Email адрес" name="email">
