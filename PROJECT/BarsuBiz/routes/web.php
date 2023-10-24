@@ -5,6 +5,7 @@ use App\Http\Controllers\MainController;
 use App\Http\Controllers\FormController1;
 use App\Http\Controllers\FormController2;
 use App\Http\Controllers\FormController3;
+use App\Http\Controllers\FormController4;
 use App\Http\Controllers\FormController5;
 use App\Http\Controllers\RegisterController;
 use Illuminate\Support\Facades\Route;
@@ -33,6 +34,7 @@ Route::get('/register',[MainController::class, 'registerPage'])->name('registerP
 Route::post('/submit-form1', [FormController1::class, 'store']);
 Route::post('/submit-form2', [FormController2::class, 'store']);
 Route::post('/submit-form3', [FormController3::class, 'store']);
+Route::post('/submit-form4', [FormController4::class, 'store']);
 Route::post('/submit-form5', [FormController5::class, 'store']);
 Route::post('/submit-register', [RegisterController::class,'register']);
 Route::post('/login',[AuthController::class,'login'])->name('login');

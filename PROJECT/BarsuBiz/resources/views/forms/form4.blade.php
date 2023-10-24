@@ -24,7 +24,8 @@
     <!--Main container-->
     <div class="container d-flex justify-content-center align-items-center min-vh-100 p-4">
         
-        <form class="col-md-6 right-box p-3 rounded-4 shadow box-area">
+        <form class="col-md-6 right-box p-3 rounded-4 shadow box-area" method="post" action="/submit-form4">
+            @csrf
             <div class="row align-items-center maa ">
                 <div class="header-text mb-4">
                     <h2 style="text-align: center;">Заполните данные на участие 
@@ -33,30 +34,30 @@
                 </div>
                 <p>Приоритетное направление научных исследований Республики Беларусь, которому соответствует заявляемый проект НИР</p>
                 <div class="input-group mb-3">
-                    <input type="text" class="form-control form-control-lg bg-light fs-6" placeholder="Научное направление " name="napr">
+                    <input type="text" class="form-control form-control-lg bg-light fs-6" placeholder="Научное направление " name="sinceDir">
                 </div>
                 <p>Название проекта задания, краткое наименование программы (в соответствии с Перечнем государственных программ научных исследований на 2021-2025 гг.)</p>
                 <div class="form-group mb-3">
-                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Введите данные:"></textarea>
+                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Введите данные:" name="namePr"></textarea>
                 </div>
                 <p>Организации-заявители с указанием ведомственной принадлежности (указать для каждой организации) </p>
                 <div class="form-group mb-3">
-                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Введите данные:"></textarea>
+                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Введите данные:" name="orgZav"></textarea>
                 </div>
                 <h4>Руководители проекта (указать сведения для каждого руководителя)</h4>
                 <div class="Pokaz">
                 <div class="input-group mb-3">
-                    <input type="text" class="form-control form-control-lg bg-light fs-6" placeholder="Ф.И.О">
-                    <input type="text" class="form-control form-control-lg bg-light fs-6" placeholder="Ученая степень">
+                    <input type="text" class="form-control form-control-lg bg-light fs-6" placeholder="Ф.И.О" name="fio[]">
+                    <input type="text" class="form-control form-control-lg bg-light fs-6" placeholder="Ученая степень" name="uchStep[]">
                 </div>
 
                 <div class="input-group mb-3">
-                    <input type="text" class="form-control form-control-lg bg-light fs-6" placeholder="Ученое звание">
-                    <input type="text" class="form-control form-control-lg bg-light fs-6" placeholder="Кафедра, лаборатория">
+                    <input type="text" class="form-control form-control-lg bg-light fs-6" placeholder="Ученое звание" name="uchZav[]">
+                    <input type="text" class="form-control form-control-lg bg-light fs-6" placeholder="Кафедра, лаборатория" name="kafLab[]">
                 </div>
                 <div class="input-group mb-3">
-                    <input type="text" class="form-control form-control-lg bg-light fs-6" placeholder="Телефон служебный">
-                    <input type="text" class="form-control form-control-lg bg-light fs-6" placeholder="E-mail">
+                    <input type="text" class="form-control form-control-lg bg-light fs-6" placeholder="Телефон служебный" name="phone[]">
+                    <input type="text" class="form-control form-control-lg bg-light fs-6" placeholder="E-mail" name="email[]">
                 </div>
             </div>
                 <div class="container-fluid  mb-3 ">
@@ -65,25 +66,25 @@
                 </div>
                 <p>Плановые сроки выполнения</p>
                 <div class="input-group mb-3">
-                    <input type="text" class="form-control form-control-lg bg-light fs-6" placeholder="Начало">
-                    <input type="text" class="form-control form-control-lg bg-light fs-6" placeholder="Окончание">
+                    <input type="text" class="form-control form-control-lg bg-light fs-6" placeholder="Начало" name="nach">
+                    <input type="text" class="form-control form-control-lg bg-light fs-6" placeholder="Окончание" name="end">
                 </div>
                 <p><strong>Сметная стоимость работ</strong>(в .руб)</p>
                 <div class="input-group mb-3">
-                    <input type="text" class="form-control form-control-lg bg-light fs-6" placeholder="Всего">
+                    <input type="text" class="form-control form-control-lg bg-light fs-6" placeholder="Всего" name="allCost">
                 </div>
                 <div class="input-group mb-3">
-                    <input type="text" class="form-control form-control-lg bg-light fs-6" placeholder="Из них привлеченное внебюджетное финансирование">
+                    <input type="text" class="form-control form-control-lg bg-light fs-6" placeholder="Из них привлеченное внебюджетное финансирование" name="fin1">
                 </div>
                 <div class="input-group mb-3">
-                    <input type="text" class="form-control form-control-lg bg-light fs-6" placeholder="В том числе на первый год  ">
+                    <input type="text" class="form-control form-control-lg bg-light fs-6" placeholder="В том числе на первый год  " name="fin2">
                 </div>
                 <div class="input-group mb-3">
-                    <input type="text" class="form-control form-control-lg bg-light fs-6" placeholder="Из них привлеченное внебюджетное финансирование ">
+                    <input type="text" class="form-control form-control-lg bg-light fs-6" placeholder="Из них привлеченное внебюджетное финансирование " name="fin3">
                 </div>
                 
                 <div class="input-group mb-3">
-                    <button class="btn btn-lg btn-danger w-100 fs-6">Отправить</button>
+                    <button class="btn btn-lg btn-danger w-100 fs-6" type="submit">Отправить</button>
                 </div>
                 <div class="input-group mb-3">
                     <button class="btn btn-lg btn-light w-100 fs-6" style="width:20px;">Что-то делается</button>
@@ -104,7 +105,7 @@
   var input1 = document.createElement("input");
   input1.type = "text";
   input1.className = "form-control form-control-lg bg-light fs-6 mb-2";
-  input1.name="inputValue";
+  input1.name="fio[]";
   input1.placeholder="Ф.И.О. (полное) "
   
   
@@ -113,6 +114,7 @@
   input2.type = "text";
   input2.className = "form-control form-control-lg bg-light fs-6 mb-2";
   input2.placeholder = "Ученая степень";
+  input2.name="uchStep[]"
   
   // Добавление input1 и input2 в новый div
   newDiv.appendChild(input1);
@@ -130,12 +132,14 @@
   input3.type = "text";
   input3.className = "form-control form-control-lg bg-light fs-6 mb-2";
   input3.placeholder = "Ученое звание";
+  input3.name="uchZav[]";
   
   // Создание нового input с классом "form-control form-control-lg bg-light fs-6 mb-2" и плейсхолдером "Окончание"
   var input4 = document.createElement("input");
   input4.type = "text";
   input4.className = "form-control form-control-lg bg-light fs-6 mb-2";
   input4.placeholder = "Кафедра, лаборатория";
+  input4.name="kafLab[]"
   
   // Добавление input3 и input4 во внутренний div
   innerDiv1.appendChild(input3);
@@ -153,11 +157,13 @@
   input5.type = "text";
   input5.className = "form-control form-control-lg bg-light fs-6 mb-2";
   input5.placeholder = "Телефон служебный";
+  input5.name="phone[]";
 
   var input6 = document.createElement("input");
   input6.type = "text";
   input6.className = "form-control form-control-lg bg-light fs-6 mb-2";
   input6.placeholder = "E-mail";
+  input6.name="email[]";
   
   // Добавление input5 во внутренний div
   innerDiv2.appendChild(input5);
