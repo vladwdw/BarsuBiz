@@ -69,10 +69,11 @@ class FormController4 extends Controller
 
     $table = $section->addTable($styleCell);
     for ($i = 0; $i < count($fio); $i++) {
-
-    $table->addRow(200);
-    $table->addCell(5000, $styleCell)->addText("Ф.И.О. (полное) ",$styleText);
-    $table->addCell(5000, $styleCell)->addText($fio[$i],$styleText);
+        $table->addRow(200);
+    $table->addCell(5850, $styleCell)->addText("Ф.И.О. (полное) ",$styleText);
+    $table->addCell(4400, $styleCell)->addText($fio[$i],$styleText);
+    $table->addCell(5850, $styleCell)->addText("Ученая степень ",$styleText);
+    $table->addCell(4400, $styleCell)->addText($uchStep[$i],$styleText);
 
     }
    
