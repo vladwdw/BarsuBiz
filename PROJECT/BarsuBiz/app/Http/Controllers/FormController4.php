@@ -26,7 +26,7 @@ class FormController4 extends Controller
     $uchZav= $request->input('uchZav');
     $kafLab= $request->input('kafLab');
     $phone= $request->input('phone');
-    $emaik= $request->input('email');
+    $email= $request->input('email');
     $nach=$request->input('nach');
     $end= $request->input('end');
     $allCost= $request->input('allCost');
@@ -69,11 +69,28 @@ class FormController4 extends Controller
 
     $table = $section->addTable($styleCell);
     for ($i = 0; $i < count($fio); $i++) {
+        $section->addTextBreak();
         $table->addRow(200);
     $table->addCell(5850, $styleCell)->addText("Ф.И.О. (полное) ",$styleText);
     $table->addCell(4400, $styleCell)->addText($fio[$i],$styleText);
+    $table->addRow(200);
     $table->addCell(5850, $styleCell)->addText("Ученая степень ",$styleText);
     $table->addCell(4400, $styleCell)->addText($uchStep[$i],$styleText);
+    $table->addRow(200);
+    $table->addCell(5850, $styleCell)->addText("Ученое звание ",$styleText);
+    $table->addCell(4400, $styleCell)->addText($uchZav[$i],$styleText);
+    $table->addRow(200);
+    $table->addCell(5850, $styleCell)->addText("Кафедра, лаборатория",$styleText);
+    $table->addCell(4400, $styleCell)->addText($kafLab[$i],$styleText);
+    $table->addRow(200);
+    $table->addCell(5850, $styleCell)->addText("Телефон служебный (с кодом города), мобильный с указанием кода оператора",$styleText);
+    $table->addCell(4400, $styleCell)->addText($phone[$i],$styleText);
+    $table->addRow(200);
+    $table->addCell(5850, $styleCell)->addText("Контактный e-mail",$styleText);
+    $table->addCell(4400, $styleCell)->addText($email[$i],$styleText);
+    
+
+    
 
     }
    
