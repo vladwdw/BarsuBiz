@@ -24,21 +24,22 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('forms/index');
 });
+
+Route::get('/login',[MainController::class, 'login'])->name('login');
+Route::get('/register',[MainController::class, 'registerPage'])->name('registerPage');
+Route::post('/submit-register', [RegisterController::class,'register']);
+Route::post('/login',[AuthController::class,'login'])->name('login');
+Route::post('/logout',[AuthController::class,'logout'])->name('logout');
+Route::middleware(['auth'])->group(function () {
+Route::get('/cabinet',[MainController::class, 'cabinet'])->name('cabinet');
 Route::get('/form1',[MainController::class, 'form1'])->name('form1');
 Route::get('/form2',[MainController::class, 'form2'])->name('form2');
 Route::get('/form3',[MainController::class, 'form3'])->name('form3');
 Route::get('/form4',[MainController::class, 'form4'])->name('form4');
 Route::get('/form5',[MainController::class, 'form5'])->name('form5');
-Route::get('/login',[MainController::class, 'login'])->name('login');
-Route::get('/register',[MainController::class, 'registerPage'])->name('registerPage');
 Route::post('/submit-form1', [FormController1::class, 'store']);
 Route::post('/submit-form2', [FormController2::class, 'store']);
 Route::post('/submit-form3', [FormController3::class, 'store']);
 Route::post('/submit-form4', [FormController4::class, 'store']);
 Route::post('/submit-form5', [FormController5::class, 'store']);
-Route::post('/submit-register', [RegisterController::class,'register']);
-Route::post('/login',[AuthController::class,'login'])->name('login');
-Route::post('/logout',[AuthController::class,'logout'])->name('logout');
-Route::middleware(['auth'])->group(function () {
-    Route::get('/cabinet',[MainController::class, 'cabinet'])->name('cabinet');
 });

@@ -64,7 +64,7 @@ class FormController1 extends Controller
     $styleCell =
     array(
     'borderColor' =>'000000',
-    'borderSize' => 10,
+    'borderSize' => 5,
     'valign' => 'center',
     );
     $styleText = array(
