@@ -118,9 +118,13 @@ h6 {
 #header {
   transition: all 0.5s;
   z-index: 997;
-  padding: 20px 0;
+  padding: 0px 0;
 }
 
+.hh{
+  background: rgba(21, 34, 43, 0.85);
+  padding: 10px 0 0 20px;
+}
 
 #header.header-scrolled,
 #header.header-inner-pages {
@@ -186,6 +190,19 @@ h6 {
   white-space: nowrap;
   transition: 0.3s;
 }
+.navbar button:focus {
+  display: flex;
+  align-items: center;
+  position: relative;
+  justify-content: space-between;
+  padding: 0 3px;
+  font-size: 14px;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.9);
+  white-space: nowrap;
+  transition: 0.3s;
+}
 
 .navbar a i,
 .navbar a:focus i {
@@ -226,16 +243,29 @@ h6 {
   padding: 8px 25px;
   margin-left: 30px;
   border-radius: 4px;
-  color: #fff;
+  color: #ffffff00;
+  border: 2px solid #fff;
+}
+.getstarted:focus {
+  padding: 8px 25px;
+  margin-left: 30px;
+  border-radius: 4px;
+  color: #ffffff00;
   border: 2px solid #fff;
 }
 
 .navbar .getstarted:hover,
-.navbar .getstarted:focus:hover {
+.navbar .getstarted {
+  color: #fff;
+  background: #fd370000;
+  border-color: #ff4a17;
+}
+.navbar .getstarted:hover {
   color: #fff;
   background: #fd3800;
   border-color: #ff4a17;
 }
+
 
 .navbar>ul>li>.getstarted:before {
   visibility: hidden;
