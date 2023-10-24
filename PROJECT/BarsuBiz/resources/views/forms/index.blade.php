@@ -52,6 +52,10 @@
           <li><a class="nav-link scrollto" href="#services">Наши сервиси</a></li>
           <li><a class="nav-link scrollto" href="#team">Разработчики</a></li>
           <li><a class="nav-link scrollto" href="#footer">Контакты</a></li>
+          <li>
+            <a class="getstarted scrollto" href="{{route('cabinet')}}">Кабинет</a>
+           
+          </li>
           <!-- <li><a class="getstarted scrollto" href="#about">Get Started</a></li> -->
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
@@ -131,16 +135,16 @@
               Мы занимаемся разработкой современных сервисов 
             </h3>
             <p class="fst-italic">
-              Пока хз
+              ...
             </p>
             <ul>
-              <li><i class="bx bx-check-double"></i> пока хз</li>
-              <li><i class="bx bx-check-double"></i> пока хз</li>
-              <li><i class="bx bx-check-double"></i> пока хз</li>
-              <li><i class="bx bx-check-double"></i> пока хз</li>
+              <li><i class="bx bx-check-double"></i> ...</li>
+              <li><i class="bx bx-check-double"></i> ...</li>
+              <li><i class="bx bx-check-double"></i> ...</li>
+              <li><i class="bx bx-check-double"></i> ...</li>
             </ul>
             <p>
-              Пока хз
+              ....
             </p>
           </div>
 
@@ -151,7 +155,7 @@
     <!--End About Section-->
 
     <!-- ======= About Boxes Section ======= -->
-    <section id="about-boxes" class="about-boxes">
+    <!-- <section id="about-boxes" class="about-boxes">
       <div class="container" data-aos="fade-up">
 
         <div class="row">
@@ -194,7 +198,7 @@
         </div>
 
       </div>
-    </section>
+    </section> -->
 
     <!-- ======= Clients Section ======= -->
     <!-- <section id="clients" class="clients">
@@ -233,7 +237,7 @@
     <!-- End Clients Section -->
 
     <!-- ======= Features Section ======= -->
-    <section id="features" class="features">
+    <!-- <section id="features" class="features">
       <div class="container" data-aos="fade-up">
 
         <ul class="nav nav-tabs row d-flex">
@@ -364,7 +368,7 @@
         </div>
 
       </div>
-    </section><!-- End Features Section -->
+    </section>End Features Section -->
 
     <!-- ======= Services Section ======= -->
     <section id="services" class="services section-bg">
@@ -424,7 +428,7 @@
     </section><!-- End Services Section -->
 
     <!-- ======= Testimonials Section ======= -->
-    <section id="testimonials" class="testimonials">
+    <!-- <section id="testimonials" class="testimonials">
       <div class="container" data-aos="zoom-in">
 
         <div class="testimonials-slider swiper" data-aos="fade-up" data-aos-delay="100">
@@ -441,9 +445,9 @@
                   <i class="bx bxs-quote-alt-right quote-icon-right"></i>
                 </p>
               </div>
-            </div><!-- End testimonial item -->
+            </div> End testimonial item -->
 
-            <div class="swiper-slide">
+            <!-- <div class="swiper-slide">
               <div class="testimonial-item">
                 <img src="assets/img/testimonials/testimonials-2.jpg" class="testimonial-img" alt="">
                 <h3>Sara Wilsson</h3>
@@ -454,9 +458,10 @@
                   <i class="bx bxs-quote-alt-right quote-icon-right"></i>
                 </p>
               </div>
-            </div><!-- End testimonial item -->
+            </div> -->
+            <!-- End testimonial item -->
 
-            <div class="swiper-slide">
+            <!-- <div class="swiper-slide">
               <div class="testimonial-item">
                 <img src="assets/img/testimonials/testimonials-3.jpg" class="testimonial-img" alt="">
                 <h3>Jena Karlis</h3>
@@ -467,9 +472,10 @@
                   <i class="bx bxs-quote-alt-right quote-icon-right"></i>
                 </p>
               </div>
-            </div><!-- End testimonial item -->
+            </div> -->
+            <!-- End testimonial item -->
 
-            <div class="swiper-slide">
+            <!-- <div class="swiper-slide">
               <div class="testimonial-item">
                 <img src="assets/img/testimonials/testimonials-4.jpg" class="testimonial-img" alt="">
                 <h3>Matt Brandon</h3>
@@ -480,9 +486,10 @@
                   <i class="bx bxs-quote-alt-right quote-icon-right"></i>
                 </p>
               </div>
-            </div><!-- End testimonial item -->
+            </div> -->
+            <!-- End testimonial item -->
 
-            <div class="swiper-slide">
+            <!-- <div class="swiper-slide">
               <div class="testimonial-item">
                 <img src="assets/img/testimonials/testimonials-5.jpg" class="testimonial-img" alt="">
                 <h3>John Larson</h3>
@@ -493,14 +500,15 @@
                   <i class="bx bxs-quote-alt-right quote-icon-right"></i>
                 </p>
               </div>
-            </div><!-- End testimonial item -->
+            </div> -->
+            <!-- End testimonial item -->
 
-          </div>
+          <!-- </div>
           <div class="swiper-pagination"></div>
         </div>
 
       </div>
-    </section><!-- End Testimonials Section -->
+    </section>End Testimonials Section  -->
 
     <!-- ======= Portfolio Section ======= -->
     <!-- <section id="portfolio" class="portfolio">
@@ -620,12 +628,12 @@
     </section>End Portfolio Section -->
 
     <!-- ======= Team Section ======= -->
-    <section id="team" class="team section-bg">
+    <!-- <section id="team" class="team section-bg">
       <div class="container" data-aos="fade-up">
 
         <div class="section-title">
           <h2>Ответственные преподаватели</h2>
-          <!-- <p>Посмотреть преподавателей</p> -->
+          
         </div>
 
         <div class="row">
@@ -681,7 +689,7 @@
         </div>
 
       </div>
-    </section><!-- End Team Section -->
+    </section> -->
 
     <!-- ======= Contact Section ======= -->
     <!-- <section id="contact" class="contact">
@@ -804,14 +812,14 @@
             </ul>
           </div>
 
-          <div class="col-lg-4 col-md-6 footer-newsletter">
+          <!-- <div class="col-lg-4 col-md-6 footer-newsletter">
             <h4>Our Newsletter</h4>
             <p>Tamen quem nulla quae legam multos aute sint culpa legam noster magna</p>
             <form action="" method="post">
               <input type="email" name="email"><input type="submit" value="Subscribe">
             </form>
 
-          </div>
+          </div> -->
 
         </div>
       </div>
