@@ -12,6 +12,10 @@ class MainController extends Controller
     public function form1(){
         return view('forms/form1');
     }
+    public function form11($id){
+        $molInic = MolInic::find($id);
+        return view('forms/form11', ['molInic' => $molInic]);
+    }
     public function form2(){
         return view('forms/form2');
     }

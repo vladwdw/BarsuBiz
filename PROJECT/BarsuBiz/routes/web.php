@@ -24,7 +24,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('forms/index');
-});
+})->name('home');
 
 Route::get('/login',[MainController::class, 'login'])->name('login');
 Route::get('/register',[MainController::class, 'registerPage'])->name('registerPage');
@@ -34,6 +34,7 @@ Route::post('/logout',[AuthController::class,'logout'])->name('logout');
 Route::middleware(['auth'])->group(function () {
 Route::get('/cabinet',[MainController::class, 'cabinet'])->name('cabinet');
 Route::get('/form1',[MainController::class, 'form1'])->name('form1');
+Route::get('/form11',[MainController::class, 'form11'])->name('form11');
 Route::get('/form2',[MainController::class, 'form2'])->name('form2');
 Route::get('/form3',[MainController::class, 'form3'])->name('form3');
 Route::get('/form4',[MainController::class, 'form4'])->name('form4');
