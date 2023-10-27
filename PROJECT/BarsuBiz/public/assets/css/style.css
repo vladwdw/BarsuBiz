@@ -408,6 +408,7 @@ h6 {
 .navbar-mobile .getstarted,
 .navbar-mobile .getstarted:focus {
   margin: 15px;
+  color:#121d24;
 }
 
 .navbar-mobile .dropdown ul {

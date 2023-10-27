@@ -86,10 +86,10 @@
           </div>
         </div>
       </nav> -->
-      @auth
+      
       <div class="container">
         
-
+      
         <div class="row mt-3">
             <div class="col-md-5">
               <h1>Личный кабинет</h1>
@@ -107,9 +107,10 @@
                         <a class="nav-link active" id="files-tab" data-toggle="tab" href="#files" role="tab" aria-controls="files" aria-selected="true">Файлы</a>
                     </li>
                 </ul>
-                
+
                 <div class="tab-content" id="myTabContent">
-                    <div class="tab-pane fade show active" id="files" role="tabpanel" aria-labelledby="files-tab">
+                  
+                    <div class="tab-paneshow active" id="files" role="tabpanel" aria-labelledby="files-tab">
                         <table class="table">
                             <thead>
                                 <tr>
@@ -119,28 +120,28 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td>file1.pdf</td>
-                                    <td>Пользователь123</td>
-                                    <td>2023-10-18</td>
-                                </tr>
-                                <tr>
-                                    <td>file2.jpg</td>
-                                    <td>Пользователь123</td>
-                                    <td>2023-10-19</td>
-                                </tr>
+                            @foreach($molInics as $molInic)
+    <tr>
+        <td>{{ $molInic->name }}</td>
+        <td>{{ Auth::user()->name }}</td>
+        <td>{{ $molInic->getAttribute('created_at') }}</td>
+    </tr>
+@endforeach
+
                                 <!-- Здесь можно добавить другие файлы -->
+                                
                             </tbody>
                         </table>
                     </div>
+                    
+                    {{$molInics->links('vendor.pagination.bootstrap-4')}}
                 </div>
+                
             </div>
+            
             
         </div>
     </div>
-    @else
-    <h1>Пожалуйста, войдите в систему<h1>.
-    @endauth
       <!--Js fiels-->
 
 </body>
