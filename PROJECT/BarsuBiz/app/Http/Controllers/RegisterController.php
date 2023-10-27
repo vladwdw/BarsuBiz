@@ -41,7 +41,7 @@ class RegisterController extends Controller
             $user = new User();
             $user->name = $request->input("username");
             $user->email = $request->input("email");
-            $user->password = $request->input("password");
+            $user->password = bcrypt($request->input("password"));
             $user->save();
             return redirect("/login");
         } catch (\Exception $e) {
