@@ -31,7 +31,7 @@ class MainController extends Controller
         return view('register');
     }
     public function cabinet(){
-        $molInics = MolInic::where('user_id', auth()->id())->paginate(4);
+        $molInics = MolInic::where('user_id', auth()->id())->paginate(5);
         return view('cabinet',compact('molInics'));
     }
     
