@@ -14,7 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::table('mol_inics', function (Blueprint $table) {
-            $table->text('dopInformation');
+            $table->text('dopInformation')->nullable();
         });
     }
 

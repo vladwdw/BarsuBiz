@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Models\MolInic;
-use App\Models\MolIndics;
+use App\Models\MolIndic;
 use Illuminate\Http\Request;
 use Illuminate\Database\Eloquent;
 use Illuminate\Support\Facades\Auth;
@@ -13,9 +13,11 @@ class MainController extends Controller
         return view('forms/form1');
     }
     public function form11($id){
-        $molInic = MolInic::find($id);
-        return view('forms/form11', ['molInic' => $molInic]);
+        $molIndic=MolIndic::where('project_id', $id)->get();
+        $molInic=MolInic::find($id);
+        return view('forms/form11',compact('molInic','molIndic'));
     }
+
     public function form2(){
         return view('forms/form2');
     }

@@ -122,7 +122,7 @@
                             <tbody>
                             @foreach($molInics as $molInic)
     <tr>
-        <td> <a href="{{  route('form11', $molInic->name, [$molInic->id, 'molInics' => $molInics]) }}">{{$molInic->name}}</a> </td>
+        <td> <a href="{{ route('form11', $molInic->id, [$molInic->id]) }}">{{$molInic->name}}</a> </td>
         <td>{{ Auth::user()->name }}</td>
         <td>{{ $molInic->getAttribute('created_at') }}</td>
     </tr>

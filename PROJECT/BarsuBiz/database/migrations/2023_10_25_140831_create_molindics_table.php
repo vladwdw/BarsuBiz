@@ -15,9 +15,9 @@ return new class extends Migration
     {
         Schema::create('molindics', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('project_id');
-            $table->string('indicator');
-            $table->string('value');
+            $table->unsignedBigInteger('project_id')->nullable();
+            $table->string('indicator')->nullable();
+            $table->string('value')->nullable();
             $table->timestamps();
         });
         Schema::table('molindics', function (Blueprint $table) {

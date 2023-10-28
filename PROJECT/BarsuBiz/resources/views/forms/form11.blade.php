@@ -9,6 +9,41 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="{{ asset('js/bootstrap.min.js') }}"></script>
     <title>Составление шаблона</title>
+    <script>
+               
+        // Вызов функции при загрузке страницы
+        window.onload = function () {
+
+            <?php
+            for($i=0; $i<count($molIndic); $i++){
+                echo 'addNewElement();';
+                
+            }
+            
+
+            ?>
+            function fetchData() {
+        fetch('/get-data${id}') // Путь к вашему маршруту
+            .then(response => response.json())
+            .then(data => {
+                // data теперь содержит данные из вашей модели в формате JSON
+                // Здесь можно выполнить нужную обработку данных
+                var phpArray = data;
+                fillInputValues(phpArray);
+            })
+            .catch(error => console.error('Ошибка при получении данных:', error));
+    }
+
+    function fillInputValues(phpArray) {
+        var inputElements = document.getElementsByName("indicator[]");
+        for (var i = 0; i < inputElements.length; i++) {
+            inputElements[i].value = phpArray[i];
+        }
+    }
+    fetchData('{{$molInic->id}}');
+        };
+    
+    </script>
 </head>
 <style>
   
@@ -34,22 +69,20 @@
                     <h2 style="text-align: center;">Заполните данные для проекта молодежных инициатив</h2>
                 </div>
                 <div class="input-group mb-3">
-                    <input type="text" class="form-control form-control-lg bg-light fs-6" placeholder="Наименование проекта" name="projectName" value="{{ old('name', $molInic->nameProject) }}>
+                    <input type="text" class="form-control form-control-lg bg-light fs-6" placeholder="Наименование проекта" name="projectName" value="{{$molInic->nameProject}}">
                 </div>
                 <p>Место реализации проекта</p>
                 <div class="input-group mb-3">
-                    <input type="text" class="form-control form-control-lg bg-light fs-6" placeholder="Наименование района" name="regionName">
-                    <input type="text" class="form-control form-control-lg bg-light fs-6" placeholder="Населенный пункт" name="locality">
+                    <input type="text" class="form-control form-control-lg bg-light fs-6" placeholder="Наименование района" name="regionName" value="{{$molInic->nameRegion}}">
+                    <input type="text" class="form-control form-control-lg bg-light fs-6" placeholder="Населенный пункт" name="locality" value="{{$molInic->namePunct}}">
                 </div>
                 <p>Описание проекта</p>
                 <div class="form-group mb-3">
-                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Описание проблемы, на решение которой направлен проект:" name="description"></textarea>
+                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Описание проблемы, на решение которой направлен проект:" name="description">{{$molInic->descriptionProblem}}</textarea>
                 </div>
                 <p>Результаты проекта (что будет достигнуто) в измеримых величинах:</p>
                 <div class="Pokaz">
                 <div class="input-group mb-3 d-flex" id="solutions1">
-                    <input type="text" class="form-control form-control-lg bg-light fs-6 mb-2" placeholder="Показатель" name="indicator[]">
-                    <input type="text" class="form-control form-control-lg bg-light fs-6 mb-2" placeholder="Значение показателя" name="valueIndicator[]">
                 </div>
                 </div>
                 <div class="container-fluid  mb-3 ">
@@ -58,22 +91,22 @@
                 </div>
                 <p>Срок реализации проекта</p>
                 <div class="input-group mb-3" id="solutions1">
-                    <input type="text" class="form-control form-control-lg bg-light fs-6 mb-2" placeholder="Срок реализации проекта" name="realizationTemp">
+                    <input type="text" class="form-control form-control-lg bg-light fs-6 mb-2" placeholder="Срок реализации проекта" name="realizationTemp" value="{{$molInic->realizationTemp}}">
                 </div>
                 <p>Сведения об инициаторах:</p>
                 <div class="input-group mb-3" id="solutions1">
-                    <input type="text" class="form-control form-control-lg bg-light fs-6 mb-2" placeholder="ФИО Руководителя(полностью): " name="fioRuk">
+                    <input type="text" class="form-control form-control-lg bg-light fs-6 mb-2" placeholder="ФИО Руководителя(полностью): " name="fioRuk" value="{{$molInic->fioRuk}}">
                 </div>
                 <div class="input-group mb-3" id="solutions1">
-                    <input type="text" class="form-control form-control-lg bg-light fs-6 mb-2" placeholder="Контактный телефон: " name="phone">
-                    <input type="text" class="form-control form-control-lg bg-light fs-6 mb-2" placeholder="Email: " name="email">
+                    <input type="text" class="form-control form-control-lg bg-light fs-6 mb-2" placeholder="Контактный телефон: " name="phone" value="{{$molInic->phone}}">
+                    <input type="text" class="form-control form-control-lg bg-light fs-6 mb-2" placeholder="Email: " name="email" value="{{$molInic->email}}">
                 </div>
                 <div class="form-group mb-3">
-                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Состав инициативной группы" name="sostav"></textarea>
+                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Состав инициативной группы" name="sostav">{{$molInic->inicGroup}}</textarea>
                 </div>
                 <p>Дополнительная информация и комментарии:</p>
                 <div class="form-group mb-3">
-                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Доп инфа" name="dopInformation"></textarea>
+                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Доп инфа" name="dopInformation">{{$molInic->dopInformation}}</textarea>
                 </div>
                 <div class="input-group mb-3">
                     <button class="btn btn-lg btn-danger w-100 fs-6" type="submit">Сохранить</button>
@@ -84,6 +117,12 @@
             </div>
         </form>
     </div>
+    <?PHP
+    for($i=0; $i<count($molIndic);$i++){
+        echo '<script>addNewElement();</script>';
+
+    }
+    ?>
     <script>
         function addNewElement() {
     // Получаем количество уже существующих элементов с пронумерованными id

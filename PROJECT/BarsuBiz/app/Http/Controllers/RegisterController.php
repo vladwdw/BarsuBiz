@@ -37,7 +37,6 @@ class RegisterController extends Controller
         }
     
         try {
-            // Валидация успешна, сохраняем пользователя
             $user = new User();
             $user->name = $request->input("username");
             $user->email = $request->input("email");
@@ -47,7 +46,5 @@ class RegisterController extends Controller
         } catch (\Exception $e) {
             return redirect()->back()->with("error", $e->getMessage());
         }
-    
-        // Пользователь успешно создан, выполните действия, которые вам нужны, например, перенаправьте пользователя на страницу успешной регистрации.
     }
 }
