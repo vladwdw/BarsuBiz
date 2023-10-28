@@ -1,6 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
+
+use App\Models\BarsuNir;
 use App\Models\MolInic;
 use App\Models\MolIndic;
 use Illuminate\Http\Request;
@@ -38,7 +40,8 @@ class MainController extends Controller
     }
     public function cabinet(){
         $molInics = MolInic::where('user_id', auth()->id())->paginate(5);
-        return view('cabinet',compact('molInics'));
+        $barsunirs = BarsuNir::where('user_id', auth()->id())->paginate(5);
+        return view('cabinet',compact('molInics'),compact(('barsunirs')));
     }
     
 }

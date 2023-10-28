@@ -9,8 +9,9 @@ use App\Http\Controllers\FormController4;
 use App\Http\Controllers\FormController5;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\StoreController1;
+use App\Http\Controllers\StoreController2;
 use Illuminate\Support\Facades\Route;
-
+use Illuminate\Http\Request;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -40,8 +41,9 @@ Route::get('/form3',[MainController::class, 'form3'])->name('form3');
 Route::get('/form4',[MainController::class, 'form4'])->name('form4');
 Route::get('/form5',[MainController::class, 'form5'])->name('form5');
 Route::post('/submit-form1', [StoreController1::class, 'store']);
-Route::post('/submit-form2', [FormController2::class, 'store']);
+Route::post('/submit-form2', [StoreController2::class, 'store']);
 Route::post('/submit-form3', [FormController3::class, 'store']);
 Route::post('/submit-form4', [FormController4::class, 'store']);
 Route::post('/submit-form5', [FormController5::class, 'store']);
+
 });

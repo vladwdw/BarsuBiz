@@ -49,8 +49,8 @@
         <ul>
           <li><a class="nav-link scrollto active" href="#hero">Дом</a></li>
           <li><a class="nav-link scrollto" href="#about">О нас</a></li>
-          <li><a class="nav-link scrollto" href="#services">Наши сервиси</a></li>
-          <li><a class="nav-link scrollto" href="#team">Разработчики</a></li>
+          <li><a class="nav-link scrollto" href="#services">Наши сервисы</a></li>
+          <!-- <li><a class="nav-link scrollto" href="#team">Разработчики</a></li> -->
           <li><a class="nav-link scrollto" href="#footer">Контакты</a></li>
           <li>
             <a class="getstarted scrollto" href="{{route('cabinet')}}">Кабинет</a>
@@ -804,11 +804,11 @@
           <div class="col-lg-3 col-md-6 footer-links">
             <h4>Сервисы</h4>
             <ul>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Проект молодежных инициатив</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Конкурсный отбор НИР в рамках системы внутренних грантов БарГУ</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">100 идей для Беларуси</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Конкурс проектов заданий "ГПНИ"</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Заявка на получение гранта</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="{{route('form1')}}">Проект молодежных инициатив</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="{{route('form2')}}">Конкурсный отбор НИР в рамках системы внутренних грантов БарГУ</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="{{route('form1')}}">100 идей для Беларуси</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="{{route('form1')}}">Конкурс проектов заданий "ГПНИ"</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="{{route('form1')}}">Заявка на получение гранта</a></li>
             </ul>
           </div>
 

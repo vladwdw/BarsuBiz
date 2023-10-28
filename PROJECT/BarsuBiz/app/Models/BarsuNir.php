@@ -8,4 +8,5 @@ use Illuminate\Database\Eloquent\Model;
 class BarsuNir extends Model
 {
     use HasFactory;
+    protected $table = 'barsunir';
 }
