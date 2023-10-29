@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="{{ asset('css/mainstyle1.css') }}" rel="stylesheet">
     <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
 
     <meta charset="UTF-8">
@@ -11,7 +12,6 @@
     <style>
  
     body {
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap');
   font-family: 'Inter', 'sans-serif';
 /* Замените 'путь_к_вашему_изображению.jpg' на путь к вашему фоновому изображению */
   background-size: cover; /* Растягивать фон до заполнения всего экрана */
