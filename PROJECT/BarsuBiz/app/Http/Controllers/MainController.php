@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\BarsuNir;
+use App\Models\BarsuNirDop;
 use App\Models\MolInic;
 use App\Models\MolIndic;
 use Illuminate\Http\Request;
@@ -18,6 +19,11 @@ class MainController extends Controller
         $molIndic=MolIndic::where('project_id', $id)->get();
         $molInic=MolInic::find($id);
         return view('forms/form11',compact('molInic','molIndic'));
+    }
+    public function form22($id){
+        $barsunir_dop=BarsuNirDop::where('project_id', $id)->get();
+        $barsunir=BarsuNir::find($id);
+        return view('forms/form22',compact('barsunir_dop','barsunir'));
     }
 
     public function form2(){

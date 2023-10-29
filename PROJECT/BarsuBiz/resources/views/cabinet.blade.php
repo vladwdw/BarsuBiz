@@ -156,7 +156,7 @@
 @endforeach
  @foreach($barsunirs as $barsunir)                    
     <tr>
-        <td> {{$barsunir->name}}</a> </td>
+        <td> <a href="{{ route('form22', $barsunir->id, [$barsunir->id]) }}">{{$barsunir->name}}</a> </td>
         <td>{{ Auth::user()->name }}</td>
         <td>{{ $barsunir->getAttribute('created_at') }}</td>
     </tr>

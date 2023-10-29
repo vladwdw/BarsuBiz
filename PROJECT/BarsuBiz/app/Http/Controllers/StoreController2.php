@@ -20,6 +20,7 @@ class StoreController2 extends Controller
         $sinceElem = $request->input('sinceElem');
         $ozhidResult = $request->input('ozhidResult');
         $praktZnach = $request->input('praktZnach');
+        $goalsNir=$request->input('goalsNir');
         // BarsuNir_dop
         $workEtap = $request->input('workEtap');
         $nachSrok = $request->input('nachSrok');
@@ -37,6 +38,7 @@ class StoreController2 extends Controller
             $barsunir->sinceElem=$sinceElem;
             $barsunir->ozhidResult=$ozhidResult;
             $barsunir->praktZnach=$praktZnach;
+            $barsunir->goalsNir=$goalsNir;
             $barsunir->save();
             for($i=0; $i<count($workEtap); $i++){
             $BarsuNirDop=new BarsuNirDop();
