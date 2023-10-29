@@ -38,7 +38,7 @@
 
   <!-- Template Main CSS File -->
   <link href="{{asset('assets/css/style.css')}}" rel="stylesheet">
-  
+
 </head>
 <body>
 
@@ -103,12 +103,13 @@
             </div>
             <div class="col-md-7">
 
-    <select name="dropdown" type="text" id="list"class="form-control" onchange="tableSearch()" aria-label="Default select example">
+            <select name="dropdown" id="list" class="form-control" aria-label="Default select example" onchange="tableSearch()">
     <option selected value="">Все</option>
-    <option value="Молодежные инициативы"> Молодежные инициативы</option>
-        <option value="Участие в НИР">Участие в НИР</option>
-       
-    </select>
+    <option value="Молодежные инициативы">Молодежные инициативы</option>
+    <option value="Участие в НИР">Участие в НИР</option>
+</select>
+
+<input type="hidden" id="selectedOption" value="">
                 <div class="tab-content" id="myTabContent">
                   
                     <div class="tab-paneshow active" id="files" role="tabpanel" aria-labelledby="files-tab">
@@ -149,28 +150,42 @@
         </div>
     </div>
       <!--Js fiels-->
-      <script>
+<script>
+  document.getElementById("list").addEventListener("change", function () {
+    var selectedFilter = this.value;
+    localStorage.setItem("selectedFilter", selectedFilter);
+    tableSearch();
+});
+
+// Применение сохраненного фильтра при загрузке страницы
+window.addEventListener("load", function () {
+    var selectedFilter = localStorage.getItem("selectedFilter");
+    if (selectedFilter) {
+        document.getElementById("list").value = selectedFilter;
+        tableSearch();
+    }
+});
 function tableSearch() {
 
-    var phrase = document.getElementById('list');
+var phrase = document.getElementById('list');
 
-    var table = document.getElementById('table');
-    var regPhrase = new RegExp(phrase.value, 'i');
-    var flag = false;
-   
-    for (var i = 1; i < table.rows.length; i++) {
-        flag = false;
-        for (var j = table.rows[i].cells.length - 1; j >= 0; j--) {
-            flag = regPhrase.test(table.rows[i].cells[j].innerHTML);
-            if (flag) break;
-        }
-        if (flag) {
-            table.rows[i].style.display = "";
-        } else {
-            table.rows[i].style.display = "none";
-        }
+var table = document.getElementById('table');
+var regPhrase = new RegExp(phrase.value, 'i');
+var flag = false;
 
+for (var i = 1; i < table.rows.length; i++) {
+    flag = false;
+    for (var j = table.rows[i].cells.length - 1; j >= 0; j--) {
+        flag = regPhrase.test(table.rows[i].cells[j].innerHTML);
+        if (flag) break;
     }
+    if (flag) {
+        table.rows[i].style.display = "";
+    } else {
+        table.rows[i].style.display = "none";
+    }
+
+}
 }
 </script>
 <footer id="footer" style="margin-top: 350px;" >
