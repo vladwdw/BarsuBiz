@@ -19,11 +19,7 @@ class MainController extends Controller
         if($name=="Молодежные инициативы"){
         $molIndic=MolIndic::where('project_id', $id)->get();
         $molInic=MolInic::find($id);
-        if($molIndic->user_id==auth()->id()){
-        return view('forms/form11',compact('molInic','molIndic'));}
-        else{
-            return view('cabinet');
-        }
+        return view('forms/form11',compact('molInic','molIndic'));
         }
     }
 
