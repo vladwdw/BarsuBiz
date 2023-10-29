@@ -4,6 +4,8 @@ namespace App\Providers;
 use Illuminate\Pagination\Paginator;
 use Illuminate\Support\ServiceProvider;
 
+use Illuminate\Support\Collection;
+use Illuminate\Pagination\LengthAwarePaginator;
 class AppServiceProvider extends ServiceProvider
 {
     /**
@@ -12,8 +14,10 @@ class AppServiceProvider extends ServiceProvider
      * @return void
      */
     public function register()
+
     {
-        //
+
+
     }
 
     /**

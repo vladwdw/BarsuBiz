@@ -9,41 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="{{ asset('js/bootstrap.min.js') }}"></script>
     <title>Составление шаблона</title>
-    <script>
-               
-        // Вызов функции при загрузке страницы
-        window.onload = function () {
-
-            <?php
-            for($i=0; $i<count($molIndic); $i++){
-                echo 'addNewElement();';
-                
-            }
-            
-
-            ?>
-            function fetchData() {
-        fetch('/get-data${id}') // Путь к вашему маршруту
-            .then(response => response.json())
-            .then(data => {
-                // data теперь содержит данные из вашей модели в формате JSON
-                // Здесь можно выполнить нужную обработку данных
-                var phpArray = data;
-                fillInputValues(phpArray);
-            })
-            .catch(error => console.error('Ошибка при получении данных:', error));
-    }
-
-    function fillInputValues(phpArray) {
-        var inputElements = document.getElementsByName("indicator[]");
-        for (var i = 0; i < inputElements.length; i++) {
-            inputElements[i].value = phpArray[i];
-        }
-    }
-    fetchData('{{$molInic->id}}');
-        };
     
-    </script>
 </head>
 <style>
   
@@ -82,8 +48,12 @@
                 </div>
                 <p>Результаты проекта (что будет достигнуто) в измеримых величинах:</p>
                 <div class="Pokaz">
+                @foreach($molIndic as $item)
                 <div class="input-group mb-3 d-flex" id="solutions1">
+                <input type="text" class="form-control form-control-lg bg-light fs-6 mb-2" placeholder="Показатель" name="indicator[]" value="{{$item->indicator}}">
+                    <input type="text" class="form-control form-control-lg bg-light fs-6 mb-2" placeholder="Значение показателя" name="valueIndicator[]" value="{{$item->value}}">
                 </div>
+                @endforeach
                 </div>
                 <div class="container-fluid  mb-3 ">
                     <button class="btn btn-lg btn-danger fs-6" onclick="addNewElement(); return false;">Добавить поле</button>

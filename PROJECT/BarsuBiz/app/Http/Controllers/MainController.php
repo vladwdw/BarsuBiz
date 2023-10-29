@@ -8,16 +8,17 @@ use App\Models\MolIndic;
 use Illuminate\Http\Request;
 use Illuminate\Database\Eloquent;
 use Illuminate\Support\Facades\Auth;
-
+use Aneeskhan47\PaginationMerge\Facades\PaginationMerge;
 class MainController extends Controller
 {
     public function form1(){
         return view('forms/form1');
     }
-    public function form11($id){
+    public function form11($name,$id){
+        if($name=="Молодежные инициативы"){
         $molIndic=MolIndic::where('project_id', $id)->get();
         $molInic=MolInic::find($id);
-        return view('forms/form11',compact('molInic','molIndic'));
+        return view('forms/form11',compact('molInic','molIndic'));}
     }
 
     public function form2(){
@@ -39,9 +40,11 @@ class MainController extends Controller
         return view('register');
     }
     public function cabinet(){
-        $molInics = MolInic::where('user_id', auth()->id())->paginate(5);
-        $barsunirs = BarsuNir::where('user_id', auth()->id())->paginate(5);
-        return view('cabinet',compact('molInics'),compact(('barsunirs')));
+        $molInics = MolInic::where('user_id', auth()->id());
+        $barsunirs = BarsuNir::where('user_id', auth()->id());
+
+        $items = $molInics->union($barsunirs)->orderBy('created_at', 'desc')->paginate(5);
+        return view('cabinet', compact('items'));
     }
     
 }

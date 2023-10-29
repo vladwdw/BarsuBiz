@@ -102,30 +102,7 @@
                 </div>
             </div>
             <div class="col-md-7">
-                <!-- <ul class="nav nav-tabs" id="myTab" role="tablist">
-                    <li class="nav-item">
-                        <a class="nav-link active" id="files-tab" data-toggle="tab" href="#files" role="tab" aria-controls="files" aria-selected="true">Файлы</a>
-                    </li>
-                </ul> -->
-                
-      <!-- @foreach($molInics as $molInic)
-        <option value="{{ $molInic->name }}">{{ $molInic->name }}</option>
-         @endforeach -->
-         <!-- <select name="dropdown" class="form-select" aria-label="Default select example"  >
-         <option selected>Выбрать</option>
-  <option value="1">Молодежные инициативы</option>
-  <option value="2">Участие в НИР</option>
-</select> -->
-<!-- <form action="/your-route" method="POST">
-    @csrf
-    <select name="dropdown">
-        <option value="option1" type="submit">Молодежные инициативы</option>
-        <option value="option2" type="submit">Участие в НИР</option>
-    </select>
-     <button type="submit">Submit</button> 
-</form> -->
-  <!-- <form id="myForm" >
-    @csrf   -->
+
     <select name="dropdown" type="text" id="list"class="form-control" onchange="tableSearch()" aria-label="Default select example">
     <option selected value="">Все</option>
     <option value="Молодежные инициативы"> Молодежные инициативы</option>
@@ -147,20 +124,16 @@
                             
                            
                             
-  @foreach($molInics as $molInic)                    
+  @foreach($items as $item)                    
     <tr>
-        <td> <a href="{{ route('form11', $molInic->id, [$molInic->id]) }}">{{$molInic->name}}</a> </td>
+        <td> <a href="{{ route('form11', ['name' => $item->name,'id' => $item->id]) }}">{{$item->name}}</a> </td>
         <td>{{ Auth::user()->name }}</td>
-        <td>{{ $molInic->getAttribute('created_at') }}</td>
+        <td>{{ $item->getAttribute('created_at') }}</td>
     </tr>
+    
 @endforeach
- @foreach($barsunirs as $barsunir)                    
-    <tr>
-        <td> {{$barsunir->name}}</a> </td>
-        <td>{{ Auth::user()->name }}</td>
-        <td>{{ $barsunir->getAttribute('created_at') }}</td>
-    </tr>
-@endforeach 
+
+
 
                                 <!-- Здесь можно добавить другие файлы -->
                                 
@@ -168,8 +141,7 @@
                         </table>
                     </div>
                     
-                    {{$molInics->links('vendor.pagination.bootstrap-4')}}
-                    {{$barsunirs->links('vendor.pagination.bootstrap-4')}}
+                    {{$items->links('vendor.pagination.bootstrap-4')}}
                 </div>
                 
             </div>

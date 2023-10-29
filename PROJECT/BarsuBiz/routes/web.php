@@ -35,7 +35,7 @@ Route::post('/logout',[AuthController::class,'logout'])->name('logout');
 Route::middleware(['auth'])->group(function () {
 Route::get('/cabinet',[MainController::class, 'cabinet'])->name('cabinet');
 Route::get('/form1',[MainController::class, 'form1'])->name('form1');
-Route::get('/form11/{id?}',[MainController::class, 'form11'])->name('form11');
+Route::get('/form11/{name}/{id}',[MainController::class, 'form11'])->name('form11');
 Route::get('/form2',[MainController::class, 'form2'])->name('form2');
 Route::get('/form3',[MainController::class, 'form3'])->name('form3');
 Route::get('/form4',[MainController::class, 'form4'])->name('form4');
