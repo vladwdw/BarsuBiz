@@ -78,7 +78,7 @@
                     <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Доп инфа" name="dopInformation">{{$molInic->dopInformation}}</textarea>
                 </div>
                 <div class="input-group mb-3">
-                    <button class="btn btn-lg btn-danger w-100 fs-6" type="submit">Сохранить</button>
+                    <button class="btn btn-lg btn-danger w-100 fs-6" type="submit" >Сохранить</button>
                 </div>
                 <div class="input-group mb-3">
                     <button class="btn btn-lg btn-light w-100 fs-6" style="width:20px;">Что-то делается</button>

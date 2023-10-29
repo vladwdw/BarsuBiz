@@ -48,6 +48,7 @@ class StoreController2 extends Controller
             $BarsuNirDop->endSrok= $endSrok[$i];
             $BarsuNirDop->kontrResult=$kontrResult[$i];
             $BarsuNirDop->save();
+            return redirect('/cabinet');
             }
             
  
