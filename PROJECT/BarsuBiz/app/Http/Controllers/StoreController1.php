@@ -42,9 +42,9 @@ class StoreController1 extends Controller
             $molIndic->indicator= $indicator[$i];
             $molIndic->value=$valueIndicator[$i];
             $molIndic->save();
-            return redirect('/cabinet');
-            }
             
+            }
+            return redirect('/cabinet');
  
 
         } catch (\Exception $e) {
@@ -80,15 +80,16 @@ class StoreController1 extends Controller
             $molInic->inicGroup=$sostav;
             $molInic->dopInformation=$dopInformation;
             $molInic->save();
-            for($i=0; $i<count($indicator); $i++){
-            $molIndic=MolIndic::where('project_id', $id)->first();
+            $molIndic=MolIndic::where('project_id', $id)->delete();;
+           for($i=0; $i<count($indicator); $i++){
+            $molIndic=new Molindic();
             $molIndic->project_id=$molInic->id;
             $molIndic->indicator= $indicator[$i];
             $molIndic->value=$valueIndicator[$i];
             $molIndic->save();
-            return redirect('\cabinet');
             }
-            
+           
+            return redirect('\cabinet');
  
 
         } catch (\Exception $e) {
