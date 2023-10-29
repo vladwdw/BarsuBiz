@@ -21,11 +21,7 @@ class MainController extends Controller
         $molInic=MolInic::find($id);
         return view('forms/form11',compact('molInic','molIndic'));}
     }
-    public function form22($id){
-        $barsunir_dop=BarsuNirDop::where('project_id', $id)->get();
-        $barsunir=BarsuNir::find($id);
-        return view('forms/form22',compact('barsunir_dop','barsunir'));
-    }
+
 
     public function form2(){
         return view('forms/form2');
