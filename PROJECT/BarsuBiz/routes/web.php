@@ -47,7 +47,7 @@ Route::post('/submit-form3', [FormController3::class, 'store']);
 Route::post('/submit-form4', [FormController4::class, 'store']);
 Route::post('/submit-form5', [FormController5::class, 'store']);
 Route::post('/form11/{name}/{id}',[StoreController1::class, 'form11_update'])->name('form11_update');
-
+Route::post('/form11/{name}/{id}/delete',[StoreController1::class, 'form11_delete'])->name('form11_delete');
 });
 Route::get('/css/{filename}', function ($filename) {
     return response()->file(public_path('css/' . $filename));
