@@ -1,8 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap');
 body {
     font-family: 'Inter', 'sans-serif';
-    background-color: antiquewhite;
-    background-attachment: fixed; /* Фиксировать фон, чтобы он не двигался при прокрутке */
+    background-color: rgb(255, 255, 255);
 };
 .box-area{
     background-color: #ff0000;
