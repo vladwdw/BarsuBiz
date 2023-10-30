@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
-<link href="{{ asset('css/mainstyle1.css') }}" rel="stylesheet">
+<link href="{{ asset('css/formstyle.css') }}" rel="stylesheet">
 <head>
 
     <meta charset="UTF-8">
