@@ -130,6 +130,9 @@
         <td> <a href="{{ route('form11', ['name' => $item->name,'id' => $item->id]) }}">{{$item->name}}</a> </td>
         <td>{{ Auth::user()->name }}</td>
         <td>{{ $item->getAttribute('created_at') }}</td>
+        <td><a class="btn btn-outline-primary">Word</a></td>
+        <td><a class="btn btn-outline-warning">pdf</a></td>
+        
     </tr>
     
 @endforeach
