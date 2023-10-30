@@ -139,14 +139,18 @@
         
         <button class="btn btn-outline-primary bi bi-file-earmark-word" type='submit'  ></button></td>
 </form>
-        <td><a href="{{ route('form1_pdf', ['name' => $item->name,'id' => $item->id]) }}" class="btn btn-outline-warning bi bi-file-earmark-pdf"></a></td> 
-      <td><a class="btn btn-outline-danger bi bi-trash3"></a></td> 
+        <td><a class="btn btn-outline-warning bi bi-file-earmark-pdf"></a></td> 
+        <form method="post"  action="{{ route('form11_delete', ['name' => $item->name,'id' => $item->id]) }}" enctype="multipart/form-data">
+        @csrf
+        <td><button class="btn btn-outline-danger bi bi-trash3" type='submit'>
+</button>
         
+        
+      </td> 
+        </form>
     </tr>
     
 @endforeach
-
-
                                 <!-- Здесь можно добавить другие файлы -->
                                 
                             </tbody>
@@ -161,13 +165,17 @@
             
         </div>
     </div>
+    
       <!--Js fiels-->
+     
 <script>
   document.getElementById("list").addEventListener("change", function () {
     var selectedFilter = this.value;
     localStorage.setItem("selectedFilter", selectedFilter);
     tableSearch();
 });
+
+
 
 // Применение сохраненного фильтра при загрузке страницы
 window.addEventListener("load", function () {
@@ -200,6 +208,7 @@ for (var i = 1; i < table.rows.length; i++) {
 }
 }
 </script>
+
 <footer id="footer" style="margin-top: 350px;" >
     <div class="footer-top ">
       <div class="container">
