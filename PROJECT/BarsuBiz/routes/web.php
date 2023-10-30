@@ -26,7 +26,7 @@ use Illuminate\Http\Request;
 Route::get('/', function () {
     return view('forms/index');
 })->name('home');
-Route::post('/submit-word/{name}/{id}',[MainController::class, 'form_word'])->name('form_word');
+
 
 Route::get('/login',[MainController::class, 'login'])->name('login');
 Route::get('/register',[MainController::class, 'registerPage'])->name('registerPage');
@@ -34,6 +34,8 @@ Route::post('/submit-register', [RegisterController::class,'register']);
 Route::post('/login',[AuthController::class,'login'])->name('login');
 Route::post('/logout',[AuthController::class,'logout'])->name('logout');
 Route::middleware(['auth'])->group(function () {
+Route::post('/submit-word/{name}/{id}',[MainController::class, 'form1_word'])->name('form1_word');
+Route::get('/submit-pdf/{name}/{id}',[MainController::class, 'form1_pdf'])->name('form1_pdf');
 Route::get('/cabinet',[MainController::class, 'cabinet'])->name('cabinet');
 Route::get('/form1',[MainController::class, 'form1'])->name('form1');
 Route::get('/form11/{name}/{id}',[MainController::class, 'form11'])->name('form11');
