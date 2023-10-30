@@ -117,8 +117,10 @@
                             <thead>
                                 <tr>
                                     <th >Файл</th>
-                                    <th>Владелец</th>
+                                    <!-- <th>Владелец</th> -->
                                     <th>Дата получения</th>
+                                    <th>MS Word</th>
+                                    <th>Adobe PDF</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -128,10 +130,10 @@
   @foreach($items as $item)                    
     <tr>
         <td> <a href="{{ route('form11', ['name' => $item->name,'id' => $item->id]) }}">{{$item->name}}</a> </td>
-        <td>{{ Auth::user()->name }}</td>
+        <!-- <td>{{ Auth::user()->name }}</td> -->
         <td>{{ $item->getAttribute('created_at') }}</td>
-        <td><a class="btn btn-outline-primary">Word</a></td>
-        <td><a class="btn btn-outline-warning">pdf</a></td>
+        <td><a class="btn btn-outline-primary bi bi-file-earmark-word" type='submit' action="/submit-word"  ></a></td>
+      <td><a class="btn btn-outline-warning bi bi-file-earmark-pdf"></a></td> 
         
     </tr>
     
