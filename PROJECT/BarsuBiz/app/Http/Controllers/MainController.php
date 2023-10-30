@@ -215,7 +215,7 @@ class MainController extends Controller
         $molInics = MolInic::where('user_id', auth()->id());
         $barsunirs = BarsuNir::where('user_id', auth()->id());
 
-        $items = $molInics->union($barsunirs)->orderBy('created_at', 'desc')->paginate(5);
+        $items = $molInics->union($barsunirs)->orderBy('created_at', 'desc')->paginate(7);
         return view('cabinet', compact('items'));
     }
     
