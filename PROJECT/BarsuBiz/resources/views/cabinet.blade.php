@@ -132,8 +132,13 @@
         <td> <a href="{{ route('form11', ['name' => $item->name,'id' => $item->id]) }}">{{$item->name}}</a> </td>
         <!-- <td>{{ Auth::user()->name }}</td> -->
         <td>{{ $item->getAttribute('created_at') }}</td>
-        <td><a class="btn btn-outline-primary bi bi-file-earmark-word" type='submit' action="/submit-word"  ></a></td>
-      <td><a class="btn btn-outline-warning bi bi-file-earmark-pdf"></a></td> 
+        <form method="post"  action="{{ route('form_word', ['name' => $item->name,'id' => $item->id]) }}" enctype="multipart/form-data">
+        @csrf
+        <td> 
+        
+        <button class="btn btn-outline-primary bi bi-file-earmark-word" type='submit'  ></button></td>
+</form>
+        <td><a class="btn btn-outline-warning bi bi-file-earmark-pdf"></a></td> 
         
     </tr>
     

@@ -26,6 +26,7 @@ use Illuminate\Http\Request;
 Route::get('/', function () {
     return view('forms/index');
 })->name('home');
+Route::post('/submit-word/{name}/{id}',[MainController::class, 'form_word'])->name('form_word');
 
 Route::get('/login',[MainController::class, 'login'])->name('login');
 Route::get('/register',[MainController::class, 'registerPage'])->name('registerPage');
@@ -46,7 +47,7 @@ Route::post('/submit-form3', [FormController3::class, 'store']);
 Route::post('/submit-form4', [FormController4::class, 'store']);
 Route::post('/submit-form5', [FormController5::class, 'store']);
 Route::post('/form11/{name}/{id}',[StoreController1::class, 'form11_update'])->name('form11_update');
-//Route::post('/submit-word/{name}/{id}',[StoreController1::class, 'form11_update'])->name('form11_update');
+
 });
 Route::get('/css/{filename}', function ($filename) {
     return response()->file(public_path('css/' . $filename));
