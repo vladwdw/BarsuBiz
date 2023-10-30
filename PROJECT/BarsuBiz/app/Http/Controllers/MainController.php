@@ -22,6 +22,8 @@ use PhpOffice\PhpWord\SimpleType\Jc;
 use Illuminate\Support\Facades\Storage;
 use Aspose\Words\WordsApi;
 use App\Http\Controllers\ConvertDocumentRequest;
+use PhpOffice\PhpWord\Settings;
+
 require_once base_path('vendor/autoload.php');
 class MainController extends Controller
 {
@@ -35,7 +37,7 @@ class MainController extends Controller
         return view('forms/form11',compact('molInic','molIndic'));
         }
     }
-    public function form_word($name,$id)
+    public function form1_word($name,$id)
     {
         if($name=="Молодежные инициативы"){
             $molIndic=MolIndic::where('project_id', $id)->get();
@@ -117,24 +119,25 @@ class MainController extends Controller
         }
             
     }
-    public function  form1_word($molIndic,$molInic)
+    public function  form1_pdf($name,$id)
     {
+        if($name== "Молодежные инициативы"){
         $phpWord= new PhpWord();
     
     $phpWord->setDefaultFontName('Times New Roman');
     $phpWord->setDefaultFontSize(14);
-
+    $molIndic=MolIndic::where('project_id', $id)->get();
+    $molInic=MolInic::find($id);
  
   
     $templateProcessor= new TemplateProcessor('templates\form1.docx');
   
     $templateProcessor->deleteBlock('tableRow');
     $index=0;
-    $templateProcessor->setValue('projectName',$molInic->projectName);
-
-    $templateProcessor->setValue('regionName',$molInic->regionName);
-    $templateProcessor->setValue('locality',$molInic->locality);
-    $templateProcessor->setValue('description',$molInic->description);
+    $templateProcessor->setValue('projectName',$molInic->nameProject);
+    $templateProcessor->setValue('regionName',$molInic->nameRegion);
+    $templateProcessor->setValue('locality',$molInic->namePunct);
+    $templateProcessor->setValue('description',$molInic->descriptionProblem);
     $templateProcessor->setValue('realizationTemp',$molInic->realizationTemp);
     $templateProcessor->setValue('fioRuk',$molInic->fioRuk);
     $templateProcessor->setValue('phone',$molInic->phone);
@@ -192,13 +195,22 @@ class MainController extends Controller
     $newFileName = time();
    
     $templateProcessor->saveAs($newFileName.'.docx');
+    
     $filePath = public_path($newFileName.'.docx');
-    $phpWord = \PhpOffice\PhpWord\IOFactory::load($filePath); 
 
-//Save it
-    $xmlWriter = \PhpOffice\PhpWord\IOFactory::createWriter($phpWord , 'PDF');
-    $xmlWriter->save('result.pdf');
-    return response()->download('result.pdf')->deleteFileAfterSend();
+    Settings::setPdfRendererName(Settings::PDF_RENDERER_TCPDF);
+    // Path to directory with tcpdf.php file.
+    // Rigth now `TCPDF` writer is depreacted. Consider to use `DomPDF` or `MPDF` instead.
+    Settings::setPdfRendererPath('vendor/tecnickcom/tcpdf');
+    
+    $phpWord = IOFactory::load($newFileName.'.docx', 'Word2007');
+    $phpWord->save($newFileName.'.pdf');
+
+
+   }
+    else if ($name=="Участие в НИР"){
+
+    }
     }
     public function form2(){
         return view('forms/form2');
