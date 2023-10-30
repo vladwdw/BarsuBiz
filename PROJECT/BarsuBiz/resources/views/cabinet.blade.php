@@ -139,7 +139,7 @@
         
         <button class="btn btn-outline-primary bi bi-file-earmark-word" type='submit'  ></button></td>
 </form>
-        <td><a class="btn btn-outline-warning bi bi-file-earmark-pdf"></a></td> 
+        <td><a href="{{ route('form1_pdf', ['name' => $item->name,'id' => $item->id]) }}" class="btn btn-outline-warning bi bi-file-earmark-pdf"></a></td> 
       <td><a class="btn btn-outline-danger bi bi-trash3"></a></td> 
         
     </tr>
