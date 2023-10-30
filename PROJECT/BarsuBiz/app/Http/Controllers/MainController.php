@@ -20,6 +20,8 @@ use PhpOffice\PhpWord\IOFactory;
 use PhpOffice\PhpWord\Style;
 use PhpOffice\PhpWord\SimpleType\Jc;
 use Illuminate\Support\Facades\Storage;
+use Aspose\Words\WordsApi;
+use App\Http\Controllers\ConvertDocumentRequest;
 require_once base_path('vendor/autoload.php');
 class MainController extends Controller
 {
@@ -191,7 +193,12 @@ class MainController extends Controller
    
     $templateProcessor->saveAs($newFileName.'.docx');
     $filePath = public_path($newFileName.'.docx');
-    return response()->download($filePath)->deleteFileAfterSend();
+    $phpWord = \PhpOffice\PhpWord\IOFactory::load($filePath); 
+
+//Save it
+    $xmlWriter = \PhpOffice\PhpWord\IOFactory::createWriter($phpWord , 'PDF');
+    $xmlWriter->save('result.pdf');
+    return response()->download('result.pdf')->deleteFileAfterSend();
     }
     public function form2(){
         return view('forms/form2');

@@ -91,7 +91,7 @@
         
       
         <div class="row mt-3">
-            <div class="col-md-5">
+            <div class="col-md-4">
               <h1>Личный кабинет</h1>
                 <div class="card">
                     <div class="card-body">
@@ -101,7 +101,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-7">
+            <div class="col-md-8">
 
             <select name="dropdown" id="list" class="form-control" aria-label="Default select example" onchange="tableSearch()">
     <option selected value="">Все</option>
