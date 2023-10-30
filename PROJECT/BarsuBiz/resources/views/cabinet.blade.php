@@ -96,8 +96,8 @@
                 <div class="card">
                     <div class="card-body">
                         <h5 class="card-title">Информация о пользователе</h5>
-                        <p><strong>Username:</strong> {{ Auth::user()->name }}</p>
-                        <p><strong>Email:</strong> {{ Auth::user()->email }}</p>
+                        <p><strong>Имя пользователя:</strong> {{ Auth::user()->name }}</p>
+                        <p><strong>Электронная почта:</strong> {{ Auth::user()->email }}</p>
                     </div>
                 </div>
             </div>
@@ -121,6 +121,7 @@
                                     <th>Дата получения</th>
                                     <th>MS Word</th>
                                     <th>Adobe PDF</th>
+                                    <th>Удалить</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -134,6 +135,7 @@
         <td>{{ $item->getAttribute('created_at') }}</td>
         <td><a class="btn btn-outline-primary bi bi-file-earmark-word" type='submit' action="/submit-word"  ></a></td>
       <td><a class="btn btn-outline-warning bi bi-file-earmark-pdf"></a></td> 
+      <td><a class="btn btn-outline-danger bi bi-trash3"></a></td> 
         
     </tr>
     
