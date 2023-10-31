@@ -27,7 +27,7 @@
         <!--Left Box-->
         <div class="col-md-6 rounded-4 d-flex justify-content-center align-items-center flex-column left-box" >
             <div class="featured-image mb-3">
-                <img src="assets/img/features-4.png" class="img-fluid"alt="" style="width:500px;">
+                <img src="assets/img/features-4.png" class="img-fluid"alt="" style="width:500px; ">
             </div>
         
         </div>
@@ -35,6 +35,7 @@
         <div class="col-md-6 right-box">
             <form class="row align-items-center " method="post" action="{{ route('login') }}">
                 @csrf
+                <img src="assets/img/log.png" class="img-fluid"alt="" style="width:300px;">
                 <div class="header-text mb-4">
                     <h2>Добро пожаловать</h2>
                     <p>Вход в личный кабинет</p>

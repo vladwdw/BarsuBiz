@@ -144,8 +144,6 @@
         @csrf
         <td><button class="btn btn-outline-danger bi bi-trash3" type='submit'>
 </button>
-        
-        
       </td> 
         </form>
     </tr>
