@@ -216,6 +216,7 @@ class MainController extends Controller
 header('Content-Disposition: attachment; filename="' . $newFileName.'.pdf');
 readfile(public_path($newFileName));
 unlink(public_path($newFileName));
+unlink($filePath);
     // Отправляем файл на скачивание
 
 
