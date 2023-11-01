@@ -4,8 +4,54 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "6bc0ac6e07096f039505e5addd61a7d3",
+    "content-hash": "22ab8cff50ecb7db4c747da6b7de8e1c",
     "packages": [
+        {
+            "name": "aklump/dompdf-fonts",
+            "version": "0.0.6",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/aklump/dompdf-fonts.git",
+                "reference": "2c7768e3b2e026196c710c3a03988175a5959a25"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/aklump/dompdf-fonts/zipball/2c7768e3b2e026196c710c3a03988175a5959a25",
+                "reference": "2c7768e3b2e026196c710c3a03988175a5959a25",
+                "shasum": ""
+            },
+            "require-dev": {
+                "dompdf/dompdf": "^2.0",
+                "symfony/filesystem": "^5.4",
+                "symfony/yaml": "^5.4"
+            },
+            "bin": [
+                "import.php"
+            ],
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "AKlump\\Dompdf\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Aaron Klump",
+                    "email": "sourcecode@intheloftstudios.com"
+                }
+            ],
+            "description": "Simplify the usage of TrueType fonts with DomPDF.",
+            "homepage": "https://github.com/aklump/dompdf-fonts",
+            "support": {
+                "issues": "https://github.com/aklump/dompdf-fonts/issues",
+                "source": "https://github.com/aklump/dompdf-fonts/tree/0.0.6"
+            },
+            "time": "2022-10-17T02:02:49+00:00"
+        },
         {
             "name": "aneeskhan47/laravel-pagination-merge",
             "version": "v1.0.5",

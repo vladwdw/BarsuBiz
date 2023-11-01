@@ -6,6 +6,7 @@ use App\Models\BarsuNir;
 use App\Models\BarsuNirDop;
 use App\Models\MolInic;
 use App\Models\MolIndic;
+use Dompdf\Dompdf;
 use Illuminate\Http\Request;
 use Illuminate\Database\Eloquent;
 use Illuminate\Support\Facades\Auth;
@@ -21,6 +22,7 @@ use PhpOffice\PhpWord\Style;
 use PhpOffice\PhpWord\SimpleType\Jc;
 use Illuminate\Support\Facades\Storage;
 use Aspose\Words\WordsApi;
+use App\Http\Controllers\Settings;
 use App\Http\Controllers\ConvertDocumentRequest;
 require_once base_path('vendor/autoload.php');
 class MainController extends Controller
@@ -117,24 +119,25 @@ class MainController extends Controller
         }
             
     }
-    public function  form1_word($molIndic,$molInic)
+    public function  form_pdf($name,$id)
     {
+        if($name== "Молодежные инициативы"){
         $phpWord= new PhpWord();
     
     $phpWord->setDefaultFontName('Times New Roman');
     $phpWord->setDefaultFontSize(14);
-
+    $molIndic=MolIndic::where('project_id', $id)->get();
+    $molInic=MolInic::find($id);
  
   
     $templateProcessor= new TemplateProcessor('templates\form1.docx');
   
     $templateProcessor->deleteBlock('tableRow');
     $index=0;
-    $templateProcessor->setValue('projectName',$molInic->projectName);
-
-    $templateProcessor->setValue('regionName',$molInic->regionName);
-    $templateProcessor->setValue('locality',$molInic->locality);
-    $templateProcessor->setValue('description',$molInic->description);
+    $templateProcessor->setValue('projectName',$molInic->nameProject);
+    $templateProcessor->setValue('regionName',$molInic->nameRegion);
+    $templateProcessor->setValue('locality',$molInic->namePunct);
+    $templateProcessor->setValue('description',$molInic->descriptionProblem);
     $templateProcessor->setValue('realizationTemp',$molInic->realizationTemp);
     $templateProcessor->setValue('fioRuk',$molInic->fioRuk);
     $templateProcessor->setValue('phone',$molInic->phone);
@@ -192,13 +195,34 @@ class MainController extends Controller
     $newFileName = time();
    
     $templateProcessor->saveAs($newFileName.'.docx');
+    
     $filePath = public_path($newFileName.'.docx');
-    $phpWord = \PhpOffice\PhpWord\IOFactory::load($filePath); 
+    
+    $word1 = IOFactory::load($newFileName.'.docx', 'Word2007');
 
-//Save it
-    $xmlWriter = \PhpOffice\PhpWord\IOFactory::createWriter($phpWord , 'PDF');
-    $xmlWriter->save('result.pdf');
-    return response()->download('result.pdf')->deleteFileAfterSend();
+   
+    
+    
+    // Конвертируем документ в формат PDF
+    $dompdf = base_path('vendor/dompdf/dompdf');
+    \PhpOffice\PhpWord\Settings::setPdfRendererPath($dompdf);
+    \PhpOffice\PhpWord\Settings::setPdfRendererName('DomPDF');
+    $pdfwriter=\PhpOffice\PhpWord\IOFactory::createWriter($word1,'PDF');
+    $fontDir = base_path('fonts');
+    $options = new \Dompdf\Options();
+    $options->set('fontDir', $fontDir);
+    $pdfwriter->save(public_path($newFileName));
+    header('Content-Type: application/pdf');
+header('Content-Disposition: attachment; filename="' . $newFileName.'.pdf');
+readfile(public_path($newFileName));
+unlink(public_path($newFileName));
+    // Отправляем файл на скачивание
+
+
+   }
+    else if ($name=="Участие в НИР"){
+
+    }
     }
     public function form2(){
         return view('forms/form2');
