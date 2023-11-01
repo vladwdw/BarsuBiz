@@ -35,8 +35,11 @@
         <div class="col-md-6 right-box">
             <form class="row align-items-center " method="post" action="{{ route('login') }}">
                 @csrf
-               
+                
                 <div class="header-text mb-4">
+                    <div class="mb-5 ms-auto">
+                <img src="assets/img/logo.png" class="logo" width="210px">
+                </div>
                     <h2>Добро пожаловать</h2>
                     <p>Вход в личный кабинет</p>
                 </div>

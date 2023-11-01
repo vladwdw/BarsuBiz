@@ -31,6 +31,7 @@
         @csrf
        
         <div class="featured-image mb-1 text-center">
+        <img src="../../../resources/img/logo.png" alt="">
             </div>
             <div class="row align-items-center ">
                 <div class="header-text mb-1">
