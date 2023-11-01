@@ -29,9 +29,7 @@
         
         <form method="post" class="col-md-6 right-box p-3 rounded-4 shadow box-area" action="/submit-form1" enctype="multipart/form-data">
         @csrf
-        <div class="featured-image mb-1 text-center">
-                <img src="assets/img/log.png" class="img-fluid"alt="" style="width:300px;">
-            </div>
+       
             <div class="row align-items-center ">
                 <div class="header-text mb-1">
                     <h3 style="text-align: center;">ЗАЯВКА </h3>
