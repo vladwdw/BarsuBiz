@@ -29,10 +29,16 @@
         
         <form method="post" class="col-md-6 right-box p-3 rounded-4 shadow box-area" action="{{ route('form11', ['name' => $molInic->name,'id' => $molInic->id]) }}" enctype="multipart/form-data">
         @csrf
+        
+        
+       
             <div class="row align-items-center ">
-                <div class="header-text mb-4">
-                    <h2 style="text-align: center;">Заполните данные для проекта молодежных инициатив</h2>
+                <div class="header-text mb-1">
+                <h3 style="text-align: center;">ЗАЯВКА </h3>
+                    <h4 style="text-align: center;"> на участие в конкурсе молодежных инициатив
+                            </h4>
                 </div>
+                <p>Наименование проекта</p>
                 <div class="input-group mb-3">
                     <input type="text" class="form-control form-control-lg bg-light fs-6" placeholder="Наименование проекта" name="projectName" value="{{$molInic->nameProject}}">
                 </div>

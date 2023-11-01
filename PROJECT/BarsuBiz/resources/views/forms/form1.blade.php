@@ -29,6 +29,7 @@
         
         <form method="post" class="col-md-6 right-box p-3 rounded-4 shadow box-area" action="/submit-form1" enctype="multipart/form-data">
         @csrf
+       
         <div class="featured-image mb-1 text-center">
             </div>
             <div class="row align-items-center ">
