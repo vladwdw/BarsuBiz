@@ -27,6 +27,7 @@ Route::get('/', function () {
     return view('forms/index');
 })->name('home');
 Route::post('/submit-word/{name}/{id}',[MainController::class, 'form_word'])->name('form_word');
+Route::get('/submit-pdf/{name}/{id}',[MainController::class, 'form_pdf'])->name('form_pdf');
 
 Route::get('/login',[MainController::class, 'login'])->name('login');
 Route::get('/register',[MainController::class, 'registerPage'])->name('registerPage');
