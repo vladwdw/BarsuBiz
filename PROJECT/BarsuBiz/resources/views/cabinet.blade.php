@@ -139,7 +139,7 @@
         
         <button class="btn btn-outline-primary bi bi-file-earmark-word" type='submit'  ></button></td>
 </form>
-        <td><a class="btn btn-outline-warning bi bi-file-earmark-pdf"></a></td> 
+        <td><a href="{{ route('form_pdf', ['name' => $item->name,'id' => $item->id]) }}" class="btn btn-outline-warning bi bi-file-earmark-pdf"></a></td> 
         <form method="post"  action="{{ route('form11_delete', ['name' => $item->name,'id' => $item->id]) }}" enctype="multipart/form-data">
         @csrf
         <td><button class="btn btn-outline-danger bi bi-trash3" type='submit'>
