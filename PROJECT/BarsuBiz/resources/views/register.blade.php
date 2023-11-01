@@ -27,13 +27,17 @@
         <!--Left Box-->
         <div class="col-md-6 rounded-4 d-flex justify-content-center align-items-center flex-column left-box" >
            
-        
+        <div class="featured-image mb-3">
+                <img src="assets/img/features-3.png" class="img-fluid"alt="" style="width:500px; ">
+            </div>
         </div>
         <!--Right Box Box-->
         <div class="col-md-6 right-box">
             <form class="row align-items-center " method="post" action="/submit-register">
                 @csrf
-                
+                <div class="mb-5 ms-auto">
+                <img src="assets/img/logo.png" class="logo" width="210px">
+                </div>
                 <div class="header-text mb-4">
                     <h2>Добро пожаловать</h2>
                     <p>Зарегистрируйтесь пожалуйста</p>
