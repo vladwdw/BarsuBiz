@@ -21,6 +21,7 @@
   <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
   <script src="assets/vendor/php-email-form/validate.js"></script>
   <link href="{{asset('assets/css/style.css')}}" rel="stylesheet">
+  <link href="{{asset('assets/css/card.css')}}" rel="stylesheet">
   <link href="{{asset('assets/img/favicon.png')}}" rel="icon">
   <link href="{{asset('assets/img/apple-touch-icon.png')}}" rel="apple-touch-icon">
 
@@ -91,7 +92,7 @@
         
       
         <div class="row mt-3">
-            <div class="col-md-4">
+            <!-- <div class="col-md-4">
               <h1>Личный кабинет</h1>
                 <div class="card">
                     <div class="card-body">
@@ -100,65 +101,82 @@
                         <p><strong>Электронная почта:</strong> {{ Auth::user()->email }}</p>
                     </div>
                 </div>
-            </div>
-            <div class="col-md-8">
+            </div> -->
+            <div class="col-4">
+            <div class="card card-custom bg-white border-white border-0">
+          <div class="card-custom-img" style="background-image: url(assets/img/vivi.jpg);"></div>
+          <div class="card-custom-avatar">
+            <img class="img" src="assets/img/man.png" alt="Avatar" />
+          </div>
+          <div class="card-body">
+            <h4 class="card-title">Имя пользователя:{{ Auth::user()->name }}</h4>
+            <p class="card-text">Электронная почта:{{ Auth::user()->email }}</p>
+            <p class="card-text">Роль:{{ Auth::user()->Role }}</p>
+          </div>
+        </div>
+        <!-- Copy until here -->
 
-            <select name="dropdown" id="list" class="form-control" aria-label="Default select example" onchange="tableSearch()">
-    <option selected value="">Все</option>
-    <option value="Молодежные инициативы">Молодежные инициативы</option>
-    <option value="Участие в НИР">Участие в НИР</option>
+      </div>
+      <div class="col-8 ">
+
+<select name="dropdown" id="list" class="form-control" aria-label="Default select example" onchange="tableSearch()">
+<option selected value="">Все</option>
+<option value="Молодежные инициативы">Молодежные инициативы</option>
+<option value="Участие в НИР">Участие в НИР</option>
 </select>
 
 <input type="hidden" id="selectedOption" value="">
-                <div class="tab-content" id="myTabContent">
-                  
-                    <div class="tab-paneshow active" id="files" role="tabpanel" aria-labelledby="files-tab">
-                        <table class="table" id="table">
-                            <thead>
-                                <tr>
-                                    <th >Файл</th>
-                                    <!-- <th>Владелец</th> -->
-                                    <th>Дата получения</th>
-                                    <th>MS Word</th>
-                                    <th>Adobe PDF</th>
-                                    <th>Удалить</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                            
-                           
-                            
-  @foreach($items as $item)                    
-    <tr>
-        <td> <a href="{{ route('form11', ['name' => $item->name,'id' => $item->id]) }}">{{$item->name}}</a> </td>
-        <!-- <td>{{ Auth::user()->name }}</td> -->
-        <td>{{ $item->getAttribute('created_at') }}</td>
-        <form method="post"  action="{{ route('form_word', ['name' => $item->name,'id' => $item->id]) }}" enctype="multipart/form-data">
-        @csrf
-        <td> 
-        
-        <button class="btn btn-outline-primary bi bi-file-earmark-word" type='submit'  ></button></td>
-</form>
-        <td><a href="{{ route('form_pdf', ['name' => $item->name,'id' => $item->id]) }}" class="btn btn-outline-warning bi bi-file-earmark-pdf"></a></td> 
-        <form method="post"  action="{{ route('form11_delete', ['name' => $item->name,'id' => $item->id]) }}" enctype="multipart/form-data">
-        @csrf
-        <td><button class="btn btn-outline-danger bi bi-trash3" type='submit'>
-</button>
-      </td> 
-        </form>
-    </tr>
-    
-@endforeach
-                                <!-- Здесь можно добавить другие файлы -->
-                                
-                            </tbody>
-                        </table>
-                    </div>
-                    
-                    {{$items->links('vendor.pagination.bootstrap-4')}}
-                </div>
+    <div class="tab-content" id="myTabContent">
+      
+        <div class="tab-paneshow active" id="files" role="tabpanel" aria-labelledby="files-tab">
+            <table class="table" id="table">
+                <thead>
+                    <tr>
+                        <th >Файл</th>
+                        <!-- <th>Владелец</th> -->
+                        <th>Дата получения</th>
+                        <th>MS Word</th>
+                        <th>Adobe PDF</th>
+                        <th>Удалить</th>
+                    </tr>
+                </thead>
+                <tbody>
                 
-            </div>
+               
+                
+@foreach($items as $item)                    
+<tr>
+<td> <a href="{{ route('form11', ['name' => $item->name,'id' => $item->id]) }}">{{$item->name}}</a> </td>
+<!-- <td>{{ Auth::user()->name }}</td> -->
+<td>{{ $item->getAttribute('created_at') }}</td>
+<form method="post"  action="{{ route('form_word', ['name' => $item->name,'id' => $item->id]) }}" enctype="multipart/form-data">
+@csrf
+<td> 
+
+<button class="btn btn-outline-primary bi bi-file-earmark-word" type='submit'  ></button></td>
+</form>
+<td><a href="{{ route('form_pdf', ['name' => $item->name,'id' => $item->id]) }}" class="btn btn-outline-warning bi bi-file-earmark-pdf"></a></td> 
+<form method="post"  action="{{ route('form11_delete', ['name' => $item->name,'id' => $item->id]) }}" enctype="multipart/form-data">
+@csrf
+<td><button class="btn btn-outline-danger bi bi-trash3" type='submit'>
+</button>
+</td> 
+</form>
+</tr>
+
+@endforeach
+                    <!-- Здесь можно добавить другие файлы -->
+                    
+                </tbody>
+            </table>
+        </div>
+        
+        {{$items->links('vendor.pagination.bootstrap-4')}}
+    </div>
+    
+</div>
+      </div>
+
             
             
         </div>
