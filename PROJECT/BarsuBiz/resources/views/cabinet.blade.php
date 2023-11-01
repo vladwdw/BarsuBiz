@@ -104,14 +104,16 @@
             </div> -->
             <div class="col-4">
             <div class="card card-custom bg-white border-white border-0">
-          <div class="card-custom-img" style="background-image: url(assets/img/vivi.jpg);"></div>
+          <div class="card-custom-img" style="background-image: url(assets/img/vivi.jpg); font-family:'Poppins'; "></div>
           <div class="card-custom-avatar">
             <img class="img" src="assets/img/man.png" alt="Avatar" />
           </div>
           <div class="card-body">
-            <h4 class="card-title">Имя пользователя:{{ Auth::user()->name }}</h4>
-            <p class="card-text">Электронная почта:{{ Auth::user()->email }}</p>
-            <p class="card-text">Роль:{{ Auth::user()->Role }}</p>
+           <form  class="col-md-15 right-box p-3 rounded-4 shadow box-area mb-3 " style="font-family:'Poppins';" > 
+          <h5 class="card-title"><strong>Пользователь:</strong> {{ Auth::user()->name }}</h5>
+          <h5 class="card-text  " ><strong>Почта:</strong> {{ Auth::user()->email }}</h5>
+            <h5 class="card-text  "><strong>Статус:</strong> {{ Auth::user()->Role }}</h5>
+          </form>
           </div>
         </div>
         <!-- Copy until here -->
