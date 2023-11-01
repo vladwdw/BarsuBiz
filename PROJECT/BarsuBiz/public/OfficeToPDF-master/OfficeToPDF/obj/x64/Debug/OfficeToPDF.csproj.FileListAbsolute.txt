@@ -1,0 +1,4 @@
+D:\OSPanel\domains\Dewi\PROJECT\BarsuBiz\public\OfficeToPDF-master\OfficeToPDF\obj\x64\Debug\OfficeToPDF.csproj.AssemblyReference.cache
+D:\OSPanel\domains\Dewi\PROJECT\BarsuBiz\public\OfficeToPDF-master\OfficeToPDF\obj\x64\Debug\OfficeToPDF.csproj.SuggestedBindingRedirects.cache
+D:\OSPanel\domains\Dewi\PROJECT\BarsuBiz\public\OfficeToPDF-master\OfficeToPDF\obj\x64\Debug\OfficeToPDF.csproj.ResolveComReference.cache
+D:\OSPanel\domains\Dewi\PROJECT\BarsuBiz\public\OfficeToPDF-master\OfficeToPDF\obj\x64\Debug\OfficeToPDF.csproj.CoreCompileInputs.cache
