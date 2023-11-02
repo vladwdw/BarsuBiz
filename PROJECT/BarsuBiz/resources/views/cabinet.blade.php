@@ -102,7 +102,7 @@
                     </div>
                 </div>
             </div> -->
-            <div class="col-4">
+            <div class="col-md-4 col-xs-5 mb-5">
             <div class="card card-custom bg-white border-white border-0">
           <div class="card-custom-img" style="background-image: url(assets/img/vivi.jpg); font-family:'Poppins'; "></div>
           <div class="card-custom-avatar">
@@ -119,7 +119,7 @@
         <!-- Copy until here -->
 
       </div>
-      <div class="col-8 ">
+      <div class="col-md-8 col-xs-12 ">
 
 <select name="dropdown" id="list" class="form-control" aria-label="Default select example" onchange="tableSearch()">
 <option selected value="">Все</option>
