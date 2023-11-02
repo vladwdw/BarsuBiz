@@ -27,7 +27,7 @@
 
     <div class="container d-flex justify-content-center align-items-center min-vh-100 p-4">
         
-        <form method="post" class="col-md-6 right-box p-3 rounded-4 shadow box-area" action="{{ route('form11', ['name' => $molInic->name,'id' => $molInic->id]) }}" enctype="multipart/form-data">
+        <form method="post" class="col-md-6 right-box p-3 rounded-4 shadow box-area" action="{{ route('form11_update', ['name' => $molInic->name,'id' => $molInic->id]) }}" enctype="multipart/form-data">
         @csrf
         
         

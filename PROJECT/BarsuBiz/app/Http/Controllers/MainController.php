@@ -36,6 +36,11 @@ class MainController extends Controller
         $molInic=MolInic::find($id);
         return view('forms/form11',compact('molInic','molIndic'));
         }
+        if($name=="Участие в НИР"){
+            $barsunir=BarsuNir::find($id);
+            $barsunirdop=BarsuNirDop::where("project_id", $id)->get();
+            return view("forms/form22",compact("barsunir","barsunirdop"));
+        }
     }
     public function form_word($name,$id)
     {

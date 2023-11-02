@@ -1,6 +1,9 @@
 <?php
 
 namespace App\Http\Controllers;
+
+use App\Models\BarsuNir;
+use App\Models\BarsuNirDop;
 use Illuminate\Support\Facades\Auth;
 use App\Models\MolInic;
 use App\Models\Molindic;
@@ -104,6 +107,11 @@ class StoreController1 extends Controller
      $molInic= MolInic::find($id)->delete();
         return redirect('\cabinet');
         }
+        if($name=="Участие в НИР"){
+            $barsunirdop=BarsuNirDop::where('project_id', $id)->delete();
+           $barsunir= BarsuNir::find($id)->delete();
+              return redirect('\cabinet');
+              }
         
     }
 }

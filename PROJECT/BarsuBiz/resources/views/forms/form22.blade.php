@@ -24,7 +24,7 @@
     <!--Main container-->
     <div class="container d-flex justify-content-center align-items-center min-vh-100 p-4">
         
-        <form class="col-md-6 right-box p-3 rounded-4 shadow box-area" method="post" action="/submit-form2">
+        <form class="col-md-6 right-box p-3 rounded-4 shadow box-area" method="post" action="{{ route('form22_update', ['name' => $barsunir->name,'id' => $barsunir->id]) }}">
             @csrf
             <div class="row align-items-center ">
                 <div class="header-text mb-4">
@@ -66,18 +66,21 @@
                 </div>
                 <p>Календарный план исследования.</p>
                 <div class="Pokaz">
+                
+                @foreach($barsunirdop as $item)
                     <div class="input-group mb-3 d-flex" id="solutions1">
-                        <input type="text" class="form-control form-control-lg bg-light fs-6 mb-2" name="inputValue[]" value="1">
-                        <input type="text" class="form-control form-control-lg bg-light fs-6 mb-2" placeholder="Наименование этапа работы" name="workEtap[]">
+                        <input type="text" class="form-control form-control-lg bg-light fs-6 mb-2" name="inputValue[]" value="{{ $loop->iteration }}">
+                        <input type="text" class="form-control form-control-lg bg-light fs-6 mb-2" placeholder="Наименование этапа работы" name="workEtap[]" value="{{$item->workEtap}}">
                     </div>
                     
                     <div class="input-group mb-3 d-flex" id="solutions1">
-                        <input type="text" class="form-control form-control-lg bg-light fs-6 mb-2" placeholder="Начало срока выполнения" name="nachSrok[]">
-                        <input type="text" class="form-control form-control-lg bg-light fs-6 mb-2" placeholder="Окончание окончание срока выполнения" name="endSrok[]">
+                        <input type="text" class="form-control form-control-lg bg-light fs-6 mb-2" placeholder="Начало срока выполнения" name="nachSrok[]" value="{{$item->nachSrok}}">
+                        <input type="text" class="form-control form-control-lg bg-light fs-6 mb-2" placeholder="Окончание окончание срока выполнения" name="endSrok[]" value="{{$item->endSrok}}">
                     </div>
                     <div class="input-group mb-3 d-flex" id="solutions1">
-                        <input type="text" class="form-control form-control-lg bg-light fs-6 mb-2" placeholder="Конкретные планируемые результаты" name="kontrResult[]">
+                        <input type="text" class="form-control form-control-lg bg-light fs-6 mb-2" placeholder="Конкретные планируемые результаты" name="kontrResult[]" value="{{$item->kontrResult}}">
                     </div>
+                @endforeach
                 </div>
                 <div class="container-fluid  mb-3 ">
                     <button class="btn btn-lg btn-danger fs-6" onclick="addNewElement(); return false;">Добавить поле</button>
@@ -92,10 +95,10 @@
                     <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Введите информацию" name="praktZnach">{{$barsunir->praktZnach}}</textarea>
                 </div>
                 <div class="input-group mb-3">
-                    <button class="btn btn-lg btn-danger w-100 fs-6">Отправить</button>
+                    <button class="btn btn-lg btn-danger w-100 fs-6">Сохранить</button>
                 </div>
                 <div class="input-group mb-3">
-                    <button class="btn btn-lg btn-light w-100 fs-6" style="width:20px;">Что-то делается</button>
+                    <button class="btn btn-lg btn-light w-100 fs-6" style="width:20px;">Вернуться обратно</button>
                 </div>
             </div>
         </form>

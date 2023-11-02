@@ -73,20 +73,6 @@
   </header><!-- End Header -->
     <script src="assets/js/main.js"></script> 
     <script src="assets/js/main_cab.js"></script> 
-    <!-- <nav class="navbar navbar-expand-lg bg-dark shadow">
-        <div class="container d-flex">
-          <a class="navbar-brand" href="#">BarsuBiz</a>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Переключатель навигации">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarNav">
-            <form method="post" action="{{ route('logout') }}" class="ms-auto">
-              @csrf
-            <button type="submit" class="btn btn-outline-danger">Выйти</button>
-            </form>
-          </div>
-        </div>
-      </nav> -->
       
       <div class="container">
         
