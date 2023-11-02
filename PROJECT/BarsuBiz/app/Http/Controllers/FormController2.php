@@ -20,7 +20,7 @@ class FormController2 extends Controller
     $phpWord= new PhpWord();
     $sinceDir= $request->input('sinceDir');
     $workTheme= $request->input('workTheme');
-    $nirRiks= $request->input('nirRuks');
+    $nirRuks= $request->input('nirRuks');
     $realizationTemp= $request->input('realizationTemp');
     $phone= $request->input('phone');
     $obosnovanie= $request->input('obosnovanie');
@@ -41,7 +41,7 @@ class FormController2 extends Controller
 
     $templateProcessor->setValue('workTheme',$workTheme);
     $templateProcessor->setValue('sinceElem',$sinceElem);
-    $templateProcessor->setValue('nirRuks',$nirRiks);
+    $templateProcessor->setValue('nirRuks',$nirRuks);
     $templateProcessor->setValue('realizationTemp',$realizationTemp);
     $templateProcessor->setValue('phone',$phone);
     $templateProcessor->setValue('obosnovanie',$obosnovanie);
