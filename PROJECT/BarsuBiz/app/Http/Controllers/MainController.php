@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\BarsuNir;
 use App\Models\BarsuNirDop;
+use App\Models\HudredIdeas;
 use App\Models\MolInic;
 use App\Models\MolIndic;
 use Dompdf\Dompdf;
@@ -40,6 +41,10 @@ class MainController extends Controller
             $barsunir=BarsuNir::find($id);
             $barsunirdop=BarsuNirDop::where("project_id", $id)->get();
             return view("forms/form22",compact("barsunir","barsunirdop"));
+        }
+        if($name== "100 ИДЕЙ ДЛЯ БЕЛАРУСИ"){
+            $hundredideas=HudredIdeas::find($id);
+            return view("forms/form33",compact("hundredideas"));
         }
     }
     public function form_word($name,$id)
@@ -406,10 +411,13 @@ unlink($filePath);
         return view('register');
     }
     public function cabinet(){
-        $molInics = MolInic::where('user_id', auth()->id());
-        $barsunirs = BarsuNir::where('user_id', auth()->id());
+        $molInics = MolInic::select('name', 'created_at','id')->where('user_id', auth()->id());
+        $barsunirs = BarsuNir::select('name', 'created_at','id')->where('user_id', auth()->id());
+        $hundredideas= HudredIdeas::select('name', 'created_at','id')->where('user_id', auth()->id());
+        
+        $items = $molInics->union($barsunirs)->union($hundredideas)->orderBy('created_at', 'desc')->paginate(7);
 
-        $items = $molInics->union($barsunirs)->orderBy('created_at', 'desc')->paginate(7);
+        $items = $molInics->union($barsunirs)->union($hundredideas)->orderBy('created_at', 'desc')->paginate(7);
         return view('cabinet', compact('items'));
     }
     
