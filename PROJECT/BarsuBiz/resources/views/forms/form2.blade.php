@@ -31,9 +31,11 @@
         </div>
             <div class="row align-items-center ">
                 <div class="header-text mb-4">
-                    <h2 style="text-align: center;">Заполните данные на участие в конкурсном отборе НИР
-                        в рамках системы внутренних грантов БарГУ 
-                        </h2>
+                <h3 style="text-align: center;"><strong>ЗАЯВКА </strong></h3>
+                    <h4 style="text-align: center;"> на участие в конкурсном отборе НИР
+в рамках системы внутренних грантов 
+
+                            </h4>
                 </div>
                 <p>Научное направление</p>
                 <div class="input-group mb-3">
@@ -98,7 +100,7 @@
                     <button class="btn btn-lg btn-danger w-100 fs-6">Отправить</button>
                 </div>
                 <div class="input-group mb-3">
-                    <button class="btn btn-lg btn-light w-100 fs-6" style="width:20px;">Что-то делается</button>
+                <a href="{{ route('back')}}" class="btn btn-lg btn-light w-100 fs-6" style="width:20px;">Назад</a>
                 </div>
             </div>
         </form>

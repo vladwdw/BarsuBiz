@@ -44,6 +44,7 @@ Route::get('/form2',[MainController::class, 'form2'])->name('form2');
 Route::get('/form3',[MainController::class, 'form3'])->name('form3');
 Route::get('/form4',[MainController::class, 'form4'])->name('form4');
 Route::get('/form5',[MainController::class, 'form5'])->name('form5');
+Route::get('/back',[MainController::class, 'back'])->name('back');
 Route::post('/submit-form1', [StoreController1::class, 'store']);
 Route::post('/submit-form2', [StoreController2::class, 'store']);
 Route::post('/submit-form3', [StoreController3::class, 'store']);

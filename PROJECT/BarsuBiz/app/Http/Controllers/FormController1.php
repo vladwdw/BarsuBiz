@@ -33,11 +33,8 @@ class FormController1 extends Controller
     $dopInformation=$request->input('dopInformation');
     $phpWord->setDefaultFontName('Times New Roman');
     $phpWord->setDefaultFontSize(14);
-
- 
-  
     $templateProcessor= new TemplateProcessor('templates\form1.docx');
-  
+
     $templateProcessor->deleteBlock('tableRow');
     $index=0;
     $templateProcessor->setValue('projectName',$projectName);
