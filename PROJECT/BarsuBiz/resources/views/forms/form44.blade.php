@@ -46,8 +46,10 @@
                     <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Введите данные:" name="orgZav">{{$gpni->orgZav}}</textarea>
                 </div>
                 <h4>Руководители проекта (указать сведения для каждого руководителя)</h4>
-                <div class="Pokaz">
+               
                 @foreach($gpniDop as $item)
+                <div class="inputs">
+                <div class="Pokaz">
                 <div class="input-group mb-3">
                     <input type="text" class="form-control form-control-lg bg-light fs-6" placeholder="Ф.И.О" name="fio[]" value="{{$item->fio}}">
                     <input type="text" class="form-control form-control-lg bg-light fs-6" placeholder="Ученая степень" name="uchStep[]" value="{{$item->uchStep}}">
@@ -61,11 +63,13 @@
                     <input type="text" class="form-control form-control-lg bg-light fs-6" placeholder="Телефон служебный" name="phone[]" value="{{$item->phone}}">
                     <input type="text" class="form-control form-control-lg bg-light fs-6" placeholder="E-mail" name="email[]" value="{{$item->email}}">
                 </div>
+                </div>
+                </div>
                 @endforeach
-            </div>
+            
                 <div class="container-fluid  mb-3 ">
-                    <button class="btn btn-lg btn-danger fs-6" onclick="addNewElement(); return false;">Добавить поле</button>
-                    <button class="btn btn-lg btn-outline-danger fs-6" onclick="RemoveElement(); RemoveElement(); RemoveElement();return false;">Удалить поле</button>
+                    <button type="button" class="btn btn-lg btn-danger fs-6" onclick="addNewElement(); return false;">Добавить поле</button>
+                    <button type="button" class="btn btn-lg btn-outline-danger fs-6" onclick="RemoveElement();">Удалить поле</button>
                 </div>
                 <p>Плановые сроки выполнения</p>
                 <div class="input-group mb-3">
@@ -98,8 +102,9 @@
     <script>
         function addNewElement() {
      // Создание нового div с классом "input-group mb-3 d-flex"
-     
-     var pokazDiv = document.querySelector(".Pokaz");
+     var PokazDiv1=document.querySelector(".inputs")
+     var pokazDiv = document.createElement("div");
+     pokazDiv.className="Pokaz";
   var newDiv = document.createElement("div");
   newDiv.className = "input-group mb-3 d-flex";
   // Создание нового input с классом "form-control form-control-lg bg-light fs-6 mb-2" и значением "1"
@@ -171,27 +176,31 @@
   innerDiv2.appendChild(input6);
   
   // Добавление внутреннего div в новый div
-  newDiv.appendChild(innerDiv2);
+
   
   // Получение div с классом "Pokaz"
   
   
   // Добавление нового div в div с классом "Pokaz"
   pokazDiv.appendChild(newDiv);
+  pokazDiv.appendChild(innerDiv1);
+  pokazDiv.appendChild(innerDiv2);
+  PokazDiv1.appendChild(pokazDiv);
+return false;
 
 
 }
 function RemoveElement(element) {
   // Находим родительский элемент и удаляем переданный элемент из него
-  var созданныеЭлементы = document.querySelectorAll(".input-group.mb-3.d-flex");
+  var созданныеЭлементы = document.querySelectorAll(".Pokaz");
 
   // Проверяем, есть ли элементы для удаления
-  if (созданныеЭлементы.length > 0) {
+
     // Получаем последний созданный элемент
     var последнийЭлемент = созданныеЭлементы[созданныеЭлементы.length - 1];
     последнийЭлемент.remove();
 
-  }
+
   return false;
 
 }
