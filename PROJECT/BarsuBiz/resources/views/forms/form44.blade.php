@@ -23,7 +23,7 @@
     <!--Main container-->
     <div class="container d-flex justify-content-center align-items-center min-vh-100 p-4">
         
-        <form class="col-md-6 right-box p-3 rounded-4 shadow box-area" method="post" action="">
+        <form class="col-md-6 right-box p-3 rounded-4 shadow box-area" action="{{ route('form33_update', ['name' => $hundredideas->name,'id' => $hundredideas->id]) }}" method="post" action="">
             @csrf
             <div class="mb-5 ms-auto">
                 <img src="{{asset('assets/img/logo.png')}}" class="logo" width="210px">
