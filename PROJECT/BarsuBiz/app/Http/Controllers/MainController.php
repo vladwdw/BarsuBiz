@@ -416,8 +416,6 @@ unlink($filePath);
         $hundredideas= HudredIdeas::select('name', 'created_at','id')->where('user_id', auth()->id());
         
         $items = $molInics->union($barsunirs)->union($hundredideas)->orderBy('created_at', 'desc')->paginate(7);
-
-        $items = $molInics->union($barsunirs)->union($hundredideas)->orderBy('created_at', 'desc')->paginate(7);
         return view('cabinet', compact('items'));
     }
     
