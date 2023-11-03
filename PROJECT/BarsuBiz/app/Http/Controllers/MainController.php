@@ -7,6 +7,8 @@ use App\Models\BarsuNirDop;
 use App\Models\HudredIdeas;
 use App\Models\MolInic;
 use App\Models\MolIndic;
+use App\Models\Gpni;
+use App\Models\GpniDop;
 use Dompdf\Dompdf;
 use Illuminate\Http\Request;
 use Illuminate\Database\Eloquent;
@@ -45,6 +47,11 @@ class MainController extends Controller
         if($name== "100 ИДЕЙ ДЛЯ БЕЛАРУСИ"){
             $hundredideas=HudredIdeas::find($id);
             return view("forms/form33",compact("hundredideas"));
+        }
+        if($name== "ГПНИ"){
+            $gpni=Gpni::find($id);
+            $gpniDop=GpniDop::where("project_id", $id)->get();
+            return view("forms/form44",compact("gpni","gpniDop"));
         }
     }
     public function form_word($name,$id)
@@ -421,6 +428,58 @@ unlink($filePath);
     }
 
 
+    if($name=="100 ИДЕЙ ДЛЯ БЕЛАРУСИ"){
+        $phpWord= new PhpWord();
+        $hundreadideas=HudredIdeas::find($id);
+        $name_project = $hundreadideas->name_project;
+        $name_autors = $hundreadideas->name_autors;
+        $relevance = $hundreadideas->relevance;
+        $goals_objectives = $hundreadideas->goals_objectives;
+        $advantages_project = $hundreadideas->advantages_project;
+        $property_protection = $hundreadideas->property_protection;
+        $offers = $hundreadideas->offers;
+        $phpWord->setDefaultFontName('Times New Roman');
+        $phpWord->setDefaultFontSize(14);
+    
+    
+      
+        $templateProcessor= new TemplateProcessor('templates\form3.docx');
+      
+        $templateProcessor->deleteBlock('tableRow');
+        $index=0;
+        $templateProcessor->setValue('name_project',$name_project);
+        $templateProcessor->setValue('name_autors',$name_autors);
+        $templateProcessor->setValue('relevance',$relevance);
+        $templateProcessor->setValue('goals_objectives',$goals_objectives);
+        $templateProcessor->setValue('advantages_project',$advantages_project);
+        $templateProcessor->setValue('property_protection',$property_protection);
+        $templateProcessor->setValue('offers',$offers);
+        $newFileName = $name.'_'.$id;
+        $templateProcessor->saveAs($newFileName.'.docx');
+        
+    $filePath = public_path($newFileName.'.docx');
+    
+    $word1 = IOFactory::load($newFileName.'.docx', 'Word2007');
+
+   
+    
+    
+    // Конвертируем документ в формат PDF
+    $dompdf = base_path('vendor/dompdf/dompdf');
+    \PhpOffice\PhpWord\Settings::setPdfRendererPath($dompdf);
+    \PhpOffice\PhpWord\Settings::setPdfRendererName('DomPDF');
+    $pdfwriter=\PhpOffice\PhpWord\IOFactory::createWriter($word1,'PDF');
+    $fontDir = base_path('fonts');
+    $options = new \Dompdf\Options();
+    $options->set('fontDir', $fontDir);
+    $pdfwriter->save(public_path($newFileName));
+    header('Content-Type: application/pdf');
+header('Content-Disposition: attachment; filename="' . $newFileName.'.pdf');
+readfile(public_path($newFileName));
+unlink(public_path($newFileName));
+unlink($filePath);
+
+    }
     if($name=="Так далее"){
 
     }
@@ -448,8 +507,9 @@ unlink($filePath);
         $molInics = MolInic::select('name', 'created_at','id')->where('user_id', auth()->id());
         $barsunirs = BarsuNir::select('name', 'created_at','id')->where('user_id', auth()->id());
         $hundredideas= HudredIdeas::select('name', 'created_at','id')->where('user_id', auth()->id());
+        $gpnis=Gpni::select('name','created_at','id')->where('user_id', auth()->id());
         
-        $items = $molInics->union($barsunirs)->union($hundredideas)->orderBy('created_at', 'desc')->paginate(7);
+        $items = $molInics->union($barsunirs)->union($hundredideas)->union($gpnis)->orderBy('created_at', 'desc')->paginate(7);
         return view('cabinet', compact('items'));
     }
     

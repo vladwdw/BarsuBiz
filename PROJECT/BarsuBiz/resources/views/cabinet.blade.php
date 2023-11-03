@@ -112,6 +112,7 @@
 <option value="Молодежные инициативы">Молодежные инициативы</option>
 <option value="Участие в НИР">Участие в НИР</option>
 <option value="100 ИДЕЙ ДЛЯ БЕЛАРУСИ">100 ИДЕЙ ДЛЯ БЕЛАРУСИ</option>
+<option value="ГПНИ">ГПНИ</option>
 </select>
 
 <input type="hidden" id="selectedOption" value="">
