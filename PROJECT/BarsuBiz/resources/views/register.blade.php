@@ -33,6 +33,7 @@
         </div>
         <!--Right Box Box-->
         <div class="col-md-6 right-box">
+            
             <form class="row align-items-center " method="post" action="/submit-register">
                 @csrf
                 <div class="mb-5 ms-auto">

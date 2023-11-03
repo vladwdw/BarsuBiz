@@ -30,10 +30,13 @@
         <form method="post" class="col-md-6 right-box p-3 rounded-4 shadow box-area" action="/submit-form1" enctype="multipart/form-data">
         @csrf
        
-        <div class="featured-image mb-1 text-center">
-        <img src="../../../resources/img/logo.png" alt="">
-            </div>
+        <div class="mb-5 ms-auto">
+                <img src="assets/img/logo.png" class="logo" width="210px">
+        </div>
+            
             <div class="row align-items-center ">
+                
+
                 <div class="header-text mb-1">
                     <h3 style="text-align: center;">ЗАЯВКА </h3>
                     <h4 style="text-align: center;"> на участие в конкурсе молодежных инициатив
