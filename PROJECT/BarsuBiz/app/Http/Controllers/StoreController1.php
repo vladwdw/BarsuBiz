@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\BarsuNir;
+use App\Models\HudredIdeas;
 use App\Models\BarsuNirDop;
 use Illuminate\Support\Facades\Auth;
 use App\Models\MolInic;
@@ -112,6 +113,13 @@ class StoreController1 extends Controller
            $barsunir= BarsuNir::find($id)->delete();
               return redirect('\cabinet');
               }
+        if($name== '100 ИДЕЙ ДЛЯ БЕЛАРУСИ'){
+            $hundredideas=HudredIdeas::find($id)->delete();
+            return redirect('\cabinet');
+        }
+        if($name== ''){
+
+        }
         
     }
 }
