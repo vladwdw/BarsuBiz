@@ -26,12 +26,13 @@
         <form class="col-md-6 right-box p-3 rounded-4 shadow box-area" method="post" action="">
             @csrf
             <div class="mb-5 ms-auto">
-                <img src="assets/img/logo.png" class="logo" width="210px">
+                <img src="{{asset('assets/img/logo.png')}}" class="logo" width="210px">
         </div>
             <div class="row align-items-center maa ">
                 <div class="header-text mb-4">
-                    <h2 style="text-align: center;">Конкурс проектов заданий ГПНИ
-                        </h2>
+                <h3 style="text-align: center;"><strong>ЗАЯВКА </strong></h3>
+                    <h4 style="text-align: center;"> на конкурс проектов заданий ГПНИ 
+                            </h4>
                 </div>
                 <p>Приоритетное направление научных исследований Республики Беларусь, которому соответствует заявляемый проект НИР</p>
                 <div class="input-group mb-3">
@@ -90,7 +91,7 @@
                     <button class="btn btn-lg btn-danger w-100 fs-6" type="submit">Сохранить</button>
                 </div>
                 <div class="input-group mb-3">
-                    <button class="btn btn-lg btn-light w-100 fs-6" style="width:20px;">Вернуться назад</button>
+                <a href="{{ route('back')}}" class="btn btn-lg btn-light w-100 fs-6" style="width:20px;">Назад</a>
                 </div>
             </div>
         </form>

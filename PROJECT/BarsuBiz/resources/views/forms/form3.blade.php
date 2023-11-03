@@ -30,9 +30,9 @@
         </div>
         <div class="row align-items-center ">
                 <div class="header-text mb-4">
-                    <h2 style="text-align: center;">Заполните данные на участие 
-                        в республиканском проекте "100 ИДЕЙ ДЛЯ БЕЛАРУСИ"
-                        </h2>
+                <h3 style="text-align: center;"><strong>ЗАЯВКА </strong></h3>
+                    <h4 style="text-align: center;"> на участие в республиканском проекте «100 идей для Беларуси»
+                            </h4>
                 </div>
                 <p>Наименование проекта</p>
                 <div class="input-group mb-3">
