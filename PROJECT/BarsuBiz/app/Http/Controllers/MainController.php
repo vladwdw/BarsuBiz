@@ -485,6 +485,9 @@ unlink($filePath);
     }
 
     }
+    public function back(){
+        return redirect('/cabinet');
+    }
     public function form2(){
         return view('forms/form2');
     }

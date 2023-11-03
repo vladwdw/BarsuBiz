@@ -36,7 +36,7 @@
        
             <div class="row align-items-center ">
                 <div class="header-text mb-1">
-                <h3 style="text-align: center;">ЗАЯВКА </h3>
+                <h3 style="text-align: center;"><strong>ЗАЯВКА </strong></h3>
                     <h4 style="text-align: center;"> на участие в конкурсе молодежных инициатив
                             </h4>
                 </div>
@@ -89,7 +89,7 @@
                     <button class="btn btn-lg btn-danger w-100 fs-6" type="submit" >Сохранить</button>
                 </div>
                 <div class="input-group mb-3">
-                    <button class="btn btn-lg btn-light w-100 fs-6" style="width:20px;">Что-то делается</button>
+                    <a href="{{ route('back')}}" class="btn btn-lg btn-light w-100 fs-6" style="width:20px;">Назад</a>
                 </div>
             </div>
         </form>
