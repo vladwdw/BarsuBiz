@@ -47,8 +47,9 @@
                 </div>
                 <h4>Руководители проекта (указать сведения для каждого руководителя)</h4>
                
-                @foreach($gpniDop as $item)
+               
                 <div class="inputs">
+                @foreach($gpniDop as $item)
                 <div class="Pokaz">
                 <div class="input-group mb-3">
                     <input type="text" class="form-control form-control-lg bg-light fs-6" placeholder="Ф.И.О" name="fio[]" value="{{$item->fio}}">
@@ -64,8 +65,9 @@
                     <input type="text" class="form-control form-control-lg bg-light fs-6" placeholder="E-mail" name="email[]" value="{{$item->email}}">
                 </div>
                 </div>
-                </div>
                 @endforeach
+                </div>
+                
             
                 <div class="container-fluid  mb-3 ">
                     <button type="button" class="btn btn-lg btn-danger fs-6" onclick="addNewElement(); return false;">Добавить поле</button>
@@ -152,7 +154,6 @@
   innerDiv1.appendChild(input4);
   
   // Добавление внутреннего div в новый div
-  newDiv.appendChild(innerDiv1);
   
   // Создание нового div с классом "input-group mb-3 d-flex"
   var innerDiv2 = document.createElement("div");
