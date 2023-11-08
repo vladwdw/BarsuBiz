@@ -8,6 +8,8 @@ use App\Models\BarsuNirDop;
 use Illuminate\Support\Facades\Auth;
 use App\Models\MolInic;
 use App\Models\Molindic;
+use App\Models\Gpni;
+use App\Models\GpniDop;
 use Illuminate\Http\Request;
 
 class StoreController1 extends Controller
@@ -117,8 +119,12 @@ class StoreController1 extends Controller
             $hundredideas=HudredIdeas::find($id)->delete();
             return redirect('\cabinet');
         }
+        if($name== 'ГПНИ'){
+            $gpni=Gpni::find($id)->delete();
+            $gpnidop=GpniDop::where('project_id', $id)->delete();
+        }
         if($name== ''){
-
+          
         }
         
     }

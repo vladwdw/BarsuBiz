@@ -23,7 +23,7 @@
     <!--Main container-->
     <div class="container d-flex justify-content-center align-items-center min-vh-100 p-4">
         
-        <form class="col-md-6 right-box p-3 rounded-4 shadow box-area" method="post" action="">
+        <form class="col-md-6 right-box p-3 rounded-4 shadow box-area" method="post"action="{{ route('form44_update', ['name' => $gpni->name,'id' => $gpni->id]) }}">
             @csrf
             <div class="mb-5 ms-auto">
                 <img src="{{asset('assets/img/logo.png')}}" class="logo" width="210px">
@@ -39,7 +39,7 @@
                 </div>
                 <p>Название проекта задания, краткое наименование программы (в соответствии с Перечнем государственных программ научных исследований на 2021-2025 гг.)</p>
                 <div class="form-group mb-3">
-                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Введите данные:" name="namePr">"{{$gpni->namePr}}</textarea>
+                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Введите данные:" name="namePr">{{$gpni->namePr}}</textarea>
                 </div>
                 <p>Организации-заявители с указанием ведомственной принадлежности (указать для каждой организации) </p>
                 <div class="form-group mb-3">
@@ -75,21 +75,21 @@
                 </div>
                 <p>Плановые сроки выполнения</p>
                 <div class="input-group mb-3">
-                    <input type="text" class="form-control form-control-lg bg-light fs-6" placeholder="Начало" name="nach">
-                    <input type="text" class="form-control form-control-lg bg-light fs-6" placeholder="Окончание" name="end">
+                    <input type="text" class="form-control form-control-lg bg-light fs-6" placeholder="Начало" name="nach" value="{{$gpni->nach}}">
+                    <input type="text" class="form-control form-control-lg bg-light fs-6" placeholder="Окончание" name="end" value="{{$gpni->end}}">
                 </div>
                 <p><strong>Сметная стоимость работ</strong>(в .руб)</p>
                 <div class="input-group mb-3">
-                    <input type="text" class="form-control form-control-lg bg-light fs-6" placeholder="Всего" name="allCost">
+                    <input type="text" class="form-control form-control-lg bg-light fs-6" placeholder="Всего" name="allCost"  value="{{$gpni->allCost}}">
                 </div>
                 <div class="input-group mb-3">
-                    <input type="text" class="form-control form-control-lg bg-light fs-6" placeholder="Из них привлеченное внебюджетное финансирование" name="fin1">
+                    <input type="text" class="form-control form-control-lg bg-light fs-6" placeholder="Из них привлеченное внебюджетное финансирование" name="fin1" value="{{$gpni->fin1}}">
                 </div>
                 <div class="input-group mb-3">
-                    <input type="text" class="form-control form-control-lg bg-light fs-6" placeholder="В том числе на первый год  " name="fin2">
+                    <input type="text" class="form-control form-control-lg bg-light fs-6" placeholder="В том числе на первый год  " name="fin2" value="{{$gpni->fin2}}">
                 </div>
                 <div class="input-group mb-3">
-                    <input type="text" class="form-control form-control-lg bg-light fs-6" placeholder="Из них привлеченное внебюджетное финансирование " name="fin3">
+                    <input type="text" class="form-control form-control-lg bg-light fs-6" placeholder="Из них привлеченное внебюджетное финансирование " name="fin3" value="{{$gpni->fin3}}">
                 </div>
                 
                 <div class="input-group mb-3">

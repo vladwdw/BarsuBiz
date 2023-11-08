@@ -9,6 +9,7 @@ use App\Models\MolInic;
 use App\Models\MolIndic;
 use App\Models\Gpni;
 use App\Models\GpniDop;
+use App\Models\Grant;
 use Dompdf\Dompdf;
 use Illuminate\Http\Request;
 use Illuminate\Database\Eloquent;
@@ -53,6 +54,13 @@ class MainController extends Controller
             $gpniDop=GpniDop::where("project_id", $id)->get();
             return view("forms/form44",compact("gpni","gpniDop"));
         }
+        if($name== "Заявка на получение гранта"){
+            $grant=Grant::find($id);
+            return view("forms/form55",compact("grant"));
+
+        }
+
+
     }
     public function form_word($name,$id)
     {
@@ -230,6 +238,103 @@ class MainController extends Controller
             $templateProcessor->saveAs($newFileName.'.docx');
             
     return response()->download($newFileName.'.docx')->deleteFileAfterSend();
+        }
+        if($name=="ГПНИ"){
+            $phpWord= new PhpWord();
+            $gpni=Gpni::find($id);
+            $sinceDir= $gpni->sincedir;
+            $namePr= $gpni->namePr;
+            $orgZav= $gpni->orgZav;
+            $nach= $gpni->nach;
+            $end= $gpni->end;
+            $allCost= $gpni->allCost;
+            $fin1= $gpni->fin1;
+            $fin2= $gpni->fin2;
+            $fin3= $gpni->fin3;
+            $gpnidop=GpniDop::where('project_id', $id)->get();
+            $fio=array();
+            $uchStep=array();
+            $uchZav=array();
+            $kafLab=array();
+            $phone=array();
+            $email=array();
+            foreach($gpnidop as $item)
+            {
+                array_push($fio,$item->fio);
+                array_push($uchStep, $item->uchStep);
+                array_push($uchZav,$item->uchZav);
+                array_push($kafLab,$item->kafLab);
+                array_push($phone,$item->phone);
+                array_push($email,$item->email);
+            }
+            $templateProcessor= new TemplateProcessor('templates\form4.docx');
+  
+  
+    $index=0;
+    $templateProcessor->setValue('sinceDir',$sinceDir);
+    $templateProcessor->setValue('nach',$nach);
+    $templateProcessor->setValue('namePr',$namePr);
+    $templateProcessor->setValue('orgZav',$orgZav);
+    $templateProcessor->setValue('end',$end);
+    $templateProcessor->setValue('allCost',$allCost);
+    $templateProcessor->setValue('fin1',$fin1);
+    $templateProcessor->setValue('fin2',$fin2);
+    $templateProcessor->setValue('fin3',$fin3);
+    $newFileName = time();
+
+    
+    $section=$phpWord->addSection();
+    
+
+
+    $section->addTextBreak(1);
+    $styleCell =
+    array(
+    'borderColor' =>'000000',
+    'borderSize' => 3,
+    'valign' => 'center',
+    'cellMargin' => 100,
+    );
+    $styleText = array(
+        'name' => 'Times New Roman',
+        'valign'=>'center',
+        'size' => 12,
+    );
+
+    $table = $section->addTable($styleCell);
+    for ($i = 0; $i < count($fio); $i++) {
+        $section->addTextBreak();
+        $table->addRow(200);
+    $table->addCell(5850, $styleCell)->addText("Ф.И.О. (полное) ",$styleText);
+    $table->addCell(4400, $styleCell)->addText($fio[$i],$styleText);
+    $table->addRow(200);
+    $table->addCell(5850, $styleCell)->addText("Ученая степень ",$styleText);
+    $table->addCell(4400, $styleCell)->addText($uchStep[$i],$styleText);
+    $table->addRow(200);
+    $table->addCell(5850, $styleCell)->addText("Ученое звание ",$styleText);
+    $table->addCell(4400, $styleCell)->addText($uchZav[$i],$styleText);
+    $table->addRow(200);
+    $table->addCell(5850, $styleCell)->addText("Кафедра, лаборатория",$styleText);
+    $table->addCell(4400, $styleCell)->addText($kafLab[$i],$styleText);
+    $table->addRow(200);
+    $table->addCell(5850, $styleCell)->addText("Телефон служебный (с кодом города), мобильный с указанием кода оператора",$styleText);
+    $table->addCell(4400, $styleCell)->addText($phone[$i],$styleText);
+    $table->addRow(200);
+    $table->addCell(5850, $styleCell)->addText("Контактный e-mail",$styleText);
+    $table->addCell(4400, $styleCell)->addText($email[$i],$styleText);
+    
+
+    
+
+    }
+    $newFileName = $name.'_'.$id;
+    $templateProcessor->setComplexBlock('table',$table);
+    $templateProcessor->saveAs($newFileName.'.docx');
+
+    return response()->download($newFileName.'.docx')->deleteFileAfterSend();
+    
+
+
         }
             
     }
@@ -480,6 +585,121 @@ unlink(public_path($newFileName));
 unlink($filePath);
 
     }
+    if($name=="ГПНИ"){
+        $phpWord= new PhpWord();
+        $gpni=Gpni::find($id);
+        $sinceDir= $gpni->sincedir;
+        $namePr= $gpni->namePr;
+        $orgZav= $gpni->orgZav;
+        $nach= $gpni->nach;
+        $end= $gpni->end;
+        $allCost= $gpni->allCost;
+        $fin1= $gpni->fin1;
+        $fin2= $gpni->fin2;
+        $fin3= $gpni->fin3;
+        $gpnidop=GpniDop::where('project_id', $id)->get();
+        $fio=array();
+        $uchStep=array();
+        $uchZav=array();
+        $kafLab=array();
+        $phone=array();
+        $email=array();
+        foreach($gpnidop as $item)
+        {
+            array_push($fio,$item->fio);
+            array_push($uchStep, $item->uchStep);
+            array_push($uchZav,$item->uchZav);
+            array_push($kafLab,$item->kafLab);
+            array_push($phone,$item->phone);
+            array_push($email,$item->email);
+        }
+        $templateProcessor= new TemplateProcessor('templates\form4.docx');
+
+
+$index=0;
+$templateProcessor->setValue('sinceDir',$sinceDir);
+$templateProcessor->setValue('nach',$nach);
+$templateProcessor->setValue('namePr',$namePr);
+$templateProcessor->setValue('orgZav',$orgZav);
+$templateProcessor->setValue('end',$end);
+$templateProcessor->setValue('allCost',$allCost);
+$templateProcessor->setValue('fin1',$fin1);
+$templateProcessor->setValue('fin2',$fin2);
+$templateProcessor->setValue('fin3',$fin3);
+$newFileName = time();
+
+
+$section=$phpWord->addSection();
+
+
+
+$section->addTextBreak(1);
+$styleCell =
+array(
+'borderColor' =>'000000',
+'borderSize' => 3,
+'valign' => 'center',
+'cellMargin' => 100,
+);
+$styleText = array(
+    'name' => 'Times New Roman',
+    'valign'=>'center',
+    'size' => 12,
+);
+
+$table = $section->addTable($styleCell);
+for ($i = 0; $i < count($fio); $i++) {
+    $section->addTextBreak();
+    $table->addRow(200);
+$table->addCell(5850, $styleCell)->addText("Ф.И.О. (полное) ",$styleText);
+$table->addCell(4400, $styleCell)->addText($fio[$i],$styleText);
+$table->addRow(200);
+$table->addCell(5850, $styleCell)->addText("Ученая степень ",$styleText);
+$table->addCell(4400, $styleCell)->addText($uchStep[$i],$styleText);
+$table->addRow(200);
+$table->addCell(5850, $styleCell)->addText("Ученое звание ",$styleText);
+$table->addCell(4400, $styleCell)->addText($uchZav[$i],$styleText);
+$table->addRow(200);
+$table->addCell(5850, $styleCell)->addText("Кафедра, лаборатория",$styleText);
+$table->addCell(4400, $styleCell)->addText($kafLab[$i],$styleText);
+$table->addRow(200);
+$table->addCell(5850, $styleCell)->addText("Телефон служебный (с кодом города), мобильный с указанием кода оператора",$styleText);
+$table->addCell(4400, $styleCell)->addText($phone[$i],$styleText);
+$table->addRow(200);
+$table->addCell(5850, $styleCell)->addText("Контактный e-mail",$styleText);
+$table->addCell(4400, $styleCell)->addText($email[$i],$styleText);
+
+
+
+
+}
+$newFileName = $name.'_'.$id;
+$templateProcessor->setComplexBlock('table',$table);
+$templateProcessor->saveAs($newFileName.'.docx');
+$filePath = public_path($newFileName.'.docx');
+    
+    $word1 = IOFactory::load($newFileName.'.docx', 'Word2007');
+
+   
+    
+    
+    // Конвертируем документ в формат PDF
+    $dompdf = base_path('vendor/dompdf/dompdf');
+    \PhpOffice\PhpWord\Settings::setPdfRendererPath($dompdf);
+    \PhpOffice\PhpWord\Settings::setPdfRendererName('DomPDF');
+    $pdfwriter=\PhpOffice\PhpWord\IOFactory::createWriter($word1,'PDF');
+    $fontDir = base_path('fonts');
+    $options = new \Dompdf\Options();
+    $options->set('fontDir', $fontDir);
+    $pdfwriter->save(public_path($newFileName));
+    header('Content-Type: application/pdf');
+header('Content-Disposition: attachment; filename="' . $newFileName.'.pdf');
+readfile(public_path($newFileName));
+unlink(public_path($newFileName));
+unlink($filePath);
+
+
+    }
     if($name=="Так далее"){
 
     }
@@ -511,8 +731,9 @@ unlink($filePath);
         $barsunirs = BarsuNir::select('name', 'created_at','id')->where('user_id', auth()->id());
         $hundredideas= HudredIdeas::select('name', 'created_at','id')->where('user_id', auth()->id());
         $gpnis=Gpni::select('name','created_at','id')->where('user_id', auth()->id());
+        $grant=Grant::select('name','created_at','id')->where('user_id', auth()->id());
         
-        $items = $molInics->union($barsunirs)->union($hundredideas)->union($gpnis)->orderBy('created_at', 'desc')->paginate(7);
+        $items = $molInics->union($barsunirs)->union($hundredideas)->union($gpnis)->orderBy('created_at', 'desc')->union($grant)->paginate(7);
         return view('cabinet', compact('items'));
     }
     

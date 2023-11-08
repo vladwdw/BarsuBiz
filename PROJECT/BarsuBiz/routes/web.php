@@ -12,6 +12,7 @@ use App\Http\Controllers\StoreController1;
 use App\Http\Controllers\StoreController2;
 use App\Http\Controllers\StoreController3;
 use App\Http\Controllers\StoreController4;
+use App\Http\Controllers\StoreController5;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
 /*
@@ -49,10 +50,11 @@ Route::post('/submit-form1', [StoreController1::class, 'store']);
 Route::post('/submit-form2', [StoreController2::class, 'store']);
 Route::post('/submit-form3', [StoreController3::class, 'store']);
 Route::post('/submit-form4', [StoreController4::class, 'store']);
-Route::post('/submit-form5', [FormController5::class, 'store']);
+Route::post('/submit-form5', [StoreController5::class, 'store']);
 Route::post('/form11-update/{name}/{id}',[StoreController1::class, 'form11_update'])->name('form11_update');
 Route::post('/form22-update/{name}/{id}',[StoreController2::class, 'form22_update'])->name('form22_update');
 Route::post('/form33-update/{name}/{id}',[StoreController3::class, 'form33_update'])->name('form33_update');
+Route::post('/form44-update/{name}/{id}',[StoreController4::class, 'form44_update'])->name('form44_update');
 Route::post('/form11-delete/{name}/{id}/delete',[StoreController1::class, 'form11_delete'])->name('form11_delete');
 });
 Route::get('/css/{filename}', function ($filename) {
