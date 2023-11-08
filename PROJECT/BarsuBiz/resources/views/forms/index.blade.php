@@ -806,9 +806,9 @@
             <ul>
               <li><i class="bx bx-chevron-right"></i> <a href="{{route('form1')}}">Проект молодежных инициатив</a></li>
               <li><i class="bx bx-chevron-right"></i> <a href="{{route('form2')}}">Конкурсный отбор НИР в рамках системы внутренних грантов БарГУ</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="{{route('form1')}}">100 идей для Беларуси</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="{{route('form1')}}">Конкурс проектов заданий "ГПНИ"</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="{{route('form1')}}">Заявка на получение гранта</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="{{route('form3')}}">100 идей для Беларуси</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="{{route('form4')}}">Конкурс проектов заданий "ГПНИ"</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="{{route('form5')}}">Заявка на получение гранта</a></li>
             </ul>
           </div>
 

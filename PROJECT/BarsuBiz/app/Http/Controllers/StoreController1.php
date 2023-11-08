@@ -5,11 +5,11 @@ namespace App\Http\Controllers;
 use App\Models\BarsuNir;
 use App\Models\HudredIdeas;
 use App\Models\BarsuNirDop;
+use App\Models\Gpni;
+use App\Models\GpniDop;
 use Illuminate\Support\Facades\Auth;
 use App\Models\MolInic;
 use App\Models\Molindic;
-use App\Models\Gpni;
-use App\Models\GpniDop;
 use Illuminate\Http\Request;
 
 class StoreController1 extends Controller
