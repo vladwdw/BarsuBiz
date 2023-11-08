@@ -6,6 +6,7 @@ use App\Models\BarsuNir;
 use App\Models\HudredIdeas;
 use App\Models\BarsuNirDop;
 use App\Models\Gpni;
+use App\Models\Grant;
 use App\Models\GpniDop;
 use Illuminate\Support\Facades\Auth;
 use App\Models\MolInic;
@@ -120,11 +121,15 @@ class StoreController1 extends Controller
             return redirect('\cabinet');
         }
         if($name== 'ГПНИ'){
-            $gpni=Gpni::find($id)->delete();
+
             $gpnidop=GpniDop::where('project_id', $id)->delete();
+            $gpni=Gpni::find($id)->delete();
+            return redirect('cabinet');
+            
         }
-        if($name== ''){
-          
+        if($name== 'Заявка на получение гранта'){
+            $grant=Grant::find($id)->delete();
+            return redirect('cabinet');
         }
         
     }

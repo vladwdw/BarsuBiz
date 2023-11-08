@@ -32,7 +32,7 @@
         </div> 
         <div class="row align-items-center ">
                 <div class="header-text mb-4">
-                    <h2 style="text-align: center;">Заполните заявку на получение гранта
+                    <h2 style="text-align: center;">Заявка на получение гранта
                         </h2>
                 </div>
                 <p>Научное направление</p>

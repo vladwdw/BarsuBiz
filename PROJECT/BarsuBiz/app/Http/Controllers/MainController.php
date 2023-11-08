@@ -336,6 +336,32 @@ class MainController extends Controller
 
 
         }
+        if($name=="Заявка на получение гранта"){
+            $grant=Grant::find($id);
+            $scienceDirection=$grant->sienceDirection;
+            $fioGrad=$grant->fioGrad;
+            $currentYear=date("Y");
+            $grandCategory=$grant->grandCategory;
+            $workName=$grant->workName;
+            $disertationTheme=$grant->disertationTheme;
+            $uchrName=$grant->uchrName;
+            $special=$grant->special;
+            $knowledge=$grant->knowledge;
+            $templateProcessor= new TemplateProcessor('templates\form5.docx');
+            $templateProcessor->setValue('scienceDirection',$scienceDirection);
+            $templateProcessor->setValue('fioGrad',$fioGrad);
+            $templateProcessor->setValue('grandCategory',$grandCategory);
+            $templateProcessor->setValue('workName',$workName);
+            $templateProcessor->setValue('disertationTheme',$disertationTheme);
+            $templateProcessor->setValue('uchrName',$uchrName);
+            $templateProcessor->setValue('special',$special);
+            $templateProcessor->setValue('knowledge',$knowledge);
+            $templateProcessor->setValue('currentYear',$currentYear);
+            $newFileName = $name.'_'.$id;
+            $templateProcessor->saveAs($newFileName.'.docx');
+            
+    return response()->download($newFileName.'.docx')->deleteFileAfterSend();
+        }
             
     }
     public function  form_pdf($name,$id)
@@ -700,8 +726,50 @@ unlink($filePath);
 
 
     }
-    if($name=="Так далее"){
+    if($name=="Заявка на получение гранта"){
+        $grant=Grant::find($id);
+        $scienceDirection=$grant->sienceDirection;
+        $fioGrad=$grant->fioGrad;
+        $currentYear=date("Y");
+        $grandCategory=$grant->grandCategory;
+        $workName=$grant->workName;
+        $disertationTheme=$grant->disertationTheme;
+        $uchrName=$grant->uchrName;
+        $special=$grant->special;
+        $knowledge=$grant->knowledge;
+        $templateProcessor= new TemplateProcessor('templates\form5.docx');
+        $templateProcessor->setValue('scienceDirection',$scienceDirection);
+        $templateProcessor->setValue('fioGrad',$fioGrad);
+        $templateProcessor->setValue('grandCategory',$grandCategory);
+        $templateProcessor->setValue('workName',$workName);
+        $templateProcessor->setValue('disertationTheme',$disertationTheme);
+        $templateProcessor->setValue('uchrName',$uchrName);
+        $templateProcessor->setValue('special',$special);
+        $templateProcessor->setValue('knowledge',$knowledge);
+        $templateProcessor->setValue('currentYear',$currentYear);
+        $newFileName = $name.'_'.$id;
+        $templateProcessor->saveAs($newFileName.'.docx');
+        $filePath = public_path($newFileName.'.docx');
+    
+    $word1 = IOFactory::load($newFileName.'.docx', 'Word2007');
 
+   
+    
+    
+    // Конвертируем документ в формат PDF
+    $dompdf = base_path('vendor/dompdf/dompdf');
+    \PhpOffice\PhpWord\Settings::setPdfRendererPath($dompdf);
+    \PhpOffice\PhpWord\Settings::setPdfRendererName('DomPDF');
+    $pdfwriter=\PhpOffice\PhpWord\IOFactory::createWriter($word1,'PDF');
+    $fontDir = base_path('fonts');
+    $options = new \Dompdf\Options();
+    $options->set('fontDir', $fontDir);
+    $pdfwriter->save(public_path($newFileName));
+    header('Content-Type: application/pdf');
+header('Content-Disposition: attachment; filename="' . $newFileName.'.pdf');
+readfile(public_path($newFileName));
+unlink(public_path($newFileName));
+unlink($filePath);
     }
 
     }

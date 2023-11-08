@@ -55,6 +55,7 @@ Route::post('/form11-update/{name}/{id}',[StoreController1::class, 'form11_updat
 Route::post('/form22-update/{name}/{id}',[StoreController2::class, 'form22_update'])->name('form22_update');
 Route::post('/form33-update/{name}/{id}',[StoreController3::class, 'form33_update'])->name('form33_update');
 Route::post('/form44-update/{name}/{id}',[StoreController4::class, 'form44_update'])->name('form44_update');
+Route::post('/form55-update/{name}/{id}',[StoreController5::class, 'form55_update'])->name('form55_update');
 Route::post('/form11-delete/{name}/{id}/delete',[StoreController1::class, 'form11_delete'])->name('form11_delete');
 });
 Route::get('/css/{filename}', function ($filename) {

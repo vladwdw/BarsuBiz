@@ -113,6 +113,7 @@
 <option value="Участие в НИР">Участие в НИР</option>
 <option value="100 ИДЕЙ ДЛЯ БЕЛАРУСИ">100 ИДЕЙ ДЛЯ БЕЛАРУСИ</option>
 <option value="ГПНИ">ГПНИ</option>
+<option value="Заявка на получение гранта">Заявка на получение гранта</option>
 </select>
 
 <input type="hidden" id="selectedOption" value="">
