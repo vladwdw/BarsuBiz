@@ -4,7 +4,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Личный кабинет</title>
-    
+    <script src="https://js.pusher.com/8.2.0/pusher.min.js"></script>
+  <script>
+
+    // Enable pusher logging - don't include this in production
+    Pusher.logToConsole = true;
+
+    var pusher = new Pusher('3e58a1bc0a8fa0144d96', {
+      cluster: 'eu'
+    });
+
+    var channel = pusher.subscribe('my-channel');
+    channel.bind('my-event', function(data) {
+      alert(JSON.stringify(data));
+    });
+  </script>
     <!--  -->
     <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
 <link href="{{ asset('css/mainstyle1.css') }}" rel="stylesheet">
@@ -176,10 +190,18 @@
     </div>
     <div class="position-fixed bottom-0 end-0">
     @foreach ($notifications as $notification)
+    @if($notification->data['type']=='edit')
 <div class="alert alert-warning alert-dismissible fade show" role="alert">
    {{ $notification->data['message'] }}
    <button class="btn-close" onclick="markAsRead('{{ $notification->id }}')"  data-bs-dismiss="alert" aria-label="Close"></button>
 </div>
+@endif
+@if($notification->data['type']=='delete')
+<div class="alert alert-danger alert-dismissible fade show" role="alert">
+   {{ $notification->data['message'] }}
+   <button class="btn-close" onclick="markAsRead('{{ $notification->id }}')"  data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+@endif
 
 @endforeach
 @endif

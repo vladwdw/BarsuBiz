@@ -13,6 +13,7 @@ use App\Models\MolInic;
 use App\Models\Molindic;
 use App\Models\User;
 use App\Notifications\Edit;
+use App\Notifications\Delete;
 use Illuminate\Http\Request;
 
 class StoreController1 extends Controller
@@ -114,28 +115,78 @@ class StoreController1 extends Controller
     public function form11_delete($name,$id)
     {
         if($name=="Молодежные инициативы"){
-      $molIndic=MolIndic::where('project_id', $id)->delete();
-     $molInic= MolInic::find($id)->delete();
+            
+     
+     $molInic= MolInic::find($id);
+     if($molInic->user_id==Auth::user()->id || Auth::user()->Role=='Admin')
+     {
+        $molIndic=MolIndic::where('project_id', $id)->delete();
+        if(Auth::user()->Role=="Admin"){
+            $user = User::where('name', $molInic->owner)->first();
+            $data=$molInic->name."_#".$molInic->id;
+            $user->notify(new Delete($data));
+        }
+        $molInic->delete();
+        event(new UserDataDeleted($user));
+        
+     }
         return redirect('\cabinet');
         }
         if($name=="Участие в НИР"){
+           
+           $barsunir= BarsuNir::find($id);
+           if($barsunir->user_id==Auth::user()->id || Auth::user()->Role== 'Admin'){
             $barsunirdop=BarsuNirDop::where('project_id', $id)->delete();
-           $barsunir= BarsuNir::find($id)->delete();
+            if(Auth::user()->Role=="Admin"){
+                $user = User::where('name', $barsunir->owner)->first();
+                $data=$barsunir->name."_#".$barsunir->id;
+                $user->notify(new Delete($data));
+                
+            }
+            $barsunir->delete();
+            
+           }
               return redirect('\cabinet');
               }
         if($name== '100 ИДЕЙ ДЛЯ БЕЛАРУСИ'){
-            $hundredideas=HudredIdeas::find($id)->delete();
+            $hundredideas=HudredIdeas::find($id);
+            if($hundredideas->user_id==Auth::user()->id || Auth::user()->Role== 'Admin'){
+                if(Auth::user()->Role=="Admin"){
+                    $user = User::where('name', $hundredideas->owner)->first();
+                    $data=$hundredideas->name."_#".$hundredideas->id;
+                    $user->notify(new Delete($data));
+                }
+                $hundredideas->delete();
+            }
             return redirect('\cabinet');
         }
         if($name== 'ГПНИ'){
 
-            $gpnidop=GpniDop::where('project_id', $id)->delete();
-            $gpni=Gpni::find($id)->delete();
+            
+            $gpni=Gpni::find($id);
+            if($gpni->user_id==Auth::user()->id || Auth::user()->Role== 'Admin'){
+                $gpnidop=GpniDop::where('project_id', $id)->delete();
+                if(Auth::user()->Role=="Admin"){
+                    $user = User::where('name', $gpni->owner)->first();
+                    $data=$gpni->name."_#".$gpni->id;
+                    $user->notify(new Delete($data));
+                }
+                $gpni->delete();
+
+            }
             return redirect('cabinet');
             
         }
         if($name== 'Заявка на получение гранта'){
-            $grant=Grant::find($id)->delete();
+            $grant=Grant::find($id);
+            if($grant->user_id==Auth::user()->id || Auth::user()->Role== 'Admin'){
+                if(Auth::user()->Role=="Admin"){
+                    $user = User::where('name', $grant->owner)->first();
+                    $data=$grant->name."_#".$grant->id;
+                    $user->notify(new Delete($data));
+                }
+                $grant->delete();
+            }
             return redirect('cabinet');
         }
         
