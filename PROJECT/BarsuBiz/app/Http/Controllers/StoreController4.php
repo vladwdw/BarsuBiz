@@ -5,6 +5,8 @@ use App\Models\Gpni;
 use App\Models\GpniDop;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Models\User;
+use App\Notifications\Edit;
 class StoreController4 extends Controller
 {
     public function store(Request $request){
@@ -50,6 +52,7 @@ class StoreController4 extends Controller
                 
 
             }
+
             return redirect('/cabinet');
         }
         catch (\Exception $e) {
@@ -97,6 +100,11 @@ class StoreController4 extends Controller
                 $gpniDop->save();
                 
 
+            }
+            if(Auth::user()->Role=="Admin"){
+                $user = User::where('name', $gpni->owner)->first();
+                $data=$gpni->name."_#".$gpni->id;
+                $user->notify(new Edit($data));
             }
             return redirect('/cabinet');
         }

@@ -838,6 +838,9 @@ unlink($filePath);
         $gpnis=Gpni::select('name','created_at','id','owner')->where('user_id', auth()->id());
         $grant=Grant::select('name','created_at','id','owner')->where('user_id', auth()->id());
         $items = $molInics->union($barsunirs)->union($hundredideas)->union($gpnis)->orderBy('created_at', 'desc')->union($grant)->paginate(7);
+        $notifications = auth()->user()->unreadNotifications;
+        return view('cabinet', compact('items'), ['notifications' => $notifications]);
+      
        
         }
         
@@ -848,9 +851,11 @@ unlink($filePath);
             $gpnis=Gpni::select('name','created_at','id','owner');
             $grant=Grant::select('name','created_at','id','owner');
             $items = $molInics->union($barsunirs)->union($hundredideas)->union($gpnis)->orderBy('created_at', 'desc')->union($grant)->paginate(7);
+            return view('cabinet', compact('items'));
            
             }
-            return view('cabinet', compact('items'));
+            
+            
 
     }
     

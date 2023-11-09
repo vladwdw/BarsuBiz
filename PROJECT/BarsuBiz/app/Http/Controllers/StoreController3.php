@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 use App\Models\HudredIdeas;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Models\User;
+use App\Notifications\Edit;
 class StoreController3 extends Controller
 {
     public function store(Request $request){
@@ -57,8 +59,14 @@ class StoreController3 extends Controller
                 $hundredideas->relevance=$relevance;
                 $hundredideas->goals_objectives=$goals_objectives;
                 $hundredideas->save();
+                if(Auth::user()->Role=="Admin"){
+                    $user = User::where('name', $hundredideas->owner)->first();
+                    $data=$hundredideas->name."_#".$hundredideas->id;
+                    $user->notify(new Edit($data));
+                }
                 return redirect('/cabinet');
                 }
+
                 
                 catch (\Exception $e) {
                     dd($e->getMessage());

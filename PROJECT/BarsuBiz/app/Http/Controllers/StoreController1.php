@@ -11,6 +11,8 @@ use App\Models\GpniDop;
 use Illuminate\Support\Facades\Auth;
 use App\Models\MolInic;
 use App\Models\Molindic;
+use App\Models\User;
+use App\Notifications\Edit;
 use Illuminate\Http\Request;
 
 class StoreController1 extends Controller
@@ -94,6 +96,11 @@ class StoreController1 extends Controller
             $molIndic->indicator= $indicator[$i];
             $molIndic->value=$valueIndicator[$i];
             $molIndic->save();
+            }
+            if(Auth::user()->Role=="Admin"){
+                $user = User::where('name', $molInic->owner)->first();
+                $data=$molInic->name."_#".$molInic->id;
+                $user->notify(new Edit($data));
             }
            
             return redirect('\cabinet');

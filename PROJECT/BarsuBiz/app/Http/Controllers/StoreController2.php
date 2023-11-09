@@ -6,7 +6,8 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\BarsuNir;
 use App\Models\BarsuNirDop;
 use Illuminate\Http\Request;
-
+use App\Models\User;
+use App\Notifications\Edit;
 class StoreController2 extends Controller
 {
     public function store(Request $request){
@@ -51,6 +52,7 @@ class StoreController2 extends Controller
             $BarsuNirDop->save();
            
             }
+
              return redirect('/cabinet');
  
 
@@ -100,6 +102,11 @@ class StoreController2 extends Controller
                 $BarsuNirDop->kontrResult=$kontrResult[$i];
                 $BarsuNirDop->save();
                
+                }
+                if(Auth::user()->Role=="Admin"){
+                    $user = User::where('name', $barsunir->owner)->first();
+                    $data=$barsunir->name."_#".$barsunir->id;
+                    $user->notify(new Edit($data));
                 }
                  return redirect('/cabinet');
      

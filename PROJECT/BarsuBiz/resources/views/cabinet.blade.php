@@ -24,6 +24,7 @@
   <link href="{{asset('assets/css/card.css')}}" rel="stylesheet">
   <link href="{{asset('assets/img/favicon.png')}}" rel="icon">
   <link href="{{asset('assets/img/apple-touch-icon.png')}}" rel="apple-touch-icon">
+  <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
 
   <!-- Google Fonts -->
   <link href="{{asset('https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i')}}" rel="stylesheet">
@@ -141,7 +142,7 @@
 @foreach($items as $item)   
 
 <tr>
-<td> <a href="{{ route('form11', ['name' => $item->name,'id' => $item->id]) }}">{{$item->name}}</a> </td>
+<td> <a href="{{ route('form11', ['name' => $item->name,'id' => $item->id]) }}">{{$item->name}}_#{{$item->id}}</a> </td>
 <!-- <td>{{ Auth::user()->name }}</td> -->
 <td>{{ $item->getAttribute('created_at') }}</td>
 @if(auth()->user()->Role == 'Admin')
@@ -170,9 +171,21 @@
         </div>
         
         {{$items->links('vendor.pagination.bootstrap-4')}}
+        @if(auth()->user()->Role == 'User')
+
     </div>
-    
+    <div class="position-fixed bottom-0 end-0">
+    @foreach ($notifications as $notification)
+<div class="alert alert-warning alert-dismissible fade show" role="alert">
+   {{ $notification->data['message'] }}
+   <button class="btn-close" onclick="markAsRead('{{ $notification->id }}')"  data-bs-dismiss="alert" aria-label="Close"></button>
 </div>
+
+@endforeach
+@endif
+</div>
+</div>
+
       </div>
 
             
@@ -189,8 +202,20 @@
     tableSearch();
 });
 
-
-
+function markAsRead(id) {
+ $.ajax({
+    url: '/mark-as-read',
+    type: 'POST',
+    data: {
+        id: id,
+        _token: '{{ csrf_token() }}'
+    }
+ }).done(function(response) {
+    console.log(response.success);
+ }).fail(function(jqXHR, textStatus, errorThrown) {
+    console.error(textStatus, errorThrown);
+ });
+}
 // Применение сохраненного фильтра при загрузке страницы
 window.addEventListener("load", function () {
     var selectedFilter = localStorage.getItem("selectedFilter");
