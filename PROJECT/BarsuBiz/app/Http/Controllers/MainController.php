@@ -21,7 +21,6 @@ use PhpOffice\PhpWord\PhpWord;
 use PhpOffice;
 use PhpOffice\PhpWord\Element\Table;
 use PhpOffice\PhpWord\Style\Cell;
-use App\Notifications\Delete;
 use PhpOffice\PhpWord\IOFactory;
 use PhpOffice\PhpWord\Style;
 use PhpOffice\PhpWord\SimpleType\Jc;
