@@ -18,6 +18,7 @@ class StoreController3 extends Controller
         try{
             $hundredideas=new HudredIdeas();
             $hundredideas->user_id=Auth::user()->id;
+            $hundredideas->owner=Auth::user()->name;
             $hundredideas->name_project=$name_project;
             $hundredideas->name_autors=$name_autors;
             $hundredideas->relevance=$relevance;
@@ -48,7 +49,6 @@ class StoreController3 extends Controller
     
             try {
                 $hundredideas = HudredIdeas::find($id);
-                $hundredideas->user_id=Auth::user()->id;
                 $hundredideas->property_protection=$property_protection;
                 $hundredideas->offers=$offers;
                 $hundredideas->advantages_project=$advantages_project;

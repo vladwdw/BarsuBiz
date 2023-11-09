@@ -17,6 +17,7 @@ class StoreController5 extends Controller
     $special=$request->input('special');
     $knowledge=$request->input('knowledge');
     $grant=new Grant();
+    $grant->owner=Auth::user()->name;
     $grant->user_id=Auth::user()->id;
     $grant->sienceDirection=$sienceDirection;
     $grant->fioGrad=$fioGrad;
@@ -34,6 +35,7 @@ class StoreController5 extends Controller
   }
   public function form55_update(Request $request, $name,$id){
 
+  
     try{
       $sienceDirection=$request->input('sienceDirection');
       $fioGrad=$request->input('fioGrad');
@@ -44,7 +46,6 @@ class StoreController5 extends Controller
       $special=$request->input('special');
       $knowledge=$request->input('knowledge');
       $grant=Grant::find($id);
-      $grant->user_id=Auth::user()->id;
       $grant->sienceDirection=$sienceDirection;
       $grant->fioGrad=$fioGrad;
       $grant->grandCategory=$grandCategory;

@@ -9,4 +9,5 @@ class MolInic extends Model
 {
     use HasFactory;
     protected $table = 'mol_inics';
+
 }

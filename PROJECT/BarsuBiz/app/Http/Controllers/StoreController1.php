@@ -32,6 +32,7 @@ class StoreController1 extends Controller
         try {
             $molInic = new MolInic();
             $molInic->user_id=Auth::user()->id;
+            $molInic->owner=Auth::user()->name;
             $molInic->nameProject=$projectName;
             $molInic->nameRegion=$regionName;
             $molInic->namePunct=$locality;
@@ -75,7 +76,6 @@ class StoreController1 extends Controller
         $dopInformation=$request->input('dopInformation');
         try {
             $molInic = MolInic::find($id);
-            $molInic->user_id=Auth::user()->id;
             $molInic->nameProject=$projectName;
             $molInic->nameRegion=$regionName;
             $molInic->namePunct=$locality;

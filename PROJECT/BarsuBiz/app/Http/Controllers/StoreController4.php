@@ -25,6 +25,7 @@ class StoreController4 extends Controller
         $fin3= $request->input('fin3');
         try{
             $gpni=new Gpni();
+            $gpni->owner=Auth::user()->name;
             $gpni->user_id=Auth::user()->id;
             $gpni->sinceDir = $sinceDir;
             $gpni->namePr = $namePr;
@@ -73,7 +74,6 @@ class StoreController4 extends Controller
         $fin3= $request->input('fin3');
         try{
             $gpni=Gpni::find($id);
-            $gpni->user_id=Auth::user()->id;
             $gpni->sinceDir = $sinceDir;
             $gpni->namePr = $namePr;
             $gpni->orgZav = $orgZav;

@@ -28,6 +28,8 @@ use Illuminate\Support\Facades\Storage;
 use Aspose\Words\WordsApi;
 use App\Http\Controllers\Settings;
 use App\Http\Controllers\ConvertDocumentRequest;
+use App\Models\User;
+
 require_once base_path('vendor/autoload.php');
 class MainController extends Controller
 {
@@ -35,28 +37,61 @@ class MainController extends Controller
         return view('forms/form1');
     }
     public function form11($name,$id){
+
         if($name=="Молодежные инициативы"){
         $molIndic=MolIndic::where('project_id', $id)->get();
         $molInic=MolInic::find($id);
+        if($molInic->user_id==Auth::user()->id || Auth::user()->Role=='Admin'){
         return view('forms/form11',compact('molInic','molIndic'));
         }
+        else{
+            return redirect('cabinet');
+        }
+    }
         if($name=="Участие в НИР"){
             $barsunir=BarsuNir::find($id);
             $barsunirdop=BarsuNirDop::where("project_id", $id)->get();
-            return view("forms/form22",compact("barsunir","barsunirdop"));
-        }
+            if($barsunir->user_id==Auth::user()->id || Auth::user()->Role=='Admin')
+            {
+            
+                return view("forms/form22",compact("barsunir","barsunirdop"));
+        
+            }
+        else
+        {    return redirect('cabinet');}
+        
+    }
         if($name== "100 ИДЕЙ ДЛЯ БЕЛАРУСИ"){
             $hundredideas=HudredIdeas::find($id);
-            return view("forms/form33",compact("hundredideas"));
+            if($hundredideas->user_id==Auth::user()->id || Auth::user()->Role=='Admin')
+            {
+            
+                return view("forms/form33",compact("hundredideas"));
+        
+            }
+            else{
+                return redirect("cabinet");
+            }
         }
         if($name== "ГПНИ"){
             $gpni=Gpni::find($id);
             $gpniDop=GpniDop::where("project_id", $id)->get();
+            if($gpni->user_id==Auth::user()->id || Auth::user()->Role== "Admin")
+            {
             return view("forms/form44",compact("gpni","gpniDop"));
+        }
+        else{
+            return redirect("cabinet");
+        }
         }
         if($name== "Заявка на получение гранта"){
             $grant=Grant::find($id);
+            if($grant->user_id==Auth::user()->id || Auth::user()->Role== "Admin"){
             return view("forms/form55",compact("grant"));
+        }
+        else{
+            return redirect("cabinet");
+        }
 
         }
 
@@ -795,14 +830,28 @@ unlink($filePath);
         return view('register');
     }
     public function cabinet(){
-        $molInics = MolInic::select('name', 'created_at','id')->where('user_id', auth()->id());
-        $barsunirs = BarsuNir::select('name', 'created_at','id')->where('user_id', auth()->id());
-        $hundredideas= HudredIdeas::select('name', 'created_at','id')->where('user_id', auth()->id());
-        $gpnis=Gpni::select('name','created_at','id')->where('user_id', auth()->id());
-        $grant=Grant::select('name','created_at','id')->where('user_id', auth()->id());
-        
+
+        if(Auth::user()->Role=='User'){
+        $molInics = MolInic::select('name', 'created_at','id','owner')->where('user_id', auth()->id());
+        $barsunirs = BarsuNir::select('name', 'created_at','id','owner')->where('user_id', auth()->id());
+        $hundredideas= HudredIdeas::select('name', 'created_at','id','owner')->where('user_id', auth()->id());
+        $gpnis=Gpni::select('name','created_at','id','owner')->where('user_id', auth()->id());
+        $grant=Grant::select('name','created_at','id','owner')->where('user_id', auth()->id());
         $items = $molInics->union($barsunirs)->union($hundredideas)->union($gpnis)->orderBy('created_at', 'desc')->union($grant)->paginate(7);
-        return view('cabinet', compact('items'));
+       
+        }
+        
+        if(Auth::user()->Role=='Admin'){
+            $molInics = MolInic::select('name', 'created_at','id','owner');
+            $barsunirs = BarsuNir::select('name', 'created_at','id','owner');
+            $hundredideas= HudredIdeas::select('name', 'created_at','id','owner');
+            $gpnis=Gpni::select('name','created_at','id','owner');
+            $grant=Grant::select('name','created_at','id','owner');
+            $items = $molInics->union($barsunirs)->union($hundredideas)->union($gpnis)->orderBy('created_at', 'desc')->union($grant)->paginate(7);
+           
+            }
+            return view('cabinet', compact('items'));
+
     }
     
 }

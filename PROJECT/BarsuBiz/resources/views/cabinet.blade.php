@@ -126,6 +126,9 @@
                         <th >Файл</th>
                         <!-- <th>Владелец</th> -->
                         <th>Дата создания</th>
+                        @if(auth()->user()->Role == 'Admin')
+                        <th>Создатель</th>
+                        @endif
                         <th>MS Word</th>
                         <th>Adobe PDF</th>
                         <th>Удалить</th>
@@ -134,12 +137,16 @@
                 <tbody>
                 
                
-                
-@foreach($items as $item)                    
+       
+@foreach($items as $item)   
+
 <tr>
 <td> <a href="{{ route('form11', ['name' => $item->name,'id' => $item->id]) }}">{{$item->name}}</a> </td>
 <!-- <td>{{ Auth::user()->name }}</td> -->
 <td>{{ $item->getAttribute('created_at') }}</td>
+@if(auth()->user()->Role == 'Admin')
+<td>{{$item->owner}}</td>
+@endif
 <form method="post"  action="{{ route('form_word', ['name' => $item->name,'id' => $item->id]) }}" enctype="multipart/form-data">
 @csrf
 <td> 

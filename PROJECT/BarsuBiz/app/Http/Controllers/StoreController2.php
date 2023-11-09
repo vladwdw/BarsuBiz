@@ -29,6 +29,7 @@ class StoreController2 extends Controller
         try {
             $barsunir = new BarsuNir();
             $barsunir->user_id=Auth::user()->id;
+            $barsunir->owner=Auth::user()->name;
             $barsunir->sinceDir=$sinceDir;
             $barsunir->workTheme=$workTheme;
             $barsunir->nirRuks=$nirRuks;
@@ -78,7 +79,6 @@ class StoreController2 extends Controller
     
             try {
                 $barsunir = BarsuNir::find($id);
-                $barsunir->user_id=Auth::user()->id;
                 $barsunir->sinceDir=$sinceDir;
                 $barsunir->workTheme=$workTheme;
                 $barsunir->nirRuks=$nirRuks;

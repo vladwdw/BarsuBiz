@@ -9,4 +9,5 @@ class BarsuNir extends Model
 {
     use HasFactory;
     protected $table = 'barsunir';
+
 }

@@ -3,7 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
-
+use Illuminate\Support\Facades\Auth;
 return new class extends Migration
 {
     /**
@@ -26,6 +26,7 @@ return new class extends Migration
             $table->string('uchrName')->nullable();
             $table->string('special')->nullable();
             $table->text('knowledge')->nullable();
+            $table->string("owner")->nullable();
         });
         Schema::table('grants', function (Blueprint $table) {
             $table->foreign('user_id')->references('id')->on('users');

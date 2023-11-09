@@ -3,7 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
-
+use Illuminate\Support\Facades\Auth;
 return new class extends Migration
 {
     /**
@@ -25,6 +25,7 @@ return new class extends Migration
             $table->text('property_protection')->nullable();
             $table->text('offers')->nullable();
             $table->text('advantages_project')->nullable();
+            $table->string("owner")->nullable();
 
         });
         Schema::table('hudred_ideas', function (Blueprint $table) {
