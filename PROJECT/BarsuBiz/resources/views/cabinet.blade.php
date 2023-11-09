@@ -176,10 +176,17 @@
     </div>
     <div class="position-fixed bottom-0 end-0">
     @foreach ($notifications as $notification)
+    @if($notification->data['type']=='edit')
 <div class="alert alert-warning alert-dismissible fade show" role="alert">
    {{ $notification->data['message'] }}
    <button class="btn-close" onclick="markAsRead('{{ $notification->id }}')"  data-bs-dismiss="alert" aria-label="Close"></button>
 </div>
+@elseif($notification->data['type']=='delete')
+<div class="alert alert-danger alert-dismissible fade show" role="alert">
+   {{ $notification->data['message'] }}
+   <button class="btn-close" onclick="markAsRead('{{ $notification->id }}')"  data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+@endif
 
 @endforeach
 @endif
