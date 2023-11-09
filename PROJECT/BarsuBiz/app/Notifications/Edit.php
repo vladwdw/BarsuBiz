@@ -56,7 +56,6 @@ class Edit extends Notification
     public function toArray($notifiable)
     {
         return [
-            'type' => 'edit',
             'message' => 'Заявка '.$this->data." была отредактирована администратором",
         ];
     }
