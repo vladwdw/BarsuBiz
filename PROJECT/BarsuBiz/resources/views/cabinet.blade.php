@@ -24,7 +24,7 @@
   <link href="{{asset('assets/css/card.css')}}" rel="stylesheet">
   <link href="{{asset('assets/img/favicon.png')}}" rel="icon">
   <link href="{{asset('assets/img/apple-touch-icon.png')}}" rel="apple-touch-icon">
-  <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+  <script src="{{asset('assets/js/jquery.js')}}"></script>
 
   <!-- Google Fonts -->
   <link href="{{asset('https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i')}}" rel="stylesheet">
@@ -203,10 +203,7 @@
       <!--Js fiels-->
      
 <script>
-  Echo.private('user.' + userId)
- .listen('UserDataDeleted', (e) => {
-   location.reload();
- });
+
   document.getElementById("list").addEventListener("change", function () {
     var selectedFilter = this.value;
     localStorage.setItem("selectedFilter", selectedFilter);
