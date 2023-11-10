@@ -6,11 +6,12 @@ use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
-use Illuminate\Database\Eloquent\Model;
-class Edit extends Notification
+
+class Delete extends Notification
 {
-    use Queueable;
     protected $data;
+    use Queueable;
+
     /**
      * Create a new notification instance.
      *
@@ -18,9 +19,9 @@ class Edit extends Notification
      */
     public function __construct($data)
     {
+        //
         $this->data=$data;
     }
- 
 
     /**
      * Get the notification's delivery channels.
@@ -56,8 +57,9 @@ class Edit extends Notification
     public function toArray($notifiable)
     {
         return [
-            'message' => 'Заявка '.$this->data." была отредактирована администратором",
-            'type'=>'edit',
+           
+                'message' => 'Заявка '.$this->data." была удалена администратором",
+                'type'=>'delete',
         ];
     }
 }
