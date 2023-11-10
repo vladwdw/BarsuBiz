@@ -43,6 +43,28 @@ class SearchController extends Controller
             return view('cabinet', compact('items'), ['notifications' => $notifications]);
             }
         }
+        if(Auth::user()->Role=="Admin"){
+            if (empty($search)) {
+                $molInics = MolInic::select('name', 'created_at','id','owner');
+                $barsunirs = BarsuNir::select('name', 'created_at','id','owner');
+                $hundredideas= HudredIdeas::select('name', 'created_at','id','owner');
+                $gpnis=Gpni::select('name','created_at','id','owner');
+                $grant=Grant::select('name','created_at','id','owner');
+                $items = $molInics->union($barsunirs)->union($hundredideas)->union($gpnis)->orderBy('created_at', 'desc')->union($grant)->paginate(7)->withQueryString();
+                $notifications = auth()->user()->unreadNotifications;
+                return view('cabinet', compact('items'), ['notifications' => $notifications]);
+            }
+            else{
+            $molInics = MolInic::select('name', 'created_at','id','owner')->where('nameProject', 'like', '%' . $search . '%');
+            $barsunirs = BarsuNir::select('name', 'created_at','id','owner')->where('workTheme', 'like', '%' . $search . '%');
+            $hundredideas= HudredIdeas::select('name', 'created_at','id','owner')->where('name_project', 'like', '%' . $search . '%');
+            $gpnis=Gpni::select('name','created_at','id','owner')->where('namePr', 'like', '%' . $search . '%');
+            $grant=Grant::select('name','created_at','id','owner')->where('workName', 'like', '%' . $search . '%');;
+            $items = $molInics->union($barsunirs)->union($hundredideas)->union($gpnis)->orderBy('created_at', 'desc')->union($grant)->paginate(7)->withQueryString();
+            $notifications = auth()->user()->unreadNotifications;
+            return view('cabinet', compact('items'), ['notifications' => $notifications]);
+            }
+        }
 
     }
 }
