@@ -14,6 +14,7 @@ use App\Http\Controllers\StoreController3;
 use App\Http\Controllers\StoreController4;
 use App\Http\Controllers\StoreController5;
 use App\Http\Controllers\NotificationController;
+use App\Http\Controllers\SearchController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
 use App\Models\User;
@@ -62,6 +63,7 @@ Route::post('/form44-update/{name}/{id}',[StoreController4::class, 'form44_updat
 Route::post('/form55-update/{name}/{id}',[StoreController5::class, 'form55_update'])->name('form55_update');
 Route::post('/form11-delete/{name}/{id}/delete',[StoreController1::class, 'form11_delete'])->name('form11_delete');
 });
+Route::get('/search',[SearchController::class,'search'])->name('search');
 Route::post('/mark-as-read', [NotificationController::class,'markAsRead']);
 
 Route::get('/css/{filename}', function ($filename) {

@@ -116,6 +116,19 @@
 <option value="ГПНИ">ГПНИ</option>
 <option value="Заявка на получение гранта">Заявка на получение гранта</option>
 </select>
+<div class="row mt-3 mb-3">
+<div class="col-5">
+  <form method="get" action="{{route('search')}}">
+<div class="input-group mb-3">
+  @csrf
+  <input type="text" name="searchItem" class="form-control rounded-start-2" placeholder="Поиск по ключевому слову" aria-label="Поиск по ключевому слову" aria-describedby="button-addon2">
+  <button class="btn btn-outline-danger bi bi-search" type="submit"></button>
+</div>
+</form>
+</div>
+<div class="col-3">
+</div>
+</div>
 
 <input type="hidden" id="selectedOption" value="">
     <div class="tab-content" id="myTabContent">
@@ -170,7 +183,7 @@
             </table>
         </div>
         
-        {{$items->links('vendor.pagination.bootstrap-4')}}
+        {{ $items->appends(['search' => request('search')])->links('vendor.pagination.bootstrap-4') }}
         @if(auth()->user()->Role == 'User')
 
     </div>
