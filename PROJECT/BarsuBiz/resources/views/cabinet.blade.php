@@ -43,6 +43,11 @@
 
 </head>
 <body>
+  <style>
+.small-font {
+    font-size: 0.90rem; /* или любой другой размер, который вы считаете подходящим */
+   }
+    </style>
 
 <header id="header">
     <div class="container-fluid d-flex align-items-center justify-content-between hh">
@@ -159,7 +164,7 @@
 <!-- <td>{{ Auth::user()->name }}</td> -->
 <td>{{ $item->getAttribute('created_at') }}</td>
 @if(auth()->user()->Role == 'Admin')
-<td>{{$item->owner}}</td>
+<td name="owner">{{$item->owner}}</td>
 @endif
 <form method="post"  action="{{ route('form_word', ['name' => $item->name,'id' => $item->id]) }}" enctype="multipart/form-data">
 @csrf
@@ -223,6 +228,14 @@
     tableSearch();
 });
 
+$(document).ready(function() {
+ $('td[name="owner"]').each(function() {
+  var text = $(this).text();
+  if (text.length > 6 && /[A-Z]/.test(text)) { // Замените 10 на максимальное количество символов, которое вы считаете приемлемым
+    $(this).addClass('small-font');
+  }
+ });
+});
 function markAsRead(id) {
  $.ajax({
     url: '/mark-as-read',
