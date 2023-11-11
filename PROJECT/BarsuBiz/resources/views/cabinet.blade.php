@@ -107,7 +107,7 @@
 
       </div>
       <div class="col-md-8 col-xs-12 ">
-      <div class="row mt-10 mb-1 ">
+      <div class="row mt-16 mb-3">
 <div class="col-5">
   <form method="get" action="{{route('search')}}">
 <div class="input-group mb-3">
@@ -117,7 +117,7 @@
 </div>
 </form>
 </div>
-<div class="col-10">
+<div class="col-3">
 </div>
 </div>
 <select name="dropdown" id="list" class="form-control" aria-label="Default select example" onchange="tableSearch()">
