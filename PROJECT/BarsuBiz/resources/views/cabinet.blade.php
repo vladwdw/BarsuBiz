@@ -113,7 +113,7 @@
       </div>
       <div class="col-md-8 col-xs-12 ">
       <div class="row mt-10 mb-1 ">
-<div class="col-6">
+<div class="col-5">
   <form method="get" action="{{route('search')}}">
 <div class="input-group mb-3">
   @csrf
@@ -122,7 +122,9 @@
 </div>
 </form>
 </div>
-<div class="col-6">
+<div class="col-10">
+</div>
+</div>
 <select name="dropdown" id="list" class="form-control" aria-label="Default select example" onchange="tableSearch()">
 <option selected value="">Все</option>
 <option value="Молодежные инициативы">Молодежные инициативы</option>
@@ -131,9 +133,6 @@
 <option value="ГПНИ">ГПНИ</option>
 <option value="Заявка на получение гранта">Заявка на получение гранта</option>
 </select>
-</div>
-</div>
-
 
 
 <input type="hidden" id="selectedOption" value="">
