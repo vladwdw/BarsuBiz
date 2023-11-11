@@ -43,11 +43,6 @@
 
 </head>
 <body>
-  <style>
-.small-font {
-    font-size: 0.90rem; /* или любой другой размер, который вы считаете подходящим */
-   }
-    </style>
 
 <header id="header">
     <div class="container-fluid d-flex align-items-center justify-content-between hh">
@@ -114,8 +109,8 @@
 
       </div>
       <div class="col-md-8 col-xs-12 ">
-      <div class="row mt-10 mb-1 ">
-<div class="col-6">
+      <div class="row mt-16 mb-3">
+<div class="col-5">
   <form method="get" action="{{route('search')}}">
 <div class="input-group mb-3">
   @csrf
@@ -130,7 +125,9 @@
 </form>
 </div>
 </div>
-<div class="col-6">
+<div class="col-3">
+</div>
+</div>
 <select name="dropdown" id="list" class="form-control" aria-label="Default select example" onchange="tableSearch()">
 <option selected value="">Все</option>
 <option value="Молодежные инициативы">Молодежные инициативы</option>
@@ -139,9 +136,6 @@
 <option value="ГПНИ">ГПНИ</option>
 <option value="Заявка на получение гранта">Заявка на получение гранта</option>
 </select>
-</div>
-</div>
-
 
 
 <input type="hidden" id="selectedOption" value="">
@@ -173,7 +167,7 @@
 <!-- <td>{{ Auth::user()->name }}</td> -->
 <td>{{ $item->getAttribute('created_at') }}</td>
 @if(auth()->user()->Role == 'Admin')
-<td name="owner">{{$item->owner}}</td>
+<td>{{$item->owner}}</td>
 @endif
 <form method="post"  action="{{ route('form_word', ['name' => $item->name,'id' => $item->id]) }}" enctype="multipart/form-data">
 @csrf
@@ -237,14 +231,6 @@
     tableSearch();
 });
 
-$(document).ready(function() {
- $('td[name="owner"]').each(function() {
-  var text = $(this).text();
-  if (text.length > 6 && /[A-Z]/.test(text)) { // Замените 10 на максимальное количество символов, которое вы считаете приемлемым
-    $(this).addClass('small-font');
-  }
- });
-});
 function markAsRead(id) {
  $.ajax({
     url: '/mark-as-read',
