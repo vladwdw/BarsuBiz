@@ -7,6 +7,7 @@ use App\Http\Controllers\FormController2;
 use App\Http\Controllers\FormController3;
 use App\Http\Controllers\FormController4;
 use App\Http\Controllers\FormController5;
+use App\Http\Controllers\SortController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\StoreController1;
 use App\Http\Controllers\StoreController2;
@@ -69,3 +70,4 @@ Route::post('/mark-as-read', [NotificationController::class,'markAsRead']);
 Route::get('/css/{filename}', function ($filename) {
     return response()->file(public_path('css/' . $filename));
 });
+Route::get('/sort', [SortController::class,'sort'])->name('sort');

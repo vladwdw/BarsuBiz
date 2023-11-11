@@ -79,7 +79,9 @@
   </header><!-- End Header -->
     <script src="assets/js/main.js"></script> 
     <script src="assets/js/main_cab.js"></script> 
-      
+    @php
+   $sort = $sort ?? 'new';
+@endphp
       <div class="container">
         
       
@@ -119,8 +121,14 @@
   @csrf
   <input type="text" name="searchItem" class="form-control rounded-start-2" placeholder="Поиск по ключевому слову" aria-label="Поиск по ключевому слову" aria-describedby="button-addon2">
   <button class="btn btn-outline-danger bi bi-search" type="submit"></button>
-</div>
 </form>
+</div>
+<div class="input-group mb-2">
+<form id="sortForm" method="get" action="{{route('sort')}}">
+    <input type="hidden" name="sort" id="sortInput" value="{{ $sort ?? 'new' }}">
+    <button class="btn btn-outline-danger bi bi-arrow-down-up" type="submit">{{ $sort === 'old' ? ' Сначала новые' : ' Сначала старые' }}</button>
+</form>
+</div>
 </div>
 <div class="col-6">
 <select name="dropdown" id="list" class="form-control" aria-label="Default select example" onchange="tableSearch()">
@@ -189,7 +197,7 @@
             </table>
         </div>
         
-        {{ $items->appends(['search' => request('search')])->links('vendor.pagination.bootstrap-4') }}
+        {{ $items->appends(request()->all())->links('vendor.pagination.bootstrap-4') }}
         @if(auth()->user()->Role == 'User')
 
     </div>
@@ -258,6 +266,13 @@ window.addEventListener("load", function () {
         document.getElementById("list").value = selectedFilter;
         tableSearch();
     }
+});
+document.getElementById('sortForm').addEventListener('submit', function(event) {
+    event.preventDefault();
+    let sortInput = document.getElementById('sortInput');
+    let sort = sortInput.value;
+    sortInput.value = sort === 'old' ? 'new' : 'old';
+    this.submit();
 });
 function tableSearch() {
 

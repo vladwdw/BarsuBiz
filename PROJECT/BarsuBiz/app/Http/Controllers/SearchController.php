@@ -21,6 +21,7 @@ class SearchController extends Controller
     {
 
         $search = request('searchItem');
+        $sort = request('sort');
         if(Auth::user()->Role=="User"){
             if (empty($search)) {
                 $molInics = MolInic::select('name', 'created_at','id','owner')->where('user_id', auth()->id());
@@ -30,7 +31,7 @@ class SearchController extends Controller
                 $grant=Grant::select('name','created_at','id','owner')->where('user_id', auth()->id());
                 $items = $molInics->union($barsunirs)->union($hundredideas)->union($gpnis)->orderBy('created_at', 'desc')->union($grant)->paginate(7)->withQueryString();
                 $notifications = auth()->user()->unreadNotifications;
-                return view('cabinet', compact('items'), ['notifications' => $notifications]);
+                return view('cabinet', compact('items','sort'), ['notifications' => $notifications]);
             }
             else{
             $molInics = MolInic::select('name', 'created_at','id','owner')->where('user_id', auth()->id())->where('nameProject', 'like', '%' . $search . '%');
@@ -40,7 +41,7 @@ class SearchController extends Controller
             $grant=Grant::select('name','created_at','id','owner')->where('user_id', auth()->id())->where('workName', 'like', '%' . $search . '%');;
             $items = $molInics->union($barsunirs)->union($hundredideas)->union($gpnis)->orderBy('created_at', 'desc')->union($grant)->paginate(7)->withQueryString();
             $notifications = auth()->user()->unreadNotifications;
-            return view('cabinet', compact('items'), ['notifications' => $notifications]);
+            return view('cabinet', compact('items','sort'), ['notifications' => $notifications]);
             }
         }
         if(Auth::user()->Role=="Admin"){
@@ -52,7 +53,7 @@ class SearchController extends Controller
                 $grant=Grant::select('name','created_at','id','owner');
                 $items = $molInics->union($barsunirs)->union($hundredideas)->union($gpnis)->orderBy('created_at', 'desc')->union($grant)->paginate(7)->withQueryString();
                 $notifications = auth()->user()->unreadNotifications;
-                return view('cabinet', compact('items'), ['notifications' => $notifications]);
+                return view('cabinet', compact('items','sort'), ['notifications' => $notifications]);
             }
             else{
             $molInics = MolInic::select('name', 'created_at','id','owner')->where('nameProject', 'like', '%' . $search . '%');
@@ -62,7 +63,7 @@ class SearchController extends Controller
             $grant=Grant::select('name','created_at','id','owner')->where('workName', 'like', '%' . $search . '%');;
             $items = $molInics->union($barsunirs)->union($hundredideas)->union($gpnis)->orderBy('created_at', 'desc')->union($grant)->paginate(7)->withQueryString();
             $notifications = auth()->user()->unreadNotifications;
-            return view('cabinet', compact('items'), ['notifications' => $notifications]);
+            return view('cabinet', compact('items','sort'), ['notifications' => $notifications]);
             }
         }
 
