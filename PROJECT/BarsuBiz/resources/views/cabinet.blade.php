@@ -114,12 +114,14 @@
   <form method="get" action="{{route('search')}}">
 <div class="input-group mb-3">
   @csrf
+  <input type="hidden" name="type" value="search">
   <input type="text" name="searchItem" class="form-control rounded-start-2" placeholder="Поиск по ключевому слову" aria-label="Поиск по ключевому слову" aria-describedby="button-addon2">
   <button class="btn btn-outline-danger bi bi-search" type="submit"></button>
 </form>
 </div>
 <div class="input-group mb-2">
-<form id="sortForm" method="get" action="{{route('sort')}}">
+<form id="sortForm" method="get" action="{{route('search')}}">
+<input type="hidden" name="type" value="sort">
     <input type="hidden" name="sort" id="sortInput" value="{{ $sort ?? 'new' }}">
     <button class="btn btn-outline-danger bi bi-arrow-down-up" type="submit">{{ $sort === 'old' ? ' Сначала новые' : ' Сначала старые' }}</button>
 </form>
@@ -191,7 +193,7 @@
             </table>
         </div>
         
-        {{ $items->appends(request()->all())->links('vendor.pagination.bootstrap-4') }}
+        {{ $items->appends(['search' => request('search'), 'sort' => request('sort')])->links('vendor.pagination.bootstrap-4') }}
         @if(auth()->user()->Role == 'User')
 
     </div>
