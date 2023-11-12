@@ -174,7 +174,7 @@
 <!-- <td>{{ Auth::user()->name }}</td> -->
 <td>{{ $item->getAttribute('created_at') }}</td>
 @if(auth()->user()->Role == 'Admin')
-<td>{{$item->owner}}</td>
+<td name="owner">{{$item->owner}}</td>
 @endif
 <form method="post"  action="{{ route('form_word', ['name' => $item->name,'id' => $item->id]) }}" enctype="multipart/form-data">
 @csrf
