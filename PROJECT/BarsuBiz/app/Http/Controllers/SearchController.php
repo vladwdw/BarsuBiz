@@ -88,7 +88,7 @@ class SearchController extends Controller
         $hundredideas= HudredIdeas::select('name', 'created_at','id','owner');
         $gpnis=Gpni::select('name','created_at','id','owner');
         $grant=Grant::select('name','created_at','id','owner');
-        $items = $molInics->concat($barsunirs)->concat($hundredideas)->concat($gpnis)->concat($grant)->orderBy('created_at', $sort === 'old' ? 'asc' : 'desc')->paginate(7)->withQueryString();
+        $items = $molInics->union($barsunirs)->union($hundredideas)->union($gpnis)->union($grant)->orderBy('created_at', $sort === 'old' ? 'asc' : 'desc')->paginate(7)->withQueryString();
         $notifications = auth()->user()->unreadNotifications;
       
     }
