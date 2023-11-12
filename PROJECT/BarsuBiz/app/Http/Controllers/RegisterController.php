@@ -13,13 +13,14 @@ class RegisterController extends Controller
     {
         // Правила валидации
         $rules = [
-            'username' => 'required|string|max:255',
+            'username' => 'required|string|max:12',
             'email' => 'required|email|unique:users',
             'password' => 'required|string|min:6',
         ];
     
         // Сообщения об ошибках
         $messages = [
+            'username.max'=> 'Имя пользователя не может быть больше 12 символов',
             'username.required' => 'Поле Имя пользователя обязательно для заполнения',
             'email.required' => 'Поле email обязательно для заполнения',
             'email.email' => 'Введите действительный email адрес',

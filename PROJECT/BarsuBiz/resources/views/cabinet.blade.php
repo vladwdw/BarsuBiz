@@ -43,6 +43,11 @@
 
 </head>
 <body>
+<style>
+.small-font {
+    font-size: 0.90rem; /* или любой другой размер, который вы считаете подходящим */
+   }
+    </style>
 
 <header id="header">
     <div class="container-fluid d-flex align-items-center justify-content-between hh">
