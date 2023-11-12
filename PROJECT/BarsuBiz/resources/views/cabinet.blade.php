@@ -232,6 +232,14 @@
     localStorage.setItem("selectedFilter", selectedFilter);
     tableSearch();
 });
+$(document).ready(function() {
+ $('td[name="owner"]').each(function() {
+  var text = $(this).text();
+  if ((text.length > 5 && /[A-Z]/.test(text)) ||(text.length > 8) ) { // Замените 10 на максимальное количество символов, которое вы считаете приемлемым
+    $(this).addClass('small-font');
+  }
+ });
+});
 
 function markAsRead(id) {
  $.ajax({
