@@ -32,8 +32,9 @@
         </div> 
         <div class="row align-items-center ">
                 <div class="header-text mb-4">
-                    <h2 style="text-align: center;">Заяка на получение гранта
-                        </h2>
+                <h3 style="text-align: center;"><strong>ЗАЯВКА </strong></h3>
+                    <h4 style="text-align: center;"> на получение гранта
+                            </h4>
                 </div>
                 <p>Научное направление</p>
                 <div class="input-group mb-3">
