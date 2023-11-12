@@ -170,7 +170,7 @@
 @foreach($items as $item)   
 
 <tr>
-<td> <a href="{{ route('form11', ['name' => $item->name,'id' => $item->id]) }}">{{$item->name}}_#{{$item->id}}</a> </td>
+<td name="itemName"> <a href="{{ route('form11', ['name' => $item->name,'id' => $item->id]) }}">{{$item->name}}_#{{$item->id}}</a> </td>
 <!-- <td>{{ Auth::user()->name }}</td> -->
 <td>{{ $item->getAttribute('created_at') }}</td>
 @if(auth()->user()->Role == 'Admin')
@@ -238,7 +238,7 @@
     tableSearch();
 });
 $(document).ready(function() {
- $('td[name="owner"]').each(function() {
+  $('td[name="owner"], td[name="itemName"]').each(function() {
   var text = $(this).text();
   if ((text.length > 5 && /[A-Z]/.test(text)) ||(text.length > 8) ) { // Замените 10 на максимальное количество символов, которое вы считаете приемлемым
     $(this).addClass('small-font');
