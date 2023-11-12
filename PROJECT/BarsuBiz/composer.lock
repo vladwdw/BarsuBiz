@@ -123,16 +123,16 @@
         },
         {
             "name": "aspose-cloud/aspose-words-cloud",
-            "version": "23.10.0",
+            "version": "23.11.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/aspose-words-cloud/aspose-words-cloud-php.git",
-                "reference": "6add368ca1e9819cbcf903d30f7f41f963b76301"
+                "reference": "46d3d33230867800be0f737301a7da438363f875"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aspose-words-cloud/aspose-words-cloud-php/zipball/6add368ca1e9819cbcf903d30f7f41f963b76301",
-                "reference": "6add368ca1e9819cbcf903d30f7f41f963b76301",
+                "url": "https://api.github.com/repos/aspose-words-cloud/aspose-words-cloud-php/zipball/46d3d33230867800be0f737301a7da438363f875",
+                "reference": "46d3d33230867800be0f737301a7da438363f875",
                 "shasum": ""
             },
             "require": {
@@ -209,9 +209,9 @@
             ],
             "support": {
                 "issues": "https://github.com/aspose-words-cloud/aspose-words-cloud-php/issues",
-                "source": "https://github.com/aspose-words-cloud/aspose-words-cloud-php/tree/23.10.0"
+                "source": "https://github.com/aspose-words-cloud/aspose-words-cloud-php/tree/23.11.0"
             },
-            "time": "2023-10-13T07:42:33+00:00"
+            "time": "2023-11-12T11:45:08+00:00"
         },
         {
             "name": "barryvdh/laravel-dompdf",
