@@ -47,6 +47,9 @@
 .small-font {
     font-size: 0.90rem; /* или любой другой размер, который вы считаете подходящим */
    }
+   .sort{
+    font-size: 0.85rem;
+   }
     </style>
 
 <header id="header">
@@ -114,7 +117,7 @@
 
       </div>
       <div class="col-md-8 col-xs-12 ">
-      <div class="row mt-16 mb-3">
+      <div class="row mb-3">
 <div class="col-5">
   <form method="get" action="{{route('search')}}">
 <div class="input-group mb-3">
@@ -124,17 +127,15 @@
   <button class="btn btn-outline-danger bi bi-search" type="submit"></button>
 </form>
 </div>
-<div class="input-group mb-2">
+<div class="col-7">
 <form id="sortForm" method="get" action="{{route('search')}}">
 <input type="hidden" name="type" value="sort">
     <input type="hidden" name="sort" id="sortInput" value="{{ $sort ?? 'new' }}">
-    <button class="btn btn-outline-danger bi bi-arrow-down-up" type="submit">{{ $sort === 'old' ? ' Сначала новые' : ' Сначала старые' }}</button>
+    <button class="btn btn-outline-danger bi bi-arrow-down-up sort" type="submit">{{ $sort === 'old' ? ' Сначала новые' : ' Сначала старые' }}</button>
 </form>
 </div>
 </div>
-<div class="col-3">
-</div>
-</div>
+<div class="col-7">
 <select name="dropdown" id="list" class="form-control" aria-label="Default select example" onchange="tableSearch()">
 <option selected value="">Все</option>
 <option value="Молодежные инициативы">Молодежные инициативы</option>
@@ -143,6 +144,7 @@
 <option value="ГПНИ">ГПНИ</option>
 <option value="Заявка на получение гранта">Заявка на получение гранта</option>
 </select>
+</div>
 
 
 <input type="hidden" id="selectedOption" value="">
