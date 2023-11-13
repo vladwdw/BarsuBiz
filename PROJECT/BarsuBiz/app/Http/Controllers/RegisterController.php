@@ -6,6 +6,7 @@ use Illuminate\Validation\Rule;
 use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Hashing\BcryptHasher;
+use Illuminate\Auth\Events\Registered;
 
 class RegisterController extends Controller
 {
@@ -42,7 +43,9 @@ class RegisterController extends Controller
             $user->name = $request->input("username");
             $user->email = $request->input("email");
             $user->password = bcrypt($request->input("password"));
+            event(new Registered($user));
             $user->save();
+            
             return redirect("/login");
         } catch (\Exception $e) {
             return redirect()->back()->with("error", $e->getMessage());

@@ -17,6 +17,7 @@ use App\Http\Controllers\StoreController5;
 use App\Http\Controllers\NotificationController;
 use App\Http\Controllers\SearchController;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Foundation\Auth\EmailVerificationRequest;
 use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
@@ -63,7 +64,6 @@ Route::post('/form33-update/{name}/{id}',[StoreController3::class, 'form33_updat
 Route::post('/form44-update/{name}/{id}',[StoreController4::class, 'form44_update'])->name('form44_update');
 Route::post('/form55-update/{name}/{id}',[StoreController5::class, 'form55_update'])->name('form55_update');
 Route::post('/form11-delete/{name}/{id}/delete',[StoreController1::class, 'form11_delete'])->name('form11_delete');
-});
 Route::get('/search',[SearchController::class,'search'])->name('search');
 Route::post('/mark-as-read', [NotificationController::class,'markAsRead']);
 
@@ -71,3 +71,18 @@ Route::get('/css/{filename}', function ($filename) {
     return response()->file(public_path('css/' . $filename));
 });
 Route::get('/sort', [SortController::class,'sort'])->name('sort');
+});
+
+
+
+
+// Route::get('/email/verify', function () {
+//     return view('auth.verify-email');
+//   })->middleware('auth')->name('verification.notice');
+//   Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $request) {
+//     $request->fulfill();
+   
+//     return redirect('/home');
+//   })->middleware(['auth', 'signed'])->name('verification.verify');
+
+
