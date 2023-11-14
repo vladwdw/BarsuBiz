@@ -19,6 +19,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="{{ asset('js/bootstrap.min.js') }}"></script>
     <title>Составление шаблона</title>
+
 </head>
 <style>
   
@@ -33,23 +34,28 @@
 <body>
     
     
-  <div class="container-fluid fixed-top ">
-  <div class="row">
-
-
-    <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
-      <!-- Сюда вставьте основное содержимое страницы -->
-    </main>
-  </div>
-</div>
+ 
   
     <div class="container d-flex justify-content-center align-items-center min-vh-100 p-4">
-        
+
         <form method="post" class="col-md-6 right-box p-3 rounded-4 shadow box-area" action="/submit-form1" enctype="multipart/form-data">
         @csrf
-       
+        <ul class="nav justify-content-center">
+  <li class="nav-item mt-2 mb-2">
+    
+  <button class="btn btn-outline-danger rounded-4" href="#"><i class="bi bi-file-earmark-text"></i> Заявка</button>
+  
+  </li>
+  <li class="nav-item px-3 mt-2">
+  <button class="btn btn-outline-danger rounded-4" href="#"><i class="bi bi-clipboard2-data"></i> Бизнес план</button>
+  </li>
+  <li class="nav-item mt-2">
+  <button class="btn btn-outline-danger rounded-4" href="#"><i class="bi bi-calculator-fill"></i> Калькуляция</button>
+  </li>
+</ul>
         <div class="mb-5 ms-auto">
                 <img src="assets/img/logo.png" class="logo" width="210px">
+                
         </div>
             
             <div class="row align-items-center ">
