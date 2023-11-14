@@ -2,7 +2,16 @@
 <html lang="en">
 <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
 <link href="{{ asset('css/formstyle.css') }}" rel="stylesheet">
+<link href="{{asset('assets/vendor/aos/aos.css')}}" rel="stylesheet">
+  <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
+  <link href="{{asset('assets/vendor/bootstrap-icons/bootstrap-icons.css')}}" rel="stylesheet">
+  <link href="{{asset('assets/vendor/boxicons/css/boxicons.min.css')}}" rel="stylesheet">
+  <link href="{{asset('assets/vendor/glightbox/css/glightbox.min.css')}}" rel="stylesheet">
+  <link href="{{asset('assets/vendor/remixicon/remixicon.css')}}" rel="stylesheet">
+  <link href="{{asset('assets/vendor/swiper/swiper-bundle.min.css')}}" rel="stylesheet">
 
+  <!-- Template Main CSS File -->
+  <link href="{{asset('assets/css/style.css')}}" rel="stylesheet">
 <head>
 
     <meta charset="UTF-8">
@@ -24,7 +33,86 @@
 <body>
     
     <!--Main container-->
+    <!-- <header class="p-3 mb-3 border-bottom bg-transparent fixed-top">
+    <div class="container">
+      <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start"> -->
+        <!-- <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-dark text-decoration-none">
+          <svg class="bi me-2" width="40" height="32" role="img" aria-label="Bootstrap"><use xlink:href="#bootstrap"/></svg>
+        </a> -->
 
+        <!-- <ul class="nav col-12 col-lg-auto me-lg-auto mb-3 justify-content-center mb-md-0"> -->
+          <!-- <li><a href="#" class="nav-link px-2 link-secondary">Сохранить</a></li> -->
+          <!-- <nav id="navbar" class="navbar">
+        <ul>
+          <li><a class="nav-link scrollto active" href="#hero">Дом</a></li>
+          <li><a class="nav-link scrollto" href="#about">О нас</a></li>
+          <li><a class="nav-link scrollto" href="#services">Наши сервисы</a></li>
+          <!-- <li><a class="nav-link scrollto" href="#team">Разработчики</a></li> -->
+          <!-- <li><a class="nav-link scrollto" href="#footer">Контакты</a></li>
+          <li>
+            <a class="getstarted scrollto" href="{{route('cabinet')}}">Кабинет</a>
+           
+          </li>
+         <li><a class="getstarted scrollto" href="#about">Get Started</a></li>
+        </ul>
+        <i class="bi bi-list mobile-nav-toggle"></i>
+      </nav> -->
+          <!-- <div class="col-md-5 text-end">
+          <button type="button" class="btn btn-primary ">Сохранить</button>
+           <button type="button" class="btn btn-outline-primary ">Кабинет</button>
+          </div> -->
+          <!-- <li><a href="#" class="nav-link px-2 link-dark">Вернуться на глвную</a></li> -->
+         
+        <!-- </ul> -->
+
+        <!-- <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3">
+          <input type="search" class="form-control" placeholder="Search..." aria-label="Search">
+        </form>
+
+        <div class="dropdown text-end">
+          <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
+            <img src="https://github.com/mdo.png" alt="mdo" width="32" height="32" class="rounded-circle">
+          </a>
+          <ul class="dropdown-menu text-small" aria-labelledby="dropdownUser1">
+            <li><a class="dropdown-item" href="#">New project...</a></li>
+            <li><a class="dropdown-item" href="#">Settings</a></li>
+            <li><a class="dropdown-item" href="#">Profile</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="#">Sign out</a></li>
+          </ul>
+        </div> -->
+      <!-- </div>
+    </div>
+  </header> -->
+  <div class="container-fluid fixed-top ">
+  <div class="row">
+    <form>
+    <nav class="col-md-2 d-none d-md-block bg-transparent sidebar border-end border-light  min-vh-100">
+      <div class="sidebar-sticky">
+        <ul class="nav flex-column">
+          <li class="nav-item">
+            <a class="nav-link active" href="#">
+                
+          <button type="button" class="btn btn-primary ">Сохранить</button>
+          
+         
+          </li>
+          <li class="nav-item">
+           
+            <button type="button" class="btn btn-outline-primary ">Кабинет</button>
+          </li>
+          <!-- Добавьте больше ссылок или другие элементы здесь -->
+        </ul>
+      </div>
+    </nav>
+</form>
+
+    <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+      <!-- Сюда вставьте основное содержимое страницы -->
+    </main>
+  </div>
+</div>
+  
     <div class="container d-flex justify-content-center align-items-center min-vh-100 p-4">
         
         <form method="post" class="col-md-6 right-box p-3 rounded-4 shadow box-area" action="/submit-form1" enctype="multipart/form-data">
