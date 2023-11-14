@@ -26,6 +26,9 @@
         <form  method="post"  class="col-md-6 right-box p-3 rounded-4 shadow box-area" action="{{ route('form66_update', ['name' => $repconc->name,'id' => $repconc->id]) }}">
             @csrf
             <div class="row align-items-center ">
+            <div class="mb-5 ms-auto">
+                <img src="{{asset('assets/img/logo.png')}}" class="logo" width="210px">
+        </div> 
                 <div class="header-text mb-4">
                     <h2 style="text-align: center;">Заявка 
                         </h2>

@@ -417,9 +417,9 @@
           </div>
           <div class="col-md-6 mt-4 mt-md-0">
             <div class="icon-box">
-              <i class="bi bi-clock"></i>
-              <h4><a href="#">Eiusmod Tempor</a></h4>
-              <p>Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi</p>
+              <i class="bi bi-graph-up-arrow"></i>
+              <h4><a href="{{route('form6')}}">Республиканский конкурс инновационных проектов</a></h4>
+              <p>Сюда текст тоже</p>
             </div>
           </div>
         </div>
@@ -801,7 +801,7 @@
             </ul>
           </div>
 
-          <div class="col-lg-3 col-md-6 footer-links">
+          <div class="col-lg-7 col-md-7 footer-links">
             <h4>Сервисы</h4>
             <ul>
               <li><i class="bx bx-chevron-right"></i> <a href="{{route('form1')}}">Проект молодежных инициатив</a></li>
@@ -809,6 +809,7 @@
               <li><i class="bx bx-chevron-right"></i> <a href="{{route('form3')}}">100 идей для Беларуси</a></li>
               <li><i class="bx bx-chevron-right"></i> <a href="{{route('form4')}}">Конкурс проектов заданий "ГПНИ"</a></li>
               <li><i class="bx bx-chevron-right"></i> <a href="{{route('form5')}}">Заявка на получение гранта</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="{{route('form6')}}">Республиканский конкурс инновационных проектов</a></li>
             </ul>
           </div>
 
