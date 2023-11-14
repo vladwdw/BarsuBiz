@@ -417,7 +417,7 @@
           </div>
           <div class="col-md-6 mt-4 mt-md-0">
             <div class="icon-box">
-              <i class="bi bi-clock"></i>
+              <i class="bi bi-graph-up-arrow"></i>
               <h4><a href="{{route('form6')}}">Республиканский конкурс инновационных проектов</a></h4>
               <p>Сюда текст тоже</p>
             </div>
