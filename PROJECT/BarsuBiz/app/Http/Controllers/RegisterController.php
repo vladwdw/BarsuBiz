@@ -43,7 +43,6 @@ class RegisterController extends Controller
             $user->name = $request->input("username");
             $user->email = $request->input("email");
             $user->password = bcrypt($request->input("password"));
-            event(new Registered($user));
             $user->save();
             
             return redirect("/login");

@@ -329,7 +329,7 @@ for (var i = 1; i < table.rows.length; i++) {
 
           
 
-          <div class="col-lg-3 col-md-6 footer-links" id="services">
+          <div class="col-lg-7 col-md-7 footer-links" id="services">
             <h4>Сервисы</h4>
             <ul>
               <li><i class="bx bx-chevron-right"></i> <a href="{{route('form1')}}">Проект молодежных инициатив</a></li>
@@ -337,8 +337,10 @@ for (var i = 1; i < table.rows.length; i++) {
               <li><i class="bx bx-chevron-right"></i> <a href="{{route('form3')}}">100 идей для Беларуси</a></li>
               <li><i class="bx bx-chevron-right"></i> <a href="{{route('form4')}}">Конкурс проектов заданий "ГПНИ"</a></li>
               <li><i class="bx bx-chevron-right"></i> <a href="{{route('form5')}}">Заявка на получение гранта</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="{{route('form6')}}">Республиканский конкурс инновационных проектов</a></li>
             </ul>
           </div>
+          
 
           <!-- <div class="col-lg-4 col-md-6 footer-newsletter">
             <h4>Our Newsletter</h4>

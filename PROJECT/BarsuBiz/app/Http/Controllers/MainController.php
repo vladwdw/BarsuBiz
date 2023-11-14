@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+
+
+use App\Models\Repconc;
 use App\Models\BarsuNir;
 use App\Models\BarsuNirDop;
 use App\Models\HudredIdeas;
@@ -89,6 +92,18 @@ class MainController extends Controller
             if($grant->user_id==Auth::user()->id || Auth::user()->Role== "Admin"){
             return view("forms/form55",compact("grant"));
         }
+        
+        else{
+            return redirect("cabinet");
+        }
+
+        }
+        if($name== "РКИП"){
+            $repconc=Repconc::find($id);
+            if($repconc->user_id==Auth::user()->id || Auth::user()->Role== "Admin"){
+            return view("forms/form66",compact("repconc"));
+        }
+        
         else{
             return redirect("cabinet");
         }
@@ -172,6 +187,39 @@ class MainController extends Controller
             $templateProcessor->saveAs($newFileName.'.docx');
             $filePath = public_path($newFileName.'.docx');
             return response()->download($filePath)->deleteFileAfterSend();
+        }
+        if($name="РКИП"){
+            $phpWord=new PhpWord();
+            $phpWord->setDefaultFontName('Times New Roman');
+            $phpWord->setDefaultFontSize(14);
+            $repconc=Repconc::find($id);
+            $templateProcessor= new TemplateProcessor('templates\form6.docx');
+            $templateProcessor->setValue('nominationName',$repconc->nominationName);
+            $templateProcessor->setValue('nameProject',$repconc->nameProject);
+            $templateProcessor->setValue('fio',$repconc->fio);
+            $templateProcessor->setValue('teachWorkPlace',$repconc->teachWorkPlace);
+            $templateProcessor->setValue('dolzhnUch',$repconc->dolzhnUch);
+            $templateProcessor->setValue('uchStep',$repconc->uchStep);
+            $templateProcessor->setValue('adress',$repconc->adress);
+            $templateProcessor->setValue('phone',$repconc->phone);
+            $templateProcessor->setValue('email',$repconc->email);
+            $templateProcessor->setValue('projectLink',$repconc->projectLink);
+            $templateProcessor->setValue('yurName',$repconc->yurName);
+            $templateProcessor->setValue('fioRuk',$repconc->fioRuk);
+            $templateProcessor->setValue('dolzhnYur',$repconc->dolzhnYur);
+            $templateProcessor->setValue('yurStep',$repconc->yurStep);
+            $templateProcessor->setValue('yurAdress',$repconc->yurAdress);
+            $templateProcessor->setValue('platNumber',$repconc->platNumber);
+            $templateProcessor->setValue('yurPhone',$repconc->yurPhone);
+            $templateProcessor->setValue('yurEmail',$repconc->yurEmail);
+            $templateProcessor->setValue('fioCommand',$repconc->fioCommand);
+            $templateProcessor->setValue('yurLink',$repconc->yurLink);
+            $newFileName = $name."_".$id;
+           
+            $templateProcessor->saveAs($newFileName.'.docx');
+            $filePath = public_path($newFileName.'.docx');
+            return response()->download($filePath)->deleteFileAfterSend();
+
         }
         if($name=="Участие в НИР")
         {
@@ -501,6 +549,58 @@ unlink($filePath);
 
 
    }
+   if($name="РКИП"){
+    $phpWord=new PhpWord();
+    $phpWord->setDefaultFontName('Times New Roman');
+    $phpWord->setDefaultFontSize(14);
+    $repconc=Repconc::find($id);
+    $templateProcessor= new TemplateProcessor('templates\form6.docx');
+    $templateProcessor->setValue('nominationName',$repconc->nominationName);
+    $templateProcessor->setValue('nameProject',$repconc->nameProject);
+    $templateProcessor->setValue('fio',$repconc->fio);
+    $templateProcessor->setValue('teachWorkPlace',$repconc->teachWorkPlace);
+    $templateProcessor->setValue('dolzhnUch',$repconc->dolzhnUch);
+    $templateProcessor->setValue('uchStep',$repconc->uchStep);
+    $templateProcessor->setValue('adress',$repconc->adress);
+    $templateProcessor->setValue('phone',$repconc->phone);
+    $templateProcessor->setValue('email',$repconc->email);
+    $templateProcessor->setValue('projectLink',$repconc->projectLink);
+    $templateProcessor->setValue('yurName',$repconc->yurName);
+    $templateProcessor->setValue('fioRuk',$repconc->fioRuk);
+    $templateProcessor->setValue('dolzhnYur',$repconc->dolzhnYur);
+    $templateProcessor->setValue('yurStep',$repconc->yurStep);
+    $templateProcessor->setValue('yurAdress',$repconc->yurAdress);
+    $templateProcessor->setValue('platNumber',$repconc->platNumber);
+    $templateProcessor->setValue('yurPhone',$repconc->yurPhone);
+    $templateProcessor->setValue('yurEmail',$repconc->yurEmail);
+    $templateProcessor->setValue('fioCommand',$repconc->fioCommand);
+    $templateProcessor->setValue('yurLink',$repconc->yurLink);
+    $newFileName = $name."_".$id;
+   
+    $templateProcessor->saveAs($newFileName.'.docx');
+    $filePath = public_path($newFileName.'.docx');
+    $word1 = IOFactory::load($newFileName.'.docx', 'Word2007');
+
+   
+    
+    
+    // Конвертируем документ в формат PDF
+    $dompdf = base_path('vendor/dompdf/dompdf');
+    \PhpOffice\PhpWord\Settings::setPdfRendererPath($dompdf);
+    \PhpOffice\PhpWord\Settings::setPdfRendererName('DomPDF');
+    $pdfwriter=\PhpOffice\PhpWord\IOFactory::createWriter($word1,'PDF');
+    $fontDir = base_path('fonts');
+    $options = new \Dompdf\Options();
+    $options->set('fontDir', $fontDir);
+    $pdfwriter->save(public_path($newFileName));
+    header('Content-Type: application/pdf');
+header('Content-Disposition: attachment; filename="' . $newFileName.'.pdf');
+readfile(public_path($newFileName));
+unlink(public_path($newFileName));
+unlink($filePath);
+  
+
+}
     if ($name=="Участие в НИР"){
         $phpWord= new PhpWord();
     
@@ -817,6 +917,9 @@ unlink($filePath);
     public function form3(){
         return view('forms/form3');
     }
+    public function form6(){
+        return view('forms/form6');
+    }
     public function form4(){
         return view('forms/form4');
     }
@@ -833,11 +936,12 @@ unlink($filePath);
 
         if(Auth::user()->Role=='User'){
         $molInics = MolInic::select('name', 'created_at','id','owner')->where('user_id', auth()->id());
+        $repconc = Repconc::select('name', 'created_at','id','owner')->where('user_id', auth()->id());
         $barsunirs = BarsuNir::select('name', 'created_at','id','owner')->where('user_id', auth()->id());
         $hundredideas= HudredIdeas::select('name', 'created_at','id','owner')->where('user_id', auth()->id());
         $gpnis=Gpni::select('name','created_at','id','owner')->where('user_id', auth()->id());
         $grant=Grant::select('name','created_at','id','owner')->where('user_id', auth()->id());
-        $items = $molInics->union($barsunirs)->union($hundredideas)->union($gpnis)->orderBy('created_at', 'desc')->union($grant)->paginate(7);
+        $items = $molInics->union($barsunirs)->union($hundredideas)->union($gpnis)->orderBy('created_at', 'desc')->union($grant)->union($repconc)->orderBy('created_at', 'desc')->paginate(7);
         $notifications = auth()->user()->unreadNotifications;
         return view('cabinet', compact('items'), ['notifications' => $notifications]);
       
@@ -846,6 +950,7 @@ unlink($filePath);
         
         if(Auth::user()->Role=='Admin'){
             $molInics = MolInic::select('name', 'created_at','id','owner');
+            $repconc = Repconc::select('name', 'created_at','id','owner');
             $barsunirs = BarsuNir::select('name', 'created_at','id','owner');
             $hundredideas= HudredIdeas::select('name', 'created_at','id','owner');
             $gpnis=Gpni::select('name','created_at','id','owner');

@@ -10,6 +10,7 @@ use App\Models\GpniDop;
 use Illuminate\Support\Facades\Auth;
 use App\Models\MolInic;
 use App\Models\Molindic;
+use App\Models\Repconc;
 use App\Notifications\Delete;
 use App\Models\User;
 use App\Notifications\Edit;
@@ -31,7 +32,8 @@ class SearchController extends Controller
                 $hundredideas= HudredIdeas::select('name', 'created_at','id','owner')->where('user_id', auth()->id());
                 $gpnis=Gpni::select('name','created_at','id','owner')->where('user_id', auth()->id());
                 $grant=Grant::select('name','created_at','id','owner')->where('user_id', auth()->id());
-                $items = $molInics->union($barsunirs)->union($hundredideas)->union($gpnis)->orderBy('created_at', 'desc')->union($grant)->paginate(7)->withQueryString();
+                $repconc=Repconc::select('name','created_at','id','owner')->where('user_id', auth()->id());
+                $items = $molInics->union($barsunirs)->union($hundredideas)->union($gpnis)->orderBy('created_at', 'desc')->union($grant)->union($repconc)->paginate(7)->withQueryString();
                 $notifications = auth()->user()->unreadNotifications;
    
             }
@@ -41,7 +43,8 @@ class SearchController extends Controller
             $hundredideas= HudredIdeas::select('name', 'created_at','id','owner')->where('user_id', auth()->id())->where('name_project', 'like', '%' . $search . '%');
             $gpnis=Gpni::select('name','created_at','id','owner')->where('user_id', auth()->id())->where('namePr', 'like', '%' . $search . '%');
             $grant=Grant::select('name','created_at','id','owner')->where('user_id', auth()->id())->where('workName', 'like', '%' . $search . '%');;
-            $items = $molInics->union($barsunirs)->union($hundredideas)->union($gpnis)->orderBy('created_at', 'desc')->union($grant)->paginate(7)->withQueryString();
+            $repconc=Repconc::select('name','created_at','id','owner')->where('user_id', auth()->id())->where('nameProject', 'like', '%' . $search . '%');
+            $items = $molInics->union($barsunirs)->union($hundredideas)->union($gpnis)->orderBy('created_at', 'desc')->union($grant)->union($repconc)->paginate(7)->withQueryString();
             $notifications = auth()->user()->unreadNotifications;
           
             }
@@ -53,7 +56,8 @@ class SearchController extends Controller
                 $hundredideas= HudredIdeas::select('name', 'created_at','id','owner');
                 $gpnis=Gpni::select('name','created_at','id','owner');
                 $grant=Grant::select('name','created_at','id','owner');
-                $items = $molInics->union($barsunirs)->union($hundredideas)->union($gpnis)->orderBy('created_at', 'desc')->union($grant)->paginate(7)->withQueryString();
+                $repconc=Repconc::select('name','created_at','id','owner');
+                $items = $molInics->union($barsunirs)->union($hundredideas)->union($repconc)->union($gpnis)->orderBy('created_at', 'desc')->union($grant)->paginate(7)->withQueryString();
                 $notifications = auth()->user()->unreadNotifications;
             
             }
@@ -63,7 +67,8 @@ class SearchController extends Controller
             $hundredideas= HudredIdeas::select('name', 'created_at','id','owner')->where('name_project', 'like', '%' . $search . '%');
             $gpnis=Gpni::select('name','created_at','id','owner')->where('namePr', 'like', '%' . $search . '%');
             $grant=Grant::select('name','created_at','id','owner')->where('workName', 'like', '%' . $search . '%');;
-            $items = $molInics->union($barsunirs)->union($hundredideas)->union($gpnis)->orderBy('created_at', 'desc')->union($grant)->paginate(7)->withQueryString();
+            $repconc=Repconc::select('name','created_at','id','owner')->where('nameProject', 'like', '%' . $search . '%');
+            $items = $molInics->union($barsunirs)->union($hundredideas)->union($gpnis)->union($repconc)->orderBy('created_at', 'desc')->union($grant)->paginate(7)->withQueryString();
             $notifications = auth()->user()->unreadNotifications;
            
             }
@@ -76,8 +81,8 @@ class SearchController extends Controller
             $hundredideas= HudredIdeas::select('name', 'created_at','id','owner')->where('user_id', auth()->id());
             $gpnis=Gpni::select('name','created_at','id','owner')->where('user_id', auth()->id());
             $grant=Grant::select('name','created_at','id','owner')->where('user_id', auth()->id());
-            
-            $items = $molInics->union($barsunirs)->union($hundredideas)->union($gpnis)->union($grant)->orderBy('created_at', $sort === 'old' ? 'asc' : 'desc')->paginate(7)->withQueryString();
+            $repconc=Repconc::select('name','created_at','id','owner')->where('user_id', auth()->id());
+            $items = $molInics->union($barsunirs)->union($hundredideas)->union($gpnis)->union($grant)->union($repconc)->orderBy('created_at', $sort === 'old' ? 'asc' : 'desc')->paginate(7)->withQueryString();
             $notifications = auth()->user()->unreadNotifications;
            
     }
@@ -88,7 +93,8 @@ class SearchController extends Controller
         $hundredideas= HudredIdeas::select('name', 'created_at','id','owner');
         $gpnis=Gpni::select('name','created_at','id','owner');
         $grant=Grant::select('name','created_at','id','owner');
-        $items = $molInics->union($barsunirs)->union($hundredideas)->union($gpnis)->union($grant)->orderBy('created_at', $sort === 'old' ? 'asc' : 'desc')->paginate(7)->withQueryString();
+        $repconc=Repconc::select('name','created_at','id','owner');
+        $items = $molInics->union($barsunirs)->union($hundredideas)->union($gpnis)->union($repconc)->union($grant)->orderBy('created_at', $sort === 'old' ? 'asc' : 'desc')->paginate(7)->withQueryString();
         $notifications = auth()->user()->unreadNotifications;
       
     }

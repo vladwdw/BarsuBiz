@@ -11,6 +11,7 @@ use App\Models\GpniDop;
 use Illuminate\Support\Facades\Auth;
 use App\Models\MolInic;
 use App\Models\Molindic;
+use App\Models\Repconc;
 use App\Notifications\Delete;
 use App\Models\User;
 use App\Notifications\Edit;
@@ -168,6 +169,22 @@ class StoreController1 extends Controller
                     $user->notify(new Delete($data));
                 }
                 $gpni->delete();
+
+            }
+            return redirect('cabinet');
+            
+        }
+        if($name== 'РКИП'){
+
+            
+            $repconc=Repconc::find($id);
+            if( $repconc->user_id==Auth::user()->id || Auth::user()->Role== 'Admin'){
+                if(Auth::user()->Role=="Admin"){
+                    $user = User::where('name', $ $repconc->owner)->first();
+                    $data= $repconc->name."_#".$repconc->id;
+                    $user->notify(new Delete($data));
+                }
+                 $repconc->delete();
 
             }
             return redirect('cabinet');
