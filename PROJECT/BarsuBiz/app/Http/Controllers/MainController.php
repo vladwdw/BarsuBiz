@@ -955,7 +955,7 @@ unlink($filePath);
             $hundredideas= HudredIdeas::select('name', 'created_at','id','owner');
             $gpnis=Gpni::select('name','created_at','id','owner');
             $grant=Grant::select('name','created_at','id','owner');
-            $items = $molInics->union($barsunirs)->union($hundredideas)->union($gpnis)->orderBy('created_at', 'desc')->union($grant)->paginate(7);
+            $items = $molInics->union($barsunirs)->union($hundredideas)->union($gpnis)->orderBy('created_at', 'desc')->union($grant)->union($repconc)->paginate(7);
             return view('cabinet', compact('items'));
            
             }
