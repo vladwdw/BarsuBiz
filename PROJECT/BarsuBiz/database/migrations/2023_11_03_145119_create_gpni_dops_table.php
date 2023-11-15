@@ -17,12 +17,7 @@ return new class extends Migration
             $table->id();
             $table->timestamps();
             $table->unsignedBigInteger('project_id')->nullable();
-            // $fio= $request->input('fio');
-            // $uchStep= $request->input('uchStep');
-            // $uchZav= $request->input('uchZav');
-            // $kafLab= $request->input('kafLab');
-            // $phone= $request->input('phone');
-            // $email= $request->input('email');
+         
             $table->string('fio')->nullable();
             $table->string('uchStep')->nullable();
             $table->string('uchZav')->nullable();

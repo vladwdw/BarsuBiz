@@ -28,6 +28,20 @@
             <div class="mb-5 ms-auto">
                 <img src="{{asset('assets/img/logo.png')}}" class="logo" width="210px">
         </div>
+        <ul class="nav justify-content-center">
+  <li class="nav-item mt-2 mb-2">
+    
+  <button id="hideButtonApplication" type="button"  class="btn btn-outline-danger rounded-4" ><i class="bi bi-file-earmark-text"></i> Заявка</button>
+  
+  </li>
+  <li class="nav-item px-3 mt-2">
+  <button id="hideButtonPlan" type="button" class="btn btn-outline-danger rounded-4" href="#"><i class="bi bi-clipboard2-data"></i> Календарный план</button>
+  </li>
+  <li class="nav-item mt-2">
+  <button id="hideButtonCalculate" type="button" class="btn btn-outline-danger rounded-4" href="#"><i class="bi bi-calculator-fill"></i> Калькуляция</button>
+  </li>
+</ul>
+        <div id="HideApplication">
             <div class="row align-items-center maa ">
                 <div class="header-text mb-4">
                 <h3 style="text-align: center;"><strong>ЗАЯВКА </strong></h3>
@@ -93,7 +107,126 @@
                     <input type="text" class="form-control form-control-lg bg-light fs-6" placeholder="Из них привлеченное внебюджетное финансирование " name="fin3" value="{{$gpni->fin3}}">
                 </div>
                 
+                
+            </div>
+        </div>
+        <div id="HideCalculate">
+            <div class="row align-items-center maa ">
+                <div class="header-text mb-4">
+                <h3 style="text-align: center;"><strong>Калькуляция </strong></h3>
+                    
+                </div>
+                <p>Материалы, покупные полуфабрикаты и комплектующие изделия</p>
                 <div class="input-group mb-3">
+                    <input type="text" class="form-control form-control-lg bg-light fs-6" placeholder="Всего по проекту" name="totalCalculate1" >
+                    <input type="text" class="form-control form-control-lg bg-light fs-6" placeholder="На первый год" name="firstCalculate1">
+                </div> 
+                <p>Заработная плата научно-производственного персонала</p>
+                <div class="input-group mb-3">
+                    <input type="text" class="form-control form-control-lg bg-light fs-6" placeholder="Всего по проекту" name="totalCalculate2">
+                    <input type="text" class="form-control form-control-lg bg-light fs-6" placeholder="На первый год" name="firstCalculate2">
+                </div> 
+                <p>Отчисления в Фонд социальной защиты населения (34%) и другие отчисления в соответствии с дей-ствующим законодательством (Белгосстрах – 0,1 %)</p>
+                <div class="input-group mb-3">
+                    <input type="text" class="form-control form-control-lg bg-light fs-6" placeholder="Всего по проекту" name="totalCalculate3">
+                    <input type="text" class="form-control form-control-lg bg-light fs-6" placeholder="На первый год" name="firstCalculate3">
+                </div> 
+                <p>Научно-производственные командировки</p>
+                <div class="input-group mb-3">
+                    <input type="text" class="form-control form-control-lg bg-light fs-6" placeholder="Всего по проекту" name="totalCalculate4">
+                    <input type="text" class="form-control form-control-lg bg-light fs-6" placeholder="На первый год" name="firstCalculate4">
+                </div> 
+                <p>Работы и услуги сторонних организаций</p>
+                <div class="input-group mb-3">
+                    <input type="text" class="form-control form-control-lg bg-light fs-6" placeholder="Всего по проекту" name="totalCalculate5">
+                    <input type="text" class="form-control form-control-lg bg-light fs-6" placeholder="На первый год" name="firstCalculate5">
+                </div> 
+                <p>Прочие прямые расходы</p>
+                <div class="input-group mb-3">
+                    <input type="text" class="form-control form-control-lg bg-light fs-6" placeholder="Всего по проекту" name="totalCalculate6">
+                    <input type="text" class="form-control form-control-lg bg-light fs-6" placeholder="На первый год" name="firstCalculate6">
+                </div> 
+                <p>Накладные расходы</p>
+                <div class="input-group mb-3">
+                    <input type="text" class="form-control form-control-lg bg-light fs-6" placeholder="Всего по проекту" name="totalCalculate7">
+                    <input type="text" class="form-control form-control-lg bg-light fs-6" placeholder="На первый год" name="firstCalculate7">
+                </div> 
+                <p>Привлеченное внебюджетное финансирование</p>
+                <div class="input-group mb-3">
+                    <input type="text" class="form-control form-control-lg bg-light fs-6" placeholder="Всего по проекту" name="totalCalculate8">
+                    <input type="text" class="form-control form-control-lg bg-light fs-6" placeholder="На первый год" name="firstCalculate8">
+                </div> 
+            </div>
+        </div>
+        <div id="HidePlan">
+            <div class="row align-items-center maa ">
+                <div class="header-text mb-4">
+                <h3 style="text-align: center;"><strong>КАЛЕНДАРНЫЙ  ПЛАН </strong></h3>
+                    
+                </div>
+               
+                <p>Научное направление</p>
+                <div class="input-group mb-3">
+                    <input type="text" class="form-control form-control-lg bg-light fs-6" placeholder="Введите данные " name="direction" >
+                </div>
+                <p>Проведения научно-исследовательской работы </p>
+                <div class="form-group mb-3">
+                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Введите данные:" name="Carryingout"></textarea>
+                </div>
+                <p>Наименование научно-исследовательской работы в целом</p>
+                <div class="form-group mb-3">
+                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Введите данные:" name="nameingeneral"></textarea>
+                </div>
+                <p>Плановые сроки выполнения</p>
+                <div class="input-group mb-3">
+                    <input type="text" class="form-control form-control-lg bg-light fs-6" placeholder="Начало(год)" name="nachPlanneddates">
+                    <input type="text" class="form-control form-control-lg bg-light fs-6" placeholder="Окончание(год)" name="endPlanneddates">
+                </div> 
+                <p>Общая стоимость</p>
+                <div class="input-group mb-3">
+                    <input type="text" class="form-control form-control-lg bg-light fs-6" placeholder="Введите данные" name="totalcost">
+                </div>
+                <p>Ожидаемые научные результаты и форма отчетности</p>
+                <div class="form-group mb-3">
+                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Введите данные" name="results"></textarea>
+                </div>
+                <h4>1 полугодие</h4>
+                <div class="form-group mb-3">
+                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Наименование:" name="name1p"></textarea>
+                </div>
+                
+                <div class="input-group mb-3">
+                    <input type="text" class="form-control form-control-lg bg-light fs-6" placeholder="Начало(год)" name="nachPlanneddates1p">
+                    <input type="text" class="form-control form-control-lg bg-light fs-6" placeholder="Окончание(год)" name="endPlanneddates1p">
+                </div> 
+                
+                <div class="input-group mb-3">
+                    <input type="text" class="form-control form-control-lg bg-light fs-6" placeholder="Общая стоимость" name="totalcost1p">
+                </div>
+                
+                <div class="form-group mb-3">
+                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Ожидаемые научные результаты" name="results1p"></textarea>
+                </div>
+                <h4>2 полугодие</h4>
+                <div class="form-group mb-3">
+                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Наименование" name="name2p"></textarea>
+                </div>
+               
+                <div class="input-group mb-3">
+                    <input type="text" class="form-control form-control-lg bg-light fs-6" placeholder="Начало(год)" name="nachPlanneddates2p">
+                    <input type="text" class="form-control form-control-lg bg-light fs-6" placeholder="Окончание(год)" name="endPlanneddates2p">
+                </div> 
+                
+                <div class="input-group mb-3">
+                    <input type="text" class="form-control form-control-lg bg-light fs-6" placeholder="Общая стоимость" name="totalcost2p">
+                </div>
+                <div class="form-group mb-3">
+                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Ожидаемые научные результаты" name="results2p"></textarea>
+                </div>
+
+            </div>
+        </div>
+            <div class="input-group mb-3">
                     <button class="btn btn-lg btn-danger w-100 fs-6" type="submit">Сохранить</button>
                 </div>
                 <div class="input-group mb-3">
@@ -102,6 +235,36 @@
             </div>
         </form>
     </div>
+    <script src="{{asset('assets/js/jquery.js')}}"></script>
+    <script>
+    
+    $('#HideCalculate').hide();
+   
+    $('#HidePlan').hide();
+ $('#hideButtonApplication').click(function() {
+    if ($("#HideApplication").is(":hidden")) {
+        $('#HideApplication').show();
+        $('#HideCalculate').hide();
+        $('#HidePlan').hide();
+} 
+
+ });
+ $('#hideButtonCalculate').click(function() {
+    if ($("#HideCalculate").is(":hidden")) {
+        $('#HideApplication').hide();
+        $('#HideCalculate').show();
+        $('#HidePlan').hide();
+ } 
+ });
+ $('#hideButtonPlan').click(function() {
+    if ($("#HidePlan").is(":hidden")) {
+        $('#HidePlan').show();
+        $('#HideCalculate').hide();
+        $('#HideApplication').hide();
+
+ } 
+ });
+</script>
     <script>
         function addNewElement() {
      // Создание нового div с классом "input-group mb-3 d-flex"
