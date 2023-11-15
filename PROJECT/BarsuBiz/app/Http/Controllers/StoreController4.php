@@ -108,6 +108,52 @@ class StoreController4 extends Controller
             dd($e->getMessage());
 }
     }
+    public function calculate_update(Request $request, $id){
+        $totalCalculate1= $request->input('totalCalculate1');
+        $totalCalculate2= $request->input('totalCalculate2');
+        $totalCalculate3= $request->input('totalCalculate3');
+        $totalCalculate4= $request->input('totalCalculate4');
+        $totalCalculate5= $request->input('totalCalculate5');
+        $totalCalculate6= $request->input('totalCalculate6');
+        $totalCalculate7= $request->input('totalCalculate7');
+        $totalCalculate8= $request->input('totalCalculate8');
+        $firstCalculate1= $request->input('firstCalculate1');   
+        $firstCalculate2= $request->input('firstCalculate2');
+        $firstCalculate3= $request->input('firstCalculate3');
+         $firstCalculate4= $request->input('firstCalculate4');
+         $firstCalculate5= $request->input('firstCalculate5');
+         $firstCalculate6= $request->input('firstCalculate6');
+         $firstCalculate7= $request->input('firstCalculate7');
+         $firstCalculate8= $request->input('firstCalculate8');
+         $gpni_calculate =Gpni_calculate::where('project_id', $id)->delete();
+        try{
+            $gpni_calculate = new Gpni_calculate();
+            $gpni_calculate->project_id=$id;
+            $gpni_calculate->totalCalculate1=$totalCalculate1;
+            $gpni_calculate->totalCalculate2=$totalCalculate2;
+            $gpni_calculate->totalCalculate3=$totalCalculate3;
+            $gpni_calculate->totalCalculate4=$totalCalculate4;
+            $gpni_calculate->totalCalculate5=$totalCalculate5;
+            $gpni_calculate->totalCalculate6=$totalCalculate6;
+            $gpni_calculate->totalCalculate7=$totalCalculate7;
+            $gpni_calculate->totalCalculate8=$totalCalculate8;
+            $gpni_calculate->firstCalculate1=$firstCalculate1;
+            $gpni_calculate->firstCalculate2=$firstCalculate2;
+            $gpni_calculate->firstCalculate3=$firstCalculate3;
+            $gpni_calculate->firstCalculate4=$firstCalculate4;
+            $gpni_calculate->firstCalculate5=$firstCalculate5;
+            $gpni_calculate->firstCalculate6=$firstCalculate6;
+            $gpni_calculate->firstCalculate7=$firstCalculate7;
+            $gpni_calculate->firstCalculate8=$firstCalculate8;
+            $gpni_calculate->totalCalculateSum=$totalCalculate1+$totalCalculate2+$totalCalculate3+$totalCalculate4+$totalCalculate5+$totalCalculate6+$totalCalculate7+$totalCalculate8;
+            $gpni_calculate->firstCalculateSum=$firstCalculate1+$firstCalculate2+$firstCalculate3+$firstCalculate4+$firstCalculate5+$firstCalculate6+$firstCalculate7+$firstCalculate8;
+            $gpni_calculate->save();
+           
+        }
+        catch (\Exception $e) {
+            dd($e->getMessage());
+}
+    }
     public function plan(Request $request, Gpni $gpni){
         $direction= $request->input('direction');
         $Carryingout= $request->input('Carryingout');
@@ -172,8 +218,9 @@ class StoreController4 extends Controller
         $endPlanneddates2p= $request->input('endPlanneddates2p');
         $totalcost2p= $request->input('totalcost2p');
         $results2p= $request->input('results2p');
+        $gpni_plan =Gpni_plan::where('project_id', $id)->delete();
         try{
-            $gpni_plan = new Gpni_plan();
+            $gpni_plan=new Gpni_plan();
             $gpni_plan->project_id=$id;
             $gpni_plan->direction=$direction;
             $gpni_plan->Carryingout=$Carryingout;
@@ -242,6 +289,8 @@ class StoreController4 extends Controller
 
             }
             $this->plan_update($request,$id);
+            $this->calculate($request,$id);
+            //$this->plan_update($request,$id);
             if(Auth::user()->Role=="Admin"){
                 $user = User::where('name', $gpni->owner)->first();
                 $data=$gpni->name."_#".$gpni->id;
