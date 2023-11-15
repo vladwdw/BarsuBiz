@@ -31,6 +31,8 @@ use Illuminate\Support\Facades\Storage;
 use Aspose\Words\WordsApi;
 use App\Http\Controllers\Settings;
 use App\Http\Controllers\ConvertDocumentRequest;
+use App\Models\Gpni_calculate;
+use App\Models\Gpni_plan;
 use App\Models\User;
 
 require_once base_path('vendor/autoload.php');
@@ -79,9 +81,11 @@ class MainController extends Controller
         if($name== "ГПНИ"){
             $gpni=Gpni::find($id);
             $gpniDop=GpniDop::where("project_id", $id)->get();
+            $gpni_plan=Gpni_plan::where("project_id", $id)->get();
+          
             if($gpni->user_id==Auth::user()->id || Auth::user()->Role== "Admin")
             {
-            return view("forms/form44",compact("gpni","gpniDop"));
+            return view("forms/form44",compact("gpni","gpniDop"),compact("gpni_plan"));
         }
         else{
             return redirect("cabinet");
