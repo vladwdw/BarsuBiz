@@ -10,6 +10,7 @@ class StoreController6 extends Controller
 {
     public function store(Request $request){
         try{
+        dd($request->all());
         $nominationName=$request->input('nominationName');
         $nameProject=$request->input('nameProject');
         $fio=$request->input('fio');

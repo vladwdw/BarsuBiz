@@ -47,11 +47,15 @@
                     <input type="text" class="form-control form-control-lg bg-light fs-6" placeholder="Email адрес" name="email">
                 </div>
                 <div class="input-group mb-3">
+                    <input type="number" class="form-control form-control-lg bg-light fs-6" placeholder="Возраст" name="age">
+                </div>
+                <div class="input-group mb-3">
                     <input type="text" class="form-control form-control-lg bg-light fs-6" placeholder="Имя пользователя" name="username">
                 </div>
                 <div class="input-group mb-3">
                     <input type="password" class="form-control form-control-lg bg-light fs-6" placeholder="Пароль" name="password">
                 </div>
+
 
                 <div class="input-group mb-3">
                     <button class="btn btn-lg btn-danger w-100 fs-6" type="submit">Зарегестрироваться</button>
