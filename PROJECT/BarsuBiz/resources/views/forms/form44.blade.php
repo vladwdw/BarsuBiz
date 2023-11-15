@@ -167,7 +167,7 @@
                
                 <p>Научное направление</p>
                 <div class="input-group mb-3">
-                    <input type="text" class="form-control form-control-lg bg-light fs-6" placeholder="Введите данные " name="direction" >
+                    <input type="text" class="form-control form-control-lg bg-light fs-6" placeholder="Введите данные " name="direction" value="{{$gpni_plan->first()->direction}}" >
                 </div>
                 <p>Проведения научно-исследовательской работы </p>
                 <div class="form-group mb-3">

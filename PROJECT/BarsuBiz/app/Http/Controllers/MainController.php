@@ -85,7 +85,7 @@ class MainController extends Controller
           
             if($gpni->user_id==Auth::user()->id || Auth::user()->Role== "Admin")
             {
-            return view("forms/form44",compact("gpni","gpniDop"),compact("gpni_plan"));
+            return view("forms/form44",compact("gpni","gpniDop","gpni_plan"));
         }
         else{
             return redirect("cabinet");
