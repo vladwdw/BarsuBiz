@@ -145,8 +145,8 @@ class StoreController4 extends Controller
             $gpni_calculate->firstCalculate6=$firstCalculate6;
             $gpni_calculate->firstCalculate7=$firstCalculate7;
             $gpni_calculate->firstCalculate8=$firstCalculate8;
-            $gpni_calculate->totalCalculateSum=$totalCalculate1+$totalCalculate2+$totalCalculate3+$totalCalculate4+$totalCalculate5+$totalCalculate6+$totalCalculate7+$totalCalculate8;
-            $gpni_calculate->firstCalculateSum=$firstCalculate1+$firstCalculate2+$firstCalculate3+$firstCalculate4+$firstCalculate5+$firstCalculate6+$firstCalculate7+$firstCalculate8;
+            $gpni_calculate->totalCalculateSum=$totalCalculate1+$totalCalculate2+$totalCalculate3+$totalCalculate4+$totalCalculate5+$totalCalculate6+$totalCalculate7;
+            $gpni_calculate->firstCalculateSum=$firstCalculate1+$firstCalculate2+$firstCalculate3+$firstCalculate4+$firstCalculate5+$firstCalculate6+$firstCalculate7;
             $gpni_calculate->save();
            
         }

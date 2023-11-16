@@ -4,7 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/formstyle.css') }}" rel="stylesheet">
+<link href="{{ asset('css/formstyle.css') }}" rel="stylesheet">
+<link href="{{asset('assets/vendor/aos/aos.css')}}" rel="stylesheet">
+  <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
+  <link href="{{asset('assets/vendor/bootstrap-icons/bootstrap-icons.css')}}" rel="stylesheet">
+  <link href="{{asset('assets/vendor/boxicons/css/boxicons.min.css')}}" rel="stylesheet">
+  <link href="{{asset('assets/vendor/glightbox/css/glightbox.min.css')}}" rel="stylesheet">
+  <link href="{{asset('assets/vendor/remixicon/remixicon.css')}}" rel="stylesheet">
+  <link href="{{asset('assets/vendor/swiper/swiper-bundle.min.css')}}" rel="stylesheet">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Составление шаблона</title>
@@ -32,17 +39,20 @@
         <ul class="nav justify-content-center">
   <li class="nav-item mt-2 mb-2">
     
-  <button id="hideButtonApplication" type="button"  class="btn btn-outline-danger rounded-4" ><i class="bi bi-file-earmark-text"></i> Заявка</button>
+  <button id="hideButtonApplication" type="button"  data-part="1" onclick="openPart(1)" class="btn btn-outline-danger rounded-4" ><i class="bi bi-file-earmark-text"></i> Заявка</button>
   
   </li>
   <li class="nav-item px-3 mt-2">
-  <button id="hideButtonPlan" type="button" class="btn btn-outline-danger rounded-4" href="#"><i class="bi bi-clipboard2-data"></i> Календарный план</button>
+  <button id="hideButtonPlan" type="button" data-part="2" onclick="openPart(2)" class="btn btn-outline-danger rounded-4" href="#"><i class="bi bi-calendar-check"></i> Календарный план</button>
   </li>
   <li class="nav-item mt-2">
-  <button id="hideButtonCalculate" type="button" class="btn btn-outline-danger rounded-4" href="#"><i class="bi bi-calculator-fill"></i> Калькуляция</button>
+  <button id="hideButtonCalculate" type="button" data-part="3" onclick="openPart(3)" class="btn btn-outline-danger rounded-4" href="#"><i class="bi bi-calculator-fill"></i> Калькуляция</button>
+  </li>
+  <li class="nav-item mt-2">
+  <button id="hideButtonObosn" type="button" data-part="4" onclick="openPart(4)" class="btn btn-outline-danger rounded-4" href="#"><i class="bi bi-aspect-ratio"></i> Обоснование</button>
   </li>
 </ul>
-        <div id="HideApplication">
+        <div class="part p-1" data-part="1" style="display: none;">
             <div class="row align-items-center maa ">
                 <div class="header-text mb-4">
                 <h3 style="text-align: center;"><strong>ЗАЯВКА </strong></h3>
@@ -103,7 +113,7 @@
                 
             </div>
         </div>
-        <div id="HideCalculate">
+        <div class="part p-2" data-part="2" style="display: none;">
             <div class="row align-items-center maa ">
                 <div class="header-text mb-4">
                 <h3 style="text-align: center;"><strong>Калькуляция </strong></h3>
@@ -151,7 +161,7 @@
                 </div> 
             </div>
         </div>
-        <div id="HidePlan">
+        <div class="part p-3" data-part="3" style="display: none;">
             <div class="row align-items-center maa ">
                 <div class="header-text mb-4">
                 <h3 style="text-align: center;"><strong>КАЛЕНДАРНЫЙ  ПЛАН </strong></h3>
@@ -218,6 +228,39 @@
 
             </div>
         </div>
+        <div class="part p-4" data-part="4" style="display: none;">
+            <div class="row align-items-center maa ">
+                <div class="header-text mb-4">
+                <h3 style="text-align: center;"><strong>ОБОСНОВАНИЕ </strong></h3>
+                    
+                </div>
+                <p>1.1. Наименование и предлагаемые сроки выполнения НИР; наименование организации-исполнителя НИР и ее ведомственная подчиненность; предполагаемый научный руководитель НИР с указанием должности, ученой степени. </p>
+                <div class="form-group mb-3">
+                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Введите данные:" name="name_nir"></textarea>
+                </div>
+            
+                <p>1.2. Цель и задачи работы; соответствие НИР одному из приоритетных направлений научных исследований Республики Беларусь на 2021-2025 годы.</p>
+                <div class="form-group mb-3">
+                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Введите данные" name="goals_nir"></textarea>
+                </div>
+                <p>1.3. Актуальность решаемой проблемы; научная новизна предлагаемой НИР.</p>
+                <div class="form-group mb-3">
+                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Введите данные" name="relevance_nir"></textarea>
+                </div>
+                <p>1.4. Важнейшие результаты предыдущих исследований по теме НИР; ссылки на три наиболее важные научные статьи, опубликованные за последние три года авторами проекта по тематике планируемых исследований (с указанием, по возможности, импакт-фактора журнала, в котором опубликована работа); имеющаяся в наличии научно-исследовательская база, квалификационный уровень и количественный состав предполагаемых исполнителей НИР.</p>
+                <div class="form-group mb-3">
+                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Введите данные" name="results_nir"></textarea>
+                </div>
+                <p>1.5. Планируемые результаты выполнения НИР.</p>
+                <div class="form-group mb-3">
+                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Введите данные" name="plan_results_nir"></textarea>
+                </div>
+                <p>1.6. Прогнозный объем финансирования из средств государственного бюджета в тысячах рублей на весь период выполнения НИР и, в том числе, на первый год; прогнозный объем привлеченных внебюджетных средств с указанием источников (на весь период, в том числе, на первый год).</p>
+                <div class="form-group mb-3">
+                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Введите данные" name="volume_nir"></textarea>
+                </div>
+            </div>
+        </div>
             <div class="input-group mb-3">
                     <button class="btn btn-lg btn-danger w-100 fs-6" type="submit">Сохранить</button>
                 </div>
@@ -228,8 +271,36 @@
         
         </form>
     </div>
-    
-<script>
+    <script>
+        window.onload = function() {
+ openPart(1);
+}
+        function openPart(partNumber) {
+ // Здесь ваш код для открытия части заявки
+ // partNumber - это номер части заявки, которую вы хотите открыть
+
+ // Делаем все кнопки неактивными
+ var buttons = document.querySelectorAll('.nav-item button');
+ for (var i = 0; i < buttons.length; i++) {
+     buttons[i].classList.remove('active');
+ }
+
+ // Делаем кнопку активной
+ var activeButton = document.querySelector('.nav-item button[data-part="' + partNumber + '"]');
+ activeButton.classList.add('active');
+
+ // Делаем все div-ы неактивными
+ var divs = document.querySelectorAll('.part');
+ for (var i = 0; i < divs.length; i++) {
+     divs[i].style.display = 'none';
+ }
+
+ // Делаем div активным
+ var activeDiv = document.querySelector('.part[data-part="' + partNumber + '"]');
+ activeDiv.style.display = 'block';
+}
+    </script>
+<!-- <script>
     
     $('#HideCalculate').hide();
    
@@ -257,7 +328,7 @@
 
  } 
  });
-</script>
+</script> -->
     <script>
         function addNewElement() {
      // Создание нового div с классом "input-group mb-3 d-flex"

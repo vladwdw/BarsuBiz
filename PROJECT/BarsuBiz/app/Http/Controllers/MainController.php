@@ -429,7 +429,7 @@ class MainController extends Controller
     $newFileName = $name.'_'.$id;
     $templateProcessor->setComplexBlock('table',$table);
     $templateProcessor->saveAs($newFileName.'.docx');
-    $zip_file = 'файлы.zip'; // Name of our archive to download
+    $zip_file = $newFileName.'.zip'; // Name of our archive to download
 
     // Initializing PHP class
     $zip = new \ZipArchive();
@@ -437,11 +437,12 @@ class MainController extends Controller
     
     $firstfile=$newFileName.'.docx';
     $plan=$this->form4_plan_word($id,$name).'.docx';
-    
+    $calculate=$this->form4_plan_calculate($id,$name).'.docx';
     // Adding file: second parameter is what will the path inside of the archive
     // So it will create another folder called "storage/" inside ZIP, and put the file there.
     $zip->addFile($firstfile);
     $zip->addFile($plan);
+    $zip->addFile($calculate);
     $zip->close();
     unlink(public_path($plan));
     unlink(public_path($firstfile));
@@ -494,8 +495,8 @@ class MainController extends Controller
             $nameingeneral=$gpni_plan->first()->nameingeneral;
             $nachPlanneddates=$gpni_plan->first()->nachPlanneddates;
             $endPlanneddates=$gpni_plan->first()->endPlanneddates;
-            $totalcos=$gpni_plan->first()->totalcost;
-            $result=$gpni_plan->first()->results;
+            $totalcost=$gpni_plan->first()->totalcost;
+            $results=$gpni_plan->first()->results;
             $name1p=$gpni_plan->first()->name1p;
             $nachPlanneddates1p=$gpni_plan->first()->nachPlanneddates1p;
             $endPlanneddates1p=$gpni_plan->first()->endPlanneddates1p;
@@ -516,8 +517,8 @@ class MainController extends Controller
     $templateProcessor->setValue('nameingeneral',$nameingeneral);
     $templateProcessor->setValue('nachPlanneddates',$nachPlanneddates);
     $templateProcessor->setValue('endPlanneddates',$endPlanneddates);
-    $templateProcessor->setValue('totalcos',$totalcos);
-    $templateProcessor->setValue('result',$result);
+    $templateProcessor->setValue('totalcost',$totalcost);
+    $templateProcessor->setValue('results',$results);
     $templateProcessor->setValue('name1p',$name1p);
     $templateProcessor->setValue('nachPlanneddates1p',$nachPlanneddates1p);
     $templateProcessor->setValue('endPlanneddates1p',$endPlanneddates1p);
@@ -548,6 +549,70 @@ class MainController extends Controller
     
     
     $newFileName = $name.'_Календарный план_'.$id;
+    $templateProcessor->saveAs($newFileName.'.docx');
+    return $newFileName;
+    }
+    public function form4_plan_calculate($id, $name)
+    {
+        $phpWord= new PhpWord();
+            $gpni_calculate=Gpni_calculate::where('project_id', $id)->get();
+            
+            $totalCalculate1=$gpni_calculate->first()->totalCalculate1;
+            $totalCalculate2=$gpni_calculate->first()->totalCalculate2;
+            $totalCalculate3=$gpni_calculate->first()->totalCalculate3;
+            $totalCalculate4=$gpni_calculate->first()->totalCalculate4;
+            $totalCalculate5=$gpni_calculate->first()->totalCalculate5;
+            $totalCalculate6=$gpni_calculate->first()->totalCalculate6;
+            $totalCalculate7=$gpni_calculate->first()->totalCalculate7;
+            $totalCalculate8=$gpni_calculate->first()->totalCalculate8;
+            $firstCalculate1=$gpni_calculate->first()->firstCalculate1;
+            $firstCalculate2=$gpni_calculate->first()->firstCalculate2;
+            $firstCalculate3=$gpni_calculate->first()->firstCalculate3;
+            $firstCalculate4=$gpni_calculate->first()->firstCalculate4;
+            $firstCalculate5=$gpni_calculate->first()->firstCalculate5;
+            $firstCalculate6=$gpni_calculate->first()->firstCalculate6;
+            $firstCalculate7=$gpni_calculate->first()->firstCalculate7;
+            $firstCalculate8=$gpni_calculate->first()->firstCalculate8;
+            $totalCalculateSum=$gpni_calculate->first()->totalCalculateSum;
+            $firstCalculateSum=$gpni_calculate->first()->firstCalculateSum;
+            $templateProcessor= new TemplateProcessor('templates\form4_calculate.docx');
+  
+  
+    $index=0;
+    $templateProcessor->setValue('totalCalculate1',$totalCalculate1);
+    $templateProcessor->setValue('totalCalculate2',$totalCalculate2);
+    $templateProcessor->setValue('totalCalculate3',$totalCalculate3);
+    $templateProcessor->setValue('totalCalculate4',$totalCalculate4);
+    $templateProcessor->setValue('totalCalculate5',$totalCalculate5);
+    $templateProcessor->setValue('totalCalculate6',$totalCalculate6);
+    $templateProcessor->setValue('totalCalculate7',$totalCalculate7);
+    $templateProcessor->setValue('totalCalculate8',$totalCalculate8);
+    $templateProcessor->setValue('firstCalculate1',$firstCalculate1);
+    $templateProcessor->setValue('firstCalculate2',$firstCalculate2);
+    $templateProcessor->setValue('firstCalculate3',$firstCalculate3);
+    $templateProcessor->setValue('firstCalculate4',$firstCalculate4);
+    $templateProcessor->setValue('firstCalculate5',$firstCalculate5);
+    $templateProcessor->setValue('firstCalculate6',$firstCalculate6);
+    $templateProcessor->setValue('firstCalculate7',$firstCalculate7);
+    $templateProcessor->setValue('firstCalculate8',$firstCalculate8);
+    $templateProcessor->setValue('totalCalculateSum',$totalCalculateSum);
+    $templateProcessor->setValue('firstCalculateSum',$firstCalculateSum);
+    $section=$phpWord->addSection();
+    $section->addTextBreak(1);
+    $styleCell =
+    array(
+    'borderColor' =>'000000',
+    'borderSize' => 3,
+    'valign' => 'center',
+    'cellMargin' => 100,
+    );
+    $styleText = array(
+        'name' => 'Times New Roman',
+        'valign'=>'center',
+        'size' => 12,
+    );
+
+    $newFileName = $name.'_Калькуляция_'.$id;
     $templateProcessor->saveAs($newFileName.'.docx');
     return $newFileName;
     }
