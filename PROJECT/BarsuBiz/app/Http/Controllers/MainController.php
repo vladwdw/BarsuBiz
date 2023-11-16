@@ -35,6 +35,9 @@ use App\Http\Controllers\Settings;
 use App\Http\Controllers\ConvertDocumentRequest;
 use App\Models\Gpni_calculate;
 use App\Models\Gpni_plan;
+use App\Models\RcpiBp;
+use App\Models\RcpiPass;
+use App\Models\RcpiPassCheckboxes;
 use App\Models\RcpiStrat;
 use App\Models\User;
 
@@ -109,8 +112,11 @@ class MainController extends Controller
             $repconc=Repconc::find($id);
             $repconc_strat_checkbox=RcpiStratCheckboxes::where("project_id", $repconc->id)->get();
             $rcpistrat=RcpiStrat::where("project_id", $repconc->id)->get();
+            $rcpibp=RcpiBp::where("project_id", $repconc->id)->get();
+            $rcpipass_checkbox=RcpiPassCheckboxes::where("project_id", $repconc->id)->get();
+            $rcpipass=RcpiPass::where("project_id", $repconc->id)->get();
             if($repconc->user_id==Auth::user()->id || Auth::user()->Role== "Admin"){
-            return view("forms/form66",compact("repconc","repconc_strat_checkbox","rcpistrat"));
+            return view("forms/form66",compact("repconc","repconc_strat_checkbox","rcpistrat","rcpipass_checkbox","rcpipass","rcpibp"));
         }
         
         else{
@@ -647,7 +653,7 @@ unlink($filePath);
 
 
    }
-   if($name="РКИП"){
+   if($name=="РКИП"){
     $phpWord=new PhpWord();
     $phpWord->setDefaultFontName('Times New Roman');
     $phpWord->setDefaultFontSize(14);

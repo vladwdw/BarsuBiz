@@ -11,6 +11,9 @@ use App\Models\GpniDop;
 use Illuminate\Support\Facades\Auth;
 use App\Models\MolInic;
 use App\Models\Molindic;
+use App\Models\RcpiBp;
+use App\Models\RcpiPass;
+use App\Models\RcpiPassCheckboxes;
 use App\Models\RcpiStrat;
 use App\Models\RcpiStratCheckboxes;
 use App\Models\Repconc;
@@ -189,6 +192,9 @@ class StoreController1 extends Controller
                 }
                 $repStrat=RcpiStrat::where('project_id', $repconc->id)->delete();
                 $repStratcheckbox=RcpiStratCheckboxes::where('project_id', $repconc->id)->delete();
+                $rcpi_pass_checkboxes=RcpiPassCheckboxes::where('project_id', $repconc->id)->delete();
+                $rcpipass=RcpiPass::where('project_id', $repconc->id)->delete();
+                $rcpibp=RcpiBp::where('project_id', $repconc->id)->delete();
                  $repconc->delete();
 
             }

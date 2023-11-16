@@ -1,6 +1,9 @@
 <?php
 
 namespace App\Http\Controllers;
+
+use App\Models\RcpiBp;
+use App\Models\RcpiPass;
 use App\Models\RcpiPassCheckboxes;
 use App\Models\Repconc;
 use App\Notifications\Edit;
@@ -62,12 +65,107 @@ class StoreController6 extends Controller
         $this->checkboxes($request,$repconc->id);
         $this->inputs($request,$repconc->id);
         $this->rcpi_pass_checkboxed($request,$repconc->id);
+        $this->form66_rcpi_pass($request,$repconc->id);
+        $this->form66_rcpibps($request ,$repconc->id);
+
         return redirect('cabinet');
 
         }catch(\Exception $e){
             dd($e->getMessage());
         }
         
+      }
+      public function form66_rcpi_pass($request, $id){
+        $pasNameProject=$request->pasNameProject;
+        $pasKratkDescrip= $request->pasKratkDescrip;
+        $pasOtherSphere=$request->pasOtherSphere;
+        $pasRinokSbita=$request->pasRinokSbita;
+        $pasGeneralPer= $request->pasGeneralPer;
+        $pasDescription= $request->pasDescription;
+        $pasRealizationTemp= $request->pasRealizationTemp;
+        $pasObjectComerc= $request->pasObjectComerc;
+        $pasDoztizhProject= $request->pasDoztizhProject;
+        $pasDopInformation= $request->pasDopInformation;
+      
+        $rcpipass=new RcpiPass();
+        $rcpipass->project_id= $id;
+        $rcpipass->pasNameProject= $pasNameProject;
+        $rcpipass->pasKratkDescrip= $pasKratkDescrip;
+        $rcpipass->pasOtherSphere= $pasOtherSphere;
+        $rcpipass->pasRinokSbita=$pasRinokSbita;
+        $rcpipass->pasGeneralPer= $pasGeneralPer;
+        $rcpipass->pasDescription= $pasDescription;
+        $rcpipass->pasRealizationTemp= $pasRealizationTemp;
+        $rcpipass->pasObjectComerc=$pasObjectComerc;
+        $rcpipass->pasDoztizhProject= $pasDoztizhProject;
+        $rcpipass->pasDopInformation= $pasDopInformation;
+        $rcpipass->save();
+      }
+      public function form66_rcpi_pass_update($request,$id){
+
+        
+        $pasNameProject=$request->pasNameProject;
+        $pasKratkDescrip= $request->pasKratkDescrip;
+        $pasOtherSphere=$request->pasOtherSphere;
+        $pasRinokSbita=$request->pasRinokSbita;
+        $pasGeneralPer= $request->pasGeneralPer;
+        $pasDescription= $request->pasDescription;
+        $pasRealizationTemp= $request->pasRealizationTemp;
+        $pasObjectComerc= $request->pasObjectComerc;
+        $pasDoztizhProject= $request->pasDoztizhProject;
+        $pasDopInformation= $request->pasDopInformation;
+      
+        $rcpipass=RcpiPass::where("project_id",$id)->delete();
+        $rcpipass= new RcpiPass();
+        $rcpipass->project_id= $id;
+        $rcpipass->pasNameProject= $pasNameProject;
+        $rcpipass->pasKratkDescrip= $pasKratkDescrip;
+        $rcpipass->pasOtherSphere= $pasOtherSphere;
+        $rcpipass->pasRinokSbita=$pasRinokSbita;
+        $rcpipass->pasGeneralPer= $pasGeneralPer;
+        $rcpipass->pasDescription= $pasDescription;
+        $rcpipass->pasRealizationTemp= $pasRealizationTemp;
+        $rcpipass->pasObjectComerc=$pasObjectComerc;
+        $rcpipass->pasDoztizhProject= $pasDoztizhProject;
+        $rcpipass->pasDopInformation= $pasDopInformation;
+        $rcpipass->save();
+      }
+      public function update_rcpi_pass_checkboxes($request, $id){
+        $rcpipasscheck=RcpiPassCheckboxes::where("project_id",$id)->delete();
+        $checkedPassCheckboxes=$request->pascheckbox;
+        $allcheckboxes=array();
+        array_push($allcheckboxes,'Машиностроение и металлообработка','Экология и рациональное использование природных ресурсов',
+        'Здравоохранение','Производство, переработка и сбережение сельскохозяйственной продукции','Проблемы строительства и энергетики',
+        'Технологии химических, фармацевтических и микробиологических производств','Социально-экономические проблемы и проблемы развития государственности Республики Беларусь',
+        'Информатизация, вычислительная техника и информационные технологии','Другое (указать):','Используются либо планируются к использованию объекты интеллектуальной собственности, права на которые подтверждаются соответствующими документами (если такие документы предусмотрены законодательством) или права на использование которых подтверждаются соответствующим договором (указать в пояснении)',
+      'Используются либо планируются к использованию потенциальные объекты интеллектуальной собственности (правовая охрана не предоставлена, однако имеются признаки объектов интеллектуальной собственности, для правовой охраны которых необходимо получить охранные документы (патенты, свидетельства)) (указать в пояснении)',
+      'Используются либо планируются к использованию потенциальные объекты интеллектуальной собственности, для правовой охраны которым не требуется получение охранных документов (указать в пояснении)','Не согласен','Согласен'
+      );
+        if(empty($checkedPassCheckboxes)){
+          for($i=0; $i<count($allcheckboxes); $i++){
+          $rcpicheckbox=new RcpiPassCheckboxes();
+          $rcpicheckbox->project_id=$id;
+          $rcpicheckbox->value=$allcheckboxes[$i];
+          $rcpicheckbox->status=false;
+          $rcpicheckbox->save();
+
+          }
+
+        }
+        else{
+          for($i=0; $i<count($allcheckboxes); $i++){
+            $rcpicheckbox= new RcpiPassCheckboxes();
+            $rcpicheckbox->project_id=$id;
+            $rcpicheckbox->value=$allcheckboxes[$i];
+            if(in_array($allcheckboxes[$i],$checkedPassCheckboxes)){
+              $rcpicheckbox->status=true;
+            }
+            else{
+              $rcpicheckbox->status=false;
+            }
+            $rcpicheckbox->save();
+          }
+        }
       }
       public function rcpi_pass_checkboxed($request,$id){
         $checkedPassCheckboxes=$request->pascheckbox;
@@ -152,6 +250,49 @@ class StoreController6 extends Controller
       }
 
     }
+    public function form66_rcpibps($request ,$id){
+      $rcpibps=new RcpiBp();
+      $rcpibps->project_id=$id;
+      $rcpibps->bpFio=$request->bpFio;
+      $rcpibps->bpSoderzh=$request->bpSoderzh;
+      $rcpibps->bpResume=$request->bpResume;
+      $rcpibps->bpProblem=$request->bpProblem;
+      $rcpibps->bpProduct=$request->bpProduct;
+      $rcpibps->bpAnalize=$request->bpAnalize;
+      $rcpibps->bpSobstv=$request->bpSobstv;
+      $rcpibps->bpPotreb=$request->bpPotreb;
+      $rcpibps->bpPrice=$request->bpPrice;
+      $rcpibps->bpConcurents=$request->bpConcurents;
+      $rcpibps->bpSuppliers=$request->bpSuppliers;
+      $rcpibps->bpProizPlan=$request->bpProizPlan;
+      $rcpibps->bpOrgPlan=$request->bpOrgPlan;
+      $rcpibps->bpRelizeProblems=$request->bpRelizeProblems;
+      $rcpibps->bpFinPlan=$request->bpFinPlan;
+      $rcpibps->bpInformation=$request->bpInformation;
+      $rcpibps->save();
+    }
+    public function form66_rcpibps_update($request ,$id){
+      $rcpibps = RcpiBp::where("project_id",$id)->delete();
+      $rcpibps=new RcpiBp();
+      $rcpibps->project_id=$id;
+      $rcpibps->bpFio=$request->bpFio;
+      $rcpibps->bpSoderzh=$request->bpSoderzh;
+      $rcpibps->bpResume=$request->bpResume;
+      $rcpibps->bpProblem=$request->bpProblem;
+      $rcpibps->bpProduct=$request->bpProduct;
+      $rcpibps->bpAnalize=$request->bpAnalize;
+      $rcpibps->bpSobstv=$request->bpSobstv;
+      $rcpibps->bpPotreb=$request->bpPotreb;
+      $rcpibps->bpPrice=$request->bpPrice;
+      $rcpibps->bpConcurents=$request->bpConcurents;
+      $rcpibps->bpSuppliers=$request->bpSuppliers;
+      $rcpibps->bpProizPlan=$request->bpProizPlan;
+      $rcpibps->bpOrgPlan=$request->bpOrgPlan;
+      $rcpibps->bpRelizeProblems=$request->bpRelizeProblems;
+      $rcpibps->bpFinPlan=$request->bpFinPlan;
+      $rcpibps->bpInformation=$request->bpInformation;
+      $rcpibps->save();
+    }
       public function form66_update(Request $request, $name,$id){
 
   
@@ -202,6 +343,9 @@ class StoreController6 extends Controller
           $repconc->save();
           $this->form66_updatecheckboxesStrat($request, $repconc->id);
           $this->form66_updateInputsStrat($request, $repconc->id);
+          $this->form66_rcpi_pass_update($request, $repconc->id);
+          $this->form66_rcpibps_update($request, $repconc->id);
+          $this->update_rcpi_pass_checkboxes($request, $id);
           if(Auth::user()->Role=="Admin"){
             $user = User::where('name', $repconc->owner)->first();
             $data=$repconc->name."_#".$repconc->id;
