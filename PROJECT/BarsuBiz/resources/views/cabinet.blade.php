@@ -109,7 +109,7 @@
            <form  class="col-md-15 right-box p-3 rounded-4 shadow box-area mb-3 " style="font-family:'Poppins';" > 
           <h5 class="card-title"><strong>Пользователь:</strong> {{ Auth::user()->name }}</h5>
           <h5 class="card-text  " ><strong>Почта:</strong> {{ Auth::user()->email }}</h5>
-            <h5 class="card-text  "><strong>Статус:</strong> {{ Auth::user()->Role }}</h5>
+            <h5 class="card-text  "><strong>Статус:</strong>  @if(auth()->user()->Role == 'User') Пользователь @else Админ @endif</h5> 
           </form>
           </div>
         </div>
