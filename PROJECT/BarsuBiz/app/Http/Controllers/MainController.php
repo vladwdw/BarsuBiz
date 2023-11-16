@@ -11,6 +11,7 @@ use App\Models\HudredIdeas;
 use App\Models\MolInic;
 use App\Models\MolIndic;
 use App\Models\Gpni;
+use Illuminate\Support\Facades\Response;
 use App\Models\GpniDop;
 use App\Models\Grant;
 use App\Models\RcpiStratCheckboxes;
@@ -422,10 +423,29 @@ class MainController extends Controller
     $newFileName = $name.'_'.$id;
     $templateProcessor->setComplexBlock('table',$table);
     $templateProcessor->saveAs($newFileName.'.docx');
-    //$this->form4_plan_word($id, $name);
-    //return response()->download($newFileName.'.docx')->deleteFileAfterSend();
-    $filePath = public_path($newFileName);
-    return Storage::download($filePath);
+    $zip_file = 'файлы.zip'; // Name of our archive to download
+
+    // Initializing PHP class
+    $zip = new \ZipArchive();
+    $zip->open($zip_file, \ZipArchive::CREATE | \ZipArchive::OVERWRITE);
+    
+    $firstfile=$newFileName.'.docx';
+    $plan=$this->form4_plan_word($id,$name).'.docx';
+    
+    // Adding file: second parameter is what will the path inside of the archive
+    // So it will create another folder called "storage/" inside ZIP, and put the file there.
+    $zip->addFile($firstfile);
+    $zip->addFile($plan);
+    $zip->close();
+    unlink(public_path($plan));
+    unlink(public_path($firstfile));
+                
+        return response()->download($zip_file)->deleteFileAfterSend();
+    
+
+    
+
+
 
 
         }
@@ -523,8 +543,7 @@ class MainController extends Controller
     
     $newFileName = $name.'_Календарный план_'.$id;
     $templateProcessor->saveAs($newFileName.'.docx');
-
-    return response()->download($newFileName.'.docx')->deleteFileAfterSend();
+    return $newFileName;
     }
     public function  form_pdf($name,$id)
     {
