@@ -4,7 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/formstyle.css') }}" rel="stylesheet">
+<link href="{{ asset('css/formstyle.css') }}" rel="stylesheet">
+<link href="{{asset('assets/vendor/aos/aos.css')}}" rel="stylesheet">
+  <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
+  <link href="{{asset('assets/vendor/bootstrap-icons/bootstrap-icons.css')}}" rel="stylesheet">
+  <link href="{{asset('assets/vendor/boxicons/css/boxicons.min.css')}}" rel="stylesheet">
+  <link href="{{asset('assets/vendor/glightbox/css/glightbox.min.css')}}" rel="stylesheet">
+  <link href="{{asset('assets/vendor/remixicon/remixicon.css')}}" rel="stylesheet">
+  <link href="{{asset('assets/vendor/swiper/swiper-bundle.min.css')}}" rel="stylesheet">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Составление шаблона</title>
@@ -25,10 +32,27 @@
         
         <form  method="post"  class="col-md-6 right-box p-3 rounded-4 shadow box-area" action="{{ route('form66_update', ['name' => $repconc->name,'id' => $repconc->id]) }}">
             @csrf
+            <ul class="nav justify-content-center">
+  <li class="nav-item mt-2 mb-2">
+    
+  <button type="button" data-part="1" onclick="openPart(1)" class="btn btn-outline-danger rounded-4" href="#"><i class="bi bi-file-earmark-text"></i> Заявка</button>
+  
+  </li>
+  <li class="nav-item px-3 mt-2">
+  <button type="button"  data-part="2" onclick="openPart(2)" class="btn btn-outline-danger rounded-4" href="#"><i class="bi bi-clipboard2-data"></i> Бизнес план</button>
+  </li>
+  <li class="nav-item mt-2">
+  <button type="button" data-part="3" onclick="openPart(3)" class="btn btn-outline-danger rounded-4" href="#"><i class="bi bi-graph-up-arrow"></i> Стратегия</button>
+  </li>
+  <li class="nav-item mt-2 px-3 mb-3">
+  <button type="button" data-part="4" onclick="openPart(4)" class="btn btn-outline-danger rounded-4" href="#"><i class="bi bi-passport"></i> Пасспорт ИП</button>
+  </li>
+</ul>
             <div class="row align-items-center ">
             <div class="mb-5 ms-auto">
                 <img src="{{asset('assets/img/logo.png')}}" class="logo" width="210px">
         </div> 
+        <div class="part" data-part="1" style="display: none;">
                 <div class="header-text mb-4">
                     <h2 style="text-align: center;">Заявка 
                         </h2>
@@ -121,6 +145,272 @@
                 <div class="input-group mb-3">
                     <input type="text" class="form-control form-control-lg bg-light fs-6" placeholder="Введите данные" name="yurLink" value="{{$repconc->yurLink}}">
                 </div>
+        </div>
+          <!-- Part 2!-->
+
+          <div class="part" data-part="2" style="display: none;">
+                <div class="header-text mb-4">
+                    <h2 style="text-align: center;">Бизнес план
+                        </h2>
+                        <h3 style="text-align: center;">На участие в республиканском конкурсе инновационных проектов</h3>
+                </div>
+                <p>Титульный лист (фамилия, собственное имя и отчество участника, если таковое имеется (для физического лица или индивидуального предпринимателя), полное наименование юридического лица с указанием организационно-правовой формы (для юридического лица), адрес, контактные данные, наименование проекта, наименование номинации)</p>
+                <div class="form-group mb-3">
+                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Введите данные:" name="bpFio"></textarea>
+                </div>
+                <p>Содержание (названия разделов, подразделов, приложений, ссылки на страницы и т.п.) </p>
+                <div class="form-group mb-3">
+                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Введите данные:" name="bpSoderzh"></textarea>
+                </div>
+   
+                <p>Резюме (основная идея проекта, основные выводы и результаты по разделам бизнес-плана проекта и т.п.)</p>
+                <div class="form-group mb-3">
+                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Введите данные:" name="bpResume"></textarea>
+                </div>
+                <p>Описание проекта (общая характеристика ситуации в данной сфере; существующая проблема, которую решает проект; цель проекта и т.п.)  </p>
+                <div class="form-group mb-3">
+                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Введите данные:" name="bpProblem"></textarea>
+                </div>
+                <p>Описание продукции (особенности продукции по сравнению с существующими на рынке аналогами; правовое регулирование деятельности компании на планируемом рынке (специальное разрешение (лицензия), сертификация продукции; технология производства продукции, научная основа проекта, проведенные научно-исследовательские, опытно-конструкторские и опытно-технологические работы и т.п.) </p>
+                <div class="form-group mb-3">
+                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Введите данные:" name="bpProduct"></textarea>
+                </div>
+                <p>Анализ отрасли и рынка, маркетинг (перечень основной продукции и услуг, предлагаемых данной отраслью; географическое положение рынка (локальный, региональный, национальный, международный); общий объем продаж по отрасли и тенденции изменения рынка; данные независимых экспертов, оценивающих конъюнктуру рынка, опубликованные прогнозы будущего развития рынка; специфические особенности рынка; описание сегмента рынка, на котором предполагается выполнение проекта; планы относительно зарубежных рынков, экспортный потенциал и т.п.)</p>
+                <div class="form-group mb-3">
+                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Введите данные:" name="bpAnalize"></textarea>
+                </div>
+                <p>Использование объектов интеллектуальной собственности (потенциальных объектов интеллектуальной собственности) (объекты интеллектуальной собственности (потенциальные объекты интеллектуальной собственности), которые используются или планируется использовать в рамках проекта, включая объекты интеллектуальной собственности, права на которые принадлежат участнику конкурса или права на использование которых получены по соответствующему договору; документы, подтверждающие права на объекты интеллектуальной собственности (патент, свидетельство, договор уступки исключительного права) или права на использование объектов интеллектуальной собственности (лицензионный договор, договор комплексной предпринимательской лицензии или иные договоры, предусмотренные законодательством); авторы объекта интеллектуальной собственности и иные обладатели прав на объект интеллектуальной собственности)</p>
+                <div class="form-group mb-3">
+                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Введите данные:" name="bpSobstv"></textarea>
+                </div>
+                <p>Основные потребители и характеристика сбытовой политики (основные потребители продукции и их характеристика; методы продвижения и каналы сбыта продукции и т.п.) </p>
+                <div class="form-group mb-3">
+                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Введите данные:" name="bpPotreb"></textarea>
+                </div>
+                <p>Ценообразование (оценка конкурентоспособности продукции по цене; себестоимость продукции и ее составляющие; тенденции ценообразования; планируемые объемы сбыта и т.п.)</p>
+                <div class="form-group mb-3">
+                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Введите данные:" name="bpPrice"></textarea>
+                </div>
+                <p>Конкуренты (описание основных конкурентов; возможности конкурентов (тактика и стратегия, продукция, цены, местонахождение, продажи и т.п.)</p>
+                <div class="form-group mb-3">
+                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Введите данные:" name="bpConcurents"></textarea>
+                </div>
+                <p>Поставщики (описание организаций-поставщиков; перечень необходимых материалов, цена и т.п.)</p>
+                <div class="form-group mb-3">
+                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Введите данные:" name="bpSuppliers"></textarea>
+                </div>
+                <p>Производственный план (наличие материально-технической базы, потребность в оборудовании, сырье и материалах для производства продукции, планируемые объемы выпуска, безопасность, экологичность и т.п.)</p>
+                <div class="form-group mb-3">
+                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Введите данные:" name="bpProizPlan"></textarea>
+                </div>
+                <p>Организационный план (кадровая структура организации, выполняющей работы (персонал, структура и т.п.); график выполнения работ (календарный план); график осуществления инвестиций; формы финансирования проекта (кредит, заем, собственные средства и т.п.)</p>
+                <div class="form-group mb-3">
+                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Введите данные:" name="bpOrgPlan"></textarea>
+                </div>
+                <p>Возможные проблемы реализации проекта (финансовые и другие риски исполнения проекта и т.п.)</p>
+                <div class="form-group mb-3">
+                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Введите данные:" name="bpRelizeProblems"></textarea>
+                </div>
+                <p>Финансовый план проекта (доходы; текущие производственные затраты; инвестиционные затраты (капитальные вложения, оборотный капитал); источники финансирования; характеристика эффективности проекта; характеристика финансовой состоятельности проекта; анализ чувствительности показателей проекта к изменению исходных параметров и т.п.) </p>
+                <div class="form-group mb-3">
+                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Введите данные:" name="bpFinPlan"></textarea>
+                </div>
+                <p>Иные сведения (бизнес-план может дополнительно содержать иные необходимые разделы и сведения) </p>
+                <div class="form-group mb-3">
+                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Введите данные:" name="bpInformation"></textarea>
+                </div>
+                </div>
+
+                <!-- Part 3!-->
+
+                <div class="part p-4" data-part="3" style="display: none;">
+                <div class="header-text mb-4">
+                    <h2 style="text-align: center;">Стратегия
+                        </h2>
+                        <h3 style="text-align: center;">На участие в республиканском конкурсе инновационных проектов</h3>
+                </div>
+                <p><b>Уровень коммерциализации на момент подачи заявки:</b><p>
+                @for($i = 0; $i < 5; $i++)
+   <div class="form-check mb-3">
+       <input class="form-check-input" name="scheckbox[]" type="checkbox" value="{{$repconc_strat_checkbox[$i]->value}}" id="flexCheckDefault" {{$repconc_strat_checkbox[$i]->status ? 'checked' : '' }}>
+       <label class="form-check-label" for="flexCheckDefault">
+           {{$repconc_strat_checkbox[$i]->value}}
+       </label>
+   </div>
+@endfor
+<p><b>Выбор способа коммерциализации:</b><p>
+@for($i = 5; $i < 10; $i++)
+   <div class="form-check mb-3">
+       <input class="form-check-input" name="scheckbox[]" type="checkbox" value="{{$repconc_strat_checkbox[$i]->value}}" id="flexCheckDefault" {{$repconc_strat_checkbox[$i]->status ? 'checked' : '' }}>
+       <label class="form-check-label" for="flexCheckDefault">
+           {{$repconc_strat_checkbox[$i]->value}}
+       </label>
+   </div>
+@endfor
+            <div class="form-group mb-3">
+                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Введите данные:" name="sOtherSbosob">{{$rcpistrat->first()->sOtherSbosob}}</textarea>
+            </div>
+            <p>Описание стратегии коммерциализации (план действий) на ближайший год:  </p>
+            <div class="form-group mb-3">
+                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Введите данные:" name="sDescriptKomerc">{{$rcpistrat->first()->sDescriptKomerc}}</textarea>
+            </div>
+            <p>Стратегия коммерциализации на последующие 5 лет:  </p>
+            <div class="form-group mb-3">
+                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Введите данные:" name="sStratComerc">{{$rcpistrat->first()->sStratComerc}}</textarea>
+            </div>
+
+                </div>
+                 
+
+                <!-- Part 4-->
+                <div class="part p-4" data-part="4" style="display: none;">
+                <div class="header-text mb-4">
+                    <h2 style="text-align: center;">Пасспорт ИП
+                        </h2>
+                        <h3 style="text-align: center;">На участие в республиканском конкурсе инновационных проектов</h3>
+                </div>
+                <p>Наименование инновационного проекта  (далее – проект)</p>
+                
+            <div class="form-group mb-3">
+                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Введите данные:" name="pasNameProject"></textarea>
+            </div>
+            <p>Краткое описание проекта(не более 2000 знаков)</p>
+                   
+            <div class="form-group mb-3">
+                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Введите данные:" name="pasKratkDescrip"></textarea>
+            </div>
+            <p><b>Область применения(выбрать из списка не более 2-х)</b></p>
+                   <!-- Checkbox 1 !-->
+            <div class="form-check mb-3">
+            <input class="form-check-input" name="pascheckbox[]" type="checkbox" value="Машиностроение и металлообработка" id="flexCheckDefault">
+            <label class="form-check-label" for="flexCheckDefault">
+            Машиностроение и металлообработка
+            </label>
+            <!-- Checkbox 2 !-->
+            </div>
+            <div class="form-check mb-3">
+            <input class="form-check-input" name="pascheckbox[]" type="checkbox" value="Экология и рациональное использование природных ресурсов" id="flexCheckDefault">
+            <label class="form-check-label" for="flexCheckDefault">
+            Экология и рациональное использование природных ресурсов
+            </label>
+            </div>
+             <!-- Checkbox 3 !-->
+             <div class="form-check mb-3">
+            <input class="form-check-input" name="pascheckbox[]" type="checkbox" value="Здравоохранение" id="flexCheckDefault">
+            <label class="form-check-label" for="flexCheckDefault">
+            Здравоохранение
+            </label>
+            </div>
+             <!-- Checkbox 4 !-->
+             <div class="form-check mb-3">
+            <input class="form-check-input" name="pascheckbox[]" type="checkbox" value="Производство, переработка и сбережение сельскохозяйственной продукции" id="flexCheckDefault">
+            <label class="form-check-label" for="flexCheckDefault">
+            Производство, переработка и сбережение сельскохозяйственной продукции
+            </label>
+            </div>
+            <!-- Checkbox 5 !-->
+            <div class="form-check mb-3">
+            <input class="form-check-input" name="pascheckbox[]" type="checkbox" value="Проблемы строительства и энергетики" id="flexCheckDefault">
+            <label class="form-check-label" for="flexCheckDefault">
+            Проблемы строительства и энергетики
+            </label>
+            </div>
+            <!-- Checkbox 6 !-->
+            <div class="form-check mb-3">
+            <input class="form-check-input" name="pascheckbox[]" type="checkbox" value="Технологии химических, фармацевтических и микробиологических производств" id="flexCheckDefault">
+            <label class="form-check-label" for="flexCheckDefault">
+            Технологии химических, фармацевтических и микробиологических производств
+            </label>
+            </div>
+            <!-- Checkbox 7 !-->
+            <div class="form-check mb-3">
+            <input class="form-check-input" name="pascheckbox[]" type="checkbox" value="Социально-экономические проблемы и проблемы развития государственности Республики Беларусь" id="flexCheckDefault">
+            <label class="form-check-label" for="flexCheckDefault">
+            Социально-экономические проблемы и проблемы развития государственности Республики Беларусь
+            </label>
+            </div>
+            <!-- Checkbox 8 !-->
+            <div class="form-check mb-3">
+            <input class="form-check-input" name="pascheckbox[]" type="checkbox" value="Информатизация, вычислительная техника и информационные технологии" id="flexCheckDefault">
+            <label class="form-check-label" for="flexCheckDefault">
+            Информатизация, вычислительная техника и информационные технологии
+            </label>
+            </div>
+            <div class="form-check mb-3">
+            <input class="form-check-input" name="pascheckbox[]" type="checkbox" value="Другое (указать):" id="flexCheckDefault">
+            <label class="form-check-label" for="flexCheckDefault">
+            Другое (указать):
+            </label>
+            </div>
+            <div class="form-group mb-3">
+                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Введите данные:" name="pasOtherSphere"></textarea>
+            </div>
+            <p>Потенциальные потребители, организации, заинтересованные в результатах проекта(рынок сбыта) (не более 500 знаков)</p>   
+            <div class="form-group mb-3">
+                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Введите данные:" name="pasRinokSbita"></textarea>
+            </div>
+            <p>Основные конкурентные преимущества(не более 500 знаков)</p>   
+            <div class="form-group mb-3">
+                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Введите данные:" name="pasGeneralPer"></textarea>
+            </div>
+            <p><b>Использование объектов интеллектуальной собственности (потенциальных объектов интеллектуальной собственности)</b></p>
+            <!-- Checkbox 1 !-->
+            <div class="form-check mb-3">
+            <input class="form-check-input" name="pascheckbox[]" type="checkbox" value="Используются либо планируются к использованию объекты интеллектуальной собственности, права на которые подтверждаются соответствующими документами (если такие документы предусмотрены законодательством) или права на использование которых подтверждаются соответствующим договором (указать в пояснении)" id="flexCheckDefault">
+            <label class="form-check-label" for="flexCheckDefault">
+            Используются либо планируются к использованию объекты интеллектуальной собственности, права на которые подтверждаются соответствующими документами (если такие документы предусмотрены законодательством) или права на использование которых подтверждаются соответствующим договором (указать в пояснении)
+            </label>
+            </div>
+            <!-- Checkbox 2 !-->
+            <div class="form-check mb-3">
+            <input class="form-check-input" name="pascheckbox[]" type="checkbox" value="Используются либо планируются к использованию потенциальные объекты интеллектуальной собственности (правовая охрана не предоставлена, однако имеются признаки объектов интеллектуальной собственности, для правовой охраны которых необходимо получить охранные документы (патенты, свидетельства)) (указать в пояснении)" id="flexCheckDefault">
+            <label class="form-check-label" for="flexCheckDefault">
+            Используются либо планируются к использованию потенциальные объекты интеллектуальной собственности (правовая охрана не предоставлена, однако имеются признаки объектов интеллектуальной собственности, для правовой охраны которых необходимо получить охранные документы (патенты, свидетельства)) (указать в пояснении)
+            </label>
+            </div>
+            <!-- Checkbox 3 !-->
+            <div class="form-check mb-3">
+            <input class="form-check-input" name="pascheckbox[]" type="checkbox" value="Используются либо планируются к использованию потенциальные объекты интеллектуальной собственности, для правовой охраны которым не требуется получение охранных документов (указать в пояснении)" id="flexCheckDefault">
+            <label class="form-check-label" for="flexCheckDefault">
+            Используются либо планируются к использованию потенциальные объекты интеллектуальной собственности, для правовой охраны которым не требуется получение охранных документов (указать в пояснении)
+            </label>
+            </div>
+            <p>Пояснение</p>   
+            <div class="form-group mb-3">
+                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Введите данные:" name="pasDescription"></textarea>
+            </div>
+            <p>Сроки реализации проекта</p>
+            <div class="input-group mb-3">
+                <input type="text" class="form-control form-control-lg bg-light fs-6" placeholder="Введите данные" name="pasRealizationTemp">
+            </div>
+            <p><b>Согласие на получение денежных средств в целях коммерциализации проекта (сертификата)</b></p>
+              <!-- Checkbox 1 !-->
+            <div class="form-check mb-3">
+            <input class="form-check-input" name="pascheckbox[]" type="checkbox" value="Не согласен" id="flexCheckDefault">
+            <label class="form-check-label" for="flexCheckDefault">
+            Не согласен
+            </label>
+            </div>
+            <!-- Checkbox 2 !-->
+            <div class="form-check mb-3">
+            <input class="form-check-input" name="pascheckbox[]" type="checkbox" value="Согласен" id="flexCheckDefault">
+            <label class="form-check-label" for="flexCheckDefault">
+            Согласен
+            </label>
+            </div>
+            <p>В случае согласия, указать продукт, полученный в результате реализации проекта (объект коммерциализации):</p>   
+            <div class="form-group mb-3">
+                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Введите данные:" name="pasObjectComerc"></textarea>
+            </div>
+            <p>Достижения по проекту(публикации по теме проекта, акты внедрения, дипломы, награды и пр.)</p>   
+            <div class="form-group mb-3">
+                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Введите данные:" name="pasDoztizhProject"></textarea>
+            </div>
+            <p>Дополнительная информация</p>   
+            <div class="form-group mb-3">
+                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Введите данные:" name="pasDopInformation"></textarea>
+            </div>
+                </div>
                 <div class="input-group mb-3">
                     <button class="btn btn-lg btn-danger w-100 fs-6">Сохранить</button>
                 </div>
@@ -131,5 +421,34 @@
             </div>
         </form>
     </div>
+    <script>
+        window.onload = function() {
+ openPart(1);
+}
+        function openPart(partNumber) {
+ // Здесь ваш код для открытия части заявки
+ // partNumber - это номер части заявки, которую вы хотите открыть
+
+ // Делаем все кнопки неактивными
+ var buttons = document.querySelectorAll('.nav-item button');
+ for (var i = 0; i < buttons.length; i++) {
+     buttons[i].classList.remove('active');
+ }
+
+ // Делаем кнопку активной
+ var activeButton = document.querySelector('.nav-item button[data-part="' + partNumber + '"]');
+ activeButton.classList.add('active');
+
+ // Делаем все div-ы неактивными
+ var divs = document.querySelectorAll('.part');
+ for (var i = 0; i < divs.length; i++) {
+     divs[i].style.display = 'none';
+ }
+
+ // Делаем div активным
+ var activeDiv = document.querySelector('.part[data-part="' + partNumber + '"]');
+ activeDiv.style.display = 'block';
+}
+    </script>
 </body>
 </html>

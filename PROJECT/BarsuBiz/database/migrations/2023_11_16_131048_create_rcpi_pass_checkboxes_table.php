@@ -13,17 +13,16 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('rcpi_strat_checkboxes', function (Blueprint $table) {
+        Schema::create('rcpi_pass_checkboxes', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
             $table->text("value");
             $table->boolean("status");
             $table->unsignedBigInteger('project_id');
         });
-        Schema::table('rcpi_strat_checkboxes', function (Blueprint $table) {
+        Schema::table('rcpi_pass_checkboxes', function (Blueprint $table) {
             $table->foreign("project_id")->references('id')->on('repconcs');
         });
-        
     }
 
     /**
@@ -33,6 +32,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('rcpi_strat_checkboxes');
+        Schema::dropIfExists('rcpi_pass_checkboxes');
     }
 };

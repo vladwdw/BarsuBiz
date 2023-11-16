@@ -295,7 +295,12 @@
             Заинтересованность в приобретении результатов проекта (письма заинтересованности, соглашения о намерении, меморандумы о сотрудничестве и т.п.);
             </label>
             </div>
-            <p>Иные способы (указать) </p>
+            <div class="form-check mb-3">
+            <input class="form-check-input" name="scheckbox[]" type="checkbox" value="Иные способы(указать)" id="flexCheckDefault">
+            <label class="form-check-label" for="flexCheckDefault">
+            Иные способы(указать)
+            </label>
+            </div>
             <div class="form-group mb-3">
                 <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Введите данные:" name="sOtherSbosob"></textarea>
             </div>
@@ -380,12 +385,17 @@
             </div>
             <!-- Checkbox 8 !-->
             <div class="form-check mb-3">
-            <input class="form-check-input" name="pascheckbox[]" type="checkbox" value="Социально-экономические проблемы и проблемы развития государственности Республики Беларусь" id="flexCheckDefault">
+            <input class="form-check-input" name="pascheckbox[]" type="checkbox" value="Информатизация, вычислительная техника и информационные технологии" id="flexCheckDefault">
             <label class="form-check-label" for="flexCheckDefault">
             Информатизация, вычислительная техника и информационные технологии
             </label>
             </div>
-            <p>Другое(указать)</p>   
+            <div class="form-check mb-3">
+            <input class="form-check-input" name="pascheckbox[]" type="checkbox" value="Другое (указать):" id="flexCheckDefault">
+            <label class="form-check-label" for="flexCheckDefault">
+            Другое (указать):
+            </label>
+            </div>
             <div class="form-group mb-3">
                 <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Введите данные:" name="pasOtherSphere"></textarea>
             </div>

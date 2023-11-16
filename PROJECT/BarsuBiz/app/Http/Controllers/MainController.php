@@ -13,6 +13,7 @@ use App\Models\MolIndic;
 use App\Models\Gpni;
 use App\Models\GpniDop;
 use App\Models\Grant;
+use App\Models\RcpiStratCheckboxes;
 use Dompdf\Dompdf;
 use Illuminate\Http\Request;
 use Illuminate\Database\Eloquent;
@@ -33,6 +34,7 @@ use App\Http\Controllers\Settings;
 use App\Http\Controllers\ConvertDocumentRequest;
 use App\Models\Gpni_calculate;
 use App\Models\Gpni_plan;
+use App\Models\RcpiStrat;
 use App\Models\User;
 
 require_once base_path('vendor/autoload.php');
@@ -104,8 +106,10 @@ class MainController extends Controller
         }
         if($name== "РКИП"){
             $repconc=Repconc::find($id);
+            $repconc_strat_checkbox=RcpiStratCheckboxes::where("project_id", $repconc->id)->get();
+            $rcpistrat=RcpiStrat::where("project_id", $repconc->id)->get();
             if($repconc->user_id==Auth::user()->id || Auth::user()->Role== "Admin"){
-            return view("forms/form66",compact("repconc"));
+            return view("forms/form66",compact("repconc","repconc_strat_checkbox","rcpistrat"));
         }
         
         else{
@@ -192,7 +196,7 @@ class MainController extends Controller
             $filePath = public_path($newFileName.'.docx');
             return response()->download($filePath)->deleteFileAfterSend();
         }
-        if($name="РКИП"){
+        if($name=="РКИП"){
             $phpWord=new PhpWord();
             $phpWord->setDefaultFontName('Times New Roman');
             $phpWord->setDefaultFontSize(14);
