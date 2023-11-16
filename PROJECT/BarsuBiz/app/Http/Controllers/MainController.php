@@ -42,7 +42,7 @@ class MainController extends Controller
         return view('forms/form1');
     }
     public function form11($name,$id){
-
+      
         if($name=="Молодежные инициативы"){
         $molIndic=MolIndic::where('project_id', $id)->get();
         $molInic=MolInic::find($id);
@@ -117,7 +117,7 @@ class MainController extends Controller
 
     }
     public function form_word($name,$id)
-    {
+    {  
         if($name=="Молодежные инициативы"){
             $molIndic=MolIndic::where('project_id', $id)->get();
             $molInic=MolInic::find($id);
@@ -192,7 +192,8 @@ class MainController extends Controller
             $filePath = public_path($newFileName.'.docx');
             return response()->download($filePath)->deleteFileAfterSend();
         }
-        if($name="РКИП"){
+        if($name=="РКИП")
+        {
             $phpWord=new PhpWord();
             $phpWord->setDefaultFontName('Times New Roman');
             $phpWord->setDefaultFontSize(14);
@@ -417,9 +418,10 @@ class MainController extends Controller
     $newFileName = $name.'_'.$id;
     $templateProcessor->setComplexBlock('table',$table);
     $templateProcessor->saveAs($newFileName.'.docx');
-
-    return response()->download($newFileName.'.docx')->deleteFileAfterSend();
-    
+    //$this->form4_plan_word($id, $name);
+    //return response()->download($newFileName.'.docx')->deleteFileAfterSend();
+    $filePath = public_path($newFileName);
+    return Storage::download($filePath);
 
 
         }
@@ -450,6 +452,75 @@ class MainController extends Controller
     return response()->download($newFileName.'.docx')->deleteFileAfterSend();
         }
             
+    }
+    public function form4_plan_word($id, $name)
+    {
+        $phpWord= new PhpWord();
+            $gpni_plan=Gpni_plan::where('project_id', $id)->get();
+            
+           
+            $direction=$gpni_plan->first()->direction;
+            $Carryingout=$gpni_plan->first()->Carryingout;
+            $nameingeneral=$gpni_plan->first()->nameingeneral;
+            $nachPlanneddates=$gpni_plan->first()->nachPlanneddates;
+            $endPlanneddates=$gpni_plan->first()->endPlanneddates;
+            $totalcos=$gpni_plan->first()->totalcost;
+            $result=$gpni_plan->first()->results;
+            $name1p=$gpni_plan->first()->name1p;
+            $nachPlanneddates1p=$gpni_plan->first()->nachPlanneddates1p;
+            $endPlanneddates1p=$gpni_plan->first()->endPlanneddates1p;
+            $totalcost1p=$gpni_plan->first()->totalcost1p;
+            $results1p=$gpni_plan->first()->results1p;
+            $name2p=$gpni_plan->first()->name2p;
+            $nachPlanneddates2p=$gpni_plan->first()->nachPlanneddates2p;
+            $endPlanneddates2p=$gpni_plan->first()->endPlanneddates2p;
+            $totalcost2p=$gpni_plan->first()->totalcost2p;
+            $results2p=$gpni_plan->first()->results2p;
+            
+            $templateProcessor= new TemplateProcessor('templates\form4_plan.docx');
+  
+  
+    $index=0;
+    $templateProcessor->setValue('direction',$direction);
+    $templateProcessor->setValue('Carryingout',$Carryingout);
+    $templateProcessor->setValue('nameingeneral',$nameingeneral);
+    $templateProcessor->setValue('nachPlanneddates',$nachPlanneddates);
+    $templateProcessor->setValue('endPlanneddates',$endPlanneddates);
+    $templateProcessor->setValue('totalcos',$totalcos);
+    $templateProcessor->setValue('result',$result);
+    $templateProcessor->setValue('name1p',$name1p);
+    $templateProcessor->setValue('nachPlanneddates1p',$nachPlanneddates1p);
+    $templateProcessor->setValue('endPlanneddates1p',$endPlanneddates1p);
+    $templateProcessor->setValue('totalcost1p',$totalcost1p);
+    $templateProcessor->setValue('results1p',$results1p);
+    $templateProcessor->setValue('name2p',$name2p);
+    $templateProcessor->setValue('nachPlanneddates2p',$nachPlanneddates2p);
+    $templateProcessor->setValue('endPlanneddates2p',$endPlanneddates2p);
+    $templateProcessor->setValue('totalcost2p',$totalcost2p);
+    $templateProcessor->setValue('results2p',$results2p);
+    $section=$phpWord->addSection();
+    $section->addTextBreak(1);
+    $styleCell =
+    array(
+    'borderColor' =>'000000',
+    'borderSize' => 3,
+    'valign' => 'center',
+    'cellMargin' => 100,
+    );
+    $styleText = array(
+        'name' => 'Times New Roman',
+        'valign'=>'center',
+        'size' => 12,
+    );
+
+    
+
+    
+    
+    $newFileName = $name.'_Календарный план_'.$id;
+    $templateProcessor->saveAs($newFileName.'.docx');
+
+    return response()->download($newFileName.'.docx')->deleteFileAfterSend();
     }
     public function  form_pdf($name,$id)
     {

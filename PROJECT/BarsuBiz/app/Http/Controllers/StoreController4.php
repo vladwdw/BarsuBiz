@@ -289,7 +289,7 @@ class StoreController4 extends Controller
 
             }
             $this->plan_update($request,$id);
-            $this->calculate($request,$id);
+            $this->calculate_update($request,$id);
             //$this->plan_update($request,$id);
             if(Auth::user()->Role=="Admin"){
                 $user = User::where('name', $gpni->owner)->first();

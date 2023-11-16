@@ -111,43 +111,43 @@
                 </div>
                 <p>Материалы, покупные полуфабрикаты и комплектующие изделия</p>
                 <div class="input-group mb-3">
-                    <input type="text" class="form-control form-control-lg bg-light fs-6" placeholder="Всего по проекту" name="totalCalculate1">
-                    <input type="text" class="form-control form-control-lg bg-light fs-6" placeholder="На первый год" name="firstCalculate1">
+                    <input type="number" class="form-control form-control-lg bg-light fs-6" placeholder="Всего по проекту" name="totalCalculate1">
+                    <input type="number" class="form-control form-control-lg bg-light fs-6" placeholder="На первый год" name="firstCalculate1">
                 </div> 
                 <p>Заработная плата научно-производственного персонала</p>
                 <div class="input-group mb-3">
-                    <input type="text" class="form-control form-control-lg bg-light fs-6" placeholder="Всего по проекту" name="totalCalculate2">
-                    <input type="text" class="form-control form-control-lg bg-light fs-6" placeholder="На первый год" name="firstCalculate2">
+                    <input type="number" class="form-control form-control-lg bg-light fs-6" placeholder="Всего по проекту" name="totalCalculate2">
+                    <input type="number" class="form-control form-control-lg bg-light fs-6" placeholder="На первый год" name="firstCalculate2">
                 </div> 
                 <p>Отчисления в Фонд социальной защиты населения (34%) и другие отчисления в соответствии с дей-ствующим законодательством (Белгосстрах – 0,1 %)</p>
                 <div class="input-group mb-3">
-                    <input type="text" class="form-control form-control-lg bg-light fs-6" placeholder="Всего по проекту" name="totalCalculate3">
-                    <input type="text" class="form-control form-control-lg bg-light fs-6" placeholder="На первый год" name="firstCalculate3">
+                    <input type="number" class="form-control form-control-lg bg-light fs-6" placeholder="Всего по проекту" name="totalCalculate3">
+                    <input type="number" class="form-control form-control-lg bg-light fs-6" placeholder="На первый год" name="firstCalculate3">
                 </div> 
                 <p>Научно-производственные командировки</p>
                 <div class="input-group mb-3">
-                    <input type="text" class="form-control form-control-lg bg-light fs-6" placeholder="Всего по проекту" name="totalCalculate4">
-                    <input type="text" class="form-control form-control-lg bg-light fs-6" placeholder="На первый год" name="firstCalculate4">
+                    <input type="number" class="form-control form-control-lg bg-light fs-6" placeholder="Всего по проекту" name="totalCalculate4">
+                    <input type="number" class="form-control form-control-lg bg-light fs-6" placeholder="На первый год" name="firstCalculate4">
                 </div> 
                 <p>Работы и услуги сторонних организаций</p>
                 <div class="input-group mb-3">
-                    <input type="text" class="form-control form-control-lg bg-light fs-6" placeholder="Всего по проекту" name="totalCalculate5">
-                    <input type="text" class="form-control form-control-lg bg-light fs-6" placeholder="На первый год" name="firstCalculate5">
+                    <input type="number" class="form-control form-control-lg bg-light fs-6" placeholder="Всего по проекту" name="totalCalculate5">
+                    <input type="number" class="form-control form-control-lg bg-light fs-6" placeholder="На первый год" name="firstCalculate5">
                 </div> 
                 <p>Прочие прямые расходы</p>
                 <div class="input-group mb-3">
-                    <input type="text" class="form-control form-control-lg bg-light fs-6" placeholder="Всего по проекту" name="totalCalculate6">
-                    <input type="text" class="form-control form-control-lg bg-light fs-6" placeholder="На первый год" name="firstCalculate6">
+                    <input type="number" class="form-control form-control-lg bg-light fs-6" placeholder="Всего по проекту" name="totalCalculate6">
+                    <input type="number" class="form-control form-control-lg bg-light fs-6" placeholder="На первый год" name="firstCalculate6">
                 </div> 
                 <p>Накладные расходы</p>
                 <div class="input-group mb-3">
-                    <input type="text" class="form-control form-control-lg bg-light fs-6" placeholder="Всего по проекту" name="totalCalculate7">
-                    <input type="text" class="form-control form-control-lg bg-light fs-6" placeholder="На первый год" name="firstCalculate7">
+                    <input type="number" class="form-control form-control-lg bg-light fs-6" placeholder="Всего по проекту" name="totalCalculate7">
+                    <input type="number" class="form-control form-control-lg bg-light fs-6" placeholder="На первый год" name="firstCalculate7">
                 </div> 
                 <p>Привлеченное внебюджетное финансирование</p>
                 <div class="input-group mb-3">
-                    <input type="text" class="form-control form-control-lg bg-light fs-6" placeholder="Всего по проекту" name="totalCalculate8">
-                    <input type="text" class="form-control form-control-lg bg-light fs-6" placeholder="На первый год" name="firstCalculate8">
+                    <input type="number" class="form-control form-control-lg bg-light fs-6" placeholder="Всего по проекту" name="totalCalculate8">
+                    <input type="number" class="form-control form-control-lg bg-light fs-6" placeholder="На первый год" name="firstCalculate8">
                 </div> 
             </div>
         </div>
