@@ -84,10 +84,10 @@ class MainController extends Controller
             $gpni=Gpni::find($id);
             $gpniDop=GpniDop::where("project_id", $id)->get();
             $gpni_plan=Gpni_plan::where("project_id", $id)->get();
-          
+            $gpni_calculate=Gpni_calculate::where("project_id", $id)->get();
             if($gpni->user_id==Auth::user()->id || Auth::user()->Role== "Admin")
             {
-            return view("forms/form44",compact("gpni","gpniDop","gpni_plan"));
+            return view("forms/form44",compact("gpni","gpniDop","gpni_plan","gpni_calculate"));
         }
         else{
             return redirect("cabinet");
