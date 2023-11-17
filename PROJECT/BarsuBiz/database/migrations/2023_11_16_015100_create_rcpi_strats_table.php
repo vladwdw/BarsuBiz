@@ -18,6 +18,7 @@ return new class extends Migration
             $table->timestamps();
             $table->unsignedBigInteger('project_id');
             $table->text('sOtherSbosob')->nullable();
+            $table->text('sFio')->nullable();
             $table->text('sDescriptKomerc')->nullable();
             $table->text('sStratComerc')->nullable();
         });

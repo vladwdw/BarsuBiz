@@ -27,8 +27,8 @@ return new class extends Migration
             $table->text("pasObjectComerc")->nullable();
             $table->text("pasDoztizhProject")->nullable();
             $table->text("pasDopInformation")->nullable();
-
-
+            $table->text("pasAnotherStage")->nullable();
+            $table->text("pasOtherAnalog")->nullable();
         });
         Schema::table('rcpi_passes', function (Blueprint $table) {
             $table->foreign("project_id")->references('id')->on('repconcs');

@@ -38,9 +38,15 @@
   <button type="button" data-part="1" onclick="openPart(1)" class="btn btn-outline-danger rounded-4" href="#"><i class="bi bi-file-earmark-text"></i> Заявка</button>
   
   </li>
+  @if($user->first()->age>=30)
   <li class="nav-item px-3 mt-2">
   <button type="button"  data-part="2" onclick="openPart(2)" class="btn btn-outline-danger rounded-4" href="#"><i class="bi bi-clipboard2-data"></i> Бизнес план</button>
   </li>
+  @else
+  <li class="nav-item px-3 mt-2">
+  <button type="button"  data-part="5" onclick="openPart(5)" class="btn btn-outline-danger rounded-4" href="#"><i class="bi bi-clipboard2-data"></i> ТЭО</button>
+  </li>
+  @endif
   <li class="nav-item mt-2">
   <button type="button" data-part="3" onclick="openPart(3)" class="btn btn-outline-danger rounded-4" href="#"><i class="bi bi-graph-up-arrow"></i> Стратегия</button>
   </li>
@@ -147,7 +153,7 @@
                 </div>
         </div>
           <!-- Part 2!-->
-
+          @if($user->first()->age>=30)
           <div class="part" data-part="2" style="display: none;">
                 <div class="header-text mb-4">
                     <h2 style="text-align: center;">Бизнес план
@@ -220,6 +226,75 @@
                     <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Введите данные:" name="bpInformation">{{$rcpibp->first()->bpInformation}}</textarea>
                 </div>
                 </div>
+                @else
+            
+                
+                              <!-- Part 5 -->
+                              <div class="part" data-part="5" style="display: none;">
+                <div class="header-text mb-4">
+                    <h2 style="text-align: center;">ТЭО
+                        </h2>
+                        <h3 style="text-align: center;">На участие в республиканском конкурсе инновационных проектов</h3>
+                </div>
+                <p>Проблема потребителя (указать существующую проблему, которую решает проект) </p>
+                <div class="form-group mb-3">
+                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Введите данные:" name="teoPotrProblem">{{$rcpiteo->first()->teoPotrProblem}}</textarea>
+                </div>
+                <p>Описание продукта/услуги (в том числе указать, каким образом проект решает проблемы. Стадия развития проекта) </p>
+                <div class="form-group mb-3">
+                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Введите данные:" name="teoDescripProd">{{$rcpiteo->first()->teoDescripProd}}</textarea>
+                </div>
+   
+                <p>Бизнес-модель (указать, каким образом в проект поступает выручка)</p>
+                <div class="form-group mb-3">
+                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Введите данные:" name="teoBizModel">{{$rcpiteo->first()->teoBizModel}}</textarea>
+                </div>
+                <p>Информация о рынке (клиенты, объем рынка, желаемая доля рынка, каналы продаж, план выхода на рынок, бюджеты маркетинга и продвижения)   </p>
+                <div class="form-group mb-3">
+                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Введите данные:" name="teoRinokInf">{{$rcpiteo->first()->teoRinokInf}}</textarea>
+                </div>
+                <p>Описание технологии (в том числе обоснование, что ее коммерциализация принесет положительный экономический эффект (влияние технологии на рост выручки или снижение затрат)  </p>
+                <div class="form-group mb-3">
+                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Введите данные:" name="teoDescripTechn">{{$rcpiteo->first()->teoDescripTechn}}</textarea>
+                </div>
+                <p>Конкуренты и конкурентное преимущество (описать важнейших конкурентов (лучше – в форме таблицы и сравнить их по 3 5 параметрам). Кратко описать, кто конкурирует, за счет чего, почему можно приобрести долю рынка. Сделать акцент на основных преимуществах, отличии продукта/услуги от имеющихся на рынках, конкурентоспособности (причины)</p>
+                <div class="form-group mb-3">
+                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Введите данные:" name="teoConcurent">{{$rcpiteo->first()->teoConcurent}}</textarea>
+                </div>
+                <p>Интеллектуальная собственность (объекты интеллектуальной собственности (потенциальные объекты интеллектуальной собственности), которые используются или планируется использовать в рамках проекта, включая объекты интеллектуальной собственности, права на которые принадлежат участнику конкурса или права на использование которых получены по соответствующему договору; документы, подтверждающие права на объекты интеллектуальной собственности (если получение таких документов предусмотрено законодательством) или права на использование объектов интеллектуальной собственности. В случае если имеется потенциальный объект интеллектуальной собственности, указать на необходимость получения охранных документов (патент, свидетельство) или на возможность предоставления правовой охраны в качестве секрета производства (ноу-хау) </p>
+                <div class="form-group mb-3">
+                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Введите данные:" name="teoIntSobstv">{{$rcpiteo->first()->teoIntSobstv}}</textarea>
+                </div>
+                <p>Команда проекта (описать основных членов команды, роль в проекте, предыдущий опыт, успешные истории) </p>
+                <div class="form-group mb-3">
+                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Введите данные:" name="teoTeamProject">{{$rcpiteo->first()->teoTeamProject}}</textarea>
+                </div>
+                <p>Маркетинг (описать стратегию маркетингового продвижения продукта, и построение стратегии продаж (каналы, методы, кто будет первым покупателем и т.п.)</p>
+                <div class="form-group mb-3">
+                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Введите данные:" name="teoMarketing">{{$rcpiteo->first()->teoMarketing}}</textarea>
+                </div>
+                <p>Финансовые показатели проекта (прогноз на ближайшие 5 лет: выручка, себестоимость, коммерческие/общие/административные расходы, EBITDA, амортизация, проценты, налоги, чистая прибыль) </p>
+                <div class="form-group mb-3">
+                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Введите данные:" name="teoFinIndic">{{$rcpiteo->first()->teoFinIndic}}</textarea>
+                </div>
+                <p>Юнит-экономика проекта (при необходимости) (главные экономические показатели проекта: стоимость привлечения клиента, средний чек, процент удержания и т.п. Шаги по улучшению показателей) </p>
+                <div class="form-group mb-3">
+                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Введите данные:" name="teoUnitEconomy">{{$rcpiteo->first()->teoUnitEconomy}}</textarea>
+                </div>
+                <p>Инвестиционная привлекательность проекта (свободный денежный поток проекта, NPV проекта, IRR проекта, срок окупаемости) </p>
+                <div class="form-group mb-3">
+                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Введите данные:" name="teoInvestPerm">{{$rcpiteo->first()->teoInvestPerm}}</textarea>
+                </div>
+                <p>Риски проекта (указать барьеры, риски, пути их устранения) </p>
+                <div class="form-group mb-3">
+                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Введите данные:" name="teoRiskProject">{{$rcpiteo->first()->teoRiskProject}}</textarea>
+                </div>
+                <p>Основные стадии реализации проекта (существующее положение, стратегия развития. Под какие стадии необходимы инвестиции, в каком размере, на что будут тратиться, как возвращаться) </p>
+                <div class="form-group mb-3">
+                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Введите данные:" name="teoRelizeTemp">{{$rcpiteo->first()->teoRelizeTemp}}</textarea>
+                </div>
+                </div>
+                @endif
 
                 <!-- Part 3!-->
 
@@ -229,6 +304,10 @@
                         </h2>
                         <h3 style="text-align: center;">На участие в республиканском конкурсе инновационных проектов</h3>
                 </div>
+                <p>Фамилия, собственное имя, отчество (если таковое имеется) физического лица/индивидуального предпринимателя,либо полное наименование юридического лица</p>
+                <div class="form-group mb-3">
+                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Введите данные:" name="sFio">{{$rcpistrat->first()->sFio}}</textarea>
+            </div>
                 <p><b>Уровень коммерциализации на момент подачи заявки:</b><p>
                 @for($i = 0; $i < 5; $i++)
    <div class="form-check mb-3">
@@ -280,7 +359,7 @@
                 <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Введите данные:" name="pasKratkDescrip">{{$rcpipass->first()->pasKratkDescrip}}</textarea>
             </div>
             <p><b>Область применения(выбрать из списка не более 2-х)</b></p>
-            @for($i = 0; $i < 9; $i++)
+            @for($i = 0; $i <=8; $i++)
             <div class="form-check mb-3">
             <input class="form-check-input" name="pascheckbox[]" type="checkbox" value="{{$rcpipass_checkbox[$i]->value}}" id="flexCheckDefault" {{$rcpipass_checkbox[$i]->status ? 'checked' : '' }}>
             <label class="form-check-label" for="flexCheckDefault">
@@ -292,6 +371,32 @@
             <div class="form-group mb-3">
                 <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Введите данные:" name="pasOtherSphere">{{$rcpipass->first()->pasOtherSphere}}</textarea>
             </div>
+            <p><b>Новизна, оригинальность продукции (отметить нужный пункт в перечне)</b></p>
+            @for($i = 9; $i < 14; $i++)
+            <div class="form-check mb-3">
+            <input class="form-check-input" name="pascheckbox[]" type="checkbox" value="{{$rcpipass_checkbox[$i]->value}}" id="flexCheckDefault" {{$rcpipass_checkbox[$i]->status ? 'checked' : '' }}>
+            <label class="form-check-label" for="flexCheckDefault">
+            {{$rcpipass_checkbox[$i]->value}}
+            </label>
+            </div>
+            
+            @endfor
+            <div class="form-group mb-3">
+                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Введите данные:" name="pasOtherAnalog"></textarea>
+            </div>
+            <p><b>Стадия проекта(выбрать из списка)</b></p>
+            @for($i = 14; $i < 22; $i++)
+            <div class="form-check mb-3">
+            <input class="form-check-input" name="pascheckbox[]" type="checkbox" value="{{$rcpipass_checkbox[$i]->value}}" id="flexCheckDefault" {{$rcpipass_checkbox[$i]->status ? 'checked' : '' }}>
+            <label class="form-check-label" for="flexCheckDefault">
+            {{$rcpipass_checkbox[$i]->value}}
+            </label>
+            </div>
+            @endfor
+            <div class="form-group mb-3">
+                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Введите данные:" name="pasAnotherStage"></textarea>
+            </div>
+
             <p>Потенциальные потребители, организации, заинтересованные в результатах проекта(рынок сбыта) (не более 500 знаков)</p>   
             <div class="form-group mb-3">
                 <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Введите данные:" name="pasRinokSbita">{{$rcpipass->first()->pasRinokSbita}}</textarea>
@@ -302,7 +407,7 @@
             </div>
             <p><b>Использование объектов интеллектуальной собственности (потенциальных объектов интеллектуальной собственности)</b></p>
             <!-- Checkbox 1 !-->
-            @for($i = 9; $i < 12; $i++)
+            @for($i =23; $i < 26; $i++)
             <div class="form-check mb-3">
             <input class="form-check-input" name="pascheckbox[]" type="checkbox" value="{{$rcpipass_checkbox[$i]->value}}" id="flexCheckDefault" {{$rcpipass_checkbox[$i]->status ? 'checked' : '' }}>
             <label class="form-check-label" for="flexCheckDefault">
@@ -319,7 +424,7 @@
                 <input type="text" class="form-control form-control-lg bg-light fs-6" placeholder="Введите данные" name="pasRealizationTemp" value="{{$rcpipass->first()->pasRealizationTemp}}">
             </div>
             <p><b>Согласие на получение денежных средств в целях коммерциализации проекта (сертификата)</b></p>
-            @for($i = 12; $i < 14; $i++)
+            @for($i = 26; $i < 28; $i++)
             <div class="form-check mb-3">
             <input class="form-check-input" name="pascheckbox[]" type="checkbox" value="{{$rcpipass_checkbox[$i]->value}}" id="flexCheckDefault" {{$rcpipass_checkbox[$i]->status ? 'checked' : '' }}>
             <label class="form-check-label" for="flexCheckDefault">
@@ -340,6 +445,7 @@
                 <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Введите данные:" name="pasDopInformation">{{$rcpipass->first()->pasDopInformation}}</textarea>
             </div>
                 </div>
+  
                 <div class="input-group mb-3">
                     <button class="btn btn-lg btn-danger w-100 fs-6">Сохранить</button>
                 </div>

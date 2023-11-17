@@ -39,6 +39,7 @@ use App\Models\RcpiBp;
 use App\Models\RcpiPass;
 use App\Models\RcpiPassCheckboxes;
 use App\Models\RcpiStrat;
+use App\Models\RcpiTeo;
 use App\Models\User;
 
 require_once base_path('vendor/autoload.php');
@@ -115,8 +116,15 @@ class MainController extends Controller
             $rcpibp=RcpiBp::where("project_id", $repconc->id)->get();
             $rcpipass_checkbox=RcpiPassCheckboxes::where("project_id", $repconc->id)->get();
             $rcpipass=RcpiPass::where("project_id", $repconc->id)->get();
+            $rcpiteo=RcpiTeo::where("project_id", $repconc->id)->get();
+            $user=User::where("id",$repconc->user_id)->get();
             if($repconc->user_id==Auth::user()->id || Auth::user()->Role== "Admin"){
-            return view("forms/form66",compact("repconc","repconc_strat_checkbox","rcpistrat","rcpipass_checkbox","rcpipass","rcpibp"));
+            if($user->first()->age>=30){
+            return view("forms/form66",compact("repconc","repconc_strat_checkbox","rcpistrat","rcpipass_checkbox","rcpipass","rcpibp","user"));
+            }
+            else {
+                return view("forms/form66",compact("repconc","repconc_strat_checkbox","rcpistrat","rcpipass_checkbox","rcpipass","rcpiteo","user"));
+            }
         }
         
         else{
@@ -234,7 +242,31 @@ class MainController extends Controller
            
             $templateProcessor->saveAs($newFileName.'.docx');
             $filePath = public_path($newFileName.'.docx');
-            return response()->download($filePath)->deleteFileAfterSend();
+            $rcpicheck=RcpiStratCheckboxes::where('project_id',$repconc->id)->get();
+            $rcpiInputs=RcpiStrat::where('project_id',$repconc->id)->get();
+            $rcpiPassInputs=RcpiPass::where("project_id",$repconc->id)->get();
+            $rcpiPassCheck=RcpiPassCheckboxes::where("project_id",$repconc->id)->get();
+            $rcpistrat=$this->form6_strategy_word($rcpicheck,$rcpiInputs,$newFileName,$repconc);
+            $rcpipass=$this->form6_pass_word($rcpiPassCheck,$rcpiInputs,$newFileName);
+            $zip_file = $newFileName.'.zip'; // Name of our archive to download
+
+    // Initializing PHP class
+    $zip = new \ZipArchive();
+    $zip->open($zip_file, \ZipArchive::CREATE | \ZipArchive::OVERWRITE);
+    
+    $firstfile=$newFileName.'.docx';
+    // Adding file: second parameter is what will the path inside of the archive
+    // So it will create another folder called "storage/" inside ZIP, and put the file there.
+    $zip->addFile($firstfile);
+    $zip->addFile($rcpistrat.'.docx');
+    $zip->addFile($rcpipass.'.docx');
+    $zip->close();
+    unlink(public_path($firstfile));
+    unlink(public_path($rcpistrat.'.docx'));
+    unlink(public_path($rcpipass.'.docx'));
+                
+        return response()->download($zip_file)->deleteFileAfterSend();
+
 
         }
         if($name=="Участие в НИР")
@@ -446,6 +478,7 @@ class MainController extends Controller
     $zip->close();
     unlink(public_path($plan));
     unlink(public_path($firstfile));
+    unlink(public_path($calculate));
                 
         return response()->download($zip_file)->deleteFileAfterSend();
     
@@ -483,6 +516,58 @@ class MainController extends Controller
     return response()->download($newFileName.'.docx')->deleteFileAfterSend();
         }
             
+    }
+    public function form6_pass_word($checkboxes,$inputs,$name){
+
+            $templateProcessor= new TemplateProcessor('templates\form6_pass.docx');
+        for($i=0; $i<count($checkboxes); $i++){
+            if($checkboxes[$i]->status==1){
+            $templateProcessor->setValue("p{$i}",'☑');
+            }
+            else{
+                $templateProcessor->setValue("p{$i}",'☐');
+            }
+        }
+        $templateProcessor->setValue("pasNameProject",$inputs->first()->pasNameProject);
+        $templateProcessor->setValue("pasKratkDescrip",$inputs->first()->pasKratkDescrip);
+        $templateProcessor->setValue("pasRinokSbita",$inputs->first()->pasRinokSbita);
+
+        $templateProcessor->setValue("pasGeneralPer",$inputs->first()->pasGeneralPer);
+        $templateProcessor->setValue("pasRealizationTemp",$inputs->first()->pasRealizationTemp);
+        $templateProcessor->setValue("pasObjectComerc",$inputs->first()->pasObjectComerc);
+        $templateProcessor->setValue("pasDoztizhProject",$inputs->first()->pasDoztizhProject);
+        $templateProcessor->setValue("pasDopInformation",$inputs->first()->pasDopInformation);
+        $templateProcessor->setValue("pasDescription",$inputs->first()->pasDescription);
+        $templateProcessor->setValue("pasOtherSphere",$inputs->first()->pasOtherSphere);
+
+            $newFileName=$name."_Пасспорт ИП";
+            $templateProcessor->saveAs($newFileName.'.docx');
+            return $newFileName;
+    
+}
+ 
+    public function form6_bp_word($id){
+        $phpWord= new PhpWord();
+        $rcpi_bp=RcpiBp::where('project_id',$id)->get();
+        $bpFio=$rcpi_bp->bpFio;
+        $bpSoderzh=$rcpi_bp->bpSoderzh;
+        $bpResume=$rcpi_bp->bpResume;
+        $bpProblem=$rcpi_bp->bpProblem;
+        $bpProduct=$rcpi_bp->bpProduct;
+        $bpAnalize=$rcpi_bp->bpAnalize;
+        $bpSobstv=$rcpi_bp->bpSobstv;
+        $bpPotreb=$rcpi_bp->bpPotreb;
+        $bpPrice=$rcpi_bp->bpPrice;
+        $bpConcurents=$rcpi_bp->bpConcurents;
+        $bpSuppliers=$rcpi_bp->bpSuppliers;
+        $bpProizPlan=$rcpi_bp->bpProizPlan;
+        $bpOrgPlan=$rcpi_bp->bpOrgPlan;
+        $bpRelizeProblems=$rcpi_bp->bpRelizeProblems;
+        $bpFinPlan=$rcpi_bp->bpFinPlan;
+        $bpInformation=$rcpi_bp->bpInformation;
+
+
+
     }
     public function form4_plan_word($id, $name)
     {
@@ -1031,6 +1116,7 @@ unlink($filePath);
 
     }
     if($name=="Заявка на получение гранта"){
+        $phpWord= new PhpWord();
         $grant=Grant::find($id);
         $scienceDirection=$grant->sienceDirection;
         $fioGrad=$grant->fioGrad;
@@ -1076,7 +1162,33 @@ unlink(public_path($newFileName));
 unlink($filePath);
     }
 
+
     }
+
+    public function form6_strategy_word($checkboxes,$inputs,$name,$rcpi){
+        $templateProcessor= new TemplateProcessor('templates\form6_strategy.docx');
+        for($i=0; $i<count($checkboxes);$i++){
+            if($checkboxes[$i]->status==1){
+            $templateProcessor->setValue("s{$i}",'☑');
+            }
+            else{
+                $templateProcessor->setValue("s{$i}",'☐');
+            }
+        }
+        $templateProcessor->setValue("nameProject",$rcpi->nameProject);
+        $templateProcessor->setValue("nominationName",$rcpi->nominationName);
+        $templateProcessor->setValue("sFio",$inputs->first()->sFio);
+        $templateProcessor->setValue("sOtherSbosob",$inputs->first()->sOtherSbosob);
+        $templateProcessor->setValue("sDescriptKomerc",$inputs->first()->sDescriptKomerc);
+        $templateProcessor->setValue("sStratComerc",$inputs->first()->sStratComerc);
+        $templateProcessor->setValue("currentYear",date("Y"));
+        $templateProcessor->setValue("nextYear",date("Y",strtotime('+1 year')));
+        $newFileName=$name."_Стратегия";
+        $templateProcessor->saveAs($newFileName.'.docx');
+        return $newFileName;
+    }
+    
+
     public function back(){
         return redirect('/cabinet');
     }

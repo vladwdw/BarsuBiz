@@ -12,10 +12,12 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 use App\Models\RcpiStratCheckboxes;
 use App\Models\RcpiStrat;
+use App\Models\RcpiTeo;
+
 class StoreController6 extends Controller
 {
     public function store(Request $request){
-        try{
+       
         $nominationName=$request->input('nominationName');
         $nameProject=$request->input('nameProject');
         $fio=$request->input('fio');
@@ -66,15 +68,35 @@ class StoreController6 extends Controller
         $this->inputs($request,$repconc->id);
         $this->rcpi_pass_checkboxed($request,$repconc->id);
         $this->form66_rcpi_pass($request,$repconc->id);
+        if(Auth::user()->age>=30){
         $this->form66_rcpibps($request ,$repconc->id);
-
-        return redirect('cabinet');
-
-        }catch(\Exception $e){
-            dd($e->getMessage());
         }
+        else{
+          $this->form66_rcpi_teo($request,$repconc->id);
+        }
+        return redirect('cabinet');
         
       }
+      public function form66_rcpi_teo($request,$id){
+        $rcpiteo= new RcpiTeo();
+        $rcpiteo->teoPotrProblem=$request->teoPotrProblem;
+        $rcpiteo->teoDescripProd=$request->teoDescripProd;
+        $rcpiteo->teoBizModel=$request->teoBizModel;
+        $rcpiteo->teoRinokInf=$request->teoRinokInf;
+        $rcpiteo->teoDescripTechn=$request->teoDescripTechn;
+        $rcpiteo->teoConcurent=$request->teoConcurent;
+        $rcpiteo->teoIntSobstv=$request->teoIntSobstv;
+        $rcpiteo->teoTeamProject=$request->teoTeamProject;
+        $rcpiteo->teoMarketing=$request->teoMarketing;
+        $rcpiteo->teoFinIndic=$request->teoFinIndic;
+        $rcpiteo->teoUnitEconomy=$request->teoUnitEconomy;
+        $rcpiteo->teoInvestPerm=$request->teoInvestPerm;
+        $rcpiteo->teoRiskProject=$request->teoRiskProject;
+        $rcpiteo->teoRelizeTemp=$request->teoRelizeTemp;
+        $rcpiteo->project_id=$id;
+        $rcpiteo->save();
+      }
+
       public function form66_rcpi_pass($request, $id){
         $pasNameProject=$request->pasNameProject;
         $pasKratkDescrip= $request->pasKratkDescrip;
@@ -99,6 +121,8 @@ class StoreController6 extends Controller
         $rcpipass->pasObjectComerc=$pasObjectComerc;
         $rcpipass->pasDoztizhProject= $pasDoztizhProject;
         $rcpipass->pasDopInformation= $pasDopInformation;
+        $rcpipass->pasAnotherStage=$request->pasAnotherStage;
+        $rcpipass->pasOtherAnalog=$request->pasOtherAnalog;
         $rcpipass->save();
       }
       public function form66_rcpi_pass_update($request,$id){
@@ -128,6 +152,8 @@ class StoreController6 extends Controller
         $rcpipass->pasObjectComerc=$pasObjectComerc;
         $rcpipass->pasDoztizhProject= $pasDoztizhProject;
         $rcpipass->pasDopInformation= $pasDopInformation;
+        $rcpipass->pasAnotherStage=$request->pasAnotherStage;
+        $rcpipass->pasOtherAnalog=$request->pasOtherAnalog;
         $rcpipass->save();
       }
       public function update_rcpi_pass_checkboxes($request, $id){
@@ -137,9 +163,12 @@ class StoreController6 extends Controller
         array_push($allcheckboxes,'Машиностроение и металлообработка','Экология и рациональное использование природных ресурсов',
         'Здравоохранение','Производство, переработка и сбережение сельскохозяйственной продукции','Проблемы строительства и энергетики',
         'Технологии химических, фармацевтических и микробиологических производств','Социально-экономические проблемы и проблемы развития государственности Республики Беларусь',
-        'Информатизация, вычислительная техника и информационные технологии','Другое (указать):','Используются либо планируются к использованию объекты интеллектуальной собственности, права на которые подтверждаются соответствующими документами (если такие документы предусмотрены законодательством) или права на использование которых подтверждаются соответствующим договором (указать в пояснении)',
+        'Информатизация, вычислительная техника и информационные технологии','Другое (указать):','Не имеет аналогов','Нет аналогов в стране, есть за рубежом',
+        'Нет аналогов за рубежом, есть в стране','Есть сведения об отечественных и зарубежных аналогах','Другое (указать):','Идея','Разработана документация (научно-техническая, проектно-сметная, конструкторская, технологическая и др.)',
+        'Работающий прототип','Опытный образец','Первые продажи','Создание нового производства','Расширение существующего производства','Иное (указать):',
+        'Используются либо планируются к использованию объекты интеллектуальной собственности, права на которые подтверждаются соответствующими документами (если такие документы предусмотрены законодательством) или права на использование которых подтверждаются соответствующим договором (указать в пояснении)',
       'Используются либо планируются к использованию потенциальные объекты интеллектуальной собственности (правовая охрана не предоставлена, однако имеются признаки объектов интеллектуальной собственности, для правовой охраны которых необходимо получить охранные документы (патенты, свидетельства)) (указать в пояснении)',
-      'Используются либо планируются к использованию потенциальные объекты интеллектуальной собственности, для правовой охраны которым не требуется получение охранных документов (указать в пояснении)','Не согласен','Согласен'
+      'Используются либо планируются к использованию потенциальные объекты интеллектуальной собственности, для правовой охраны которым не требуется получение охранных документов (указать в пояснении)','Используются либо планируются к использованию потенциальные объекты интеллектуальной собственности, для правовой охраны которым не требуется получение охранных документов (указать в пояснении)','Не согласен','Согласен'
       );
         if(empty($checkedPassCheckboxes)){
           for($i=0; $i<count($allcheckboxes); $i++){
@@ -173,9 +202,12 @@ class StoreController6 extends Controller
         array_push($allcheckboxes,'Машиностроение и металлообработка','Экология и рациональное использование природных ресурсов',
         'Здравоохранение','Производство, переработка и сбережение сельскохозяйственной продукции','Проблемы строительства и энергетики',
         'Технологии химических, фармацевтических и микробиологических производств','Социально-экономические проблемы и проблемы развития государственности Республики Беларусь',
-        'Информатизация, вычислительная техника и информационные технологии','Другое (указать):','Используются либо планируются к использованию объекты интеллектуальной собственности, права на которые подтверждаются соответствующими документами (если такие документы предусмотрены законодательством) или права на использование которых подтверждаются соответствующим договором (указать в пояснении)',
+        'Информатизация, вычислительная техника и информационные технологии','Другое (указать):','Не имеет аналогов','Нет аналогов в стране, есть за рубежом',
+        'Нет аналогов за рубежом, есть в стране','Есть сведения об отечественных и зарубежных аналогах','Другое (указать):','Идея','Разработана документация (научно-техническая, проектно-сметная, конструкторская, технологическая и др.)',
+        'Работающий прототип','Опытный образец','Первые продажи','Создание нового производства','Расширение существующего производства','Иное (указать):',
+        'Используются либо планируются к использованию объекты интеллектуальной собственности, права на которые подтверждаются соответствующими документами (если такие документы предусмотрены законодательством) или права на использование которых подтверждаются соответствующим договором (указать в пояснении)',
       'Используются либо планируются к использованию потенциальные объекты интеллектуальной собственности (правовая охрана не предоставлена, однако имеются признаки объектов интеллектуальной собственности, для правовой охраны которых необходимо получить охранные документы (патенты, свидетельства)) (указать в пояснении)',
-      'Используются либо планируются к использованию потенциальные объекты интеллектуальной собственности, для правовой охраны которым не требуется получение охранных документов (указать в пояснении)','Не согласен','Согласен'
+      'Используются либо планируются к использованию потенциальные объекты интеллектуальной собственности, для правовой охраны которым не требуется получение охранных документов (указать в пояснении)','Используются либо планируются к использованию потенциальные объекты интеллектуальной собственности, для правовой охраны которым не требуется получение охранных документов (указать в пояснении)','Не согласен','Согласен'
       );
         if(empty($checkedPassCheckboxes)){
           for($i=0; $i<count($allcheckboxes); $i++){
@@ -206,6 +238,7 @@ class StoreController6 extends Controller
       public function inputs($request, $id){
         $rcpistrat=new RcpiStrat();
         $rcpistrat->project_id=$id;
+        $rcpistrat->sFio=$request->sFio;
         $rcpistrat->sOtherSbosob= $request->sOtherSbosob;
         $rcpistrat->sDescriptKomerc=$request->sDescriptKomerc;
         $rcpistrat->sStratComerc= $request->sStratComerc;
@@ -401,6 +434,7 @@ class StoreController6 extends Controller
         $rcpistrat=RcpiStrat::where('project_id', $id)->delete();
         $rcpistrat= new RcpiStrat();
         $rcpistrat->project_id=$id;
+        $rcpistrat->sFio=$request->sFio;
         $rcpistrat->sOtherSbosob= $request->sOtherSbosob;
         $rcpistrat->sDescriptKomerc=$request->sDescriptKomerc;
         $rcpistrat->sStratComerc= $request->sStratComerc;

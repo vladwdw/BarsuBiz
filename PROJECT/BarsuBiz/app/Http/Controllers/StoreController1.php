@@ -16,6 +16,7 @@ use App\Models\RcpiPass;
 use App\Models\RcpiPassCheckboxes;
 use App\Models\RcpiStrat;
 use App\Models\RcpiStratCheckboxes;
+use App\Models\RcpiTeo;
 use App\Models\Repconc;
 use App\Notifications\Delete;
 use App\Models\User;
@@ -186,7 +187,7 @@ class StoreController1 extends Controller
            
             if( $repconc->user_id==Auth::user()->id || Auth::user()->Role== 'Admin'){
                 if(Auth::user()->Role=="Admin"){
-                    $user = User::where('name', $ $repconc->owner)->first();
+                    $user = User::where('name', $repconc->owner)->first();
                     $data= $repconc->name."_#".$repconc->id;
                     $user->notify(new Delete($data));
                 }
@@ -195,6 +196,7 @@ class StoreController1 extends Controller
                 $rcpi_pass_checkboxes=RcpiPassCheckboxes::where('project_id', $repconc->id)->delete();
                 $rcpipass=RcpiPass::where('project_id', $repconc->id)->delete();
                 $rcpibp=RcpiBp::where('project_id', $repconc->id)->delete();
+                $rcpiteo=RcpiTeo::where('project_id',$repconc->id)->delete();
                  $repconc->delete();
 
             }
