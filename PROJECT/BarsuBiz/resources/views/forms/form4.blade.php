@@ -113,7 +113,7 @@
                 
             </div>
         </div>
-        <div class="part p-2" data-part="2" style="display: none;">
+        <div class="part p-3" data-part="3" style="display: none;">
             <div class="row align-items-center maa ">
                 <div class="header-text mb-4">
                 <h3 style="text-align: center;"><strong>Калькуляция </strong></h3>
@@ -161,7 +161,7 @@
                 </div> 
             </div>
         </div>
-        <div class="part p-3" data-part="3" style="display: none;">
+        <div class="part p-2" data-part="2" style="display: none;">
             <div class="row align-items-center maa ">
                 <div class="header-text mb-4">
                 <h3 style="text-align: center;"><strong>КАЛЕНДАРНЫЙ  ПЛАН </strong></h3>
