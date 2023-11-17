@@ -53,13 +53,13 @@
                 </div>
                 <p><strong>№ заявки,дата поступления, год прохождения</strong></p>
                 <div class="input-group mb-3">
-                    <input type="text" class="form-control form-control-lg bg-light fs-6" placeholder="№" name="number" value="{{$gpni->number}}">
-                    <input type="text" class="form-control form-control-lg bg-light fs-6" placeholder="Дата" name="data" value="{{$gpni->data}}">
-                    <input type="text" class="form-control form-control-lg bg-light fs-6" placeholder="Год" name="year" value="{{$gpni->year}}">
+                    <input type="number" class="form-control form-control-lg bg-light fs-6" placeholder="№" name="number" value="{{$gpni->number}}">
+                    <input type="date" class="form-control form-control-lg bg-light fs-6" placeholder="Дата" name="data" value="{{$gpni->data}}">
+                    <input type="number" class="form-control form-control-lg bg-light fs-6" placeholder="Год" name="year" value="{{$gpni->year}}">
                 </div>
                 <p>Приоритетное направление научных исследований Республики Беларусь, которому соответствует заявляемый проект НИР</p>
                 <div class="input-group mb-3">
-                    <input type="text" class="form-control form-control-lg bg-light fs-6" placeholder="Научное направление " name="sinceDir" value="{{$gpni->sincedir}}">
+                    <input type="text" class="form-control form-control-lg bg-light fs-6" placeholder="Введите данные" name="sinceDir" value="{{$gpni->sincedir}}">
                 </div>
                 <p>Название проекта задания, краткое наименование программы (в соответствии с Перечнем государственных программ научных исследований на 2021-2025 гг.)</p>
                 <div class="form-group mb-3">
@@ -86,7 +86,7 @@
                     <input type="text" class="form-control form-control-lg bg-light fs-6" placeholder="Кафедра, лаборатория" name="kafLab[]" value="{{$item->kafLab}}">
                 </div>
                 <div class="input-group mb-3">
-                    <input type="text" class="form-control form-control-lg bg-light fs-6" placeholder="Телефон служебный" name="phone[]" value="{{$item->phone}}">
+                    <input type="number" class="form-control form-control-lg bg-light fs-6" placeholder="Телефон служебный" name="phone[]" value="{{$item->phone}}">
                     <input type="text" class="form-control form-control-lg bg-light fs-6" placeholder="E-mail" name="email[]" value="{{$item->email}}">
                 </div>
                 </div>
@@ -100,21 +100,21 @@
                 </div>
                 <p>Плановые сроки выполнения</p>
                 <div class="input-group mb-3">
-                    <input type="text" class="form-control form-control-lg bg-light fs-6" placeholder="Начало" name="nach" value="{{$gpni->nach}}">
-                    <input type="text" class="form-control form-control-lg bg-light fs-6" placeholder="Окончание" name="end" value="{{$gpni->end}}">
+                    <input type="date" class="form-control form-control-lg bg-light fs-6" placeholder="Начало" name="nach" value="{{$gpni->nach}}">
+                    <input type="date" class="form-control form-control-lg bg-light fs-6" placeholder="Окончание" name="end" value="{{$gpni->end}}">
                 </div>
                 <p><strong>Сметная стоимость работ</strong>(в .руб)</p>
                 <div class="input-group mb-3">
-                    <input type="text" class="form-control form-control-lg bg-light fs-6" placeholder="Всего" name="allCost"  value="{{$gpni->allCost}}">
+                    <input type="number" class="form-control form-control-lg bg-light fs-6" placeholder="Всего" name="allCost"  value="{{$gpni->allCost}}">
                 </div>
                 <div class="input-group mb-3">
-                    <input type="text" class="form-control form-control-lg bg-light fs-6" placeholder="Из них привлеченное внебюджетное финансирование" name="fin1" value="{{$gpni->fin1}}">
+                    <input type="number" class="form-control form-control-lg bg-light fs-6" placeholder="Из них привлеченное внебюджетное финансирование" name="fin1" value="{{$gpni->fin1}}">
                 </div>
                 <div class="input-group mb-3">
-                    <input type="text" class="form-control form-control-lg bg-light fs-6" placeholder="В том числе на первый год  " name="fin2" value="{{$gpni->fin2}}">
+                    <input type="number" class="form-control form-control-lg bg-light fs-6" placeholder="В том числе на первый год  " name="fin2" value="{{$gpni->fin2}}">
                 </div>
                 <div class="input-group mb-3">
-                    <input type="text" class="form-control form-control-lg bg-light fs-6" placeholder="Из них привлеченное внебюджетное финансирование " name="fin3" value="{{$gpni->fin3}}">
+                    <input type="number" class="form-control form-control-lg bg-light fs-6" placeholder="Из них привлеченное внебюджетное финансирование " name="fin3" value="{{$gpni->fin3}}">
                 </div>
                 
                 
@@ -163,8 +163,8 @@
                 </div> 
                 <p>Привлеченное внебюджетное финансирование</p>
                 <div class="input-group mb-3">
-                    <input type="text" class="form-control form-control-lg bg-light fs-6" placeholder="Всего по проекту" name="totalCalculate8" value="{{$gpni_calculate->first()->totalCalculate8}}">
-                    <input type="text" class="form-control form-control-lg bg-light fs-6" placeholder="На первый год" name="firstCalculate8" value="{{$gpni_calculate->first()->firstCalculate8}}">
+                    <input type="number" class="form-control form-control-lg bg-light fs-6" placeholder="Всего по проекту" name="totalCalculate8" value="{{$gpni_calculate->first()->totalCalculate8}}">
+                    <input type="number" class="form-control form-control-lg bg-light fs-6" placeholder="На первый год" name="firstCalculate8" value="{{$gpni_calculate->first()->firstCalculate8}}">
                 </div> 
             </div>
         </div>
@@ -189,12 +189,12 @@
                 </div>
                 <p>Плановые сроки выполнения</p>
                 <div class="input-group mb-3">
-                    <input type="text" class="form-control form-control-lg bg-light fs-6" placeholder="Начало(год)" name="nachPlanneddates" value="{{$gpni_plan->first()->nachPlanneddates}}">
-                    <input type="text" class="form-control form-control-lg bg-light fs-6" placeholder="Окончание(год)" name="endPlanneddates" value="{{$gpni_plan->first()->endPlanneddates}}">
+                    <input type="number" class="form-control form-control-lg bg-light fs-6" placeholder="Начало(год)" name="nachPlanneddates" value="{{$gpni_plan->first()->nachPlanneddates}}">
+                    <input type="number" class="form-control form-control-lg bg-light fs-6" placeholder="Окончание(год)" name="endPlanneddates" value="{{$gpni_plan->first()->endPlanneddates}}">
                 </div> 
                 <p>Общая стоимость</p>
                 <div class="input-group mb-3">
-                    <input type="text" class="form-control form-control-lg bg-light fs-6" placeholder="Введите данные" name="totalcost" value="{{$gpni_plan->first()->totalcost}}">
+                    <input type="number" class="form-control form-control-lg bg-light fs-6" placeholder="Введите данные" name="totalcost" value="{{$gpni_plan->first()->totalcost}}">
                 </div>
                 <p>Ожидаемые научные результаты и форма отчетности</p>
                 <div class="form-group mb-3">
@@ -206,12 +206,12 @@
                 </div>
                 
                 <div class="input-group mb-3">
-                    <input type="text" class="form-control form-control-lg bg-light fs-6" placeholder="Начало(год)" name="nachPlanneddates1p" value="{{$gpni_plan->first()->nachPlanneddates1p}}">
-                    <input type="text" class="form-control form-control-lg bg-light fs-6" placeholder="Окончание(год)" name="endPlanneddates1p" value="{{$gpni_plan->first()->endPlanneddates1p}}">
+                    <input type="number" class="form-control form-control-lg bg-light fs-6" placeholder="Начало(год)" name="nachPlanneddates1p" value="{{$gpni_plan->first()->nachPlanneddates1p}}">
+                    <input type="number" class="form-control form-control-lg bg-light fs-6" placeholder="Окончание(год)" name="endPlanneddates1p" value="{{$gpni_plan->first()->endPlanneddates1p}}">
                 </div> 
                 
                 <div class="input-group mb-3">
-                    <input type="text" class="form-control form-control-lg bg-light fs-6" placeholder="Общая стоимость" name="totalcost1p" value="{{$gpni_plan->first()->totalcost1p}}">
+                    <input type="number" class="form-control form-control-lg bg-light fs-6" placeholder="Общая стоимость" name="totalcost1p" value="{{$gpni_plan->first()->totalcost1p}}">
                 </div>
                 
                 <div class="form-group mb-3">
@@ -223,12 +223,12 @@
                 </div>
                
                 <div class="input-group mb-3">
-                    <input type="text" class="form-control form-control-lg bg-light fs-6" placeholder="Начало(год)" name="nachPlanneddates2p" value="{{$gpni_plan->first()->nachPlanneddates2p}}">
-                    <input type="text" class="form-control form-control-lg bg-light fs-6" placeholder="Окончание(год)" name="endPlanneddates2p" value="{{$gpni_plan->first()->endPlanneddates2p}}">
+                    <input type="number" class="form-control form-control-lg bg-light fs-6" placeholder="Начало(год)" name="nachPlanneddates2p" value="{{$gpni_plan->first()->nachPlanneddates2p}}">
+                    <input type="number" class="form-control form-control-lg bg-light fs-6" placeholder="Окончание(год)" name="endPlanneddates2p" value="{{$gpni_plan->first()->endPlanneddates2p}}">
                 </div> 
                 
                 <div class="input-group mb-3">
-                    <input type="text" class="form-control form-control-lg bg-light fs-6" placeholder="Общая стоимость" name="totalcost2p" value="{{$gpni_plan->first()->totalcost2p}}">
+                    <input type="number" class="form-control form-control-lg bg-light fs-6" placeholder="Общая стоимость" name="totalcost2p" value="{{$gpni_plan->first()->totalcost2p}}">
                 </div>
                 <div class="form-group mb-3">
                     <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Ожидаемые научные результаты" name="results2p">{{$gpni_plan->first()->results2p}}</textarea>
@@ -397,7 +397,7 @@
   
   // Создание нового input с классом "form-control form-control-lg bg-light fs-6 mb-2" и плейсхолдером "Конкретные планируемые результаты"
   var input5 = document.createElement("input");
-  input5.type = "text";
+  input5.type = "number";
   input5.className = "form-control form-control-lg bg-light fs-6 mb-2";
   input5.placeholder = "Телефон служебный";
   input5.name="phone[]";

@@ -40,7 +40,7 @@
 
         <form method="post" class="col-md-6 right-box p-3 rounded-4 shadow box-area" action="/submit-form1" enctype="multipart/form-data">
         @csrf
-        <ul class="nav justify-content-center">
+        <!-- <ul class="nav justify-content-center">
   <li class="nav-item mt-2 mb-2">
     
   <button class="btn btn-outline-danger rounded-4" href="#"><i class="bi bi-file-earmark-text"></i> Заявка</button>
@@ -52,7 +52,7 @@
   <li class="nav-item mt-2">
   <button class="btn btn-outline-danger rounded-4" href="#"><i class="bi bi-calculator-fill"></i> Калькуляция</button>
   </li>
-</ul>
+</ul> -->
         <div class="mb-5 ms-auto">
                 <img src="assets/img/logo.png" class="logo" width="210px">
                 

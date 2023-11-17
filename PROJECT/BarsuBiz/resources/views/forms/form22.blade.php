@@ -74,13 +74,13 @@
                 
                 @foreach($barsunirdop as $item)
                     <div class="input-group mb-3 d-flex" id="solutions1">
-                        <input type="text" class="form-control form-control-lg bg-light fs-6 mb-2" name="inputValue[]" value="{{ $loop->iteration }}">
+                        <input type="text" readonly class="form-control form-control-lg bg-light fs-6 mb-2" name="inputValue[]" value="{{ $loop->iteration }}">
                         <input type="text" class="form-control form-control-lg bg-light fs-6 mb-2" placeholder="Наименование этапа работы" name="workEtap[]" value="{{$item->workEtap}}">
                     </div>
                     
                     <div class="input-group mb-3 d-flex" id="solutions1">
-                        <input type="text" class="form-control form-control-lg bg-light fs-6 mb-2" placeholder="Начало срока выполнения" name="nachSrok[]" value="{{$item->nachSrok}}">
-                        <input type="text" class="form-control form-control-lg bg-light fs-6 mb-2" placeholder="Окончание окончание срока выполнения" name="endSrok[]" value="{{$item->endSrok}}">
+                        <input type="date" class="form-control form-control-lg bg-light fs-6 mb-2" placeholder="Начало срока выполнения" name="nachSrok[]" value="{{$item->nachSrok}}">
+                        <input type="date" class="form-control form-control-lg bg-light fs-6 mb-2" placeholder="Окончание окончание срока выполнения" name="endSrok[]" value="{{$item->endSrok}}">
                     </div>
                     <div class="input-group mb-3 d-flex" id="solutions1">
                         <input type="text" class="form-control form-control-lg bg-light fs-6 mb-2" placeholder="Конкретные планируемые результаты" name="kontrResult[]" value="{{$item->kontrResult}}">
@@ -121,7 +121,8 @@
   var input1 = document.createElement("input");
   input1.type = "text";
   input1.className = "form-control form-control-lg bg-light fs-6 mb-2";
-  input1.name="inputValue[]"
+  input1.name="inputValue[]";
+  input1.readOnly = true;
   var inputs=document.getElementsByName("inputValue[]");
   input1.value = Number(inputs[inputs.length - 1].value)+1;
   
@@ -151,14 +152,14 @@
   
   // Создание нового input с классом "form-control form-control-lg bg-light fs-6 mb-2" и плейсхолдером "Начало"
   var input3 = document.createElement("input");
-  input3.type = "text";
+  input3.type = "date";
   input3.className = "form-control form-control-lg bg-light fs-6 mb-2";
   input3.placeholder = "Начало срока выполнения";
   input3.name="nachSrok[]"
   
   // Создание нового input с классом "form-control form-control-lg bg-light fs-6 mb-2" и плейсхолдером "Окончание"
   var input4 = document.createElement("input");
-  input4.type = "text";
+  input4.type = "date";
   input4.className = "form-control form-control-lg bg-light fs-6 mb-2";
   input4.placeholder = "Окончание срока выполнения";
   input4.name="endSrok[]"

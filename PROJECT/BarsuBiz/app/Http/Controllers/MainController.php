@@ -344,7 +344,11 @@ class MainController extends Controller
             $phpWord= new PhpWord();
             $gpni=Gpni::find($id);
             $sinceDir= $gpni->sincedir;
-            $namePr= $gpni->namePr;
+            $number= $gpni->number;
+            $data= $gpni->data;
+            $year= $gpni->year;
+            $nameN= $gpni->nameN;
+            $nameP= $gpni->nameP;
             $orgZav= $gpni->orgZav;
             $nach= $gpni->nach;
             $end= $gpni->end;
@@ -372,9 +376,13 @@ class MainController extends Controller
   
   
     $index=0;
-    $templateProcessor->setValue('sinceDir',$sinceDir);
+    $templateProcessor->setValue('sinceDir',$sinceDir,);
     $templateProcessor->setValue('nach',$nach);
-    $templateProcessor->setValue('namePr',$namePr);
+    $templateProcessor->setValue('number',$number);
+    $templateProcessor->setValue('data',$data);
+    $templateProcessor->setValue('year',$year,);
+    $templateProcessor->setValue('nameN',$nameN);
+    $templateProcessor->setValue('nameP',$nameP);
     $templateProcessor->setValue('orgZav',$orgZav);
     $templateProcessor->setValue('end',$end);
     $templateProcessor->setValue('allCost',$allCost);
@@ -385,9 +393,6 @@ class MainController extends Controller
 
     
     $section=$phpWord->addSection();
-    
-
-
     $section->addTextBreak(1);
     $styleCell =
     array(

@@ -6,6 +6,9 @@ use App\Models\BarsuNir;
 use App\Models\HudredIdeas;
 use App\Models\BarsuNirDop;
 use App\Models\Gpni;
+use App\Models\Gpni_calculate;
+use App\Models\Gpni_obosn;
+use App\Models\Gpni_plan;
 use App\Models\Grant;
 use App\Models\GpniDop;
 use Illuminate\Support\Facades\Auth;
@@ -168,6 +171,9 @@ class StoreController1 extends Controller
             $gpni=Gpni::find($id);
             if($gpni->user_id==Auth::user()->id || Auth::user()->Role== 'Admin'){
                 $gpnidop=GpniDop::where('project_id', $id)->delete();
+                $gpni_calculate=Gpni_calculate::where('project_id', $id)->delete();
+                $gpni_plan=Gpni_plan::where('project_id', $id)->delete();
+                $gpni_obosn=Gpni_obosn::where('project_id', $id)->delete();
                 if(Auth::user()->Role=="Admin"){
                     $user = User::where('name', $gpni->owner)->first();
                     $data=$gpni->name."_#".$gpni->id;
