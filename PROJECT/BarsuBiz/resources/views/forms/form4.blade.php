@@ -59,17 +59,24 @@
                     <h4 style="text-align: center;"> на конкурс проектов заданий ГПНИ 
                             </h4>
                 </div>
+                <p><strong>№ заявки,дата поступления, год прохождения</strong></p>
+                <div class="input-group mb-3">
+                    <input type="text" class="form-control form-control-lg bg-light fs-6" placeholder="№" name="number">
+                    <input type="text" class="form-control form-control-lg bg-light fs-6" placeholder="Дата" name="data">
+                    <input type="text" class="form-control form-control-lg bg-light fs-6" placeholder="Год" name="year">
+                </div>
                 <p>Приоритетное направление научных исследований Республики Беларусь, которому соответствует заявляемый проект НИР</p>
                 <div class="input-group mb-3">
-                    <input type="text" class="form-control form-control-lg bg-light fs-6" placeholder="Научное направление " name="sinceDir">
+                    <input type="text" class="form-control form-control-lg bg-light fs-6" placeholder="Введите данные " name="sinceDir">
                 </div>
                 <p>Название проекта задания, краткое наименование программы (в соответствии с Перечнем государственных программ научных исследований на 2021-2025 гг.)</p>
                 <div class="form-group mb-3">
-                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Введите данные:" name="namePr"></textarea>
+                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Название проекта задания" name="nameN"></textarea>
+                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Краткое наименование программы" name="nameP"></textarea>
                 </div>
                 <p>Организации-заявители с указанием ведомственной принадлежности (указать для каждой организации) </p>
                 <div class="form-group mb-3">
-                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Введите данные:" name="orgZav"></textarea>
+                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Введите данные" name="orgZav"></textarea>
                 </div>
                 <h4>Руководители проекта (указать сведения для каждого руководителя)</h4>
                 <div class="Pokaz">

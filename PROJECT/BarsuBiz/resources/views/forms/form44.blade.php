@@ -51,13 +51,20 @@
                     <h4 style="text-align: center;"> на конкурс проектов заданий ГПНИ 
                             </h4>
                 </div>
+                <p><strong>№ заявки,дата поступления, год прохождения</strong></p>
+                <div class="input-group mb-3">
+                    <input type="text" class="form-control form-control-lg bg-light fs-6" placeholder="№" name="number" value="{{$gpni->number}}">
+                    <input type="text" class="form-control form-control-lg bg-light fs-6" placeholder="Дата" name="data" value="{{$gpni->data}}">
+                    <input type="text" class="form-control form-control-lg bg-light fs-6" placeholder="Год" name="year" value="{{$gpni->year}}">
+                </div>
                 <p>Приоритетное направление научных исследований Республики Беларусь, которому соответствует заявляемый проект НИР</p>
                 <div class="input-group mb-3">
                     <input type="text" class="form-control form-control-lg bg-light fs-6" placeholder="Научное направление " name="sinceDir" value="{{$gpni->sincedir}}">
                 </div>
                 <p>Название проекта задания, краткое наименование программы (в соответствии с Перечнем государственных программ научных исследований на 2021-2025 гг.)</p>
                 <div class="form-group mb-3">
-                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Введите данные:" name="namePr">{{$gpni->namePr}}</textarea>
+                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Название проекта задания" name="nameN">{{$gpni->nameN}}</textarea>
+                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Краткое наименование программы" name="nameP">{{$gpni->nameP}}</textarea>
                 </div>
                 <p>Организации-заявители с указанием ведомственной принадлежности (указать для каждой организации) </p>
                 <div class="form-group mb-3">
@@ -237,28 +244,28 @@
                 </div>
                 <p>1.1. Наименование и предлагаемые сроки выполнения НИР; наименование организации-исполнителя НИР и ее ведомственная подчиненность; предполагаемый научный руководитель НИР с указанием должности, ученой степени. </p>
                 <div class="form-group mb-3">
-                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Введите данные:" name="name_nir"></textarea>
+                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Введите данные:" name="name_nir">{{$gpni_obosn->first()->name_nir}}</textarea>
                 </div>
             
                 <p>1.2. Цель и задачи работы; соответствие НИР одному из приоритетных направлений научных исследований Республики Беларусь на 2021-2025 годы.</p>
                 <div class="form-group mb-3">
-                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Введите данные" name="goals_nir"></textarea>
+                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Введите данные" name="goals_nir">{{$gpni_obosn->first()->goals_nir}}</textarea>
                 </div>
                 <p>1.3. Актуальность решаемой проблемы; научная новизна предлагаемой НИР.</p>
                 <div class="form-group mb-3">
-                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Введите данные" name="relevance_nir"></textarea>
+                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Введите данные" name="relevance_nir">{{$gpni_obosn->first()->relevance_nir}}</textarea>
                 </div>
                 <p>1.4. Важнейшие результаты предыдущих исследований по теме НИР; ссылки на три наиболее важные научные статьи, опубликованные за последние три года авторами проекта по тематике планируемых исследований (с указанием, по возможности, импакт-фактора журнала, в котором опубликована работа); имеющаяся в наличии научно-исследовательская база, квалификационный уровень и количественный состав предполагаемых исполнителей НИР.</p>
                 <div class="form-group mb-3">
-                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Введите данные" name="results_nir"></textarea>
+                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Введите данные" name="results_nir">{{$gpni_obosn->first()->results_nir}}</textarea>
                 </div>
                 <p>1.5. Планируемые результаты выполнения НИР.</p>
                 <div class="form-group mb-3">
-                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Введите данные" name="plan_results_nir"></textarea>
+                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Введите данные" name="plan_results_nir">{{$gpni_obosn->first()->plan_results_nir}}</textarea>
                 </div>
                 <p>1.6. Прогнозный объем финансирования из средств государственного бюджета в тысячах рублей на весь период выполнения НИР и, в том числе, на первый год; прогнозный объем привлеченных внебюджетных средств с указанием источников (на весь период, в том числе, на первый год).</p>
                 <div class="form-group mb-3">
-                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Введите данные" name="volume_nir"></textarea>
+                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Введите данные" name="volume_nir">{{$gpni_obosn->first()->volume_nir}}</textarea>
                 </div>
             </div>
         </div>

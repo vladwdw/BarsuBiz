@@ -34,6 +34,7 @@ use Aspose\Words\WordsApi;
 use App\Http\Controllers\Settings;
 use App\Http\Controllers\ConvertDocumentRequest;
 use App\Models\Gpni_calculate;
+use App\Models\Gpni_obosn;
 use App\Models\Gpni_plan;
 use App\Models\RcpiBp;
 use App\Models\RcpiPass;
@@ -89,9 +90,10 @@ class MainController extends Controller
             $gpniDop=GpniDop::where("project_id", $id)->get();
             $gpni_plan=Gpni_plan::where("project_id", $id)->get();
             $gpni_calculate=Gpni_calculate::where("project_id", $id)->get();
+            $gpni_obosn=Gpni_obosn::where("project_id", $id)->get();
             if($gpni->user_id==Auth::user()->id || Auth::user()->Role== "Admin")
             {
-            return view("forms/form44",compact("gpni","gpniDop","gpni_plan","gpni_calculate"));
+            return view("forms/form44",compact("gpni","gpniDop","gpni_plan","gpni_calculate","gpni_obosn"));
         }
         else{
             return redirect("cabinet");
@@ -438,14 +440,18 @@ class MainController extends Controller
     $firstfile=$newFileName.'.docx';
     $plan=$this->form4_plan_word($id,$name).'.docx';
     $calculate=$this->form4_plan_calculate($id,$name).'.docx';
+    $obosn=$this->form4_obosn_word($id,$name).'.docx';
     // Adding file: second parameter is what will the path inside of the archive
     // So it will create another folder called "storage/" inside ZIP, and put the file there.
     $zip->addFile($firstfile);
     $zip->addFile($plan);
     $zip->addFile($calculate);
+    $zip->addFile($obosn);
     $zip->close();
     unlink(public_path($plan));
     unlink(public_path($firstfile));
+    unlink(public_path($obosn));
+    unlink(public_path($calculate));
                 
         return response()->download($zip_file)->deleteFileAfterSend();
     
@@ -552,11 +558,68 @@ class MainController extends Controller
     $templateProcessor->saveAs($newFileName.'.docx');
     return $newFileName;
     }
+    public function form4_obosn_word($id, $name)
+    {
+        $phpWord= new PhpWord();
+            $gpni_obosn=Gpni_obosn::where('project_id', $id)->get();
+            $gpni=Gpni::find($id);
+
+            $nameN=$gpni->nameN;
+            $nameP=$gpni->nameP;
+            $number=$gpni->number;
+            $name_nir=$gpni_obosn->first()->name_nir;
+            $goals_nir=$gpni_obosn->first()->goals_nir;
+            $relevance_nir=$gpni_obosn->first()->relevance_nir;
+            $results_nir=$gpni_obosn->first()->results_nir;
+            $plan_results_nir=$gpni_obosn->first()->plan_results_nir;
+            $volume_nir=$gpni_obosn->first()->volume_nir;
+       
+           
+            
+            $templateProcessor= new TemplateProcessor('templates\form4_obosn.docx');
+  
+  
+    $index=0;
+    $templateProcessor->setValue('nameN',$nameN);
+    $templateProcessor->setValue('nameP',$nameP);
+    $templateProcessor->setValue('number',$number);
+    $templateProcessor->setValue('name_nir',$name_nir);
+    $templateProcessor->setValue('goals_nir',$goals_nir);
+    $templateProcessor->setValue('relevance_nir',$relevance_nir);
+    $templateProcessor->setValue('results_nir',$results_nir);
+    $templateProcessor->setValue('plan_results_nir',$plan_results_nir);
+    $templateProcessor->setValue('volume_nir',$volume_nir);
+
+    $section=$phpWord->addSection();
+    $section->addTextBreak(1);
+    $styleCell =
+    array(
+    'borderColor' =>'000000',
+    'borderSize' => 3,
+    'valign' => 'center',
+    'cellMargin' => 100,
+    );
+    $styleText = array(
+        'name' => 'Times New Roman',
+        'valign'=>'center',
+        'size' => 12,
+    );
+
+    
+
+    
+    
+    $newFileName = $name.'_Обоснование_'.$id;
+    $templateProcessor->saveAs($newFileName.'.docx');
+    return $newFileName;
+    }
     public function form4_plan_calculate($id, $name)
     {
         $phpWord= new PhpWord();
             $gpni_calculate=Gpni_calculate::where('project_id', $id)->get();
-            
+            $gpni=Gpni::find($id);
+            $nameN=$gpni->nameN;
+            $nameP=$gpni->nameP;
             $totalCalculate1=$gpni_calculate->first()->totalCalculate1;
             $totalCalculate2=$gpni_calculate->first()->totalCalculate2;
             $totalCalculate3=$gpni_calculate->first()->totalCalculate3;
@@ -579,6 +642,8 @@ class MainController extends Controller
   
   
     $index=0;
+    $templateProcessor->setValue('nameN',$nameN);
+    $templateProcessor->setValue('nameP',$nameP);
     $templateProcessor->setValue('totalCalculate1',$totalCalculate1);
     $templateProcessor->setValue('totalCalculate2',$totalCalculate2);
     $templateProcessor->setValue('totalCalculate3',$totalCalculate3);

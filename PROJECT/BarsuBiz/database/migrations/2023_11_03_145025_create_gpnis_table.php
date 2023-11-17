@@ -18,7 +18,11 @@ return new class extends Migration
             $table->timestamps();
             $table->unsignedBigInteger("user_id");
             $table->string("name")->default("ГПНИ",date("d/m/Y"));
-            $table->string("namePr")->nullable();
+            $table->string("number")->nullable();
+            $table->string("data")->nullable();
+            $table->string("year")->nullable();
+            $table->string("nameN")->nullable();
+            $table->string("nameP")->nullable();
             $table->string("sincedir")->nullable();
             $table->string("orgZav")->nullable();
             $table->string("nach")->nullable();
