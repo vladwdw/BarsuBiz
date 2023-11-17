@@ -59,17 +59,24 @@
                     <h4 style="text-align: center;"> на конкурс проектов заданий ГПНИ 
                             </h4>
                 </div>
+                <p><strong>№ заявки,дата поступления, год прохождения</strong></p>
+                <div class="input-group mb-3">
+                    <input type="number" class="form-control form-control-lg bg-light fs-6" placeholder="№" name="number">
+                    <input type="date" class="form-control form-control-lg bg-light fs-6" placeholder="Дата" name="data" >
+                    <input type="number" class="form-control form-control-lg bg-light fs-6" placeholder="Год" name="year">
+                </div>
                 <p>Приоритетное направление научных исследований Республики Беларусь, которому соответствует заявляемый проект НИР</p>
                 <div class="input-group mb-3">
-                    <input type="text" class="form-control form-control-lg bg-light fs-6" placeholder="Научное направление " name="sinceDir">
+                    <input type="text"  class="form-control form-control-lg bg-light fs-6" placeholder="Введите данные " name="sinceDir">
                 </div>
                 <p>Название проекта задания, краткое наименование программы (в соответствии с Перечнем государственных программ научных исследований на 2021-2025 гг.)</p>
                 <div class="form-group mb-3">
-                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Введите данные:" name="namePr"></textarea>
+                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Название проекта задания" name="nameN"></textarea>
+                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Краткое наименование программы" name="nameP"></textarea>
                 </div>
                 <p>Организации-заявители с указанием ведомственной принадлежности (указать для каждой организации) </p>
                 <div class="form-group mb-3">
-                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Введите данные:" name="orgZav"></textarea>
+                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Введите данные" name="orgZav"></textarea>
                 </div>
                 <h4>Руководители проекта (указать сведения для каждого руководителя)</h4>
                 <div class="Pokaz">
@@ -83,7 +90,7 @@
                     <input type="text" class="form-control form-control-lg bg-light fs-6" placeholder="Кафедра, лаборатория" name="kafLab[]">
                 </div>
                 <div class="input-group mb-3">
-                    <input type="text" class="form-control form-control-lg bg-light fs-6" placeholder="Телефон служебный" name="phone[]">
+                    <input type="number"  class="form-control form-control-lg bg-light fs-6" placeholder="Телефон служебный" name="phone[]">
                     <input type="text" class="form-control form-control-lg bg-light fs-6" placeholder="E-mail" name="email[]">
                 </div>
             </div>
@@ -93,27 +100,27 @@
                 </div>
                 <p>Плановые сроки выполнения</p>
                 <div class="input-group mb-3">
-                    <input type="text" class="form-control form-control-lg bg-light fs-6" placeholder="Начало" name="nach">
-                    <input type="text" class="form-control form-control-lg bg-light fs-6" placeholder="Окончание" name="end">
+                    <input type="date" class="form-control form-control-lg bg-light fs-6" placeholder="Начало" name="nach">
+                    <input type="date" class="form-control form-control-lg bg-light fs-6" placeholder="Окончание" name="end">
                 </div>
                 <p><strong>Сметная стоимость работ</strong>(в .руб)</p>
                 <div class="input-group mb-3">
-                    <input type="text" class="form-control form-control-lg bg-light fs-6" placeholder="Всего" name="allCost">
+                    <input type="number" class="form-control form-control-lg bg-light fs-6" placeholder="Всего" name="allCost">
                 </div>
                 <div class="input-group mb-3">
-                    <input type="text" class="form-control form-control-lg bg-light fs-6" placeholder="Из них привлеченное внебюджетное финансирование" name="fin1">
+                    <input type="number" class="form-control form-control-lg bg-light fs-6" placeholder="Из них привлеченное внебюджетное финансирование" name="fin1">
                 </div>
                 <div class="input-group mb-3">
-                    <input type="text" class="form-control form-control-lg bg-light fs-6" placeholder="В том числе на первый год  " name="fin2">
+                    <input type="number" class="form-control form-control-lg bg-light fs-6" placeholder="В том числе на первый год  " name="fin2">
                 </div>
                 <div class="input-group mb-3">
-                    <input type="text" class="form-control form-control-lg bg-light fs-6" placeholder="Из них привлеченное внебюджетное финансирование " name="fin3">
+                    <input type="number" class="form-control form-control-lg bg-light fs-6" placeholder="Из них привлеченное внебюджетное финансирование " name="fin3">
                 </div>
                 
                 
             </div>
         </div>
-        <div class="part p-2" data-part="2" style="display: none;">
+        <div class="part p-3" data-part="3" style="display: none;">
             <div class="row align-items-center maa ">
                 <div class="header-text mb-4">
                 <h3 style="text-align: center;"><strong>Калькуляция </strong></h3>
@@ -161,7 +168,7 @@
                 </div> 
             </div>
         </div>
-        <div class="part p-3" data-part="3" style="display: none;">
+        <div class="part p-2" data-part="2" style="display: none;">
             <div class="row align-items-center maa ">
                 <div class="header-text mb-4">
                 <h3 style="text-align: center;"><strong>КАЛЕНДАРНЫЙ  ПЛАН </strong></h3>
@@ -181,12 +188,12 @@
                 </div>
                 <p>Плановые сроки выполнения</p>
                 <div class="input-group mb-3">
-                    <input type="text" class="form-control form-control-lg bg-light fs-6" placeholder="Начало(год)" name="nachPlanneddates">
-                    <input type="text" class="form-control form-control-lg bg-light fs-6" placeholder="Окончание(год)" name="endPlanneddates">
+                    <input type="number" class="form-control form-control-lg bg-light fs-6" placeholder="Начало(год)" name="nachPlanneddates">
+                    <input type="number" class="form-control form-control-lg bg-light fs-6" placeholder="Окончание(год)" name="endPlanneddates">
                 </div> 
                 <p>Общая стоимость</p>
                 <div class="input-group mb-3">
-                    <input type="text" class="form-control form-control-lg bg-light fs-6" placeholder="Введите данные" name="totalcost">
+                    <input type="number" class="form-control form-control-lg bg-light fs-6" placeholder="Введите данные" name="totalcost">
                 </div>
                 <p>Ожидаемые научные результаты и форма отчетности</p>
                 <div class="form-group mb-3">
@@ -198,12 +205,12 @@
                 </div>
                 
                 <div class="input-group mb-3">
-                    <input type="text" class="form-control form-control-lg bg-light fs-6" placeholder="Начало(год)" name="nachPlanneddates1p">
-                    <input type="text" class="form-control form-control-lg bg-light fs-6" placeholder="Окончание(год)" name="endPlanneddates1p">
+                    <input type="number" class="form-control form-control-lg bg-light fs-6" placeholder="Начало(год)" name="nachPlanneddates1p">
+                    <input type="number" class="form-control form-control-lg bg-light fs-6" placeholder="Окончание(год)" name="endPlanneddates1p">
                 </div> 
                 
                 <div class="input-group mb-3">
-                    <input type="text" class="form-control form-control-lg bg-light fs-6" placeholder="Общая стоимость" name="totalcost1p">
+                    <input type="number" class="form-control form-control-lg bg-light fs-6" placeholder="Общая стоимость" name="totalcost1p">
                 </div>
                 
                 <div class="form-group mb-3">
@@ -215,12 +222,12 @@
                 </div>
                
                 <div class="input-group mb-3">
-                    <input type="text" class="form-control form-control-lg bg-light fs-6" placeholder="Начало(год)" name="nachPlanneddates2p">
-                    <input type="text" class="form-control form-control-lg bg-light fs-6" placeholder="Окончание(год)" name="endPlanneddates2p">
+                    <input type="number" class="form-control form-control-lg bg-light fs-6" placeholder="Начало(год)" name="nachPlanneddates2p">
+                    <input type="number" class="form-control form-control-lg bg-light fs-6" placeholder="Окончание(год)" name="endPlanneddates2p">
                 </div> 
                 
                 <div class="input-group mb-3">
-                    <input type="text" class="form-control form-control-lg bg-light fs-6" placeholder="Общая стоимость" name="totalcost2p">
+                    <input type="number" class="form-control form-control-lg bg-light fs-6" placeholder="Общая стоимость" name="totalcost2p">
                 </div>
                 <div class="form-group mb-3">
                     <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Ожидаемые научные результаты" name="results2p"></textarea>
@@ -391,7 +398,7 @@
   
   // Создание нового input с классом "form-control form-control-lg bg-light fs-6 mb-2" и плейсхолдером "Конкретные планируемые результаты"
   var input5 = document.createElement("input");
-  input5.type = "text";
+  input5.type = "number";
   input5.className = "form-control form-control-lg bg-light fs-6 mb-2";
   input5.placeholder = "Телефон служебный";
   input5.name="phone[]";

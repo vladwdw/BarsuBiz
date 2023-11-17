@@ -101,7 +101,7 @@
                 </div>
                 <p>Контактный номер телефона</p>
                 <div class="input-group mb-3">
-                    <input type="text" class="form-control form-control-lg bg-light fs-6" placeholder="Введите данные" name="phone">
+                    <input type="number" class="form-control form-control-lg bg-light fs-6" placeholder="Введите данные" name="phone">
                 </div>
                 <p>Электронная почта</p>
                 <div class="input-group mb-3">
@@ -138,7 +138,7 @@
                 </div>
                 <p>Контактный номер телефона</p>
                 <div class="input-group mb-3">
-                    <input type="text" class="form-control form-control-lg bg-light fs-6" placeholder="Введите данные" name="yurPhone">
+                    <input type="number" class="form-control form-control-lg bg-light fs-6" placeholder="Введите данные" name="yurPhone">
                 </div>
                 <p>Электронная почта</p>
                 <div class="input-group mb-3">

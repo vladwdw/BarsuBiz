@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use App\Models\Gpni;
 use App\Models\Gpni_calculate;
+use App\Models\Gpni_obosn;
 use App\Models\GpniDop;
 use App\Models\Gpni_plan;
 use Illuminate\Http\Request;
@@ -12,8 +13,12 @@ use App\Notifications\Edit;
 class StoreController4 extends Controller
 {
     public function store(Request $request){
+       $number=$request->input('number');
+       $data=$request->input('data');
+       $year=$request->input('year');
         $sinceDir= $request->input('sinceDir');
-        $namePr= $request->input('namePr');
+        $nameN= $request->input('nameN');
+        $nameP= $request->input('nameP');
         $orgZav= $request->input('orgZav');
         $fio= $request->input('fio');
         $uchStep= $request->input('uchStep');
@@ -31,8 +36,13 @@ class StoreController4 extends Controller
             $gpni=new Gpni();
             $gpni->owner=Auth::user()->name;
             $gpni->user_id=Auth::user()->id;
+            $gpni->number=$number;
+            $gpni->data=$data;
+            $gpni->year=$year;
+            
             $gpni->sinceDir = $sinceDir;
-            $gpni->namePr = $namePr;
+            $gpni->nameN = $nameN;
+            $gpni->nameP = $nameP;
             $gpni->orgZav = $orgZav;
             $gpni->nach = $nach;
             $gpni->end = $end;
@@ -56,6 +66,7 @@ class StoreController4 extends Controller
             }
             $this->plan( $request,$gpni);
             $this->calculate( $request,$gpni);
+            $this->obosn( $request,$gpni);
             return redirect('/cabinet');
         }
         catch (\Exception $e) {
@@ -102,6 +113,56 @@ class StoreController4 extends Controller
             $gpni_calculate->totalCalculateSum=$totalCalculate1+$totalCalculate2+$totalCalculate3+$totalCalculate4+$totalCalculate5+$totalCalculate6+$totalCalculate7+$totalCalculate8;
             $gpni_calculate->firstCalculateSum=$firstCalculate1+$firstCalculate2+$firstCalculate3+$firstCalculate4+$firstCalculate5+$firstCalculate6+$firstCalculate7+$firstCalculate8;
             $gpni_calculate->save();
+           
+        }
+        catch (\Exception $e) {
+            dd($e->getMessage());
+}
+    }
+    public function obosn(Request $request, Gpni $gpni){
+        $name_nir= $request->input('name_nir');
+        $goals_nir= $request->input('goals_nir');
+        $relevance_nir= $request->input('relevance_nir');
+        $results_nir= $request->input('results_nir');
+        $plan_results_nir= $request->input('plan_results_nir');
+        $volume_nir= $request->input('volume_nir');
+       
+      
+        try{
+            $gpni_obosn = new Gpni_obosn();
+            $gpni_obosn->project_id=$gpni->id;
+            $gpni_obosn->name_nir=$name_nir;
+            $gpni_obosn->goals_nir=$goals_nir;
+            $gpni_obosn->relevance_nir=$relevance_nir;
+            $gpni_obosn->results_nir=$results_nir;
+            $gpni_obosn->plan_results_nir=$plan_results_nir;
+            $gpni_obosn->volume_nir=$volume_nir;
+            $gpni_obosn->save();
+           
+        }
+        catch (\Exception $e) {
+            dd($e->getMessage());
+}
+    }
+    public function obosn_update(Request $request,$id){
+        $name_nir= $request->input('name_nir');
+        $goals_nir= $request->input('goals_nir');
+        $relevance_nir= $request->input('relevance_nir');
+        $results_nir= $request->input('results_nir');
+        $plan_results_nir= $request->input('plan_results_nir');
+        $volume_nir= $request->input('volume_nir');
+       
+        $gpni_obosn =Gpni_obosn::where('project_id', $id)->delete();
+        try{
+            $gpni_obosn = new Gpni_obosn();
+            $gpni_obosn->project_id=$id;
+            $gpni_obosn->name_nir=$name_nir;
+            $gpni_obosn->goals_nir=$goals_nir;
+            $gpni_obosn->relevance_nir=$relevance_nir;
+            $gpni_obosn->results_nir=$results_nir;
+            $gpni_obosn->plan_results_nir=$plan_results_nir;
+            $gpni_obosn->volume_nir=$volume_nir;
+            $gpni_obosn->save();
            
         }
         catch (\Exception $e) {
@@ -247,25 +308,33 @@ class StoreController4 extends Controller
 }
     }
     public function form44_update(Request $request,$name,$id){
-        $sinceDir= $request->input('sinceDir');
-        $namePr= $request->input('namePr');
-        $orgZav= $request->input('orgZav');
-        $fio= $request->input('fio');
-        $uchStep= $request->input('uchStep');
-        $uchZav= $request->input('uchZav');
-        $kafLab= $request->input('kafLab');
-        $phone= $request->input('phone');
-        $email= $request->input('email');
-        $nach=$request->input('nach');
-        $end= $request->input('end');
-        $allCost= $request->input('allCost');
-        $fin1= $request->input('fin1');
-        $fin2= $request->input('fin2');
-        $fin3= $request->input('fin3');
+        $number=$request->input('number');
+        $data=$request->input('data');
+        $year=$request->input('year');
+         $sinceDir= $request->input('sinceDir');
+         $nameN= $request->input('nameN');
+         $nameP= $request->input('nameP');
+         $orgZav= $request->input('orgZav');
+         $fio= $request->input('fio');
+         $uchStep= $request->input('uchStep');
+         $uchZav= $request->input('uchZav');
+         $kafLab= $request->input('kafLab');
+         $phone= $request->input('phone');
+         $email= $request->input('email');
+         $nach=$request->input('nach');
+         $end= $request->input('end');
+         $allCost= $request->input('allCost');
+         $fin1= $request->input('fin1');
+         $fin2= $request->input('fin2');
+         $fin3= $request->input('fin3');
         try{
             $gpni=Gpni::find($id);
+            $gpni->number = $number;
+            $gpni->data = $data;
+            $gpni->year = $year;
             $gpni->sinceDir = $sinceDir;
-            $gpni->namePr = $namePr;
+            $gpni->nameN = $nameN;
+            $gpni->nameP = $nameP;
             $gpni->orgZav = $orgZav;
             $gpni->nach = $nach;
             $gpni->end = $end;
@@ -290,6 +359,7 @@ class StoreController4 extends Controller
             }
             $this->plan_update($request,$id);
             $this->calculate_update($request,$id);
+            $this->obosn_update($request,$id);
             //$this->plan_update($request,$id);
             if(Auth::user()->Role=="Admin"){
                 $user = User::where('name', $gpni->owner)->first();
