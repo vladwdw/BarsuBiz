@@ -11,6 +11,8 @@ use App\Models\Gpni_obosn;
 use App\Models\Gpni_plan;
 use App\Models\Grant;
 use App\Models\GpniDop;
+use App\Models\grant_calculate;
+use App\Models\grant_obosn;
 use Illuminate\Support\Facades\Auth;
 use App\Models\MolInic;
 use App\Models\Molindic;
@@ -211,6 +213,8 @@ class StoreController1 extends Controller
         }
         if($name== 'Заявка на получение гранта'){
             $grant=Grant::find($id);
+            $grant_obosn=grant_obosn::where('project_id', $id)->delete();
+            $grant_calculate=grant_calculate::where('project_id', $id)->delete();
             if($grant->user_id==Auth::user()->id || Auth::user()->Role== 'Admin'){
                 if(Auth::user()->Role=="Admin"){
                     $user = User::where('name', $grant->owner)->first();
