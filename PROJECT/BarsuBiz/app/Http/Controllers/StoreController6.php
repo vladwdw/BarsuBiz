@@ -68,7 +68,7 @@ class StoreController6 extends Controller
         $this->inputs($request,$repconc->id);
         $this->rcpi_pass_checkboxed($request,$repconc->id);
         $this->form66_rcpi_pass($request,$repconc->id);
-        if(Auth::user()->age>=30){
+        if(Auth::user()->age>30){
         $this->form66_rcpibps($request ,$repconc->id);
         }
         else{
@@ -304,6 +304,26 @@ class StoreController6 extends Controller
       $rcpibps->bpInformation=$request->bpInformation;
       $rcpibps->save();
     }
+    public function form66_teo_update($request,$id){
+      $rcpiteo=RcpiTeo::where("project_id",$id)->delete();
+      $rcpiteo=new RcpiTeo();
+      $rcpiteo->project_id=$id;
+      $rcpiteo->teoPotrProblem=$request->teoPotrProblem;
+      $rcpiteo->teoDescripProd=$request->teoDescripProd;
+      $rcpiteo->teoBizModel=$request->teoBizModel;
+      $rcpiteo->teoRinokInf=$request->teoRinokInf;
+      $rcpiteo->teoDescripTechn=$request->teoDescripTechn;
+      $rcpiteo->teoConcurent=$request->teoConcurent;
+      $rcpiteo->teoIntSobstv=$request->teoIntSobstv;
+      $rcpiteo->teoTeamProject=$request->teoTeamProject;
+      $rcpiteo->teoMarketing=$request->teoMarketing;
+      $rcpiteo->teoFinIndic=$request->teoFinIndic;
+      $rcpiteo->teoUnitEconomy=$request->teoUnitEconomy;
+      $rcpiteo->teoInvestPerm=$request->teoInvestPerm;
+      $rcpiteo->teoRiskProject=$request->teoRiskProject;
+      $rcpiteo->teoRelizeTemp=$request->teoRelizeTemp;
+      $rcpiteo->save();
+    }
     public function form66_rcpibps_update($request ,$id){
       $rcpibps = RcpiBp::where("project_id",$id)->delete();
       $rcpibps=new RcpiBp();
@@ -377,7 +397,13 @@ class StoreController6 extends Controller
           $this->form66_updatecheckboxesStrat($request, $repconc->id);
           $this->form66_updateInputsStrat($request, $repconc->id);
           $this->form66_rcpi_pass_update($request, $repconc->id);
+          $user=User::where("id",$repconc->user_id)->get();
+          if($user->first()->age>30){
           $this->form66_rcpibps_update($request, $repconc->id);
+          }
+          else{
+            $this->form66_teo_update($request,$repconc->id);
+          }
           $this->update_rcpi_pass_checkboxes($request, $id);
           if(Auth::user()->Role=="Admin"){
             $user = User::where('name', $repconc->owner)->first();

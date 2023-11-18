@@ -38,7 +38,7 @@
   <button type="button" data-part="1" onclick="openPart(1)" class="btn btn-outline-danger rounded-4" href="#"><i class="bi bi-file-earmark-text"></i> Заявка</button>
   
   </li>
-  @if((auth()->user()->age)>=30)
+  @if((auth()->user()->age)>30)
   
   <li class="nav-item px-3 mt-2">
   <button type="button"  data-part="2" onclick="openPart(2)" class="btn btn-outline-danger rounded-4" href="#"><i class="bi bi-clipboard2-data"></i> Бизнес план</button>

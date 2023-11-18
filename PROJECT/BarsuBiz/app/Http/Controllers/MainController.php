@@ -121,7 +121,7 @@ class MainController extends Controller
             $rcpiteo=RcpiTeo::where("project_id", $repconc->id)->get();
             $user=User::where("id",$repconc->user_id)->get();
             if($repconc->user_id==Auth::user()->id || Auth::user()->Role== "Admin"){
-            if($user->first()->age>=30){
+            if($user->first()->age>30){
             return view("forms/form66",compact("repconc","repconc_strat_checkbox","rcpistrat","rcpipass_checkbox","rcpipass","rcpibp","user"));
             }
             else {
@@ -250,6 +250,14 @@ class MainController extends Controller
             $rcpiPassCheck=RcpiPassCheckboxes::where("project_id",$repconc->id)->get();
             $rcpistrat=$this->form6_strategy_word($rcpicheck,$rcpiInputs,$newFileName,$repconc);
             $rcpipass=$this->form6_pass_word($rcpiPassCheck,$rcpiInputs,$newFileName);
+            $user=User::where("id",$repconc->user_id)->get();
+            if($user->first()->age>30){
+            $rcpibp=$this->form6_bp_word($repconc->id,$newFileName);
+            }
+            else{
+                $rcpiteo=$this->form6_teo_word($repconc->id,$newFileName);
+            }
+
             $zip_file = $newFileName.'.zip'; // Name of our archive to download
 
     // Initializing PHP class
@@ -262,11 +270,23 @@ class MainController extends Controller
     $zip->addFile($firstfile);
     $zip->addFile($rcpistrat.'.docx');
     $zip->addFile($rcpipass.'.docx');
+    if($user->first()->age>30){
+    $zip->addFile($rcpibp.'.docx');
+    }
+    else{
+        $zip->addFile($rcpiteo.'.docx');
+    }
+
     $zip->close();
     unlink(public_path($firstfile));
     unlink(public_path($rcpistrat.'.docx'));
     unlink(public_path($rcpipass.'.docx'));
-                
+    if($user->first()->age>30){
+    unlink(public_path($rcpibp.'.docx'));
+    }
+    else{
+        unlink(public_path($rcpiteo.'.docx'));
+    }            
         return response()->download($zip_file)->deleteFileAfterSend();
 
 
@@ -489,7 +509,7 @@ class MainController extends Controller
     unlink(public_path($firstfile));
     unlink(public_path($obosn));
     unlink(public_path($calculate));
-    unlink(public_path($calculate));
+
                 
         return response()->download($zip_file)->deleteFileAfterSend();
     
@@ -528,6 +548,31 @@ class MainController extends Controller
         }
             
     }
+    public function form6_teo_word($id,$name){
+        $rcpiteo=RcpiTeo::where("project_id",$id);
+        $rcpi=Repconc::where("id",$id);
+        $templateProcessor= new TemplateProcessor('templates\form6_teo.docx');
+        $templateProcessor->setValue('nameProject',$rcpi->first()->nameProject);
+        $templateProcessor->setValue('teoPotrProblem',$rcpiteo->first()->teoPotrProblem);
+        $templateProcessor->setValue('teoDescripProd',$rcpiteo->first()->teoDescripProd);
+        $templateProcessor->setValue('teoBizModel',$rcpiteo->first()->teoBizModel);
+        $templateProcessor->setValue('teoRinokInf',$rcpiteo->first()->teoRinokInf);
+        $templateProcessor->setValue('teoDescripTechn',$rcpiteo->first()->teoDescripTechn);
+        $templateProcessor->setValue('teoConcurent',$rcpiteo->first()->teoConcurent);
+        $templateProcessor->setValue('teoIntSobstv',$rcpiteo->first()->teoIntSobstv);
+        $templateProcessor->setValue('teoTeamProject',$rcpiteo->first()->teoTeamProject);
+        $templateProcessor->setValue('teoMarketing',$rcpiteo->first()->teoMarketing);
+        $templateProcessor->setValue('teoFinIndic',$rcpiteo->first()->teoFinIndic);
+        $templateProcessor->setValue('teoUnitEconomy',$rcpiteo->first()->teoUnitEconomy);
+        $templateProcessor->setValue('teoInvestPerm',$rcpiteo->first()->teoInvestPerm);
+        $templateProcessor->setValue('teoRiskProject',$rcpiteo->first()->teoRiskProject);
+        $templateProcessor->setValue('teoRelizeTemp',$rcpiteo->first()->teoRelizeTemp);
+        $newFileName=$name."_ТЭО";
+        $templateProcessor->saveAs($newFileName.'.docx');
+        return $newFileName;
+
+    }
+
     public function form6_pass_word($checkboxes,$inputs,$name){
 
             $templateProcessor= new TemplateProcessor('templates\form6_pass.docx');
@@ -557,25 +602,30 @@ class MainController extends Controller
     
 }
  
-    public function form6_bp_word($id){
+    public function form6_bp_word($id,$name){
         $phpWord= new PhpWord();
         $rcpi_bp=RcpiBp::where('project_id',$id)->get();
-        $bpFio=$rcpi_bp->bpFio;
-        $bpSoderzh=$rcpi_bp->bpSoderzh;
-        $bpResume=$rcpi_bp->bpResume;
-        $bpProblem=$rcpi_bp->bpProblem;
-        $bpProduct=$rcpi_bp->bpProduct;
-        $bpAnalize=$rcpi_bp->bpAnalize;
-        $bpSobstv=$rcpi_bp->bpSobstv;
-        $bpPotreb=$rcpi_bp->bpPotreb;
-        $bpPrice=$rcpi_bp->bpPrice;
-        $bpConcurents=$rcpi_bp->bpConcurents;
-        $bpSuppliers=$rcpi_bp->bpSuppliers;
-        $bpProizPlan=$rcpi_bp->bpProizPlan;
-        $bpOrgPlan=$rcpi_bp->bpOrgPlan;
-        $bpRelizeProblems=$rcpi_bp->bpRelizeProblems;
-        $bpFinPlan=$rcpi_bp->bpFinPlan;
-        $bpInformation=$rcpi_bp->bpInformation;
+        $templateProcessor= new TemplateProcessor('templates\form6_bp.docx');
+        $templateProcessor->setValue("bpFio",$rcpi_bp->first()->bpFio);
+        $templateProcessor->setValue("bpSoderzh",$rcpi_bp->first()->bpSoderzh);
+        $templateProcessor->setValue("bpResume",$rcpi_bp->first()->bpResume);
+        $templateProcessor->setValue("bpProblem",$rcpi_bp->first()->bpProblem);
+        $templateProcessor->setValue("bpProduct",$rcpi_bp->first()->bpProduct);
+        $templateProcessor->setValue("bpAnalize",$rcpi_bp->first()->bpAnalize);
+        $templateProcessor->setValue("bpSobstv",$rcpi_bp->first()->bpSobstv);
+        $templateProcessor->setValue("bpPotreb",$rcpi_bp->first()->bpPotreb);
+        $templateProcessor->setValue("bpPrice",$rcpi_bp->first()->bpPrice);
+        $templateProcessor->setValue("bpConcurents",$rcpi_bp->first()->bpConcurents);
+        $templateProcessor->setValue("bpSuppliers",$rcpi_bp->first()->bpSuppliers);
+        $templateProcessor->setValue("bpProizPlan",$rcpi_bp->first()->bpProizPlan);
+        $templateProcessor->setValue("bpOrgPlan",$rcpi_bp->first()->bpOrgPlan);
+        $templateProcessor->setValue("bpRelizeProblems",$rcpi_bp->first()->bpRelizeProblems);
+        $templateProcessor->setValue("bpFinPlan",$rcpi_bp->first()->bpFinPlan);
+        $templateProcessor->setValue("bpInformation",$rcpi_bp->first()->bpInformation);
+        $newFileName=$name."_БизнесПлан";
+        $templateProcessor->saveAs($newFileName.'.docx');
+        return $newFileName;
+
 
 
 
