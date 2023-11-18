@@ -274,7 +274,7 @@
                 <div class="input-group mb-3">
                 <a href="{{ route('back')}}" class="btn btn-lg btn-light w-100 fs-6" style="width:20px;">Назад</a>
                 </div>
-        </div>
+        
         
         </form>
     </div>

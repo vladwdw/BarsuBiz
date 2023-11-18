@@ -36,6 +36,8 @@ use App\Http\Controllers\ConvertDocumentRequest;
 use App\Models\Gpni_calculate;
 use App\Models\Gpni_obosn;
 use App\Models\Gpni_plan;
+use App\Models\grant_calculate;
+use App\Models\grant_obosn;
 use App\Models\RcpiBp;
 use App\Models\RcpiPass;
 use App\Models\RcpiPassCheckboxes;
@@ -102,8 +104,10 @@ class MainController extends Controller
         }
         if($name== "Заявка на получение гранта"){
             $grant=Grant::find($id);
+            $grant_calculate=grant_calculate::where("project_id", $id)->get();
+            $grant_obosn=grant_obosn::where("project_id", $id)->get();
             if($grant->user_id==Auth::user()->id || Auth::user()->Role== "Admin"){
-            return view("forms/form55",compact("grant"));
+            return view("forms/form55",compact("grant","grant_calculate","grant_obosn"));
         }
         
         else{
@@ -489,7 +493,7 @@ class MainController extends Controller
     unlink(public_path($firstfile));
     unlink(public_path($obosn));
     unlink(public_path($calculate));
-    unlink(public_path($calculate));
+  
                 
         return response()->download($zip_file)->deleteFileAfterSend();
     
@@ -524,9 +528,129 @@ class MainController extends Controller
             $newFileName = $name.'_'.$id;
             $templateProcessor->saveAs($newFileName.'.docx');
             
-    return response()->download($newFileName.'.docx')->deleteFileAfterSend();
+            $zip_file = $newFileName.'.zip'; // Name of our archive to download
+
+            // Initializing PHP class
+            $zip = new \ZipArchive();
+            $zip->open($zip_file, \ZipArchive::CREATE | \ZipArchive::OVERWRITE);
+            
+            $firstfile=$newFileName.'.docx';
+            $calculate=$this->form5_calculate_word($id,$name).'.docx';
+            $obosn=$this->form5_obosn_word($id,$name).'.docx';
+            // Adding file: second parameter is what will the path inside of the archive
+            // So it will create another folder called "storage/" inside ZIP, and put the file there.
+            $zip->addFile($firstfile);
+       
+            $zip->addFile($calculate);
+            $zip->addFile($obosn);
+            $zip->close();
+         
+            unlink(public_path($firstfile));
+            unlink(public_path($obosn));
+            unlink(public_path($calculate));
+          
+                        
+                return response()->download($zip_file)->deleteFileAfterSend();
         }
             
+    }
+    public function form5_obosn_word($id, $name)
+    {
+        $phpWord= new PhpWord();
+            $grant_obosn=grant_obosn::where('project_id', $id)->get();
+            $grant=Grant::find($id);
+            $name_nir=$grant->workName;
+            $goal=$grant_obosn->first()->goal;
+            $idea=$grant_obosn->first()->idea;
+            $struct=$grant_obosn->first()->struct;
+            $state=$grant_obosn->first()->state;
+            $rezults=$grant_obosn->first()->rezults;
+            $field=$grant_obosn->first()->field;
+            $info=$grant_obosn->first()->info;
+            $templateProcessor= new TemplateProcessor('templates\form5_obosn.docx');
+  
+  
+    $index=0;
+    $templateProcessor->setValue('name_nir',$name_nir);
+    $templateProcessor->setValue('goal',$goal);
+    $templateProcessor->setValue('idea',$idea);
+    $templateProcessor->setValue('struct',$struct);
+    $templateProcessor->setValue('state',$state);
+    $templateProcessor->setValue('rezults',$rezults);
+    $templateProcessor->setValue('field',$field);
+    $templateProcessor->setValue('info',$info);
+    
+    $section=$phpWord->addSection();
+    $section->addTextBreak(1);
+    $styleCell =
+    array(
+    'borderColor' =>'000000',
+    'borderSize' => 3,
+    'valign' => 'center',
+    'cellMargin' => 100,
+    );
+    $styleText = array(
+        'name' => 'Times New Roman',
+        'valign'=>'center',
+        'size' => 12,
+    );
+
+    
+
+    
+    
+    $newFileName = $name.'_Обоснование_'.$id;
+    $templateProcessor->saveAs($newFileName.'.docx');
+    return $newFileName;
+    }
+    public function form5_calculate_word($id, $name)
+    {
+        $phpWord= new PhpWord();
+            $grant_calculate=grant_calculate::where('project_id', $id)->get();
+            $grant=Grant::find($id);
+            $name_nir=$grant->workName;
+            $pay=$grant_calculate->first()->pay;
+            $materials=$grant_calculate->first()->materials;
+            $accruals=$grant_calculate->first()->accruals;
+            $business=$grant_calculate->first()->business;
+            $invoices=$grant_calculate->first()->invoices;
+            $costs=$grant_calculate->first()->costs;
+            $sum=$grant_calculate->first()->sum;
+            $templateProcessor= new TemplateProcessor('templates\form5_calculate.docx');
+  
+  
+    $index=0;
+    $templateProcessor->setValue('name_nir',$name_nir);
+    $templateProcessor->setValue('pay',$pay);
+    $templateProcessor->setValue('materials',$materials);
+    $templateProcessor->setValue('accruals',$accruals);
+    $templateProcessor->setValue('business',$business);
+    $templateProcessor->setValue('invoices',$invoices);
+    $templateProcessor->setValue('costs',$costs);
+    $templateProcessor->setValue('sum',$sum);
+    
+    $section=$phpWord->addSection();
+    $section->addTextBreak(1);
+    $styleCell =
+    array(
+    'borderColor' =>'000000',
+    'borderSize' => 3,
+    'valign' => 'center',
+    'cellMargin' => 100,
+    );
+    $styleText = array(
+        'name' => 'Times New Roman',
+        'valign'=>'center',
+        'size' => 12,
+    );
+
+    
+
+    
+    
+    $newFileName = $name.'_Калькуляция_'.$id;
+    $templateProcessor->saveAs($newFileName.'.docx');
+    return $newFileName;
     }
     public function form6_pass_word($checkboxes,$inputs,$name){
 
