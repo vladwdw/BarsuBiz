@@ -1,16 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
-<link href="{{ asset('css/formstyle.css') }}" rel="stylesheet">
-<link href="{{asset('assets/vendor/aos/aos.css')}}" rel="stylesheet">
-  <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
-  <link href="{{asset('assets/vendor/bootstrap-icons/bootstrap-icons.css')}}" rel="stylesheet">
-  <link href="{{asset('assets/vendor/boxicons/css/boxicons.min.css')}}" rel="stylesheet">
-  <link href="{{asset('assets/vendor/glightbox/css/glightbox.min.css')}}" rel="stylesheet">
-  <link href="{{asset('assets/vendor/remixicon/remixicon.css')}}" rel="stylesheet">
-  <link href="{{asset('assets/vendor/swiper/swiper-bundle.min.css')}}" rel="stylesheet">
+    <link href="{{ asset('css/formstyle.css') }}" rel="stylesheet">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Составление шаблона</title>
@@ -42,7 +36,7 @@
   <button id="hideButtonApplication" type="button"  data-part="1" onclick="openPart(1)" class="btn btn-outline-danger rounded-4" ><i class="bi bi-file-earmark-text"></i> Заявка</button>
   
   </li>
-  <li class="nav-item mt-2 px-3">
+  <li class="nav-item mt-2">
   <button id="hideButtonCalculate" type="button" data-part="2" onclick="openPart(2)" class="btn btn-outline-danger rounded-4" href="#"><i class="bi bi-calculator-fill"></i> Калькуляция</button>
   </li>
   <li class="nav-item mt-2">
