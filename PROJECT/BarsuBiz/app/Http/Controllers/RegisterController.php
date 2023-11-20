@@ -1,13 +1,14 @@
 <?php
 
 namespace App\Http\Controllers;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rule;
 use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Hashing\BcryptHasher;
 use Illuminate\Auth\Events\Registered;
-
+use App\Mail\Auth\VerifyMail;
 class RegisterController extends Controller
 {
     public function register(Request $request)
@@ -44,6 +45,7 @@ class RegisterController extends Controller
             $user->email = $request->input("email");
             $user->age=$request->input("age");
             $user->password = bcrypt($request->input("password"));
+            event(new Registered($user));
             $user->save();
             
             return redirect("/login");
