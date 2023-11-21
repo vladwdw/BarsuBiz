@@ -20,8 +20,5 @@ class User extends Authenticatable implements MustVerifyEmail
         'password',
         'age'
     ];
-    public function verifyUser(){
-        return $this->hasOne('App/VerifyUser');
-    }
     
 }

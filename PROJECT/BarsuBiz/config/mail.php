@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'default' => env('MAIL_MAILER', 'smtp'),
+    'default' => env('MAIL_MAILER', 'sendmail'),
 
     /*
     |--------------------------------------------------------------------------
@@ -39,9 +39,9 @@ return [
             'host' => 'smtp.googlemail.com',
             'port' => 587,
             'encryption' => 'ssl',
-            'username' => env('MAIL_USERNAME',),
+            'username' => env('MAIL_USERNAME'),
             'password' => env('MAIL_PASSWORD'),
-                'sendmail' => '/usr/sbin/sendmail -bs',
+            'sendmail' => '/usr/sbin/sendmail -bs',
             'timeout' => null,
             'auth_mode' => null,
             'verify_peer' => false

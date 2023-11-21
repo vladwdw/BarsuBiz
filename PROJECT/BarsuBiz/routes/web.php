@@ -45,7 +45,7 @@ Route::get('/register',[MainController::class, 'registerPage'])->name('registerP
 Route::post('/submit-register', [RegisterController::class,'register']);
 Route::post('/login',[AuthController::class,'login'])->name('login');
 Route::post('/logout',[AuthController::class,'logout'])->name('logout');
-Route::middleware(['auth'])->group(function () {
+Route::middleware(['auth', 'verified'])->group(function () {
 Route::get('/cabinet',[MainController::class, 'cabinet'])->name('cabinet');
 Route::get('/form1',[MainController::class, 'form1'])->name('form1');
 Route::get('/form11/{name}/{id}',[MainController::class, 'form11'])->name('form11');
@@ -85,10 +85,7 @@ Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $requ
   return redirect('/home');
 })->middleware(['auth', 'signed'])->name('verification.verify');
 
-Route::get('/user/verify/{token}',[
-  'uses'=>'RegisterController@verifyEmail',
-  'as'=>'user.verify'
-]);
+Route::get('/user/verify/{token}',[RegisterController::class,'verifyEmail']);
 // Route::get('/email/verify', function () {
 //     return view('auth.verify-email');
 //   })->middleware('auth')->name('verification.notice');
