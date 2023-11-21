@@ -1,1 +1,1 @@
-web: vendor/bin/heroku-php-apache2 PROJECT\BarsuBiz\public
+web: vendor/bin/heroku-php-apache2 public/
