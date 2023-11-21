@@ -36,13 +36,15 @@ return [
     'mailers' => [
         'smtp' => [
             'transport' => 'smtp',
-            'host' => 'ssl://smtp.mail.ru',
-            'port' => 465,
+            'host' => 'smtp.googlemail.com',
+            'port' => 587,
             'encryption' => 'ssl',
-            'username' => env('barsubiz@mail.ru'),
-            'password' => env('ud8xiwv5gRXgCY0rCPV0'),
+            'username' => env('MAIL_USERNAME',),
+            'password' => env('MAIL_PASSWORD'),
+                'sendmail' => '/usr/sbin/sendmail -bs',
             'timeout' => null,
             'auth_mode' => null,
+            'verify_peer' => false
         ],
 
         'ses' => [

@@ -14,5 +14,14 @@ class User extends Authenticatable implements MustVerifyEmail
     use HasFactory;
     use Notifiable;
     protected $table = 'users';
+    protected $fillable = [
+        'name',
+        'email',
+        'password',
+        'age'
+    ];
+    public function verifyUser(){
+        return $this->hasOne('App/VerifyUser');
+    }
     
 }

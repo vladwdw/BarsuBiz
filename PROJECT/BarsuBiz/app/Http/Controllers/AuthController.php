@@ -8,9 +8,12 @@ class AuthController extends Controller
 {
     public function login(Request $request){
 
-        $data = $request->only('email', 'password');
-
-        if (Auth::attempt($data)) {
+       if(Auth::attempt(['email'=>$request->email,'password'=>$request->password])){
+        if(Auth::user()->email_verified_at==null){
+            Auth::logout();
+            return redirect('login');
+        }
+      
             return redirect("/cabinet");
         }
         return back()->withErrors(['email' => 'Неправильный email или пароль']);
@@ -18,6 +21,6 @@ class AuthController extends Controller
     public function logout()
 {
    Auth::logout(); 
-   return redirect('/login');
+   return redirect('login');
 }
 }
