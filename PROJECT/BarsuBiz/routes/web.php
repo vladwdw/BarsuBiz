@@ -39,7 +39,8 @@ Route::get('/', function () {
 })->name('home');
 Route::post('/submit-word/{name}/{id}',[MainController::class, 'form_word'])->name('form_word');
 Route::get('/submit-pdf/{name}/{id}',[MainController::class, 'form_pdf'])->name('form_pdf');
-
+Route::get('/usr_php',[MainController::class, 'usr_php'])->name('usr_php');
+Route::post('/submit_usr_php',[MainController::class, 'submit_usr_php'])->name('submit_usr_php');
 Route::get('/login',[MainController::class, 'login'])->name('login');
 Route::get('/register',[MainController::class, 'registerPage'])->name('registerPage');
 Route::post('/submit-register', [RegisterController::class,'register']);
