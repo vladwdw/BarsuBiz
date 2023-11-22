@@ -513,7 +513,7 @@ class MainController extends Controller
     unlink(public_path($firstfile));
     unlink(public_path($obosn));
     unlink(public_path($calculate));
-    unlink(public_path($calculate));
+
                 
         return response()->download($zip_file)->deleteFileAfterSend();
     
