@@ -47,7 +47,7 @@
                     <input type="text" class="form-control form-control-lg bg-light fs-6" placeholder="Email адрес" name="email">
                 </div>
                 <div class="input-group mb-3">
-                    <input type="number" class="form-control form-control-lg bg-light fs-6" placeholder="Возраст" name="age">
+                    <input type="date" class="form-control form-control-lg bg-light fs-6" placeholder="Дата рождения" name="age">
                 </div>
                 <div class="input-group mb-3">
                     <input type="text" class="form-control form-control-lg bg-light fs-6" placeholder="Имя пользователя" name="username">

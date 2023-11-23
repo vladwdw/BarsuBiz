@@ -44,6 +44,12 @@
 </head>
 <body>
 <style>
+  header {
+    min-width: 960px;
+}
+footer{
+  min-width: 960px;
+}
 .small-font {
     font-size: 0.90rem; /* или любой другой размер, который вы считаете подходящим */
    }
@@ -101,7 +107,7 @@
             </div> -->
             <div class="col-md-4 col-xs-5 mb-5">
             <div class="card card-custom bg-white border-white border-0">
-          <div class="card-custom-img" style="background-image: url(assets/img/vivi.jpg); font-family:'Poppins'; "></div>
+          <div class="card-custom-img" style="background-image: url(assets/img/vivi1.jpg); font-family:'Poppins'; "></div>
           <div class="card-custom-avatar">
             <img class="img" src="assets/img/man.png" alt="Avatar" />
           </div>
@@ -186,9 +192,9 @@
 <button class="btn btn-outline-primary bi bi-file-earmark-word" type='submit'  ></button></td>
 </form>
 <td><a href="{{ route('form_pdf', ['name' => $item->name,'id' => $item->id]) }}" class="btn btn-outline-warning bi bi-file-earmark-pdf"></a></td> 
-<form method="post"  action="{{ route('form11_delete', ['name' => $item->name,'id' => $item->id]) }}" enctype="multipart/form-data">
+<form method="post" id="deleteForm" action="{{ route('form11_delete', ['name' => $item->name,'id' => $item->id]) }}" enctype="multipart/form-data">
 @csrf
-<td><button class="btn btn-outline-danger bi bi-trash3" type='submit'>
+<td><button class="btn btn-outline-danger bi bi-trash3" id="deleteButton" type='submit'>
 </button>
 </td> 
 </form>
@@ -277,6 +283,9 @@ document.getElementById('sortForm').addEventListener('submit', function(event) {
     let sort = sortInput.value;
     sortInput.value = sort === 'old' ? 'new' : 'old';
     this.submit();
+});
+document.querySelector('#deleteForm').addEventListener('submit', function() {
+  this.querySelector('#deleteButton').disabled = true;
 });
 function tableSearch() {
 

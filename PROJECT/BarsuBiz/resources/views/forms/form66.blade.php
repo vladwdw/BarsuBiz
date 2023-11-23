@@ -16,7 +16,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Составление шаблона</title>
     <style>
-
+        <? 
+  use Carbon\Carbon;
+  $dateOfBirth = $user->first()->birthdate; // Это ваша дата рождения
+  $age = Carbon::parse($dateOfBirth)->age;
+        ?>
     body {
   font-family: 'Inter', 'sans-serif';
 /* Замените 'путь_к_вашему_изображению.jpg' на путь к вашему фоновому изображению */
@@ -38,7 +42,7 @@
   <button type="button" data-part="1" onclick="openPart(1)" class="btn btn-outline-danger rounded-4" href="#"><i class="bi bi-file-earmark-text"></i> Заявка</button>
   
   </li>
-  @if($user->first()->age>30)
+  @if($age>30)
   <li class="nav-item px-3 mt-2">
   <button type="button"  data-part="2" onclick="openPart(2)" class="btn btn-outline-danger rounded-4" href="#"><i class="bi bi-clipboard2-data"></i> Бизнес план</button>
   </li>
@@ -152,8 +156,9 @@
                     <input type="text" class="form-control form-control-lg bg-light fs-6" placeholder="Введите данные" name="yurLink" value="{{$repconc->yurLink}}">
                 </div>
         </div>
+
           <!-- Part 2!-->
-          @if($user->first()->age>30)
+          @if($age>30)
           <div class="part" data-part="2" style="display: none;">
                 <div class="header-text mb-4">
                     <h2 style="text-align: center;">Бизнес план

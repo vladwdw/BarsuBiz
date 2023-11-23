@@ -33,7 +33,9 @@ use App\Notifications\Edit;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+Route::get('/public', function () {
+  return view('forms/index');
+})->name('home');
 Route::get('/', function () {
     return view('forms/index');
 })->name('home');

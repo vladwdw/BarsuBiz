@@ -48,7 +48,7 @@ class RegisterController extends Controller
             $user = new User();
             $user->name = $request->input("username");
             $user->email = $request->input("email");
-            $user->age=$request->input("age");
+            $user->birthdate=$request->input("age");
             $user->token=Str::random(60);
             $user->password = bcrypt($request->input("password"));
             $user->save();
@@ -205,7 +205,7 @@ class RegisterController extends Controller
             </html>",$head
         );
             
-            return redirect("/login");
+            return redirect("/login")->with('success',"Письмо было отправленно на вашу почту(проверьте вкладку 'Спам')");
         } catch (\Exception $e) {
             return redirect()->back()->with("error", $e->getMessage());
         }

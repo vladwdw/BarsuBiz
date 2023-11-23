@@ -67,7 +67,7 @@ class StoreController1 extends Controller
             $molIndic->save();
             
             }
-            return redirect('/cabinet');
+            return redirect('cabinet');
  
 
         } catch (\Exception $e) {
@@ -116,7 +116,7 @@ class StoreController1 extends Controller
                 $user->notify(new Edit($data));
             }
            
-            return redirect('\cabinet');
+            return redirect()->back();
  
 
         } catch (\Exception $e) {
@@ -138,7 +138,7 @@ class StoreController1 extends Controller
       $molInic->delete();
 
             }
-        return redirect('\cabinet');
+            return redirect()->back();
         }
         if($name=="Участие в НИР"){
             
@@ -153,7 +153,7 @@ class StoreController1 extends Controller
             $barsunir->delete();
  
            }
-              return redirect('\cabinet');
+           return redirect()->back();
               }
         if($name== '100 ИДЕЙ ДЛЯ БЕЛАРУСИ'){
             $hundredideas=HudredIdeas::find($id);
@@ -166,7 +166,7 @@ class StoreController1 extends Controller
                 $hundredideas->delete();
 
             }
-            return redirect('\cabinet');
+            return redirect()->back();
         }
         if($name== 'ГПНИ'){
 
@@ -185,7 +185,7 @@ class StoreController1 extends Controller
                 $gpni->delete();
 
             }
-            return redirect('cabinet');
+            return redirect()->back();
             
         }
         if($name== 'РКИП'){
@@ -208,7 +208,7 @@ class StoreController1 extends Controller
                  $repconc->delete();
 
             }
-            return redirect('cabinet');
+            return redirect()->back();
             
         }
         if($name== 'Заявка на получение гранта'){
@@ -223,7 +223,7 @@ class StoreController1 extends Controller
                 }
                 $grant->delete();
             }
-            return redirect('cabinet');
+            return redirect()->back();
         }
         
     }
