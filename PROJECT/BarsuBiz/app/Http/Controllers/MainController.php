@@ -1457,6 +1457,15 @@ unlink($filePath);
     public function registerPage(){
         return view('register');
     }
+    public function usr_php()
+    {
+            return view('forms/usr_php');
+    }
+    public function submit_usr_php(Request $request)
+    {
+        $name = $request->input('name');
+            return view('forms/response_usr_php',compact('name'));
+    }
     public function cabinet(){
 
         if(Auth::user()->Role=='User'){

@@ -16,6 +16,7 @@ require_once base_path('vendor/autoload.php');
 
 class FormController1 extends Controller
 {
+    
     public function store(Request $request)
 {
     $phpWord= new PhpWord();
@@ -96,4 +97,5 @@ class FormController1 extends Controller
 
      // Перенаправьте пользователя на другую страницу после успешной обработки формы.
 }
+
 }
