@@ -124,8 +124,10 @@ class StoreController1 extends Controller
         }
     }
     }
-    public function form11_delete($name,$id)
+    public function form11_delete(Request $request)
     {
+        $name=$request->name;
+        $id=$request->id;
         if($name=="Молодежные инициативы"){
             $molInic= MolInic::find($id);
             if($molInic->user_id==Auth::user()->id || Auth::user()->Role=="Admin"){       
@@ -138,7 +140,7 @@ class StoreController1 extends Controller
       $molInic->delete();
 
             }
-            return redirect()->back();
+            return response()->json(['success' => 'Item deleted successfully']);
         }
         if($name=="Участие в НИР"){
             
@@ -153,7 +155,7 @@ class StoreController1 extends Controller
             $barsunir->delete();
  
            }
-           return redirect()->back();
+           return response()->json(['success' => 'Item deleted successfully']);
               }
         if($name== '100 ИДЕЙ ДЛЯ БЕЛАРУСИ'){
             $hundredideas=HudredIdeas::find($id);
@@ -166,7 +168,7 @@ class StoreController1 extends Controller
                 $hundredideas->delete();
 
             }
-            return redirect()->back();
+            return response()->json(['success' => 'Item deleted successfully']);
         }
         if($name== 'ГПНИ'){
 
@@ -185,7 +187,7 @@ class StoreController1 extends Controller
                 $gpni->delete();
 
             }
-            return redirect()->back();
+            return response()->json(['success' => 'Item deleted successfully']);
             
         }
         if($name== 'РКИП'){
@@ -208,7 +210,7 @@ class StoreController1 extends Controller
                  $repconc->delete();
 
             }
-            return redirect()->back();
+            return response()->json(['success' => 'Item deleted successfully']);
             
         }
         if($name== 'Заявка на получение гранта'){
@@ -223,7 +225,7 @@ class StoreController1 extends Controller
                 }
                 $grant->delete();
             }
-            return redirect()->back();
+            return response()->json(['success' => 'Item deleted successfully']);
         }
         
     }

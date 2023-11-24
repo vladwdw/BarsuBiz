@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>Личный кабинет</title>
     
     <!--  -->
@@ -178,7 +179,7 @@ footer{
        
 @foreach($items as $item)   
 
-<tr>
+<tr id="item{{ $item->id }}">
 <td name="itemName"> <a href="{{ route('form11', ['name' => $item->name,'id' => $item->id]) }}">{{$item->name}}_#{{$item->id}}</a> </td>
 <!-- <td>{{ Auth::user()->name }}</td> -->
 <td>{{ $item->getAttribute('created_at') }}</td>
@@ -192,12 +193,9 @@ footer{
 <button class="btn btn-outline-primary bi bi-file-earmark-word" type='submit'  ></button></td>
 </form>
 <td><a href="{{ route('form_pdf', ['name' => $item->name,'id' => $item->id]) }}" class="btn btn-outline-warning bi bi-file-earmark-pdf"></a></td> 
-<form method="post" id="deleteForm" action="{{ route('form11_delete', ['name' => $item->name,'id' => $item->id]) }}" enctype="multipart/form-data">
-@csrf
-<td><button class="btn btn-outline-danger bi bi-trash3" id="deleteButton" type='submit'>
+<td> <button  onclick="deleteItem('{{ $item->id }}', '{{ $item->name }}')"class="btn btn-outline-danger bi bi-trash3" id="deleteButton" type='button'>
 </button>
 </td> 
-</form>
 </tr>
 
 @endforeach
@@ -284,9 +282,21 @@ document.getElementById('sortForm').addEventListener('submit', function(event) {
     sortInput.value = sort === 'old' ? 'new' : 'old';
     this.submit();
 });
-document.querySelector('#deleteForm').addEventListener('submit', function() {
-  this.querySelector('#deleteButton').disabled = true;
-});
+function deleteItem(id, name) {
+  $.ajax({
+     url: '/form11-delete',
+     type: 'POST',
+     data: {
+         '_token': $('meta[name="csrf-token"]').attr('content'),
+         'id': id,
+         'name': name
+     },
+     success: function(result) {
+         // Remove the entire row from the table
+         $('#item' + id).remove();
+     }
+ });
+}
 function tableSearch() {
 
 var phrase = document.getElementById('list');
