@@ -116,7 +116,7 @@ class StoreController1 extends Controller
                 $user->notify(new Edit($data));
             }
            
-            return redirect()->back();
+            return redirect('cabinet');
  
 
         } catch (\Exception $e) {

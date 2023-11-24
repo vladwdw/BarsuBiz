@@ -57,6 +57,14 @@ footer{
    .sort{
     font-size: 0.85rem;
    }
+   .notification {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  width: 550px;
+  z-index: 1;
+}
+
     </style>
 
 <header id="header">
@@ -209,15 +217,15 @@ footer{
         @if(auth()->user()->Role == 'User')
 
     </div>
-    <div class="position-fixed bottom-0 end-0">
+    <div class="notification-container">
     @foreach ($notifications as $notification)
     @if($notification->data['type']=='edit')
-<div class="alert alert-warning alert-dismissible fade show" role="alert">
+<div class="alert alert-warning alert-dismissible fade show notification" role="alert">
    {{ $notification->data['message'] }}
    <button class="btn-close" onclick="markAsRead('{{ $notification->id }}')"  data-bs-dismiss="alert" aria-label="Close"></button>
 </div>
 @elseif($notification->data['type']=='delete')
-<div class="alert alert-danger alert-dismissible fade show" role="alert">
+<div class="alert alert-danger alert-dismissible fade show notification" role="alert">
    {{ $notification->data['message'] }}
    <button class="btn-close" onclick="markAsRead('{{ $notification->id }}')"  data-bs-dismiss="alert" aria-label="Close"></button>
 </div>
