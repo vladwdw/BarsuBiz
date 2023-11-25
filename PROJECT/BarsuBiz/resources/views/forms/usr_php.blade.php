@@ -5,8 +5,6 @@
   <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
 
   <!-- Google Fonts -->
-
-
   <!-- Vendor CSS Files -->
   <link href="{{asset('assets/vendor/aos/aos.css')}}" rel="stylesheet">
   <link href="{{asset('assets/vendor/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
@@ -34,19 +32,13 @@
                
                 <div class="header-text mb-4">
                     <h2>Здравствуйте, введите свое имя</h2>
-
                 </div>
                 <div class="input-group mb-3">
                     <input type="text" class="form-control form-control-lg bg-light fs-6" placeholder="Имя" name="name">
                 </div>
-               
-
-
                 <div class="input-group mb-3">
                     <button class="btn btn-lg btn-danger w-100 fs-6" type="submit">Отправить</button>
                 </div>
-               
-         
                 
 </form>
         </div>
