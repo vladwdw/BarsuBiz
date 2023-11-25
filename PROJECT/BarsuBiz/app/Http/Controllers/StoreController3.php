@@ -29,7 +29,7 @@ class StoreController3 extends Controller
             $hundredideas->offers=$offers;
             $hundredideas->advantages_project=$advantages_project;
             $hundredideas->save();
-            return redirect('/cabinet');
+            return redirect('cabinet');
         }
         catch (\Exception $e) {
             dd($e->getMessage());
@@ -64,7 +64,7 @@ class StoreController3 extends Controller
                     $data=$hundredideas->name."_#".$hundredideas->id;
                     $user->notify(new Edit($data));
                 }
-                return redirect('/cabinet');
+                return redirect('cabinet');
                 }
 
                 

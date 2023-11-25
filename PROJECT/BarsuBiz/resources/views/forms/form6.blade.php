@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
@@ -36,9 +37,13 @@
   <li class="nav-item mt-2 mb-2">
     
   <button type="button" data-part="1" onclick="openPart(1)" class="btn btn-outline-danger rounded-4" href="#"><i class="bi bi-file-earmark-text"></i> Заявка</button>
-  
+  <? 
+  use Carbon\Carbon;
+  $dateOfBirth = auth()->user()->birthdate; // Это ваша дата рождения
+  $age = Carbon::parse($dateOfBirth)->age;
+        ?>
   </li>
-  @if((auth()->user()->age)>30)
+  @if($age>30)
   
   <li class="nav-item px-3 mt-2">
   <button type="button"  data-part="2" onclick="openPart(2)" class="btn btn-outline-danger rounded-4" href="#"><i class="bi bi-clipboard2-data"></i> Бизнес план</button>

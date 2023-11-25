@@ -2,8 +2,7 @@
 
 namespace App\Http\Controllers;
 
-
-
+use Carbon\Carbon;
 use App\Models\Repconc;
 use App\Models\BarsuNir;
 use App\Models\BarsuNirDop;
@@ -124,8 +123,10 @@ class MainController extends Controller
             $rcpipass=RcpiPass::where("project_id", $repconc->id)->get();
             $rcpiteo=RcpiTeo::where("project_id", $repconc->id)->get();
             $user=User::where("id",$repconc->user_id)->get();
+             // Это ваша дата рождения
+            $age = Carbon::parse($user->first()->birthdate)->age;
             if($repconc->user_id==Auth::user()->id || Auth::user()->Role== "Admin"){
-            if($user->first()->age>30){
+            if($age>30){
             return view("forms/form66",compact("repconc","repconc_strat_checkbox","rcpistrat","rcpipass_checkbox","rcpipass","rcpibp","user"));
             }
             else {
@@ -255,7 +256,8 @@ class MainController extends Controller
             $rcpistrat=$this->form6_strategy_word($rcpicheck,$rcpiInputs,$newFileName,$repconc);
             $rcpipass=$this->form6_pass_word($rcpiPassCheck,$rcpiInputs,$newFileName);
             $user=User::where("id",$repconc->user_id)->get();
-            if($user->first()->age>30){
+            $age = Carbon::parse($user->first()->birthdate)->age;
+            if($age>30){
             $rcpibp=$this->form6_bp_word($repconc->id,$newFileName);
             }
             else{
@@ -274,7 +276,8 @@ class MainController extends Controller
     $zip->addFile($firstfile);
     $zip->addFile($rcpistrat.'.docx');
     $zip->addFile($rcpipass.'.docx');
-    if($user->first()->age>30){
+    $age = Carbon::parse($user->first()->birthdate)->age;
+    if($user->first()->$age>30){
     $zip->addFile($rcpibp.'.docx');
     }
     else{
@@ -285,7 +288,8 @@ class MainController extends Controller
     unlink(public_path($firstfile));
     unlink(public_path($rcpistrat.'.docx'));
     unlink(public_path($rcpipass.'.docx'));
-    if($user->first()->age>30){
+    $age = Carbon::parse($user->first()->birthdate)->age;
+    if($age>30){
     unlink(public_path($rcpibp.'.docx'));
     }
     else{
@@ -516,13 +520,6 @@ class MainController extends Controller
 
                 
         return response()->download($zip_file)->deleteFileAfterSend();
-    
-
-    
-
-
-
-
         }
         if($name=="Заявка на получение гранта"){
             $grant=Grant::find($id);
