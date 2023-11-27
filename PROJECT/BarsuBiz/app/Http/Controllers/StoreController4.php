@@ -366,7 +366,7 @@ class StoreController4 extends Controller
                 $data=$gpni->name."_#".$gpni->id;
                 $user->notify(new Edit($data));
             }
-            return redirect('cabinet');
+            return redirect('/cabinet');
         }
         catch (\Exception $e) {
             dd($e->getMessage());

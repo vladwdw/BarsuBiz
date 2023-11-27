@@ -48,12 +48,12 @@ class RegisterController extends Controller
             $user = new User();
             $user->name = $request->input("username");
             $user->email = $request->input("email");
-            $user->birthdate=$request->input("age");
+            $user->age=$request->input("age");
             $user->token=Str::random(60);
             $user->password = bcrypt($request->input("password"));
             $user->save();
 
-            $url=url("/user/verify/{$user->token}");
+    
             $head = implode("\r\n", [
                 "From: WIFI Metropolis <sitename@hostname.com>",
                 "MIME-Version: 1.0",
@@ -143,7 +143,7 @@ class RegisterController extends Controller
                                                   <tbody>
                                                     <tr>
                                                       <td style='line-height: 24px; font-size: 16px; border-radius: 6px; font-weight: 700 !important; margin: 0;' align='center' bgcolor='#FB000D'>
-                                                        <a href='$url' style='color: #ffffff; font-size: 16px; font-family: Helvetica, Arial, sans-serif; text-decoration: none; border-radius: 6px; line-height: 20px; display: block; font-weight: 700 !important; white-space: nowrap; background-color: #FB000D; padding: 12px; border: 1px solid #FB000D;'>Подтвердить почту</a>
+                                                        <a href='barsu.biz/user/verify/$user->token' style='color: #ffffff; font-size: 16px; font-family: Helvetica, Arial, sans-serif; text-decoration: none; border-radius: 6px; line-height: 20px; display: block; font-weight: 700 !important; white-space: nowrap; background-color: #FB000D; padding: 12px; border: 1px solid #FB000D;'>Подтвердить почту</a>
                                                       </td>
                                                     </tr>
                                                   </tbody>
@@ -205,7 +205,7 @@ class RegisterController extends Controller
             </html>",$head
         );
             
-            return redirect("/login")->with('success',"Письмо было отправленно на вашу почту(проверьте вкладку 'Спам')");
+            return redirect("/login");
         } catch (\Exception $e) {
             return redirect()->back()->with("error", $e->getMessage());
         }

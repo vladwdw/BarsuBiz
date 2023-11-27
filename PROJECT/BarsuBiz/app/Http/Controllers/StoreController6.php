@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-use Carbon\Carbon;
+
 use App\Models\RcpiBp;
 use App\Models\RcpiPass;
 use App\Models\RcpiPassCheckboxes;
@@ -68,8 +68,7 @@ class StoreController6 extends Controller
         $this->inputs($request,$repconc->id);
         $this->rcpi_pass_checkboxed($request,$repconc->id);
         $this->form66_rcpi_pass($request,$repconc->id);
-        $age = Carbon::parse(Auth::user()->birthdate)->age;
-        if($age>30){
+        if(Auth::user()->age>30){
         $this->form66_rcpibps($request ,$repconc->id);
         }
         else{
@@ -399,8 +398,7 @@ class StoreController6 extends Controller
           $this->form66_updateInputsStrat($request, $repconc->id);
           $this->form66_rcpi_pass_update($request, $repconc->id);
           $user=User::where("id",$repconc->user_id)->get();
-          $age = Carbon::parse($user->first()->birthdate)->age;
-          if($age>30){
+          if($user->first()->age>30){
           $this->form66_rcpibps_update($request, $repconc->id);
           }
           else{

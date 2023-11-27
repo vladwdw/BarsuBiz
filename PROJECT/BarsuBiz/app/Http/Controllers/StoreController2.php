@@ -108,7 +108,7 @@ class StoreController2 extends Controller
                     $data=$barsunir->name."_#".$barsunir->id;
                     $user->notify(new Edit($data));
                 }
-                return redirect('cabinet');
+                 return redirect('/cabinet');
      
     
             } catch (\Exception $e) {

@@ -33,9 +33,7 @@ use App\Notifications\Edit;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('/public', function () {
-  return view('forms/index');
-})->name('home');
+
 Route::get('/', function () {
     return view('forms/index');
 })->name('home');
@@ -70,7 +68,7 @@ Route::post('/form33-update/{name}/{id}',[StoreController3::class, 'form33_updat
 Route::post('/form44-update/{name}/{id}',[StoreController4::class, 'form44_update'])->name('form44_update');
 Route::post('/form55-update/{name}/{id}',[StoreController5::class, 'form55_update'])->name('form55_update');
 Route::post('/form66-update/{name}/{id}',[StoreController6::class, 'form66_update'])->name('form66_update');
-Route::post('/form11-delete',[StoreController1::class, 'form11_delete'])->name('form11_delete');
+Route::post('/form11-delete/{name}/{id}/delete',[StoreController1::class, 'form11_delete'])->name('form11_delete');
 Route::get('/search',[SearchController::class,'search'])->name('search');
 Route::post('/mark-as-read', [NotificationController::class,'markAsRead']);
 

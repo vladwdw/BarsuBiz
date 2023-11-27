@@ -67,7 +67,7 @@ class StoreController1 extends Controller
             $molIndic->save();
             
             }
-            return redirect('cabinet');
+            return redirect('/cabinet');
  
 
         } catch (\Exception $e) {
@@ -116,7 +116,7 @@ class StoreController1 extends Controller
                 $user->notify(new Edit($data));
             }
            
-            return redirect('cabinet');
+            return redirect('\cabinet');
  
 
         } catch (\Exception $e) {
@@ -124,10 +124,8 @@ class StoreController1 extends Controller
         }
     }
     }
-    public function form11_delete(Request $request)
+    public function form11_delete($name,$id)
     {
-        $name=$request->name;
-        $id=$request->id;
         if($name=="Молодежные инициативы"){
             $molInic= MolInic::find($id);
             if($molInic->user_id==Auth::user()->id || Auth::user()->Role=="Admin"){       
@@ -140,7 +138,7 @@ class StoreController1 extends Controller
       $molInic->delete();
 
             }
-            return response()->json(['success' => 'Item deleted successfully']);
+        return redirect('\cabinet');
         }
         if($name=="Участие в НИР"){
             
@@ -155,7 +153,7 @@ class StoreController1 extends Controller
             $barsunir->delete();
  
            }
-           return response()->json(['success' => 'Item deleted successfully']);
+              return redirect('\cabinet');
               }
         if($name== '100 ИДЕЙ ДЛЯ БЕЛАРУСИ'){
             $hundredideas=HudredIdeas::find($id);
@@ -168,7 +166,7 @@ class StoreController1 extends Controller
                 $hundredideas->delete();
 
             }
-            return response()->json(['success' => 'Item deleted successfully']);
+            return redirect('\cabinet');
         }
         if($name== 'ГПНИ'){
 
@@ -187,7 +185,7 @@ class StoreController1 extends Controller
                 $gpni->delete();
 
             }
-            return response()->json(['success' => 'Item deleted successfully']);
+            return redirect('cabinet');
             
         }
         if($name== 'РКИП'){
@@ -210,7 +208,7 @@ class StoreController1 extends Controller
                  $repconc->delete();
 
             }
-            return response()->json(['success' => 'Item deleted successfully']);
+            return redirect('cabinet');
             
         }
         if($name== 'Заявка на получение гранта'){
@@ -225,7 +223,7 @@ class StoreController1 extends Controller
                 }
                 $grant->delete();
             }
-            return response()->json(['success' => 'Item deleted successfully']);
+            return redirect('cabinet');
         }
         
     }
