@@ -3,6 +3,7 @@
 namespace App\Providers;
 use Illuminate\Pagination\Paginator;
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Support\Facades\URL;
 
 use Illuminate\Support\Collection;
 use Illuminate\Pagination\LengthAwarePaginator;
@@ -16,7 +17,9 @@ class AppServiceProvider extends ServiceProvider
     public function register()
 
     {
-
+        // if (env(key: 'APP_ENV') !=='local') {
+        //     URL::forceScheme(scheme:'https');
+        //   }
 
     }
 

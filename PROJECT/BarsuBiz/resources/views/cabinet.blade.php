@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>Личный кабинет</title>
     
     <!--  -->
@@ -44,12 +45,26 @@
 </head>
 <body>
 <style>
+  header {
+    min-width: 960px;
+}
+footer{
+  min-width: 960px;
+}
 .small-font {
     font-size: 0.90rem; /* или любой другой размер, который вы считаете подходящим */
    }
    .sort{
     font-size: 0.85rem;
    }
+   .notification {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  width: 550px;
+  z-index: 1;
+}
+
     </style>
 
 <header id="header">
@@ -101,7 +116,7 @@
             </div> -->
             <div class="col-md-4 col-xs-5 mb-5">
             <div class="card card-custom bg-white border-white border-0">
-          <div class="card-custom-img" style="background-image: url(assets/img/vivi.jpg); font-family:'Poppins'; "></div>
+          <div class="card-custom-img" style="background-image: url(assets/img/vivi1.jpg); font-family:'Poppins'; "></div>
           <div class="card-custom-avatar">
             <img class="img" src="assets/img/man.png" alt="Avatar" />
           </div>
@@ -172,7 +187,7 @@
        
 @foreach($items as $item)   
 
-<tr>
+<tr id="item{{ $item->id }}">
 <td name="itemName"> <a href="{{ route('form11', ['name' => $item->name,'id' => $item->id]) }}">{{$item->name}}_#{{$item->id}}</a> </td>
 <!-- <td>{{ Auth::user()->name }}</td> -->
 <td>{{ $item->getAttribute('created_at') }}</td>
@@ -186,12 +201,9 @@
 <button class="btn btn-outline-primary bi bi-file-earmark-word" type='submit'  ></button></td>
 </form>
 <td><a href="{{ route('form_pdf', ['name' => $item->name,'id' => $item->id]) }}" class="btn btn-outline-warning bi bi-file-earmark-pdf"></a></td> 
-<form method="post"  action="{{ route('form11_delete', ['name' => $item->name,'id' => $item->id]) }}" enctype="multipart/form-data">
-@csrf
-<td><button class="btn btn-outline-danger bi bi-trash3" type='submit'>
+<td> <button  onclick="deleteItem('{{ $item->id }}', '{{ $item->name }}')"class="btn btn-outline-danger bi bi-trash3" id="deleteButton" type='button'>
 </button>
 </td> 
-</form>
 </tr>
 
 @endforeach
@@ -205,15 +217,15 @@
         @if(auth()->user()->Role == 'User')
 
     </div>
-    <div class="position-fixed bottom-0 end-0">
+    <div class="notification-container">
     @foreach ($notifications as $notification)
     @if($notification->data['type']=='edit')
-<div class="alert alert-warning alert-dismissible fade show" role="alert">
+<div class="alert alert-warning alert-dismissible fade show notification" role="alert">
    {{ $notification->data['message'] }}
    <button class="btn-close" onclick="markAsRead('{{ $notification->id }}')"  data-bs-dismiss="alert" aria-label="Close"></button>
 </div>
 @elseif($notification->data['type']=='delete')
-<div class="alert alert-danger alert-dismissible fade show" role="alert">
+<div class="alert alert-danger alert-dismissible fade show notification" role="alert">
    {{ $notification->data['message'] }}
    <button class="btn-close" onclick="markAsRead('{{ $notification->id }}')"  data-bs-dismiss="alert" aria-label="Close"></button>
 </div>
@@ -278,6 +290,21 @@ document.getElementById('sortForm').addEventListener('submit', function(event) {
     sortInput.value = sort === 'old' ? 'new' : 'old';
     this.submit();
 });
+function deleteItem(id, name) {
+  $.ajax({
+     url: '/form11-delete',
+     type: 'POST',
+     data: {
+         '_token': $('meta[name="csrf-token"]').attr('content'),
+         'id': id,
+         'name': name
+     },
+     success: function(result) {
+         // Remove the entire row from the table
+         $('#item' + id).remove();
+     }
+ });
+}
 function tableSearch() {
 
 var phrase = document.getElementById('list');
