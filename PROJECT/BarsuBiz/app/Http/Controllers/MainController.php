@@ -51,6 +51,7 @@ class MainController extends Controller
         return view('forms/form1');
     }
     public function form11($name,$id){
+        try{
       
         if($name=="Молодежные инициативы"){
         $molIndic=MolIndic::where('project_id', $id)->get();
@@ -142,6 +143,10 @@ class MainController extends Controller
 
 
     }
+    catch(\Exception $exception){
+         return redirect('cabinet')->with('notFound','Страница не найдена');
+    }
+}
     public function form_word($name,$id)
     {  
         if($name=="Молодежные инициативы"){

@@ -39,16 +39,17 @@ Route::get('/public', function () {
 Route::get('/', function () {
     return view('forms/index');
 })->name('home');
-Route::post('/submit-word/{name}/{id}',[MainController::class, 'form_word'])->name('form_word');
-Route::get('/submit-pdf/{name}/{id}',[MainController::class, 'form_pdf'])->name('form_pdf');
+
 Route::post('/submit_usr_php',[MainController::class, 'submit_usr_php'])->name('submit_usr_php');
 Route::get('/login',[MainController::class, 'login'])->name('login');
 Route::get('/register',[MainController::class, 'registerPage'])->name('registerPage');
 Route::post('/submit-register', [RegisterController::class,'register']);
 Route::post('/login',[AuthController::class,'login'])->name('login');
-Route::post('/logout',[AuthController::class,'logout'])->name('logout');
 Route::get('/usr_php',[MainController::class, 'usr_php'])->name('usr_php');
 Route::middleware(['auth', 'verified'])->group(function () {
+Route::post('/logout',[AuthController::class,'logout'])->name('logout');
+Route::post('/submit-word/{name}/{id}',[MainController::class, 'form_word'])->name('form_word');
+Route::get('/submit-pdf/{name}/{id}',[MainController::class, 'form_pdf'])->name('form_pdf');
 Route::get('/cabinet',[MainController::class, 'cabinet'])->name('cabinet');
 Route::get('/form1',[MainController::class, 'form1'])->name('form1');
 Route::get('/form11/{name}/{id}',[MainController::class, 'form11'])->name('form11');
