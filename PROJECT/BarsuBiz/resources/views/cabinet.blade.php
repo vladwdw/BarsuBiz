@@ -309,7 +309,12 @@ function deleteItem(id, name) {
      success: function(result) {
          // Remove the entire row from the table
          $('#item' + id).remove();
-     }
+     },
+     error: function(jqXHR, textStatus, errorThrown) {
+       if (jqXHR.status == 500) {
+           window.location.href = '/cabinet';
+       }
+   }
  });
 }
 function tableSearch() {

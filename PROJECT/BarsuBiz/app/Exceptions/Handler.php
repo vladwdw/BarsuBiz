@@ -4,7 +4,7 @@ namespace App\Exceptions;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Throwable;
-
+use Symfony\Component\HttpKernel\Exception\HttpException;
 class Handler extends ExceptionHandler
 {
     /**
@@ -55,6 +55,11 @@ class Handler extends ExceptionHandler
            'message' => 'The requested model was not found',
        ], 404);
    }
+   if ($exception instanceof HttpException && $exception->getStatusCode() == 500) {
+    return redirect('cabinet');
+}
+
+   
 
    return parent::render($request, $exception);
 }

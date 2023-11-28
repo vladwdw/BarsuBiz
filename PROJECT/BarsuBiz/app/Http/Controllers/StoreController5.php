@@ -178,7 +178,7 @@ public function calculate_update(Request $request, $id){
     $this->calculate_update($request,$id);
       return redirect('cabinet');
       }catch(\Exception $e){
-        return redirect('cabinet')->with('notFound','Страница не найдена');
+        return redirect('cabinet')->with('notFound','Заявка не найдена');
       }
 
   }

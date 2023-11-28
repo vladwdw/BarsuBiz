@@ -144,11 +144,11 @@ class MainController extends Controller
 
     }
     catch(\Exception $exception){
-         return redirect('cabinet')->with('notFound','Страница не найдена');
+         return redirect('cabinet')->with('notFound','Анкета не найдена');
     }
 }
     public function form_word($name,$id)
-    {  
+    {  try{
         if($name=="Молодежные инициативы"){
             $molIndic=MolIndic::where('project_id', $id)->get();
             $molInic=MolInic::find($id);
@@ -574,6 +574,10 @@ class MainController extends Controller
                         
                 return response()->download($zip_file)->deleteFileAfterSend();
         }
+    }
+    catch (\Exception $e) {
+        return redirect('cabinet')->with('notFound','Заявка не найдена');
+    }
             
     }
     public function form5_obosn_word($id, $name)
@@ -949,6 +953,7 @@ class MainController extends Controller
     }
     public function  form_pdf($name,$id)
     {
+        try{
         if($name== "Молодежные инициативы"){
         $phpWord= new PhpWord();
     
@@ -1407,7 +1412,10 @@ readfile(public_path($newFileName));
 unlink(public_path($newFileName));
 unlink($filePath);
     }
-
+        }
+        catch (\Exception $e) {
+            return redirect('cabinet')->with('notFound','Заявка не найдена');
+        }
 
     }
 

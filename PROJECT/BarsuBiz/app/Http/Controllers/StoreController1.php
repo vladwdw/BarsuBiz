@@ -119,7 +119,7 @@ class StoreController1 extends Controller
             }
         }
         catch (\Exception $exception) {
-            return redirect('cabinet')->with('notFound','Страница не найдена');
+            return redirect('cabinet')->with('notFound','Заявка не найдена');
         }
             return redirect('cabinet');
  
