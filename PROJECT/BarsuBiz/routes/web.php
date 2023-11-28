@@ -90,13 +90,5 @@ Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $requ
 })->middleware(['auth', 'signed'])->name('verification.verify');
 
 Route::get('/user/verify/{token}',[RegisterController::class,'verifyEmail']);
-// Route::get('/email/verify', function () {
-//     return view('auth.verify-email');
-//   })->middleware('auth')->name('verification.notice');
-//   Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $request) {
-//     $request->fulfill();
-   
-//     return redirect('/home');
-//   })->middleware(['auth', 'signed'])->name('verification.verify');
-
+// При пуше на сервер строчки раскоментить
 

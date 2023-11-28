@@ -308,6 +308,7 @@ class StoreController4 extends Controller
 }
     }
     public function form44_update(Request $request,$name,$id){
+        
         $number=$request->input('number');
         $data=$request->input('data');
         $year=$request->input('year');
@@ -327,8 +328,9 @@ class StoreController4 extends Controller
          $fin1= $request->input('fin1');
          $fin2= $request->input('fin2');
          $fin3= $request->input('fin3');
-        try{
-            $gpni=Gpni::find($id);
+         try {
+            $gpni=Gpni::findOrFail($id);
+           
             $gpni->number = $number;
             $gpni->data = $data;
             $gpni->year = $year;
@@ -369,7 +371,7 @@ class StoreController4 extends Controller
             return redirect('cabinet');
         }
         catch (\Exception $e) {
-            dd($e->getMessage());
+            return redirect('cabinet')->with('notFound','Страница не найдена');
 }
 
     }
