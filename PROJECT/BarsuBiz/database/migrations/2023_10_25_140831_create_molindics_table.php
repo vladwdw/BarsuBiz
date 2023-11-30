@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('project_id')->nullable();
             $table->string('indicator')->nullable();
-            $table->string('value')->nullable();
+            $table->longText('value')->nullable();
             $table->timestamps();
         });
         Schema::table('molindics', function (Blueprint $table) {

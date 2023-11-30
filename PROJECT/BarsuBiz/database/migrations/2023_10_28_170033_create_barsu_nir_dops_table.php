@@ -16,10 +16,10 @@ return new class extends Migration
         Schema::create('barsunir_dop', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('project_id')->nullable();
-            $table->string('workEtap')->nullable();
-            $table->string('nachSrok')->nullable();
-  $table->string('endSrok')->nullable();
-  $table->string('kontrResult')->nullable();
+            $table->longText('workEtap')->nullable();
+            $table->longText('nachSrok')->nullable();
+  $table->longText('endSrok')->nullable();
+  $table->longText('kontrResult')->nullable();
             $table->timestamps();
         });
         Schema::table('barsunir_dop', function (Blueprint $table) {
