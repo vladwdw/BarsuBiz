@@ -24,6 +24,7 @@ class SearchController extends Controller
         $type = request('type');
         $search = request('searchItem');
         $sort = request('sort');
+        //try{
         if($type=='search'){
         if(Auth::user()->Role=="User"){
             if (empty($search)) {
@@ -41,7 +42,7 @@ class SearchController extends Controller
             $molInics = MolInic::select('name', 'created_at','id','owner')->where('user_id', auth()->id())->where('nameProject', 'like', '%' . $search . '%');
             $barsunirs = BarsuNir::select('name', 'created_at','id','owner')->where('user_id', auth()->id())->where('workTheme', 'like', '%' . $search . '%');
             $hundredideas= HudredIdeas::select('name', 'created_at','id','owner')->where('user_id', auth()->id())->where('name_project', 'like', '%' . $search . '%');
-            $gpnis=Gpni::select('name','created_at','id','owner')->where('user_id', auth()->id())->where('namePr', 'like', '%' . $search . '%');
+            $gpnis=Gpni::select('name','created_at','id','owner')->where('user_id', auth()->id())->where('nameP', 'like', '%' . $search . '%');
             $grant=Grant::select('name','created_at','id','owner')->where('user_id', auth()->id())->where('workName', 'like', '%' . $search . '%');;
             $repconc=Repconc::select('name','created_at','id','owner')->where('user_id', auth()->id())->where('nameProject', 'like', '%' . $search . '%');
             $items = $molInics->union($barsunirs)->union($hundredideas)->union($gpnis)->orderBy('created_at', 'desc')->union($grant)->union($repconc)->paginate(7)->withQueryString();
@@ -101,5 +102,10 @@ class SearchController extends Controller
     }
     return view('cabinet', compact('items','sort','search'), ['notifications' => $notifications]);
 
+    
+//}
+// catch(\Exception $exception){
+//     return redirect('cabinet')->with("notFound","Нету заявок для поиска/сортировки");
+// }
     }
 }

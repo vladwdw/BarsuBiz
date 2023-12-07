@@ -22,10 +22,10 @@ return new class extends Migration
             $table->string('fioGrad')->nullable();
             $table->string('grandCategory')->nullable();
             $table->string('workName')->nullable();
-            $table->text('disertationTheme')->nullable();
+            $table->longText('disertationTheme')->nullable();
             $table->string('uchrName')->nullable();
-            $table->string('special')->nullable();
-            $table->text('knowledge')->nullable();
+            $table->longText('special')->nullable();
+            $table->longText('knowledge')->nullable();
             $table->string("owner")->nullable();
         });
         Schema::table('grants', function (Blueprint $table) {

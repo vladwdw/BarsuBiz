@@ -20,11 +20,11 @@ return new class extends Migration
             $table->string("name")->default("100 ИДЕЙ ДЛЯ БЕЛАРУСИ",date("d/m/Y"));;
             $table->string('name_project')->nullable();
             $table->text('name_autors')->nullable();
-            $table->text('relevance')->nullable();
-            $table->text('goals_objectives')->nullable();
-            $table->text('property_protection')->nullable();
-            $table->text('offers')->nullable();
-            $table->text('advantages_project')->nullable();
+            $table->longText('relevance')->nullable();
+            $table->longText('goals_objectives')->nullable();
+            $table->longText('property_protection')->nullable();
+            $table->longText('offers')->nullable();
+            $table->longText('advantages_project')->nullable();
             $table->string("owner")->nullable();
 
         });
