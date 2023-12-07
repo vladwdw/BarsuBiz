@@ -8,5 +8,4 @@ use Illuminate\Database\Eloquent\Model;
 class grant_calculate extends Model
 {
     use HasFactory;
-    protected $table = 'grant_calculates';
 }

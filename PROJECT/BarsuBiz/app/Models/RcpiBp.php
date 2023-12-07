@@ -8,5 +8,4 @@ use Illuminate\Database\Eloquent\Model;
 class RcpiBp extends Model
 {
     use HasFactory;
-    protected $table = 'rcpi_bps';
 }
