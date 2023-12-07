@@ -350,7 +350,7 @@ class StoreController6 extends Controller
       public function form66_update(Request $request, $name,$id){
 
   
-       
+        try{
             $nominationName=$request->input('nominationName');
             $nameProject=$request->input('nameProject');
             $fio=$request->input('fio');
@@ -371,9 +371,8 @@ class StoreController6 extends Controller
             $yurEmail=$request->input('yurEmail');
             $fioCommand=$request->input('fioCommand');
             $yurLink=$request->input('yurLink');
-            try{
-          $repconc=Repconc::findOrFail($id);
-          
+
+          $repconc=Repconc::find($id);
           $repconc->nominationName=$nominationName;
           $repconc->nameProject=$nameProject;
           $repconc->fio= $fio;
@@ -414,9 +413,8 @@ class StoreController6 extends Controller
             $user->notify(new Edit($data));
         }
           return redirect('cabinet');
-          }
-          catch(\Exception $e){
-            return redirect('cabinet')->with('notFound','Заявка не найдена');
+          }catch(\Exception $e){
+              dd($e->getMessage());
           }
     
       }

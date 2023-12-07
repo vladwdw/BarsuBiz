@@ -13,15 +13,11 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('molindics', function (Blueprint $table) {
+        Schema::create('verify_users', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('project_id')->nullable();
-            $table->string('indicator')->nullable();
-            $table->string('value')->nullable();
+            $table->string('token');
+            $table->unsignedBigInteger("user_id");
             $table->timestamps();
-        });
-        Schema::table('molindics', function (Blueprint $table) {
-            $table->foreign('project_id')->references('id')->on('mol_inics');
         });
     }
 
@@ -32,6 +28,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('molindics');
+        Schema::dropIfExists('verify_users');
     }
 };

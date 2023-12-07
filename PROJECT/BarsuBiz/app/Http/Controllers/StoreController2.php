@@ -62,7 +62,6 @@ class StoreController2 extends Controller
 
     }
     public function form22_update(Request $request,$name,$id){
-       
         if($name=="Участие в НИР"){
             $sinceDir = $request->input('sinceDir');
             $workTheme = $request->input('workTheme');
@@ -80,10 +79,8 @@ class StoreController2 extends Controller
             $endSrok = $request->input('endSrok');
             $kontrResult = $request->input('kontrResult');
     
-          
-               
-                try{
-                    $barsunir = BarsuNir::findOrFail($id);
+            try {
+                $barsunir = BarsuNir::find($id);
                 $barsunir->sinceDir=$sinceDir;
                 $barsunir->workTheme=$workTheme;
                 $barsunir->nirRuks=$nirRuks;
@@ -112,16 +109,15 @@ class StoreController2 extends Controller
                     $user->notify(new Edit($data));
                 }
                 return redirect('cabinet');
-            }
-            catch (\Exception $e) {
-                return redirect('cabinet')->with('notFound','Заявка не найдена');
-            }
+     
     
-            } 
+            } catch (\Exception $e) {
+                         dd($e->getMessage());
+            }
     
     }
 
-
+}
 public function form22_delete($name,$id)
 {
     if($name=="Молодежные инициативы"){

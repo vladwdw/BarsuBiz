@@ -22,13 +22,13 @@ return new class extends Migration
             $table->string("sinceDir")->nullable();
             $table->string("workTheme")->nullable();
             $table->text("nirRuks")->nullable();
-            $table->longText("realizationTemp")->nullable();
+            $table->string("realizationTemp")->nullable();
             $table->string("phone")->nullable();
-            $table->longText("obosnovanie")->nullable();
-            $table->longText("goalsNir")->nullable();
-            $table->longText("sinceElem")->nullable();
-            $table->longText("ozhidResult")->nullable();
-            $table->longText("praktZnach")->nullable();
+            $table->string("obosnovanie")->nullable();
+            $table->string("goalsNir")->nullable();
+            $table->string("sinceElem")->nullable();
+            $table->text("ozhidResult")->nullable();
+            $table->text("praktZnach")->nullable();
             $table->string("owner")->nullable();
         });
         Schema::table('barsunir', function (Blueprint $table) {

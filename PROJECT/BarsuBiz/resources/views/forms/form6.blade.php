@@ -25,7 +25,6 @@
   background-repeat: no-repeat; /* Не повторять фон */
   background-attachment: fixed; /* Фиксировать фон, чтобы он не двигался при прокрутке */
 };
-
     </style>
 </head>
 <body>
@@ -34,9 +33,6 @@
         
         <form  method="post" action="/submit-form6" class="col-md-6 right-box p-3 rounded-4 shadow box-area">
             @csrf
-            <div class="mb-5 ms-auto">
-                <img src="{{asset('assets/img/logo.png')}}" class="logo" width="210px">
-        </div> 
             <ul class="nav justify-content-center">
   <li class="nav-item mt-2 mb-2">
     
@@ -65,6 +61,9 @@
   </li>
 </ul>
             <div class="row align-items-center ">
+            <div class="mb-5 ms-auto">
+                <img src="{{asset('assets/img/logo.png')}}" class="logo" width="210px">
+        </div> 
         <div class="part" data-part="1" style="display: none;">
                 <div class="header-text mb-4">
                     <h2 style="text-align: center;">Заявка

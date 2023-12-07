@@ -17,13 +17,13 @@ return new class extends Migration
             $table->id();
             $table->timestamps();
             $table->unsignedBigInteger('project_id')->nullable();
-            $table->text('pay')->nullable();
-            $table->text('accruals')->nullable();
-            $table->text('materials')->nullable();
-            $table->text('business')->nullable();
-            $table->text('invoices')->nullable();
-            $table->text('costs')->nullable();
-            $table->text('sum')->nullable();
+            $table->string('pay')->nullable();
+            $table->string('accruals')->nullable();
+            $table->string('materials')->nullable();
+            $table->string('business')->nullable();
+            $table->string('invoices')->nullable();
+            $table->string('costs')->nullable();
+            $table->string('sum')->nullable();
         });
         Schema::table('grant_calculates', function (Blueprint $table) {
             $table->foreign('project_id')->references('id')->on('grants');

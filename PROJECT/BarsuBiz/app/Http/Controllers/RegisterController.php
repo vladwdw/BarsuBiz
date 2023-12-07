@@ -49,11 +49,11 @@ class RegisterController extends Controller
             $user->name = $request->input("username");
             $user->email = $request->input("email");
             $user->birthdate=$request->input("age");
-            $user->userToken=Str::random(60);
+            $user->token=Str::random(60);
             $user->password = bcrypt($request->input("password"));
             $user->save();
 
-            $url=url("/user/verify/{$user->userToken}");
+            $url=url("/user/verify/{$user->token}");
             $head = implode("\r\n", [
                 "From: WIFI Metropolis <sitename@hostname.com>",
                 "MIME-Version: 1.0",
@@ -211,7 +211,7 @@ class RegisterController extends Controller
         }
     }
     public function verifyEmail($token){
-        $verifiedUser= User::where('userToken',$token)->first();
+        $verifiedUser= User::where('token',$token)->first();
         if(isset($verifiedUser)){
             if(!$verifiedUser->email_verified_at){
                 $verifiedUser->email_verified_at=Carbon::now();

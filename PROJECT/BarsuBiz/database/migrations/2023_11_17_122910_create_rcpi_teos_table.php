@@ -17,20 +17,20 @@ return new class extends Migration
             $table->id();
             $table->timestamps();
             $table->unsignedBigInteger('project_id');
-            $table->longText("teoPotrProblem")->nullable();
-            $table->longText("teoDescripProd")->nullable();
-            $table->longText("teoBizModel")->nullable();
-            $table->longText("teoRinokInf")->nullable();
-            $table->longText("teoDescripTechn")->nullable();
-            $table->longText("teoConcurent")->nullable();
-            $table->longText("teoIntSobstv")->nullable();
-            $table->longText("teoTeamProject")->nullable();
-            $table->longText("teoMarketing")->nullable();
-            $table->longText("teoFinIndic")->nullable();
-            $table->longText("teoUnitEconomy")->nullable();
-            $table->longText("teoInvestPerm")->nullable();
-            $table->longText("teoRiskProject")->nullable();
-            $table->longText("teoRelizeTemp")->nullable();
+            $table->text("teoPotrProblem")->nullable();
+            $table->text("teoDescripProd")->nullable();
+            $table->text("teoBizModel")->nullable();
+            $table->text("teoRinokInf")->nullable();
+            $table->text("teoDescripTechn")->nullable();
+            $table->text("teoConcurent")->nullable();
+            $table->text("teoIntSobstv")->nullable();
+            $table->text("teoTeamProject")->nullable();
+            $table->text("teoMarketing")->nullable();
+            $table->text("teoFinIndic")->nullable();
+            $table->text("teoUnitEconomy")->nullable();
+            $table->text("teoInvestPerm")->nullable();
+            $table->text("teoRiskProject")->nullable();
+            $table->text("teoRelizeTemp")->nullable();
 
         });
         

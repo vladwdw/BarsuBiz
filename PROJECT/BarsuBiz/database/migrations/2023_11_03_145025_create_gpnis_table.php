@@ -23,8 +23,8 @@ return new class extends Migration
             $table->string("year")->nullable();
             $table->string("nameN")->nullable();
             $table->string("nameP")->nullable();
-            $table->longText("sincedir")->nullable();
-            $table->longText("orgZav")->nullable();
+            $table->string("sincedir")->nullable();
+            $table->string("orgZav")->nullable();
             $table->string("nach")->nullable();
             $table->string("end")->nullable();
             $table->string("allCost")->nullable();

@@ -32,13 +32,12 @@ class StoreController3 extends Controller
             return redirect('cabinet');
         }
         catch (\Exception $e) {
-            return redirect('cabinet')->with('notFound','Страница не найдена');
+            dd($e->getMessage());
 }
 
 
     }
     public function form33_update(Request $request,$name,$id){
-     
         if($name=="100 ИДЕЙ ДЛЯ БЕЛАРУСИ"){
         $name_project=$request->input('name_project');
         $name_autors=$request->input('name_autors');
@@ -51,8 +50,7 @@ class StoreController3 extends Controller
           
     
             try {
-                $hundredideas = HudredIdeas::findOrFail($id);
-               
+                $hundredideas = HudredIdeas::find($id);
                 $hundredideas->property_protection=$property_protection;
                 $hundredideas->offers=$offers;
                 $hundredideas->advantages_project=$advantages_project;
@@ -66,17 +64,17 @@ class StoreController3 extends Controller
                     $data=$hundredideas->name."_#".$hundredideas->id;
                     $user->notify(new Edit($data));
                 }
-
-  
                 return redirect('cabinet');
-            }
-        catch (\Exception $e) {
-            return redirect('cabinet')->with('notFound','Заявка не найдена');
+                }
 
+                
+                catch (\Exception $e) {
+                    dd($e->getMessage());
+    
+            
+            }
     
     }
+
 }
-        }
-    }
-
-
+}

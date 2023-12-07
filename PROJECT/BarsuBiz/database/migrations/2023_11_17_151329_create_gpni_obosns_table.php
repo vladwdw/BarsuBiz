@@ -17,12 +17,12 @@ return new class extends Migration
             $table->id();
             $table->timestamps();
             $table->unsignedBigInteger('project_id')->nullable();
-            $table->longText('name_nir')->nullable();
-            $table->longText('goals_nir')->nullable();
-            $table->longText('relevance_nir')->nullable();
-            $table->longText('results_nir')->nullable();
-            $table->longText('plan_results_nir')->nullable();
-            $table->longText('volume_nir')->nullable();
+            $table->string('name_nir')->nullable();
+            $table->string('goals_nir')->nullable();
+            $table->string('relevance_nir')->nullable();
+            $table->string('results_nir')->nullable();
+            $table->string('plan_results_nir')->nullable();
+            $table->string('volume_nir')->nullable();
         });
         Schema::table('gpni_obosns', function (Blueprint $table) {
             $table->foreign('project_id')->references('id')->on('gpnis');
