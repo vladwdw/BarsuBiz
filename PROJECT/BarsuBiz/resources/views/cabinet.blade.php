@@ -183,7 +183,6 @@ footer{
                
        
 @foreach($items as $item)   
-
 <tr id="item{{ $item->id }}">
 <td name="itemName"> <a href="{{ route('form11', ['name' => $item->name,'id' => $item->id]) }}">{{$item->name}}_#{{$item->id}}</a> </td>
 <!-- <td>{{ Auth::user()->name }}</td> -->
