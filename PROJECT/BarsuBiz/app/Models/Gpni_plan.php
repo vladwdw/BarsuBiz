@@ -8,5 +8,5 @@ use Illuminate\Database\Eloquent\Model;
 class Gpni_plan extends Model
 {
     use HasFactory;
-    protected $table = 'Gpni_plans';
+    protected $table = 'gpni_plans';
 }

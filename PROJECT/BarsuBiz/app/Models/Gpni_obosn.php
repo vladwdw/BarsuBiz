@@ -8,4 +8,5 @@ use Illuminate\Database\Eloquent\Model;
 class Gpni_obosn extends Model
 {
     use HasFactory;
+    protected $table = 'Gpni_obosn';
 }

@@ -8,4 +8,5 @@ use Illuminate\Database\Eloquent\Model;
 class RcpiPassCheckboxes extends Model
 {
     use HasFactory;
+    protected $table = 'rcpi_pass_checkboxes';
 }

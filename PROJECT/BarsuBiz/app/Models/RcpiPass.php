@@ -8,4 +8,5 @@ use Illuminate\Database\Eloquent\Model;
 class RcpiPass extends Model
 {
     use HasFactory;
+    protected $table = 'rcpi_passes';
 }

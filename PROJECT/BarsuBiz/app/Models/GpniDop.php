@@ -8,4 +8,5 @@ use Illuminate\Database\Eloquent\Model;
 class GpniDop extends Model
 {
     use HasFactory;
+    protected $table = 'gpni_dops';
 }
