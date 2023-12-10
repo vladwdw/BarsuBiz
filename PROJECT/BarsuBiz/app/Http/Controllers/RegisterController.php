@@ -18,6 +18,7 @@ class RegisterController extends Controller
 {
     public function register(Request $request)
     {
+
         // Правила валидации
         $rules = [
             'username' => 'required|string|max:12',
