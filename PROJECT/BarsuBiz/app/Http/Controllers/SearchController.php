@@ -65,7 +65,7 @@ class SearchController extends Controller
             $molInics = MolInic::select('name', 'created_at','id','owner')->where('nameProject', 'like', '%' . $search . '%');
             $barsunirs = BarsuNir::select('name', 'created_at','id','owner')->where('workTheme', 'like', '%' . $search . '%');
             $hundredideas= HudredIdeas::select('name', 'created_at','id','owner')->where('name_project', 'like', '%' . $search . '%');
-            $gpnis=Gpni::select('name','created_at','id','owner')->where('namePr', 'like', '%' . $search . '%');
+            $gpnis=Gpni::select('name','created_at','id','owner')->where('nameP', 'like', '%' . $search . '%');
             $grant=Grant::select('name','created_at','id','owner')->where('workName', 'like', '%' . $search . '%');;
             $repconc=Repconc::select('name','created_at','id','owner')->where('nameProject', 'like', '%' . $search . '%');
             $items = $molInics->union($barsunirs)->union($hundredideas)->union($gpnis)->union($repconc)->orderBy('created_at', 'desc')->union($grant)->paginate(7)->withQueryString();
