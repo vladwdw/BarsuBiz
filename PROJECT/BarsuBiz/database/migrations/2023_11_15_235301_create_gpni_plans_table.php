@@ -18,18 +18,18 @@ return new class extends Migration
             $table->timestamps();
             $table->unsignedBigInteger('project_id')->nullable();
             $table->string('direction')->nullable();
-            $table->string('Carryingout')->nullable();
-            $table->string('nameingeneral')->nullable();
-            $table->string('nachPlanneddates')->nullable();
-            $table->string('endPlanneddates')->nullable();
-            $table->string('totalcost')->nullable();
-            $table->string('results')->nullable();
+            $table->longText('Carryingout')->nullable();
+            $table->longText('nameingeneral')->nullable();
+            $table->longText('nachPlanneddates')->nullable();
+            $table->longText('endPlanneddates')->nullable();
+            $table->longText('totalcost')->nullable();
+            $table->longText('results')->nullable();
 
-            $table->string('name1p')->nullable();
-            $table->string('nachPlanneddates1p')->nullable();
-            $table->string('endPlanneddates1p')->nullable();
-            $table->string('totalcost1p')->nullable();
-            $table->string('results1p')->nullable();
+            $table->longText('name1p')->nullable();
+            $table->longText('nachPlanneddates1p')->nullable();
+            $table->longText('endPlanneddates1p')->nullable();
+            $table->longText('totalcost1p')->nullable();
+            $table->longText('results1p')->nullable();
 
             $table->string('name2p')->nullable();
             $table->string('nachPlanneddates2p')->nullable();

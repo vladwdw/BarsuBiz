@@ -24,6 +24,7 @@ class SearchController extends Controller
         $type = request('type');
         $search = request('searchItem');
         $sort = request('sort');
+        //try{
         if($type=='search'){
         if(Auth::user()->Role=="User"){
             if (empty($search)) {
@@ -101,5 +102,10 @@ class SearchController extends Controller
     }
     return view('cabinet', compact('items','sort','search'), ['notifications' => $notifications]);
 
+    
+//}
+// catch(\Exception $exception){
+//     return redirect('cabinet')->with("notFound","Нету заявок для поиска/сортировки");
+// }
     }
 }

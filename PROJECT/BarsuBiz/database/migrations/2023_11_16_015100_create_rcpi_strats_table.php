@@ -17,10 +17,10 @@ return new class extends Migration
             $table->id();
             $table->timestamps();
             $table->unsignedBigInteger('project_id');
-            $table->text('sOtherSbosob')->nullable();
-            $table->text('sFio')->nullable();
-            $table->text('sDescriptKomerc')->nullable();
-            $table->text('sStratComerc')->nullable();
+            $table->longText('sOtherSbosob')->nullable();
+            $table->longText('sFio')->nullable();
+            $table->longText('sDescriptKomerc')->nullable();
+            $table->longText('sStratComerc')->nullable();
         });
         Schema::table('rcpi_strats', function (Blueprint $table) {
             $table->foreign("project_id")->references('id')->on('repconcs');

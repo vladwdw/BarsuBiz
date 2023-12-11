@@ -28,7 +28,7 @@ return new class extends Migration
             $table->string('phone')->nullable();
             $table->string('email')->nullable();
             $table->string('projectLink')->nullable();
-            $table->string('yurName')->nullable();
+            $table->Text('yurName')->nullable();
             $table->string('fioRuk')->nullable();
             $table->string('dolzhnYur')->nullable();
             $table->string('yurStep')->nullable();
@@ -36,8 +36,8 @@ return new class extends Migration
             $table->string('platNumber')->nullable();
             $table->string('yurPhone')->nullable();
             $table->string('yurEmail')->nullable();
-            $table->text('fioCommand')->nullable();
-            $table->string('yurLink')->nullable();
+            $table->longText('fioCommand')->nullable();
+            $table->longText('yurLink')->nullable();
             $table->string("owner")->nullable();
         });
         Schema::table('repconcs', function (Blueprint $table) {

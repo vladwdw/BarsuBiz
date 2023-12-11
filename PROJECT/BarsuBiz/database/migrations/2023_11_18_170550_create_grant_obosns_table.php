@@ -17,13 +17,13 @@ return new class extends Migration
             $table->id();
             $table->timestamps();
             $table->unsignedBigInteger('project_id')->nullable();
-            $table->string('goal')->nullable();
-            $table->string('idea')->nullable();
-            $table->string('struct')->nullable();
-            $table->string('state')->nullable();
-            $table->string('rezults')->nullable();
-            $table->string('field')->nullable();
-            $table->string('info')->nullable();
+            $table->longText('goal')->nullable();
+            $table->longText('idea')->nullable();
+            $table->longText('struct')->nullable();
+            $table->longText('state')->nullable();
+            $table->longText('rezults')->nullable();
+            $table->longText('field')->nullable();
+            $table->longText('info')->nullable();
         });
         Schema::table('grant_obosns', function (Blueprint $table) {
             $table->foreign('project_id')->references('id')->on('grants');
