@@ -355,7 +355,7 @@ class MainController extends Controller
         $table = $section->addTable($styleCell);
         for ($i = 0; $i < count($workEtap); $i++) {
         $table->addRow(200);
-        $table->addCell(1090, $styleCell)->addText($i,$styleText);
+        $table->addCell(1090, $styleCell)->addText($i+1,$styleText);
         $table->addCell(3588, $styleCell)->addText($workEtap[$i],$styleText);
         $table->addCell(1385, $styleCell)->addText($nachSrok[$i],$styleText);
         $table->addCell(1470, $styleCell)->addText($endSrok[$i],$styleText);
