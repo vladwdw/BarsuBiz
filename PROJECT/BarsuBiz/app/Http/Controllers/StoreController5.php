@@ -148,7 +148,7 @@ public function calculate_update(Request $request, $id){
   public function form55_update(Request $request, $name,$id){
 
   
-    try{
+    
       $sienceDirection=$request->input('sienceDirection');
       $fioGrad=$request->input('fioGrad');
       $grandCategory=$request->input('grandCategory');
@@ -157,7 +157,9 @@ public function calculate_update(Request $request, $id){
       $uchrName=$request->input('uchrName');
       $special=$request->input('special');
       $knowledge=$request->input('knowledge');
-      $grant=Grant::find($id);
+      try{
+      $grant=Grant::findOrFail($id);
+      
       $grant->sienceDirection=$sienceDirection;
       $grant->fioGrad=$fioGrad;
       $grant->grandCategory=$grandCategory;
@@ -176,7 +178,7 @@ public function calculate_update(Request $request, $id){
     $this->calculate_update($request,$id);
       return redirect('cabinet');
       }catch(\Exception $e){
-          dd($e->getMessage());
+        return redirect('cabinet')->with('notFound','Заявка не найдена');
       }
 
   }

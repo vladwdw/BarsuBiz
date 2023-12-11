@@ -71,7 +71,7 @@
       <h2>Воспользуйтесь нашими сервисами для решения своих задач</h2>
       <div class="d-flex">
         <a href="#services" class="btn-get-started scrollto">Перейти к сервисам</a>
-        <a href="https://www.youtube.com/watch?v=XRdpeuDDr1g&t=2s&ab_channel=Учреждениеобразования"Барановичскийгосударственныйуниверситет"" class="glightbox btn-watch-video"><i class="bi bi-play-circle"></i><span>Смотреть видео</span></a>
+        <a href="https://www.youtube.com/watch?v=XRdpeuDDr1g&ab_channel=Учреждениеобразования"Барановичскийгосударственныйуниверситет"" class="glightbox btn-watch-video"><i class="bi bi-play-circle"></i><span>Смотреть видео</span></a>
       </div>
     </div>
   </section><!-- End Hero -->

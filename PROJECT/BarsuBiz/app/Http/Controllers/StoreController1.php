@@ -76,6 +76,7 @@ class StoreController1 extends Controller
 
     }
     public function form11_update(Request $request,$name,$id){
+        
         if($name=="Молодежные инициативы"){
         $projectName = $request->input('projectName');
         $regionName = $request->input('regionName');
@@ -89,8 +90,9 @@ class StoreController1 extends Controller
         $email=$request->input('email');
         $sostav=$request->input('sostav');
         $dopInformation=$request->input('dopInformation');
-        try {
-            $molInic = MolInic::find($id);
+        try{
+            $molInic = MolInic::findOrFail($id);
+           
             $molInic->nameProject=$projectName;
             $molInic->nameRegion=$regionName;
             $molInic->namePunct=$locality;
@@ -115,15 +117,18 @@ class StoreController1 extends Controller
                 $data=$molInic->name."_#".$molInic->id;
                 $user->notify(new Edit($data));
             }
-           
+        }
+        catch (\Exception $exception) {
+            return redirect('cabinet')->with('notFound','Заявка не найдена');
+        }
             return redirect('cabinet');
  
 
-        } catch (\Exception $e) {
-                     dd($e->getMessage());
         }
-    }
-    }
+    } 
+
+    
+    
     public function form11_delete(Request $request)
     {
         $name=$request->name;

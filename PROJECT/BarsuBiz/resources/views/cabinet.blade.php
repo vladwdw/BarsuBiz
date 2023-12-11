@@ -8,7 +8,6 @@
     
     <!--  -->
     <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
-<link href="{{ asset('css/mainstyle1.css') }}" rel="stylesheet">
   <link href="{{asset('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Source+Sans+Pro:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600;1,700&display=swap')}}" rel="stylesheet">
 
   <!-- Vendor CSS Files -->
@@ -20,7 +19,6 @@
   <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
   <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
   <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
-  <script src="assets/vendor/php-email-form/validate.js"></script>
   <link href="{{asset('assets/css/style.css')}}" rel="stylesheet">
   <link href="{{asset('assets/css/card.css')}}" rel="stylesheet">
   <link href="{{asset('assets/img/favicon.png')}}" rel="icon">
@@ -96,7 +94,6 @@ footer{
     </div>
   </header><!-- End Header -->
     <script src="assets/js/main.js"></script> 
-    <script src="assets/js/main_cab.js"></script> 
     @php
    $sort = $sort ?? 'new';
 @endphp
@@ -186,7 +183,6 @@ footer{
                
        
 @foreach($items as $item)   
-
 <tr id="item{{ $item->id }}">
 <td name="itemName"> <a href="{{ route('form11', ['name' => $item->name,'id' => $item->id]) }}">{{$item->name}}_#{{$item->id}}</a> </td>
 <!-- <td>{{ Auth::user()->name }}</td> -->
@@ -234,6 +230,13 @@ footer{
 @endforeach
 @endif
 </div>
+@if(session('notFound'))
+   <div class="alert alert-danger alert-dismissible">
+   
+       {{ session('notFound') }}
+       <button class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+   </div>
+@endif
 </div>
 
       </div>
@@ -302,7 +305,12 @@ function deleteItem(id, name) {
      success: function(result) {
          // Remove the entire row from the table
          $('#item' + id).remove();
-     }
+     },
+     error: function(jqXHR, textStatus, errorThrown) {
+       if (jqXHR.status == 500) {
+           window.location.href = '/cabinet';
+       }
+   }
  });
 }
 function tableSearch() {
