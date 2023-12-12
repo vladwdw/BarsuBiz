@@ -193,7 +193,7 @@ class MainController extends Controller
             
     }
    
-   
+   #region FormPdf
     public function  form_pdf($name,$id)
     {
         try{
@@ -661,6 +661,7 @@ unlink($filePath);
         }
 
     }
+#endregion
 
 
 
