@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use PhpOffice\PhpWord\PhpWord;
 use App\Models\BarsuNir;
 use App\Models\HudredIdeas;
 use App\Models\BarsuNirDop;
@@ -16,6 +16,7 @@ use App\Models\grant_obosn;
 use Illuminate\Support\Facades\Auth;
 use App\Models\MolInic;
 use App\Models\Molindic;
+use PhpOffice\PhpWord\TemplateProcessor;
 use App\Models\RcpiBp;
 use App\Models\RcpiPass;
 use App\Models\RcpiPassCheckboxes;
@@ -27,7 +28,7 @@ use App\Notifications\Delete;
 use App\Models\User;
 use App\Notifications\Edit;
 use Illuminate\Http\Request;
-
+use PhpOffice\PhpWord\IOFactory;
 class StoreController1 extends Controller
 {
     public function store(Request $request){
@@ -126,6 +127,80 @@ class StoreController1 extends Controller
 
         }
     } 
+    public function form11_word($id,$name){
+        //$this->form1_word($molIndic,$molInic);
+        $molIndic=MolIndic::where('project_id', $id)->get();
+        $molInic=MolInic::find($id);
+        $phpWord= new PhpWord();
+        $phpWord->setDefaultFontName('Times New Roman');
+        $phpWord->setDefaultFontSize(14);
+        $templateProcessor= new TemplateProcessor('templates\form1.docx');
+        $templateProcessor->deleteBlock('tableRow');
+        $index=0;
+        $templateProcessor->setValue('projectName',$molInic->nameProject);
+        $templateProcessor->setValue('regionName',$molInic->nameRegion);
+        $templateProcessor->setValue('locality',$molInic->namePunct);
+        $templateProcessor->setValue('description',$molInic->descriptionProblem);
+        $templateProcessor->setValue('realizationTemp',$molInic->realizationTemp);
+        $templateProcessor->setValue('fioRuk',$molInic->fioRuk);
+        $templateProcessor->setValue('phone',$molInic->phone);
+        $templateProcessor->setValue('email',$molInic->email);
+        $templateProcessor->setValue('sostav',$molInic->sostav);
+        $templateProcessor->setValue('dopInformation',$molInic->dopInformation);
+        $indicator = array();
+        foreach($molIndic as $mol)
+        {
+            array_push($indicator,$mol->indicator);
+        }
+        $valueIndicator = array();
+        foreach($molIndic as $mol)
+        {
+            array_push($valueIndicator,$mol->value);
+        }
+        
+        
+        $templateProcessor->setValue('indicator',$indicator[0]);
+        
+        
+        $section = $phpWord->addSection();
+        $header = array('size' => 16, 'bold' => true);
+    
+    
+        // 2. Advanced table
+    
+        $section->addTextBreak(1);
+        $styleCell =
+        array(
+        'borderColor' =>'000000',
+        'borderSize' => 5,
+        'valign' => 'center',
+        );
+        $styleText = array(
+            'name' => 'Times New Roman',
+            'size' => 14, // Размер шрифта в точках
+        );
+    
+        $table = $section->addTable($styleCell);
+        $table->addRow(900);
+        $table->addCell(800, $styleCell)->addText('№ п/п',$styleText);
+        $table->addCell(4800, $styleCell)->addText('Показатель, единиц измерения',$styleText);
+        $table->addCell(4000, $styleCell)->addText('Значение показателя',$styleText);
+        for ($i = 0; $i < count($indicator); $i++) {
+            $table->addRow();
+            $table->addCell(800)->addText($i+1,$styleText);
+            $table->addCell(4800)->addText($indicator[$i],$styleText);      
+            $table->addCell(4000)->addText($valueIndicator[$i],$styleText);
+        };
+        
+       
+    
+            $templateProcessor->setComplexBlock('mainTable',$table);
+        $newFileName = $name."_".$id;
+       
+        $templateProcessor->saveAs($newFileName.'.docx');
+        $filePath = public_path($newFileName.'.docx');
+        return $filePath;
+    }
 
     
     

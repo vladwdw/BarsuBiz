@@ -1,7 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use PhpOffice\PhpWord\PhpWord;
+use PhpOffice\PhpWord\TemplateProcessor;
 use Illuminate\Support\Facades\Auth;
 use App\Models\BarsuNir;
 use App\Models\BarsuNirDop;
@@ -60,6 +61,74 @@ class StoreController2 extends Controller
                      dd($e->getMessage());
         }
 
+    }
+    public function form_word($id,$name){
+        $phpWord= new PhpWord();
+    
+        $phpWord->setDefaultFontName('Times New Roman');
+        $phpWord->setDefaultFontSize(14);
+        $barsunirdop=BarsuNirDop::where('project_id', $id)->get();
+        $barsunir= BarsuNir::find($id);
+        $templateProcessor= new TemplateProcessor('templates\form2.docx');
+  
+        $templateProcessor->deleteBlock('tableRow');
+        $index=0;
+        $templateProcessor->setValue('sinceDir',$barsunir->sinceDir);
+    
+        $templateProcessor->setValue('workTheme',$barsunir->workTheme);
+        $templateProcessor->setValue('sinceElem',$barsunir->sinceElem);
+        $templateProcessor->setValue('nirRuks',$barsunir->nirRuks);
+        $templateProcessor->setValue('realizationTemp',$barsunir->realizationTemp);
+        $templateProcessor->setValue('phone',$barsunir->phone);
+        $templateProcessor->setValue('obosnovanie',$barsunir->obosnovanie);
+        $templateProcessor->setValue('goalsNir',$barsunir->goalsNir);
+        $templateProcessor->setValue('ozhidResult',$barsunir->ozhidResult);
+        $templateProcessor->setValue('praktZnach',$barsunir->praktZnach);
+        $section=$phpWord->addSection();
+    
+
+    $newFileName = time();
+    $section->addTextBreak(1);
+    $styleCell =
+    array(
+    'borderColor' =>'000000',
+    'borderSize' => 3,
+    'valign' => 'center',
+    );
+    $styleText = array(
+        'name' => 'Times New Roman',
+        'valign'=>'center',
+        'size' => 14,
+    );
+
+
+    $workEtap=array();
+    $nachSrok=array();
+    $endSrok=array();
+    $kontrResult=array();
+    foreach($barsunirdop as $item)
+    {
+        array_push($workEtap,$item->workEtap);
+        array_push($nachSrok,$item->nachSrok);
+        array_push($endSrok,$item->endSrok);
+        array_push($kontrResult,$item->kontrResult);
+    }
+
+    $table = $section->addTable($styleCell);
+    for ($i = 0; $i < count($workEtap); $i++) {
+    $table->addRow(200);
+    $table->addCell(1090, $styleCell)->addText($i+1,$styleText);
+    $table->addCell(3588, $styleCell)->addText($workEtap[$i],$styleText);
+    $table->addCell(1385, $styleCell)->addText($nachSrok[$i],$styleText);
+    $table->addCell(1470, $styleCell)->addText($endSrok[$i],$styleText);
+    $table->addCell(1900, $styleCell)->addText($kontrResult[$i],$styleText);
+
+    }
+   $filename=$name."_".$id;
+    $templateProcessor->setComplexBlock('table',$table);
+    $templateProcessor->saveAs($filename.'.docx');
+    $filePath = public_path($filename.'.docx');
+    return $filePath;
     }
     public function form22_update(Request $request,$name,$id){
        

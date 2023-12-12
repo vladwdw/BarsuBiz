@@ -36,10 +36,11 @@
         
         <form  method="post"  class="col-md-6 right-box p-3 rounded-4 shadow box-area" action="{{ route('form66_update', ['name' => $repconc->name,'id' => $repconc->id]) }}">
             @csrf
+            <div class="mb-5 ms-auto">
+                <img src="{{asset('assets/img/logo.png')}}" class="logo" width="210px">
+        </div> 
             <ul class="nav justify-content-center">
-                <div class="mb-5 ms-auto">
-                    <img src="{{asset('assets/img/logo.png')}}" class="logo" width="210px">
-            </div> 
+
   <li class="nav-item mt-2 mb-2">
     
   <button type="button" data-part="1" onclick="openPart(1)" class="btn btn-outline-danger rounded-4" href="#"><i class="bi bi-file-earmark-text"></i> Заявка</button>

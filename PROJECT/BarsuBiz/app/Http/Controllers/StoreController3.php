@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 use App\Models\HudredIdeas;
+use PhpOffice\PhpWord\PhpWord;
+use PhpOffice\PhpWord\TemplateProcessor;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
@@ -36,6 +38,36 @@ class StoreController3 extends Controller
 }
 
 
+    }
+    public function form_word($id,$name){
+        $phpWord= new PhpWord();
+        $hundreadideas=HudredIdeas::find($id);
+        $name_project = $hundreadideas->name_project;
+        $name_autors = $hundreadideas->name_autors;
+        $relevance = $hundreadideas->relevance;
+        $goals_objectives = $hundreadideas->goals_objectives;
+        $advantages_project = $hundreadideas->advantages_project;
+        $property_protection = $hundreadideas->property_protection;
+        $offers = $hundreadideas->offers;
+        $phpWord->setDefaultFontName('Times New Roman');
+        $phpWord->setDefaultFontSize(14);
+    
+    
+      
+        $templateProcessor= new TemplateProcessor('templates\form3.docx');
+      
+        $templateProcessor->deleteBlock('tableRow');
+        $index=0;
+        $templateProcessor->setValue('name_project',$name_project);
+        $templateProcessor->setValue('name_autors',$name_autors);
+        $templateProcessor->setValue('relevance',$relevance);
+        $templateProcessor->setValue('goals_objectives',$goals_objectives);
+        $templateProcessor->setValue('advantages_project',$advantages_project);
+        $templateProcessor->setValue('property_protection',$property_protection);
+        $templateProcessor->setValue('offers',$offers);
+        $newFileName = $name.'_'.$id;
+        $templateProcessor->saveAs($newFileName.'.docx');
+        return $newFileName;
     }
     public function form33_update(Request $request,$name,$id){
      
