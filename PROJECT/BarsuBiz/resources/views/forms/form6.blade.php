@@ -447,7 +447,7 @@
             </div>
             <!-- Checkbox 5 !-->
             <div class="form-check mb-3">
-            <input class="form-check-input" name="pascheckbox[]" type="checkbox" value="Другое (указать):" id="flexCheckDefault">
+            <input class="form-check-input" name="pascheckbox[]" type="checkbox" value="Другoе (указать):" id="flexCheckDefault">
             <label class="form-check-label" for="flexCheckDefault">
             Другое (указать):
             </label>
