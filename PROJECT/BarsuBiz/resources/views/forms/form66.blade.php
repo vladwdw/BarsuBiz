@@ -365,7 +365,7 @@
                 <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Введите данные:" name="pasKratkDescrip">{{$rcpipass->first()->pasKratkDescrip}}</textarea>
             </div>
             <p><b>Область применения(выбрать из списка не более 2-х)</b></p>
-            @for($i = 0; $i <=8; $i++)
+            @for($i = 0; $i <9; $i++)
             <div class="form-check mb-3">
             <input class="form-check-input" name="pascheckbox[]" type="checkbox" value="{{$rcpipass_checkbox[$i]->value}}" id="flexCheckDefault" {{$rcpipass_checkbox[$i]->status ? 'checked' : '' }}>
             <label class="form-check-label" for="flexCheckDefault">
@@ -413,7 +413,7 @@
             </div>
             <p><b>Использование объектов интеллектуальной собственности (потенциальных объектов интеллектуальной собственности)</b></p>
             <!-- Checkbox 1 !-->
-            @for($i =23; $i < 26; $i++)
+            @for($i =22; $i < 25; $i++)
             <div class="form-check mb-3">
             <input class="form-check-input" name="pascheckbox[]" type="checkbox" value="{{$rcpipass_checkbox[$i]->value}}" id="flexCheckDefault" {{$rcpipass_checkbox[$i]->status ? 'checked' : '' }}>
             <label class="form-check-label" for="flexCheckDefault">
@@ -430,7 +430,7 @@
                 <input type="text" class="form-control form-control-lg bg-light fs-6" placeholder="Введите данные" name="pasRealizationTemp" value="{{$rcpipass->first()->pasRealizationTemp}}">
             </div>
             <p><b>Согласие на получение денежных средств в целях коммерциализации проекта (сертификата)</b></p>
-            @for($i = 26; $i < 28; $i++)
+            @for($i = 25; $i < 27; $i++)
             <div class="form-check mb-3">
             <input class="form-check-input" name="pascheckbox[]" type="checkbox" value="{{$rcpipass_checkbox[$i]->value}}" id="flexCheckDefault" {{$rcpipass_checkbox[$i]->status ? 'checked' : '' }}>
             <label class="form-check-label" for="flexCheckDefault">

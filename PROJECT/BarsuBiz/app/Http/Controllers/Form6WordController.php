@@ -123,6 +123,7 @@ public function form6_teo_word($id,$name){
 
 public function form6_pass_word($checkboxes,$inputs,$name){
 
+    
         $templateProcessor= new TemplateProcessor('templates\form6_pass.docx');
     for($i=0; $i<count($checkboxes); $i++){
         if($checkboxes[$i]->status==1){
